@@ -1,0 +1,56 @@
+@use '../../styles/fonts' as *;
+
+@mixin dFlex($ai: center, $jc: space-between, $g: 0) {
+    display: flex;
+    align-items: $ai;
+    justify-content: $jc;
+    gap: $g;
+}
+
+header{
+    @include dFlex();
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    color: white;
+    nav{
+        @include dFlex(center, space-between, 24px);
+        margin-left: 112px;
+        font-family: Fira Code;
+        font-size: 20px;
+    }
+    div:nth-child(2){
+        margin-right: 112px;
+        img{
+            width: 100px;
+            height: auto;
+        }
+    }
+}
+
+.language-switch{
+    @include dFlex();
+    height: 28px;
+    border: 1px solid #3DCFB6;
+    border-radius: 100px;
+    &:hover{
+        border: 1px solid white;
+    }
+    button{
+        border-radius: 100px;
+        height: 100%;
+        width: 44px;
+        font-size: 16px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.btn-language-active{
+    z-index: 1;
+    border: 1px solid #3DCFB6;
+    background: #3DCFB6;
+    color: white;
+}
