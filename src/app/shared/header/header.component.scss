@@ -1,11 +1,5 @@
 @use '../../styles/fonts' as *;
-
-@mixin dFlex($ai: center, $jc: space-between, $g: 0) {
-    display: flex;
-    align-items: $ai;
-    justify-content: $jc;
-    gap: $g;
-}
+@use '../../styles/mixins' as *;
 
 header{
     @include dFlex();

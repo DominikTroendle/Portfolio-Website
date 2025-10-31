@@ -1,0 +1,12 @@
+@use '../styles/mixins' as *;
+
+section{
+    @include dFlex(center, center, 12px);
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
+    h1{
+        margin-bottom: 28px;
+    }
+}
