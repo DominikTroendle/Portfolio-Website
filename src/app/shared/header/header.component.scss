@@ -7,15 +7,34 @@ header{
     top: 0;
     left: 0;
     width: 100vw;
+    height: 98px;
     color: white;
     nav{
-        @include dFlex(center, space-between, 24px);
-        margin-left: 112px;
+        @include dFlex(center, space-between, 32px);
+        margin-left: 98px;
         font-family: Fira Code;
         font-size: 20px;
+        a{
+            position: relative;
+            &::after{
+                content: "";
+                position: absolute;
+                top: 1.5em;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0.35em;
+                border-bottom: 0.35em solid #3DCFB6;
+                border-radius: 50%;
+                opacity: 0;
+                transition: opacity 0.125s ease;
+            }
+            &:hover::after{
+                opacity: 1;
+            }
+        }
     }
     div:nth-child(2){
-        margin-right: 112px;
+        margin-right: 98px;
         img{
             width: 100px;
             height: auto;
@@ -43,8 +62,17 @@ header{
 }
 
 .btn-language-active{
-    z-index: 1;
     border: 1px solid #3DCFB6;
     background: #3DCFB6;
     color: white;
+}
+
+.btn-language-passive{
+    border: none;
+    background: unset;
+    color: #3DCFB6;
+    opacity: 0.5;
+    &:hover{
+        opacity: 1;
+    }
 }
