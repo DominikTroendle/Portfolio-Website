@@ -14,3 +14,20 @@
   font-weight: 700;
   src: url('../../assets/fonts/fira-code-v27-latin-700.woff2') format('woff2');
 }
+
+/* karla-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/karla-v33-latin-regular.woff2') format('woff2');
+}
+/* karla-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../assets/fonts/karla-v33-latin-700.woff2') format('woff2');
+}

@@ -1,15 +1,12 @@
 <header>
     <nav>
         <div class="language-switch">
-            <button class="btn-language-active">EN</button>
-            <button class="btn-language-passive">DE</button>
+            <button [ngClass]="currentLanguage === 'ger' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('eng')">EN</button>
+            <button [ngClass]="currentLanguage === 'eng' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('ger')">DE</button>
         </div>
         <a>About me</a>
         <a>Skills</a>
         <a>Projects</a>
     </nav>
-    <div>
-        <img src="" alt="">
-        <p>Dominik<br>Tröndle</p>
-    </div>
+    <img src="../../../assets/img/logo_placeholder.png" alt="logo">
 </header>

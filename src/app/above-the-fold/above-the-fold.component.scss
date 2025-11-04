@@ -6,7 +6,47 @@ section{
     height: 100vh;
     width: 100vw;
     background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
+    h1,h2,span{
+        color: white;
+    }
     h1{
         margin-bottom: 28px;
+        font-family: Karla;
+        font-weight: 700;
+        font-size: 128px;
+        letter-spacing: -2px;
     }
+    h2{
+        font-family: Fira Code;
+        font-weight: 400;
+        font-size: 40px;
+    }
+    div{
+        @include dFlex(center, space-between, 48px);
+        height: 48px;
+        button{
+            height: 100%;
+            padding: 0 24px;
+            border: 1px solid white;
+            border-radius: 100px;
+            background: unset;
+            font-family: Karla;
+            font-size: 18px;
+            &:hover{
+                cursor: pointer;
+                border: 1px solid #3DCFB6;
+            }
+        }
+        span{
+            &:hover{
+                color: #3DCFB6;
+                animation: sliding_text 2s infinite linear;
+            }
+        }
+    }
+}
+
+@keyframes sliding_text {
+    from {transform: translateX(0);}
+    to {transform: translateX(-100%);}
 }
