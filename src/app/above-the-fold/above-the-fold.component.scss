@@ -66,3 +66,25 @@ section{
     transform: translateX(0);
   }
 }
+
+.side-content{
+  @include dFlex(center, flex-end);
+  flex-direction: column;
+  height: 100%;
+  width: 32px;
+  hr{
+    height: 186px;
+  }
+}
+
+.left{
+  margin-left: 98px;
+}
+
+.right{
+  @include dFlex(center, flex-end, 12px);
+  margin-right: 98px;
+  a:nth-child(1){
+    transform: rotate(-90deg);
+  }
+}
