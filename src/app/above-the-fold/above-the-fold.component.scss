@@ -1,8 +1,7 @@
 @use '../styles/mixins' as *;
 
 section{
-    @include dFlex(center, center, 12px);
-    flex-direction: column;
+    @include dFlex(center, space-between);
     height: 100vh;
     width: 100vw;
     background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
@@ -21,31 +20,36 @@ section{
         font-weight: 400;
         font-size: 40px;
     }
+}
+
+.main-content{
+    @include dFlex(center, center, 12px);
+    flex-direction: column;
     div{
-        @include dFlex(center, space-between, 48px);
-        height: 48px;
-        button{
-            height: 100%;
-            padding: 0 24px;
-            border: 1px solid white;
-            border-radius: 100px;
-            background: unset;
-            font-family: Karla;
-            font-size: 18px;
-            overflow: hidden;
+      @include dFlex(center, center, 48px);
+      height: 48px;
+    }
+    button{
+        height: 100%;
+        padding: 0 24px;
+        border: 1px solid white;
+        border-radius: 100px;
+        background: unset;
+        font-family: Karla;
+        font-size: 18px;
+        overflow: hidden;
+        span{
+            display: inline-block;
+        }
+        &:hover{
+            cursor: pointer;
+            border: 1px solid #3DCFB6;
             span{
-                display: inline-block;
-            }
-            &:hover{
-                cursor: pointer;
-                border: 1px solid #3DCFB6;
-                span{
-                    color: #3DCFB6;
-                    animation: sliding_text 2s infinite linear;
-                }
+                color: #3DCFB6;
+                animation: sliding_text 2s infinite linear;
             }
         }
-    }
+      }
 }
 
 @keyframes sliding_text {
@@ -53,10 +57,10 @@ section{
     transform: translateX(0);
   }
   50% {
-    transform: translateX(-120%);
+    transform: translateX(-130%);
   }
   51% {
-    transform: translateX(120%);
+    transform: translateX(130%);
   }
   100% {
     transform: translateX(0);
