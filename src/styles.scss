@@ -5,6 +5,10 @@
     scroll-behavior: smooth;
 }
 
+body{
+    overflow: hidden;
+}
+
 a{
     text-decoration: none;
     &:hover{
