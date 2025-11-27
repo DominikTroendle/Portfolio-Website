@@ -74,17 +74,44 @@ section{
   width: 32px;
   hr{
     height: 186px;
+    width: 1px;
   }
 }
 
 .left{
+  @include dFlex(center, flex-end, 24px);
   margin-left: 98px;
+  hr{
+    color: #3DCFB6;
+  }
+  button{
+    @include dFlex(center, center);
+    width: 30px;
+    height: 48px;
+    border-radius: 100px;
+    border: 1px solid #3DCFB6;
+    background: unset;
+    img{
+      height: 14px;
+    }
+    &:hover{
+      cursor: pointer;
+    }
+  }
 }
 
 .right{
-  @include dFlex(center, flex-end, 12px);
+  @include dFlex(center, flex-end, 24px);
   margin-right: 98px;
   a:nth-child(1){
-    transform: rotate(-90deg);
+    writing-mode: sideways-lr;
+    font-family: Karla;
+    font-weight: 400;
+    font-size: 18px;
+    color: white;
+  }
+  img, a:nth-child(2), a:nth-child(3){
+    width: 32px;
+    height: 32px;
   }
 }
