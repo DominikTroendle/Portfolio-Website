@@ -74,7 +74,8 @@ section{
   width: 32px;
   hr{
     height: 186px;
-    width: 1px;
+    border: none;
+    border-left: 1px solid white;
   }
 }
 
@@ -82,7 +83,7 @@ section{
   @include dFlex(center, flex-end, 24px);
   margin-left: 98px;
   hr{
-    color: #3DCFB6;
+    border-left: 1px solid #3DCFB6;
   }
   button{
     @include dFlex(center, center);
