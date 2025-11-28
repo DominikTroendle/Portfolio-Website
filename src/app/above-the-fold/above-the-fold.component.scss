@@ -121,9 +121,23 @@ section{
 .ribbon{
   @include dFlex(center, center, 56px);
   position: absolute;
-  bottom: 4%;
-  width: 100%;
+  bottom: 6%;
+  left: -1%;
+  width: 105%;
   height: 62px;
   background-color: rgba($color: #ffffff, $alpha: 0.12);
   transform: rotate(-3deg);
+  color: #3DCFB6;
+  font-family: Karla;
+  font-size: 32px;
+  p::after{
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #3DCFB6;
+    border-radius: 50%;
+    margin-left: 56px;
+    vertical-align: middle;
+  }
 }
