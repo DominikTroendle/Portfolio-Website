@@ -129,16 +129,21 @@ section{
   background-color: rgba($color: #ffffff, $alpha: 0.12);
   transform: rotate(-3deg);
   backdrop-filter: blur(3px);
-  .text-wrapper{
+  .track-wrapper{
+    @include dFlex(center, center);
+    position: absolute;
+    left: 0;
+    animation: sliding_ribbon 10s infinite linear;
+  }
+  .track{
     @include dFlex(center, center, 56px);
-    padding: 0 10px;
     color: #3DCFB6;
     font-family: Karla;
     font-size: 32px;
     white-space: nowrap;
-    animation: sliding_ribbon 20s infinite linear;
+    margin-right: 56px;
   }
-  span:not(:last-child)::after{
+  span::after{
     content: "";
     display: inline-block;
     width: 8px;
@@ -155,6 +160,6 @@ section{
     transform: translateX(0);
   }
   100%{
-    transform: translateX(-34%);
+    transform: translateX(-33.333%);
   }
 }
