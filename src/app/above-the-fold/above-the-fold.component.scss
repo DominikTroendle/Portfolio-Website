@@ -125,10 +125,34 @@ section{
     font-weight: 400;
     font-size: 18px;
     color: white;
+    &:hover{
+      color: #3DCFB6;
+    }
   }
   img, a:nth-child(2), a:nth-child(3){
     width: 32px;
     height: 32px;
+  }
+  img:hover{
+    filter: brightness(0) invert(1);
+  }
+  .external-logo-sm{
+    position: relative;
+    &::after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 35px;
+      width: 6px;
+      border-bottom: 6px solid #3DCFB6;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.125s ease;
+    }
+    &:hover::after{
+      opacity: 1;
+    }
   }
 }
 

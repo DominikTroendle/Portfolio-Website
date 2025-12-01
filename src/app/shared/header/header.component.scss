@@ -19,11 +19,11 @@ header{
             &::after{
                 content: "";
                 position: absolute;
-                top: 1.5em;
+                top: 30px;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 5.6px;
-                border-bottom: 5.6px solid #3DCFB6;
+                width: 6px;
+                border-bottom: 6px solid #3DCFB6;
                 border-radius: 50%;
                 opacity: 0;
                 transition: opacity 0.125s ease;
