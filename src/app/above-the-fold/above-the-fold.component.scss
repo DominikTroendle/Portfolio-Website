@@ -2,8 +2,8 @@
 
 section{
     @include dFlex(center, space-between);
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
     overflow: hidden;
     h1,h2{
@@ -161,11 +161,12 @@ section{
   position: absolute;
   bottom: 6%;
   left: -1%;
-  width: 105%;
+  width: 102%;
   height: 62px;
   background-color: rgba($color: #ffffff, $alpha: 0.12);
   transform: rotate(-3deg);
   backdrop-filter: blur(3px);
+  overflow: hidden;
   .track-wrapper{
     @include dFlex(center, center);
     position: absolute;
