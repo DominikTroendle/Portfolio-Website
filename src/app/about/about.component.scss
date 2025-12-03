@@ -1,5 +1,65 @@
+@use '../styles/fonts' as *;
+@use '../styles/mixins' as *;
+
 section{
+    @include dFlex(center, center);
     height: 100dvh;
     width: 100dvw;
     background-color: #1c1c1c;
+}
+
+.container-about{
+    @include dFlex(center, space-between);
+    width: 100%;
+    margin: 0 98px;
+    >img{
+        width: 568px;
+        height: 568px;
+        background-color: white;
+        border-radius: 30px;
+    }
+}
+
+.container-right{
+    @include dFlex(flex-start, space-between, 20px);
+    flex-direction: column;
+    height: fit-content;
+    h2{
+        font-family: Karla;
+        font-weight: 500;
+        font-size: 24px;
+        color: #3DCFB6;
+    }
+}
+
+.container-text{
+    @include dFlex(flex-start, space-between, 20px);
+    flex-direction: column;
+    width: 568px;
+    border: 1px solid #3DCFB6;
+    border-radius: 30px;
+    background-color: rgba(61, 207, 182, 0.1);
+    padding: 32px;
+    color: white;
+    h1{
+        font-family: Fira Code;
+        font-weight: 700;
+        font-size: 64px;
+        color: #3DCFB6;
+    }
+    p:first-of-type{
+        font-family: Karla;
+        font-size: 18px;
+        color: white;
+        text-align: justify;
+    }
+}
+
+.row{
+    p{
+        color: rgba($color: #ffffff, $alpha: 0.8);
+        &:hover{
+            opacity: 1;
+        }
+    }
 }
