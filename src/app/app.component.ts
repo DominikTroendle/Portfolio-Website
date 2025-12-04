@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { AboveTheFoldComponent } from './above-the-fold/above-the-fold.component';
 import { AboutComponent } from "./about/about.component";
+import { SkillsComponent } from './skills/skills.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { AboutComponent } from "./about/about.component";
     RouterOutlet,
     HeaderComponent,
     AboveTheFoldComponent,
-    AboutComponent
+    AboutComponent,
+    SkillsComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
