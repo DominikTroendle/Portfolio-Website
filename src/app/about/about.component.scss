@@ -11,12 +11,14 @@ section{
 .container-about{
     @include dFlex(center, space-between);
     width: 100%;
-    margin: 0 98px;
+    height: 100dvh;
+    padding: 150px 98px;
     >img{
         width: 568px;
         height: 568px;
         background-color: white;
         border-radius: 30px;
+        align-self: flex-start;
     }
 }
 
@@ -24,6 +26,7 @@ section{
     @include dFlex(flex-start, space-between, 20px);
     flex-direction: column;
     height: fit-content;
+    align-self: flex-end;
     h2{
         font-family: Karla;
         font-weight: 500;
@@ -47,7 +50,7 @@ section{
         font-size: 64px;
         color: #3DCFB6;
     }
-    p:first-of-type{
+    #introduction{
         font-family: Karla;
         font-size: 18px;
         color: white;
@@ -55,11 +58,22 @@ section{
     }
 }
 
-.row{
-    p{
-        color: rgba($color: #ffffff, $alpha: 0.8);
-        &:hover{
-            opacity: 1;
+.container-details{
+    @include dFlex(center, center, 16px);
+    flex-direction: column;
+    .row{
+        @include dFlex(center, flex-start, 24px);
+        p{
+            font-family: Karla;
+            font-size: 18px;
+            color: rgba($color: #ffffff, $alpha: 0.8);
+            &:hover{
+                opacity: 1;
+            }
+        }
+        img{
+            width: 32px;
+            height: 32px;
         }
     }
 }
