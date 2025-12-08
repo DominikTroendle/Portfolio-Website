@@ -56,16 +56,44 @@ section{
         font-family: Karla;
         font-size: 16px;
         color: white;
+        overflow: hidden;
+        span{
+            display: inline-block;
+            color: white;
+            &:hover{
+              cursor: pointer;
+            }
+        }
         &:hover{
             cursor: pointer;
+            border: 1px solid #3DCFB6;
+            span{
+                color: #3DCFB6;
+                animation: sliding_text 2s infinite linear;
+            }
         }
     }
+}
+
+@keyframes sliding_text {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-140%);
+  }
+  50.0001% {
+    transform: translateX(140%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .container-text{
     @include dFlex(flex-start, center, 16px);
     flex-direction: column;
-    #introduction{
+    .introduction{
         font-family: Karla;
         font-size: 18px;
         color: white;
@@ -89,10 +117,12 @@ section{
 .container-right{
     @include dFlex(space-evenly, space-evenly, 72px);
     flex-wrap: wrap;
+    justify-content: flex-start;
     max-width: 700px;
     margin-top: 48px;
-    div{
+    .item-skill{
         @include dFlex(center, flex-start, 8px);
+        position: relative;
         height: 116px;
         width: 108px;
         flex-direction: column;
@@ -100,5 +130,76 @@ section{
         font-family: Fira Code;
         font-size: 18px;
         text-align: center;
+        &:hover{
+            img{
+                transform: scale(1.1);
+            }
+            .growth-mindset{
+                color: #3DCFB6;
+            }
+            .growth-overlay{
+                display: block;
+                opacity: 1;
+            }
+        }
+        img{
+            transition: 0.1s ease-in-out;
+        }
+    }
+}
+
+
+.growth-overlay{
+    display: none;
+    position: absolute;
+    top: -128%;
+    left: 0;
+    width: 200px;
+    height: max-content;
+    background-color: rgba($color: #ffffff, $alpha: 0.6);
+    border-radius: 30px;
+    backdrop-filter: blur(3px);
+    transition: 0.1s ease-in-out;
+    z-index: 1;
+    filter: drop-shadow(0 6px 6px black);
+    &::after{
+       content: '';
+        position: absolute;
+        bottom: -29%;
+        left: 17%;
+        width: 20px;
+        height: 20px;
+        background-color: rgba($color: #ffffff, $alpha: 0.6);
+        // filter: drop-shadow(0 6px 6px black);
+    }
+    .container-overlay-content{
+        @include dFlex(center, center, 16px);
+        flex-direction: column;
+        padding: 16px;
+        p{
+            font-family: Karla;
+            font-size: 16px;
+            color: #3DCFB6;
+            filter: drop-shadow(0 2px 2px black);
+        }
+        .row{
+            @include dFlex(center, space-between, 16px);
+            font-family: Karla;
+            font-size: 12px;
+            font-weight: 700;
+            color: #3DCFB6;
+            div{
+                @include dFlex(center, space-between, 8px);
+                flex-direction: column;
+                img{
+                    width: 32px;
+                    height: 32px;
+                    filter: drop-shadow(0 0 5px black);
+                }
+                span{
+                    filter: drop-shadow(0 2px 4px black);
+                }
+            }
+        }
     }
 }
