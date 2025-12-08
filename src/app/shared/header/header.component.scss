@@ -36,6 +36,9 @@ header{
         margin-right: 98px;
         width: 132px;
         height: 48px;
+        &:hover{
+            cursor: pointer;
+        }
     }
 }
 

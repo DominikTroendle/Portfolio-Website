@@ -42,6 +42,9 @@ section{
         span{
             display: inline-block;
             color: white;
+            &:hover{
+              cursor: pointer;
+            }
         }
         &:hover{
             cursor: pointer;
@@ -97,6 +100,9 @@ section{
     img{
       height: 14px;
       animation: bounce 1.25s linear infinite;
+      &:hover{
+        cursor: pointer;
+      }
     }
     &:hover{
       cursor: pointer;
@@ -135,6 +141,7 @@ section{
   }
   img:hover{
     filter: brightness(0) invert(1);
+    cursor: pointer;
   }
   .external-logo-sm{
     position: relative;
