@@ -1,0 +1,86 @@
+@use '../styles/mixins' as *;
+@use '../styles/fonts' as *;
+
+section{
+    background-color: #1c1c1c;
+    color: white;
+    width: 100dvw;
+    padding: 100px 98px;
+    .container-content{
+        @include dFlex(flex-start, flex-start, 20px);
+        flex-direction: column;
+        width: 880px;
+        h1, h3{
+            font-weight: 700;
+        }
+        h3{
+            font-family: Fira Code;
+            font-size: 24px;
+            color: #3DCFB6;
+        }
+        h1{
+            margin-bottom: 21px;
+            color: #3DCFB6;
+            font-family: Karla;
+            font-size: 64px;
+        }
+        p{
+            margin-bottom: 21px;
+            font-family: Karla;
+            font-size: 18px;
+        }
+        .container-projects{
+            width: 100%;
+        }
+    }
+}
+
+.row{
+    @include dFlex(center, space-between);
+    width: 100%;
+    border-top: 1px solid #3DCFB6;
+    padding: 40px 32px;
+    &:last-child{
+        border-bottom: 1px solid #3DCFB6;
+    }
+    &:hover{
+        cursor: pointer;
+        background-color: rgba($color: #3DCFB6, $alpha: 0.3);
+        .arrow{
+            display: block;
+        }
+    }
+    div{
+        @include dFlex(center, flex-start, 6px);
+        width: max-content;
+        h2{
+            font-family: Fira Code;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        img{
+            display: none;
+            width: 25px;
+            height: 25px;
+        }
+    }
+    ul{
+        @include dFlex(center, flex-end, 12px);
+        list-style: none;
+        font-family: Karla;
+        font-size: 18px;
+        li{
+            position: relative;
+            &:not(:last-of-type){
+                &::after{
+                    content: "";
+                    position: absolute;
+                    border: 1px solid #3DCFB6;
+                    height: 80%;
+                    top: 50%;
+                    transform: translate(5px, -50%);
+                }
+            }
+        }
+    }
+}

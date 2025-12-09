@@ -12,7 +12,7 @@ section{
 .container-skills{
     @include dFlex(center, space-between);
     width: 100%;
-    padding: 150px 98px;
+    padding: 100px 98px;
     >img{
         width: 568px;
         height: 568px;
@@ -144,6 +144,8 @@ section{
             }
         }
         img{
+            width: 60px;
+            height: 60px;
             transition: 0.1s ease-in-out;
         }
     }
