@@ -4,7 +4,9 @@
 section{
     @include dFlex(center, center);
     width: 100dvw;
-    background-color: #1c1c1c;
+    background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 30%), #1c1c1c;
+    background-repeat: no-repeat, repeat;
+    background-position: left calc(-100dvw / 2) bottom;
 }
 
 .container-skills{
