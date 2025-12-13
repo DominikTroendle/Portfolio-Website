@@ -42,6 +42,7 @@ section{
     border-top: 1px solid #3DCFB6;
     padding: 40px 32px;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
     *{
         cursor: pointer;
     }
@@ -51,10 +52,12 @@ section{
     &:hover{
         background-color: rgba($color: #3DCFB6, $alpha: 0.3);
         .arrow{
-            display: block;
+            visibility: visible;
+            opacity: 1;
         }
-        .img-preview{
-            display: block;
+        .img-preview, .img-preview-bg{
+            visibility: visible;
+            opacity: 1;
         }
     }
     div{
@@ -66,9 +69,11 @@ section{
             font-weight: 700;
         }
         img{
-            display: none;
+            visibility: hidden;
             width: 25px;
             height: 25px;
+            opacity: 0;
+            transition: 0.2s ease-in-out;
         }
     }
     ul{
@@ -90,19 +95,21 @@ section{
             }
         }
     }
-    .img-preview{
-        display: none;
+    .img-preview, .img-preview-bg{
+        visibility: hidden;
         position: absolute;
-        left: 120%;
         width: 295px;
         height: 192px;
         border-radius: 16px;
-        ::after{
-            content: "";
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-        }
+        transition: 0.2s ease-in-out;
+        opacity: 0;
+    }
+    .img-preview{
+        left: 120%;
+        z-index: 1;
+    }
+    .img-preview-bg{
+        left: 120%;
+        transform: translate(20px, 20px);
     }
 }
