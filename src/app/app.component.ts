@@ -6,6 +6,7 @@ import { AboveTheFoldComponent } from './above-the-fold/above-the-fold.component
 import { AboutComponent } from "./about/about.component";
 import { SkillsComponent } from './skills/skills.component';
 import { ProjectsComponent } from "./projects/projects.component";
+import { ReferencesComponent } from "./references/references.component";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ import { ProjectsComponent } from "./projects/projects.component";
     AboveTheFoldComponent,
     AboutComponent,
     SkillsComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    ReferencesComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
