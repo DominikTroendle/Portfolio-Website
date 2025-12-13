@@ -1,0 +1,9 @@
+@use '../styles/fonts' as *;
+@use '../styles/mixins' as *;
+
+section{
+    @include dFlex(center, space-between);
+    width: 100dvw;
+    padding: 100px 98px;
+    background-color: #1c1c1c;
+}
