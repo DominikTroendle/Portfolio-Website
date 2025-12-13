@@ -53,6 +53,11 @@ section{
     div{
         @include dFlex(center, flex-start, 6px);
         width: max-content;
+        h2, img{
+            &:hover{
+                cursor: pointer;
+            }
+        }
         h2{
             font-family: Fira Code;
             font-size: 24px;
@@ -69,8 +74,14 @@ section{
         list-style: none;
         font-family: Karla;
         font-size: 18px;
+        &:hover{
+            cursor: pointer;
+        }
         li{
             position: relative;
+            &:hover{
+                cursor: pointer;
+            }
             &:not(:last-of-type){
                 &::after{
                     content: "";
