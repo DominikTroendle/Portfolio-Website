@@ -7,3 +7,57 @@ section{
     padding: 100px 98px;
     background-color: #1c1c1c;
 }
+
+.container-left{
+    @include dFlex(flex-start, space-between, 40px);
+    flex-direction: column;
+    div{
+        flex-direction: column;
+    }
+    div:nth-child(1){
+        @include dFlex(flex-start, space-between, 20px);
+        h3{
+            font-family: Karla;
+            font-weight: 500;
+            font-size: 24px;
+            color: #3dcfb6;
+        }
+        h1{
+            font-family: Fira Code;
+            font-weight: 700;
+            font-size: 64px;
+            color: #3dcfb6;
+        }
+    }
+    div:nth-child(2){
+        @include dFlex(flex-start, space-between, 16px);
+        color: white;
+        h2{
+            font-family: Fira Code;
+            font-weight: 700;
+            font-size: 24px;
+            color: #3dcfb6;
+        }
+        p{
+           font-family: Karla;
+           font-size: 16px; 
+        }
+        span{
+            color: #3dcfb6;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+form{
+    @include dFlex(flex-start, space-between, 40px);
+    flex-direction: column;
+    .form-top{
+        div{
+             @include dFlex(flex-start, space-between);
+            flex-direction: column;
+        }
+    }
+}
