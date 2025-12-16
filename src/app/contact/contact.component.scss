@@ -54,10 +54,104 @@ section{
 form{
     @include dFlex(flex-start, space-between, 40px);
     flex-direction: column;
+    width: 616px;
     .form-top{
+        width: 100%;
         div{
-             @include dFlex(flex-start, space-between);
+            @include dFlex(flex-start, space-between, 16px);
+            width: 100%;
             flex-direction: column;
+            padding: 32px;
+            border-top: 1px solid rgba($color: #3dcfb6, $alpha: 0.5);
+            border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 0.5);
+            border-collapse: collapse;
         }
+        label{
+            font-family: Fira Code;
+            font-weight: 500;
+            font-size: 24px;
+            color: #3dcfb6;
+        }
+        input{
+            width: 100%;
+            height: 22px;
+            background: unset;
+            border: unset;
+            &::placeholder{
+                font-family: Karla;
+                font-size: 18px;
+                color: rgba($color: #ffffff, $alpha: 0.8);
+                line-height: 120%;
+            }
+        }
+    }
+    .form-bottom{
+        @include dFlex(center, space-between, 16px);
+        flex-direction: column;
+        div{
+            @include dFlex(center, flex-start);
+            column-gap: 8px;
+            flex-wrap: wrap;
+            font-family: Karla;
+            font-size: 15px;
+            color: white;
+            img{
+                width: 24px;
+                height: 24px;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            span{
+                font-family: Fira Code;
+                color: #3DCFB6;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            #error{
+                visibility: hidden;
+                color: red;
+                width: 100%;
+            }
+        }
+        button{
+            height: 48px;
+            padding: 0 24px;
+            border: 1px solid rgba($color: #ffffff, $alpha: 0.5);
+            border-radius: 100px;
+            background: unset;
+            font-family: Karla;
+            font-size: 18px;
+            overflow: hidden;
+            span{
+                display: inline-block;
+                color: rgba($color: #ffffff, $alpha: 0.5);
+            }
+            &.active:hover{
+                cursor: pointer;
+                border: 1px solid #3DCFB6;
+                span{
+                    cursor: pointer;
+                    color: #3DCFB6;
+                    animation: sliding_text 2s infinite linear;
+                }
+            }
+        }
+    }
+}
+
+@keyframes sliding_text {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-130%);
+    }
+    50.0001% {
+        transform: translateX(130%);
+    }
+    100% {
+        transform: translateX(0);
     }
 }
