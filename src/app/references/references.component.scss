@@ -64,6 +64,8 @@ section{
         height: 40px;
         &:hover{
             cursor: pointer;
+            transform: scale(1.1);
+            filter: brightness(0) saturate(100%) invert(65%) sepia(84%) saturate(317%) hue-rotate(120deg) brightness(92%) contrast(91%);
         }
     }
     div{
