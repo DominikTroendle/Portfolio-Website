@@ -9,9 +9,9 @@ header{
     width: 100dvw;
     height: 98px;
     color: white;
+    padding: 0 98px;
     nav{
         @include dFlex(center, space-between, 32px);
-        margin-left: 98px;
         font-family: Fira Code;
         font-size: 20px;
         a{
@@ -33,7 +33,6 @@ header{
         }
     }
     img{
-        margin-right: 98px;
         width: 132px;
         height: 48px;
         &:hover{
