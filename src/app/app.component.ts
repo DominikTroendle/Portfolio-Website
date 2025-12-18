@@ -2,12 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
-import { AboveTheFoldComponent } from './above-the-fold/above-the-fold.component';
-import { AboutComponent } from "./about/about.component";
-import { SkillsComponent } from './skills/skills.component';
-import { ProjectsComponent } from "./projects/projects.component";
-import { ReferencesComponent } from "./references/references.component";
-import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 @Component({
@@ -17,12 +11,6 @@ import { FooterComponent } from './shared/footer/footer.component';
     CommonModule,
     RouterOutlet,
     HeaderComponent,
-    AboveTheFoldComponent,
-    AboutComponent,
-    SkillsComponent,
-    ProjectsComponent,
-    ReferencesComponent,
-    ContactComponent,
     FooterComponent
 ],
   templateUrl: './app.component.html',
