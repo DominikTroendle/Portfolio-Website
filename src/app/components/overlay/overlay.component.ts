@@ -1,10 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { OverlayService } from '../../services/overlay.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-overlay',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   templateUrl: './overlay.component.html',
   styleUrl: './overlay.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

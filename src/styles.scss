@@ -2,12 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
-    cursor: default;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
 html{
     scrollbar-width: none;
+}
+
+body{
+    scroll-behavior: smooth;
+    cursor: default;
 }
 
 a{
@@ -17,3 +26,9 @@ a{
         cursor: pointer;
     }
 }
+
+/* .cdk-overlay-container {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+} */
