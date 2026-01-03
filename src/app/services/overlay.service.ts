@@ -8,7 +8,7 @@ import { OverlayComponent } from '../components/overlay/overlay.component';
 })
 export class OverlayService {
 
-  constructor(private overlay: Overlay, private injector: Injector) { }
+  constructor(private overlay: Overlay) { }
 
   open(): OverlayRef {
     const overlayRef = this.overlay.create({
