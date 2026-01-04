@@ -1,10 +1,18 @@
 @use '../../styles/fonts' as *;
 @use '../../styles/mixins' as *;
 
-header{
-    @include dFlex();
+:host{
+    display: block;
+    position: relative;
+    z-index: 100;
+    margin-bottom: -98px;
     width: 100dvw;
     height: 98px;
+}
+
+header{
+    @include dFlex();
+    height: 100%;
     color: white;
     padding: 0 98px;
     background: linear-gradient(180deg,rgba(28, 28, 28, 1) 0%, rgba(28, 28, 28, 0) 100%);
