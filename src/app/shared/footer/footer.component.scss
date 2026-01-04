@@ -3,9 +3,6 @@
 
 footer{
     @include dFlex(center, space-between);
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100dvw;
     padding: 50px 98px;
     font-family: Karla;

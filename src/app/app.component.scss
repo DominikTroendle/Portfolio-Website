@@ -6,4 +6,10 @@ app-header{
 .content-wrapper{
     position: relative;
     margin-top: -98px;
+    margin-bottom: -210px;
+}
+
+app-footer{
+    position: relative;
+    z-index: 100;
 }
