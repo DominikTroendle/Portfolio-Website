@@ -4,7 +4,7 @@
 section{
     background-color: #1c1c1c;
     color: white;
-    width: 100dvw;
+    width: 100vw;
     padding: 100px 98px;
     .container-content{
         @include dFlex(flex-start, flex-start, 20px);
