@@ -16,7 +16,7 @@ import { ContactComponent } from '../components/contact/contact.component';
     ProjectsComponent,
     ReferencesComponent,
     ContactComponent
-  ],
+],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.scss'
 })
