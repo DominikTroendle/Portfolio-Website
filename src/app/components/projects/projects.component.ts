@@ -14,10 +14,10 @@ import { NgStyle } from '@angular/common';
 })
 export class ProjectsComponent {
 
-  isActive = false;
+  isVisible = false;
 
   handleOverlay(){
-    this.isActive = !this.isActive;
+    this.isVisible = !this.isVisible;
   }
 
 }

@@ -1,4 +1,7 @@
-<app-overlay [ngStyle]="{'display': isActive ? 'block' : 'none'}"></app-overlay>
+<app-overlay
+    [ngStyle]="{'display': isVisible ? 'block' : 'none'}"
+    (close)="handleOverlay()"
+></app-overlay>
 <section>
     <div class="container-content">
         <h3>Portfolio</h3>
