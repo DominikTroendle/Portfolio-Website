@@ -7,6 +7,7 @@ section{
     width: 100vw;
     padding: 100px 98px;
     background-color: #1c1c1c;
+    overflow: hidden;
     h1{
         font-family: Fira Code;
         font-weight: 700;
@@ -15,7 +16,7 @@ section{
     }
 }
 
-.container-slider{
+.container-carousel{
     @include dFlex(center, space-between, 64px);
     position: relative;
     img{
@@ -60,8 +61,8 @@ section{
 .navigation{
     @include dFlex(center, space-between, 20px);
     img{
-        width: 40px;
-        height: 40px;
+        width: 18px;
+        height: 18px;
         &:hover{
             cursor: pointer;
             transform: scale(1.1);
