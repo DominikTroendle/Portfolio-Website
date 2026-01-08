@@ -9,7 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class OverlayComponent {
 
-  @Output()close = new EventEmitter<boolean>();
+  @Output()close = new EventEmitter<Event>();
 
   onClose(){
     this.close.emit();
