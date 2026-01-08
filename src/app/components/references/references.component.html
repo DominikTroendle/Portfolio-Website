@@ -2,27 +2,15 @@
     <h1>What my colleagues say about me</h1>
     <div class="container-carousel">
         <img src="../../assets/img/quotes.png" alt="quotes">
-        <div class="card">
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-            <div>
-                <hr>
-                <span>Nico Reckert &#45; Team Partner Project Join</span>
+        @for(item of carouselData; track carouselData; let index = $index){
+            <div class="card">
+                <p>{{carouselData[index].comment}}</p>
+                <div>
+                    <hr>
+                    <span>{{carouselData[index].name}} &#45; {{carouselData[index].role}}</span>
+                </div>
             </div>
-        </div>
-        <div class="card active">
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.</p>
-            <div>
-                <hr>
-                <span>Kevin Breiter &#45; Team Partner Project Join</span>
-            </div>
-        </div>
-        <div class="card">
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
-            <div>
-                <hr>
-                <span>Blabkla blaa &#45; dlj lkiiee</span>
-            </div>
-        </div>
+        }
     </div>
     <div class="navigation">
         <img src="../../assets/img/arrow-left.png" alt="">
