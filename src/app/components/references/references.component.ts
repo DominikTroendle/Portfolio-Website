@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './references.component.scss'
 })
 export class ReferencesComponent {
-  active:string = "";
+  active:boolean = false;
 }
