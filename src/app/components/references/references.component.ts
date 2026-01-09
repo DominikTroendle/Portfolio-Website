@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class ReferencesComponent {
   active:boolean = false;
-
+  currentIndex = 0;
   carouselData = [
     {
       name: "Nico Reckert",
@@ -27,4 +27,16 @@ export class ReferencesComponent {
       comment: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr."
     },
   ]
+
+  next(){
+    this.currentIndex = (this.currentIndex + 1) % this.carouselData.length;
+  }
+
+  previous(){
+    this.currentIndex = (this.currentIndex - 1 + this.carouselData.length) % this.carouselData.length;
+  }
+
+  getIndex(i:number){
+    return this.carouselData[(i + this.currentIndex) % this.carouselData.length];
+  }
 }

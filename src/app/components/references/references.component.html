@@ -2,23 +2,23 @@
     <h1>What my colleagues say about me</h1>
     <div class="container-carousel">
         <img src="../../assets/img/quotes.png" alt="quotes">
-        @for(item of carouselData; track carouselData; let index = $index){
-            <div class="card">
-                <p>{{carouselData[index].comment}}</p>
+        @for(item of carouselData; track item; let i = $index){
+            <div class="card" [class.active]="i === 1">
+                <p>{{getIndex(i).comment}}</p>
                 <div>
                     <hr>
-                    <span>{{carouselData[index].name}} &#45; {{carouselData[index].role}}</span>
+                    <span>{{getIndex(i).name}} &#45; {{getIndex(i).role}}</span>
                 </div>
             </div>
         }
     </div>
     <div class="navigation">
-        <img src="../../assets/img/arrow-left.png" alt="">
+        <img src="../../assets/img/arrow-left.png" alt="" (click)="previous()">
         <div>
-            <span class="active-dot"></span>
-            <span></span>
-            <span></span>
+            @for(item of carouselData; track item; let i = $index){
+                <span [class.active-dot]="i === currentIndex"></span>
+            }
         </div>
-        <img src="../../assets/img/arrow-right.png" alt="">
+        <img src="../../assets/img/arrow-right.png" alt="" (click)="next()">
     </div>
 </section>
