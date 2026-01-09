@@ -3,7 +3,11 @@
     <div class="container-carousel">
         <img src="../../assets/img/quotes.png" alt="quotes">
         @for(item of carouselData; track item; let i = $index){
-            <div class="card" [class.active]="i === 1">
+            <div class="card"
+            [class.active]="i === 1"
+            [class.slide-right]="direction === 'right'"
+            [class.slide-left]="direction === 'left'"
+            >
                 <p>{{getIndex(i).comment}}</p>
                 <div>
                     <hr>

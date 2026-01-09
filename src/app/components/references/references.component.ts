@@ -9,7 +9,8 @@ import { Component } from '@angular/core';
 })
 export class ReferencesComponent {
   active:boolean = false;
-  currentIndex = 0;
+  direction:string= "";
+  currentIndex:number = 0;
   carouselData = [
     {
       name: "Nico Reckert",
@@ -29,14 +30,26 @@ export class ReferencesComponent {
   ]
 
   next(){
-    this.currentIndex = (this.currentIndex + 1) % this.carouselData.length;
+    this.direction = "right";
+    setTimeout(() => {
+      this.currentIndex = (this.currentIndex + 1) % this.carouselData.length;
+      this.reset();
+    }, 1000);
   }
 
   previous(){
-    this.currentIndex = (this.currentIndex - 1 + this.carouselData.length) % this.carouselData.length;
+    this.direction = "left";
+    setTimeout(() => {
+      this.currentIndex = (this.currentIndex - 1 + this.carouselData.length) % this.carouselData.length;
+      this.reset();
+    }, 1000);
   }
 
   getIndex(i:number){
     return this.carouselData[(i + this.currentIndex) % this.carouselData.length];
+  }
+
+  reset(){
+    this.direction = "";
   }
 }
