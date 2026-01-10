@@ -22,7 +22,7 @@ section{
     img{
         position: absolute;
         top: -3%;
-        left: 32.3%;
+        left: 39.5%;
         width: 89px;
         height: 64px;
         z-index: 1;
@@ -40,7 +40,7 @@ section{
         font-family: Karla;
         font-size: 20px;
         transform: scale(0.9);
-        transition: animation 1s ease;
+        transition: animation 1s ease, transform 1s ease;
     }
     .active{
         background-color: rgba($color: #3DCFB6, $alpha: 0.3);
@@ -65,7 +65,7 @@ section{
     }
 }
 
-@keyframes slide-left{
+@keyframes slide-right{
     from{
         transform: translateX(0)
     }
@@ -74,12 +74,12 @@ section{
     }
 }
 
-@keyframes slide-right{
+@keyframes slide-left{
     from{
-        transform: translateX(0) scale(0.9)
+        transform: translateX(0)
     }
     to{
-        transform: translateX(-110%) scale(1)
+        transform: translateX(-110%)
     }
 }
 

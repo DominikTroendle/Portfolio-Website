@@ -2,6 +2,16 @@
     <h1>What my colleagues say about me</h1>
     <div class="container-carousel">
         <img src="../../assets/img/quotes.png" alt="quotes">
+        <div class="card"
+        [class.slide-right]="direction === 'right'"
+        [class.slide-left]="direction === 'left'"
+        >
+            <p>{{carouselData[2].comment}}</p>
+            <div>
+                <hr>
+                <span>{{carouselData[2].name}} &#45; {{carouselData[2].role}}</span>
+            </div>
+        </div>
         @for(item of carouselData; track item; let i = $index){
             <div class="card"
             [class.active]="i === 1"
@@ -15,6 +25,16 @@
                 </div>
             </div>
         }
+        <div class="card"
+        [class.slide-right]="direction === 'right'"
+        [class.slide-left]="direction === 'left'"
+        >
+            <p>{{carouselData[0].comment}}</p>
+            <div>
+                <hr>
+                <span>{{carouselData[0].name}} &#45; {{carouselData[0].role}}</span>
+            </div>
+        </div>
     </div>
     <div class="navigation">
         <img src="../../assets/img/arrow-left.png" alt="" (click)="previous()">

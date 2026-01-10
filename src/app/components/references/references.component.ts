@@ -26,11 +26,11 @@ export class ReferencesComponent {
       name: "kjkjasdl ölowo-öäla",
       role: "lkllakkddds",
       comment: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr."
-    },
+    }
   ]
 
   next(){
-    this.direction = "right";
+    this.direction = "left";
     setTimeout(() => {
       this.currentIndex = (this.currentIndex + 1) % this.carouselData.length;
       this.reset();
@@ -38,7 +38,7 @@ export class ReferencesComponent {
   }
 
   previous(){
-    this.direction = "left";
+    this.direction = "right";
     setTimeout(() => {
       this.currentIndex = (this.currentIndex - 1 + this.carouselData.length) % this.carouselData.length;
       this.reset();
