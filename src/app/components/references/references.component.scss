@@ -39,18 +39,24 @@ section{
         color: white;
         font-family: Karla;
         font-size: 20px;
-        transform: scale(0.9);
-        transition: animation 1s ease, transform 1s ease;
+        scale: 0.9;
+        transition: animation 1s ease;
     }
     .active{
         background-color: rgba($color: #3DCFB6, $alpha: 0.3);
-        transform: scale(1);
+        scale: 1;
     }
     .slide-right{
         animation: slide-right 1s ease;
     }
     .slide-left{
         animation: slide-left 1s ease;
+    }
+    .shrink{
+        animation: shrink 1s ease;
+    }
+    .grow{
+        animation: grow 1s ease;
     }
     div{
         @include dFlex(center, space-between, 16px);
@@ -80,6 +86,24 @@ section{
     }
     to{
         transform: translateX(-110%)
+    }
+}
+
+@keyframes shrink{
+    from{
+        scale: 1
+    }
+    to{
+        scale: 0.9
+    }
+}
+
+@keyframes grow{
+    from{
+        scale: 0.9
+    }
+    to{
+        scale: 1
     }
 }
 

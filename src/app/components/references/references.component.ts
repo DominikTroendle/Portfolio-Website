@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class ReferencesComponent {
   active:boolean = false;
-  direction:string= "";
+  direction:string = "";
   currentIndex:number = 0;
   carouselData = [
     {
