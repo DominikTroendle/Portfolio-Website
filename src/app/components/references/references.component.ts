@@ -34,7 +34,7 @@ export class ReferencesComponent {
     setTimeout(() => {
       this.currentIndex = (this.currentIndex + 1) % this.carouselData.length;
       this.reset();
-    }, 1000);
+    }, 600);
   }
 
   previous(){
@@ -42,11 +42,15 @@ export class ReferencesComponent {
     setTimeout(() => {
       this.currentIndex = (this.currentIndex - 1 + this.carouselData.length) % this.carouselData.length;
       this.reset();
-    }, 1000);
+    }, 600);
   }
 
-  getIndex(i:number){
+  getItemIndex(i:number){
     return this.carouselData[(i + this.currentIndex) % this.carouselData.length];
+  }
+
+  getItemRelativeToCurrent(off:number){
+    return this.carouselData[(this.currentIndex + off + this.carouselData.length) % this.carouselData.length];
   }
 
   reset(){

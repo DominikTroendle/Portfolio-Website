@@ -47,22 +47,22 @@ section{
         scale: 1;
     }
     .slide-right{
-        animation: slide-right 1s ease;
+        animation: slide-right 0.6s ease;
     }
     .slide-left{
-        animation: slide-left 1s ease;
+        animation: slide-left 0.6s ease;
     }
     .slide-further-left{
-        animation: slide-further-left 1s ease;
+        animation: slide-further-left 0.6s ease;
     }
     .slide-further-right{
-        animation: slide-further-right 1s ease;
+        animation: slide-further-right 0.6s ease;
     }
     .shrink{
-        animation: shrink 1s ease;
+        animation: shrink 0.6s ease;
     }
     .grow{
-        animation: grow 1s ease;
+        animation: grow 0.6s ease;
     }
     div{
         @include dFlex(center, space-between, 16px);

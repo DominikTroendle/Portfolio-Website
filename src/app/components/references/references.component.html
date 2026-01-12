@@ -6,10 +6,10 @@
             <div class="card"
             [class.slide-further-right]="direction === 'right'"
             >
-                <p>{{carouselData[2].comment}}</p>
+                <p>{{getItemRelativeToCurrent(-1).comment}}</p>
                 <div>
                     <hr>
-                    <span>{{carouselData[2].name}} &#45; {{carouselData[2].role}}</span>
+                    <span>{{getItemRelativeToCurrent(-1).name}} &#45; {{getItemRelativeToCurrent(-1).role}}</span>
                 </div>
             </div>
         </div>
@@ -23,10 +23,10 @@
                 [class.shrink]="i === 1 && (direction === 'left' || direction === 'right')"
                 [class.grow]="direction === 'left' && i === 2 || direction === 'right' && i === 0"
                 >
-                    <p>{{getIndex(i).comment}}</p>
+                    <p>{{getItemIndex(i).comment}}</p>
                     <div>
                         <hr>
-                        <span>{{getIndex(i).name}} &#45; {{getIndex(i).role}}</span>
+                        <span>{{getItemIndex(i).name}} &#45; {{getItemIndex(i).role}}</span>
                     </div>
                 </div>
             </div>
@@ -35,10 +35,10 @@
             <div class="card"
             [class.slide-further-left]="direction === 'left'"
             >
-                <p>{{carouselData[0].comment}}</p>
+                <p>{{getItemRelativeToCurrent(0).comment}}</p>
                 <div>
                     <hr>
-                    <span>{{carouselData[0].name}} &#45; {{carouselData[0].role}}</span>
+                    <span>{{getItemRelativeToCurrent(0).name}} &#45; {{getItemRelativeToCurrent(0).role}}</span>
                 </div>
             </div>
         </div>
