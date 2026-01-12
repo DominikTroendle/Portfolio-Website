@@ -52,6 +52,12 @@ section{
     .slide-left{
         animation: slide-left 1s ease;
     }
+    .slide-further-left{
+        animation: slide-further-left 1s ease;
+    }
+    .slide-further-right{
+        animation: slide-further-right 1s ease;
+    }
     .shrink{
         animation: shrink 1s ease;
     }
@@ -89,21 +95,43 @@ section{
     }
 }
 
-@keyframes shrink{
+@keyframes slide-further-left{
     from{
-        scale: 1
+        transform: translateX(0);
     }
     to{
-        scale: 0.9
+        transform: translateX(-122%);
+    }
+}
+
+@keyframes slide-further-right{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(122%);
+    }
+}
+
+@keyframes shrink{
+    from{
+        scale: 1;
+        background-color: rgba($color: #3DCFB6, $alpha: 0.3);
+    }
+    to{
+        scale: 0.9;
+        background-color: rgba($color: #3DCFB6, $alpha: 0.1);
     }
 }
 
 @keyframes grow{
     from{
-        scale: 0.9
+        scale: 0.9;
+        background-color: rgba($color: #3DCFB6, $alpha: 0.1);
     }
     to{
-        scale: 1
+        scale: 1;
+        background-color: rgba($color: #3DCFB6, $alpha: 0.3);
     }
 }
 

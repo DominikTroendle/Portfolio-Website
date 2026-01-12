@@ -4,8 +4,7 @@
         <img src="../../assets/img/quotes.png" alt="quotes">
         <div class="card-wrapper">
             <div class="card"
-            [class.slide-right]="direction === 'right'"
-            [class.slide-left]="direction === 'left'"
+            [class.slide-further-right]="direction === 'right'"
             >
                 <p>{{carouselData[2].comment}}</p>
                 <div>
@@ -21,8 +20,8 @@
             >
                 <div class="card"
                 [class.active]="i === 1"
-                [class.shrink]="direction === 'left' && i === 1"
-                [class.grow]="direction === 'left' && i === 2"
+                [class.shrink]="i === 1 && (direction === 'left' || direction === 'right')"
+                [class.grow]="direction === 'left' && i === 2 || direction === 'right' && i === 0"
                 >
                     <p>{{getIndex(i).comment}}</p>
                     <div>
@@ -34,8 +33,7 @@
         }
         <div class="card-wrapper">
             <div class="card"
-            [class.slide-right]="direction === 'right'"
-            [class.slide-left]="direction === 'left'"
+            [class.slide-further-left]="direction === 'left'"
             >
                 <p>{{carouselData[0].comment}}</p>
                 <div>
