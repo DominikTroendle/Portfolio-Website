@@ -1,12 +1,12 @@
 <header>
     <nav>
         <div class="language-switch">
-            <button [ngClass]="currentLanguage === 'ger' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('eng')">EN</button>
-            <button [ngClass]="currentLanguage === 'eng' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('ger')">DE</button>
+            <button [ngClass]="currentLanguage === 'german' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('english')">EN</button>
+            <button [ngClass]="currentLanguage === 'english' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('german')">DE</button>
         </div>
-        <a href="#about">About me</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
+        @for(item of headerData; track item; let i = $index){
+            <a href="{{headerHref[i]}}">{{headerData[i]}}</a>
+        }
     </nav>
     <img src="../../../assets/img/logo_placeholder.png" alt="logo">
 </header>
