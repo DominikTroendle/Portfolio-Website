@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-header',
@@ -14,10 +15,14 @@ export class HeaderComponent {
   // headerData und headerHref werden dynamisch befüllt, abhängig von currentLanguage (also headerData = this.databaseService[curentLanguage].headerData)
   headerData = ["About me", "Skills", "Projects"];
   headerHref = ["#about", "#skills", "#projects"];
-  currentLanguage:string = "english";
+
+  constructor(public databaseService: DatabaseService) {
+
+  }
 
   changeLanguage(lang:string){
-    this.currentLanguage = lang;
+    this.databaseService.currentLanguage = lang;
+    // this.currentLanguage = lang;
   }
 
 }

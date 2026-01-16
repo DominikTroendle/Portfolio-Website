@@ -1,8 +1,8 @@
 <header>
     <nav>
         <div class="language-switch">
-            <button [ngClass]="currentLanguage === 'german' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('english')">EN</button>
-            <button [ngClass]="currentLanguage === 'english' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('german')">DE</button>
+            <button [ngClass]="this.databaseService.currentLanguage === 'german' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('english')">EN</button>
+            <button [ngClass]="this.databaseService.currentLanguage === 'english' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('german')">DE</button>
         </div>
         @for(item of headerData; track item; let i = $index){
             <a href="{{headerHref[i]}}">{{headerData[i]}}</a>
