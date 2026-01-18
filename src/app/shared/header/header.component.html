@@ -4,7 +4,7 @@
             <button [ngClass]="this.db.currentLanguage === 'german' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('english')">EN</button>
             <button [ngClass]="this.db.currentLanguage === 'english' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('german')">DE</button>
         </div>
-        @for(item of headerItems; track item.text){
+        @for(item of db.data.headerData.items; track item.text){
             <a href="{{item.href}}">{{item.text}}</a>
         }
     </nav>

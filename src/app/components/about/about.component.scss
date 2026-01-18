@@ -59,10 +59,10 @@ section{
 }
 
 .container-details{
-    @include dFlex(center, center, 16px);
+    @include dFlex(flex-start, center, 16px);
     flex-direction: column;
     .row{
-        @include dFlex(center, flex-start, 24px);
+        @include dFlex(flex-start, center, 24px);
         p{
             font-family: Karla;
             font-size: 18px;

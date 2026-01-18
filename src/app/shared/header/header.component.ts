@@ -15,10 +15,6 @@ export class HeaderComponent {
 
   constructor(public db: DatabaseService) { }
 
-  get headerItems(){
-    return this.db.data.headerData.items;
-  }
-
   changeLanguage(lang:string){
     // this.db.currentLanguage = lang;
     // this.currentLanguage = lang;

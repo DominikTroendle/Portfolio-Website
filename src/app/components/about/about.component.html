@@ -2,23 +2,17 @@
     <div class="container-about">
         <img src="" alt="hero-img">
         <div class="container-right">
-            <h2>Who I Am</h2>
+            <h2>{{db.data.aboutData.headline}}</h2>
             <div class="container-text">
-                <h1>About me</h1>
-                <p id="introduction">Hey there, im Dominik! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                <h1>{{db.data.aboutData.subheadline}}</h1>
+                <p id="introduction">{{db.data.aboutData.introduction}}</p>
                 <div class="container-details">
-                    <div class="row">
-                        <img src="../../assets/img/location.png" alt="location">
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.</p>
-                    </div>
-                    <div class="row">
-                        <img src="../../assets/img/cognition.png" alt="cognition">
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-                    </div>
-                    <div class="row">
-                        <img src="../../assets/img/tick.png" alt="tick">
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.</p>
-                    </div>
+                    @for(item of db.data.aboutData.details; track item){
+                        <div class="row">
+                            <img src="../../assets/img/{{item.src}}.png" alt="{{item.src}}">
+                            <p>{{item.text}}</p>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
