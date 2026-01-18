@@ -117,9 +117,8 @@ section{
 }
 
 .container-right{
-    @include dFlex(space-evenly, space-evenly, 72px);
+    @include dFlex(center, flex-end, 72px);
     flex-wrap: wrap;
-    justify-content: flex-start;
     max-width: 700px;
     margin-top: 48px;
     .item-skill{
