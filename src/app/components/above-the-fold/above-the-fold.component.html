@@ -1,6 +1,6 @@
 <section>
     <div class="side-content left">
-        <button><img src="../../assets/svg/arrow-down-svgrepo-com.svg" alt="arrow-down"></button>
+        <a href="#contact"><button><img src="../../assets/svg/arrow-down-svgrepo-com.svg" alt="arrow-down"></button></a>
         <hr>
     </div>
     <div class="main-content">
@@ -8,38 +8,31 @@
         <h1>{{db.data.atfData.name}}</h1>
         <div>
             @for(btn of db.data.atfData.buttons; track btn.text){
-               <button class="btn" href="btn.href">
-                    <span>{{btn.text}}</span>
-                </button> 
+                <a class="btn-wrapper" href="{{btn.href}}">
+                    <button class="btn">
+                        <span>{{btn.text}}</span>
+                    </button>
+                </a> 
             }
         </div>
     </div>
     <div class="side-content right">
-        <a href="mailto:domi.troendle@gmail.com">domi.troendle&#64;gmail.com</a>
+        <a href="mailto:{{db.data.atfData.email}}">{{db.data.atfData.email}}</a>
         <a href="" class="external-logo-sm"><img src="../../assets/img/github-logo.png" alt="github-logo"></a>
         <a href="" class="external-logo-sm"><img src="../../assets/img/linkedin-logo.png" alt="linkedin-logo"></a>
         <hr>
     </div>
     <div class="ribbon">
         <div class="track-wrapper">
-            <div class="track">
-                <span>Available for remote work</span>
-                <span>Frontend Developer</span>
-                <span>Based in Munich</span>
-                <span>Open to work</span>
-            </div>
-            <div aria-hidden="true" class="track">
-                <span>Available for remote work</span>
-                <span>Frontend Developer</span>
-                <span>Based in Munich</span>
-                <span>Open to work</span>
-            </div>
-            <div aria-hidden="true" class="track">
-                <span>Available for remote work</span>
-                <span>Frontend Developer</span>
-                <span>Based in Munich</span>
-                <span>Open to work</span>
-            </div>
+            @for(_ of [1,2,3]; track $index){
+                <div
+                class="track"
+                [attr.aria-hidden]="$index > 1 ? 'true' : null">
+                    @for(text of db.data.atfData.ribbonTracks; track text){
+                        <span>{{text}}</span>
+                    }
+                </div>
+            }
         </div>
     </div>
 </section>
