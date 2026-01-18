@@ -1,62 +1,24 @@
 <section>
     <div class="container-skills">
         <div class="container-left">
-            <h3>Technologies</h3>
+            <h3>{{db.data.skillsData.title}}</h3>
             <div class="container-content">
-                <h1>Skill Set</h1>
+                <h1>{{db.data.skillsData.headline}}</h1>
                 <div class="container-text">
-                    <p class="introduction">A short introduction of my skills! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-                    <h2>You need <span>another skill?</span></h2>
-                    <p>Feel free to contact me. I look forward to expanding on my previous knowledge.</p>
+                    <p class="introduction">{{db.data.skillsData.introduction}}</p>
+                    <h2>{{db.data.skillsData.subheadline1}}<span>{{db.data.skillsData.subheadline2}}</span></h2>
+                    <p>{{db.data.skillsData.contact}}</p>
                 </div>
-                <button><span>Let's Talk</span></button>
+                <a href="#contact"><button><span>{{db.data.skillsData.contactButton}}</span></button></a>
             </div>
         </div>
         <div class="container-right">
-            <div class="item-skill">
-                <img src="../../assets/img/html-logo.png" alt="html-logo">
-                <span>HTML</span>
-            </div>
-            <div class="item-skill">
-                <img src="../../assets/img/css-logo.png" alt="css-logo">
-                <span>CSS</span>
-            </div>
-            <div class="item-skill">
-                <img src="../../assets/img/js-logo.png" alt="js-logo">
-                <span>JavaScript</span>
-            </div>
-            <div class="item-skill">
-                <img src="../../assets/img/material-logo.png" alt="material-logo">
-                <span>Material<br>Design</span>
-            </div>
-            <div class="item-skill">
-                <img src="../../assets/img/ts-logo.png" alt="ts-logo">
-                <span>TypeScript</span>
-            </div>
-            <div class="item-skill">
-                <img src="../../assets/img/angular-logo.png" alt="angular-logo">
-                <span>Angular</span>
-            </div>
-            <div class="item-skill">
-                <img src="../../assets/img/n8n-logo.png" alt="n8n-logo">
-                <span>N8N</span>
-            </div>
-            <div class="item-skill">
-                <img src="../../assets/img/firebase-logo.png" alt="firebase-logo">
-                <span>Firebase</span>            
-            </div>
-            <div class="item-skill">
-                <img src="../../assets/img/git-logo.png" alt="git-logo">
-                <span>Git</span>            
-            </div>
-            <div class="item-skill">
-                <img src="../../assets/img/rest-logo.png" alt="REST-logo">
-                <span>REST-API</span>
-            </div>
-            <div class="item-skill">
-                <img src="../../assets/img/scrum-logo.png" alt="scrum-logo">
-                <span>Scrum</span>     
-            </div>
+            @for(skill of db.data.skillsData.skills; track skill){
+                <div class="item-skill">
+                    <img src="../../assets/img/{{skill.src}}-logo.png" alt="{{skill.src}}-logo">
+                    <span>{{skill.text}}</span>
+                </div>
+            }
             <div class="item-skill">
                 <div class="growth-overlay">
                     <div class="bubble">
