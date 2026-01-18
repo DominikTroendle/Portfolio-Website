@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { DatabaseService } from './services/database.service';
 
 @Component({
   selector: 'app-root',
@@ -18,4 +19,10 @@ import { FooterComponent } from './shared/footer/footer.component';
 })
 export class AppComponent {
   title = 'Dominik Tröndle';
+
+  constructor(private db: DatabaseService) { }
+
+  async ngOnInit() {
+    await this.db.loadItems();
+  }
 }

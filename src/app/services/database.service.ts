@@ -1,23 +1,21 @@
 import { inject, Injectable } from '@angular/core';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { collection, Firestore, getDocs } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseService {
-  currentLanguage:string = "english";
+  currentLanguage: "english" | "german" = "english";
 
-  items$; 
+  data: any = {};
   firestore: Firestore = inject(Firestore);
   
-  constructor() {
-    this.items$ = collectionData(this.getDataRef());
-    console.log(this.items$);
-    
-  }
+  constructor() { }
 
-  getDataRef(){
-    return collection(this.firestore, this.currentLanguage);
+  async loadItems() {
+    const dataRef = await getDocs(collection(this.firestore, this.currentLanguage));
+    dataRef.forEach(doc => {
+      this.data[doc.id] = doc.data()['items'];
+    });
   }
 }

@@ -1,11 +1,11 @@
 <header>
     <nav>
         <div class="language-switch">
-            <button [ngClass]="this.databaseService.currentLanguage === 'german' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('english')">EN</button>
-            <button [ngClass]="this.databaseService.currentLanguage === 'english' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('german')">DE</button>
+            <button [ngClass]="this.db.currentLanguage === 'german' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('english')">EN</button>
+            <button [ngClass]="this.db.currentLanguage === 'english' ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage('german')">DE</button>
         </div>
-        @for(item of headerData; track item; let i = $index){
-            <a href="{{headerHref[i]}}">{{headerData[i]}}</a>
+        @for(item of db.data.headerData; track item.text){
+            <a href="{{item.href}}">{{item.text}}</a>
         }
     </nav>
     <img src="../../../assets/img/logo_placeholder.png" alt="logo">

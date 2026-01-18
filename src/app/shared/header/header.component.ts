@@ -12,16 +12,11 @@ import { DatabaseService } from '../../services/database.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  // headerData und headerHref werden dynamisch befüllt, abhängig von currentLanguage (also headerData = this.databaseService[curentLanguage].headerData)
-  headerData = ["About me", "Skills", "Projects"];
-  headerHref = ["#about", "#skills", "#projects"];
 
-  constructor(public databaseService: DatabaseService) {
-
-  }
+  constructor(public db: DatabaseService) { }
 
   changeLanguage(lang:string){
-    this.databaseService.currentLanguage = lang;
+    // this.db.currentLanguage = lang;
     // this.currentLanguage = lang;
   }
 

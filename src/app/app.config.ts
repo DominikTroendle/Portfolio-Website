@@ -15,9 +15,7 @@ export const appConfig: ApplicationConfig = {
         "storageBucket":"portfolio-fe6f9.firebasestorage.app",
         "apiKey":"AIzaSyAhlpz0llUpeI2X8HAix7dnjpZ53p9DSjM",
         "authDomain":"portfolio-fe6f9.firebaseapp.com",
-        "messagingSenderId":"367663307015",
-        // "projectNumber":"367663307015",
-        // "version":"2"
+        "messagingSenderId":"367663307015"
       })
     ),
     provideFirestore(() => getFirestore())]
