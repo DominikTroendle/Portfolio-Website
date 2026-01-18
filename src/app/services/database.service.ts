@@ -9,13 +9,15 @@ export class DatabaseService {
 
   data: any = {};
   firestore: Firestore = inject(Firestore);
+  loaded = false;
   
   constructor() { }
 
   async loadItems() {
     const dataRef = await getDocs(collection(this.firestore, this.currentLanguage));
     dataRef.forEach(doc => {
-      this.data[doc.id] = doc.data()['items'];
+      this.data[doc.id] = doc.data();
     });
+    this.loaded = true;
   }
 }

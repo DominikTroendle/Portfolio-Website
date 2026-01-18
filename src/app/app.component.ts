@@ -20,7 +20,7 @@ import { DatabaseService } from './services/database.service';
 export class AppComponent {
   title = 'Dominik Tröndle';
 
-  constructor(private db: DatabaseService) { }
+  constructor(public db: DatabaseService) { }
 
   async ngOnInit() {
     await this.db.loadItems();

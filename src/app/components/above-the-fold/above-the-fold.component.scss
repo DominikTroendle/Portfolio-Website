@@ -1,61 +1,62 @@
 @use '../../styles/mixins' as *;
 
 section{
-    @include dFlex(center, space-between);
-    position: relative;
-    height: 100dvh;
-    width: 100vw;
-    background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
-    overflow: hidden;
-    h1,h2{
-        color: white;
-    }
-    h1{
-        margin-bottom: 28px;
-        font-family: Karla;
-        font-weight: 700;
-        font-size: 128px;
-        letter-spacing: -2px;
-    }
-    h2{
-        font-family: Fira Code;
-        font-weight: 400;
-        font-size: 40px;
-    }
+  @include dFlex(center, space-between);
+  position: relative;
+  height: 100dvh;
+  width: 100vw;
+  background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
+  overflow: hidden;
+  h1,h2{
+      color: white;
+  }
+  h1{
+      margin-bottom: 28px;
+      font-family: Karla;
+      font-weight: 700;
+      font-size: 128px;
+      letter-spacing: -2px;
+  }
+  h2{
+      font-family: Fira Code;
+      font-weight: 400;
+      font-size: 40px;
+  }
 }
 
 .main-content{
-    @include dFlex(center, center, 12px);
-    flex-direction: column;
-    div{
-      @include dFlex(center, center, 48px);
-      height: 48px;
+  @include dFlex(center, center, 12px);
+  flex-direction: column;
+  div{
+    @include dFlex(center, center, 48px);
+    height: 48px;
+  }
+}
+
+.btn{
+  height: 100%;
+  padding: 0 24px;
+  border: 1px solid white;
+  border-radius: 100px;
+  background: unset;
+  font-family: Karla;
+  font-size: 18px;
+  overflow: hidden;
+  span{
+    display: inline-block;
+    color: white;
+    &:hover{
+      cursor: pointer;
     }
-    button{
-        height: 100%;
-        padding: 0 24px;
-        border: 1px solid white;
-        border-radius: 100px;
-        background: unset;
-        font-family: Karla;
-        font-size: 18px;
-        overflow: hidden;
-        span{
-            display: inline-block;
-            color: white;
-            &:hover{
-              cursor: pointer;
-            }
-        }
-        &:hover{
-            cursor: pointer;
-            border: 1px solid #3DCFB6;
-            span{
-                color: #3DCFB6;
-                animation: sliding_text 2s infinite linear;
-            }
-        }
-      }
+  }
+  &:hover{
+    cursor: pointer;
+    border: 1px solid #3DCFB6;
+    span{
+        color: #3DCFB6;
+        animation: sliding_text 2s infinite linear;
+    }
+  }
 }
 
 @keyframes sliding_text {
