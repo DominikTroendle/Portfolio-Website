@@ -23,23 +23,21 @@
                 <div class="growth-overlay">
                     <div class="bubble">
                         <div class="container-overlay-content">
-                            <p>I have a special interest in learning</p>
+                            <p>{{db.data.skillsData.growthMindset.introduction}}</p>
                             <div class="row">
-                                <div>
-                                    <img src="../../assets/img/react-logo-colored.png" alt="react-logo-colored">
-                                    <span>React</span>
-                                </div>
-                                <div>
-                                    <img src="../../assets/img/vue-logo-colored.png" alt="vue-logo-colored">
-                                    <span>Vue.js</span>
-                                </div>
+                                @for(item of db.data.skillsData.growthSkills; track item){
+                                    <div>
+                                        <img src="../../assets/img/{{item.src}}-logo-colored.png" alt="{{item.src}}-logo-colored">
+                                        <span>{{item.text}}</span>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
                     <div class="pointer"></div>
                 </div>
-                <img src="../../assets/img/growth-mindset.png" alt="growth-mindset">
-                <span class="growth-mindset">Growth<br>Mindset</span>
+                <img src="../../assets/img/{{db.data.skillsData.growthMindset.src}}-mindset.png" alt="{{db.data.skillsData.growthMindset.src}}-mindset">
+                <span class="growth-mindset">{{db.data.skillsData.growthMindset.text1}}<br>{{db.data.skillsData.growthMindset.text2}}</span>
             </div>
         </div>
     </div>
