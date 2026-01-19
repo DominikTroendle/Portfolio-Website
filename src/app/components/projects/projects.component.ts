@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OverlayComponent } from "../overlay/overlay.component";
 import { NgStyle } from '@angular/common';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-projects',
@@ -15,9 +16,17 @@ import { NgStyle } from '@angular/common';
 export class ProjectsComponent {
 
   isVisible = false;
+  selectedProject = {};
 
-  handleOverlay(){
+  constructor(public db: DatabaseService) { }
+
+  handleOverlay(index: number){
     this.isVisible = !this.isVisible;
+    this.selectedProject = this.db.data.projectsData.overlay[index];
+  }
+
+  closeOverlay(){
+    this.isVisible = false;
   }
 
 }

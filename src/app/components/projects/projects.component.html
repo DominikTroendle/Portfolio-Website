@@ -1,68 +1,29 @@
 <app-overlay
+    [overlayData]="selectedProject"
     [ngStyle]="{'display': isVisible ? 'block' : 'none'}"
-    (close)="handleOverlay()"
+    (close)="closeOverlay()"
 ></app-overlay>
 <section>
     <div class="container-content">
-        <h3>Portfolio</h3>
-        <h1>Featured Projects</h1>
-        <p>Explore a selection of my work here &#45; interact with projects to see my skills in action.</p>
+        <h3>{{db.data.projectsData.title}}</h3>
+        <h1>{{db.data.projectsData.headline}}</h1>
+        <p>{{db.data.projectsData.introduction}}</p>
         <div class="container-projects">
-            <div class="row" (click)="handleOverlay()">
-                <div>
-                    <h2>Join</h2>
-                    <img class="arrow" src="../../assets/img/arrow_outward.png" alt="arrow">
+            @for(project of db.data.projectsData.projects; track project; let i = $index){
+                <div class="row" (click)="handleOverlay(i)">
+                    <div>
+                        <h2>{{project.title}}</h2>
+                        <img class="arrow" src="../../assets/img/arrow_outward.png" alt="arrow">
+                    </div>
+                    <ul>
+                        @for(tech of db.data.projectsData.projects[i].technologies; track tech){
+                            <li>{{tech}}</li>
+                        }
+                    </ul>
+                    <img class="img-preview" src="" alt="{{project.src}}-preview">
+                    <img class="img-preview-bg" src="../../assets/img/img-preview-bg.png" alt="preview-img-bg">
                 </div>
-                <ul>
-                    <li>Angular</li>
-                    <li>TypeScript</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>Firebase</li>
-                </ul>
-                <img class="img-preview" src="" alt="">
-                <img class="img-preview-bg" src="../../assets/img/img-preview-bg.png" alt="preview-img-bg">
-            </div>
-            <div class="row" (click)="handleOverlay()">
-                <div>
-                    <h2>Join &#45; Issue Collector</h2>
-                    <img class="arrow" src="../../assets/img/arrow_outward.png" alt="arrow">
-                </div>
-                <ul>
-                    <li>N8N</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                </ul>
-                <img class="img-preview" src="" alt="">
-                <img class="img-preview-bg" src="../../assets/img/img-preview-bg.png" alt="preview-img-bg">
-            </div>
-            <div class="row" (click)="handleOverlay()">
-                <div>
-                    <h2>Super Candy Penguin</h2>
-                    <img class="arrow" src="../../assets/img/arrow_outward.png" alt="arrow">
-                </div>
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                </ul>
-                <img class="img-preview" src="" alt="">
-                <img class="img-preview-bg" src="../../assets/img/img-preview-bg.png" alt="preview-img-bg">
-            </div>
-            <div class="row" (click)="handleOverlay()">
-                <div>
-                    <h2>Code a Cuisine</h2>
-                    <img class="arrow" src="../../assets/img/arrow_outward.png" alt="arrow">
-                </div>
-                <ul>
-                    <li>Angular</li>
-                    <li>N8N</li>
-                    <li>TypeScript</li>
-                </ul>
-                <img class="img-preview" src="" alt="">
-                <img class="img-preview-bg" src="../../assets/img/img-preview-bg.png" alt="preview-img-bg">
-            </div>
+            }
         </div>
     </div>
 </section>

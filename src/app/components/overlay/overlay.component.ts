@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-overlay',
@@ -9,9 +10,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class OverlayComponent {
 
+  @Input()overlayData: any;
   @Output()close = new EventEmitter<Event>();
 
-  onClose(){
+  constructor(public db: DatabaseService) { }
+
+  closeOverlay(){
     this.close.emit();
   }
 }
