@@ -139,5 +139,11 @@
             width: 18px;
             height: 18px;
         }
+        .disabled{
+            &:hover{
+                cursor: default;
+            }
+            color: grey;
+        }
     }
 }

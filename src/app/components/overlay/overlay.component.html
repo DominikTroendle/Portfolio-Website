@@ -2,7 +2,7 @@
     <div class="card" (click)="$event.stopPropagation()">
         <div class="left">
             <div class="headline">
-                <h1>0{{overlayData.number}}</h1>
+                <h1>{{projectNumber}}</h1>
                 <h2>{{overlayData.title}}</h2>
             </div>
             <div class="content">
@@ -31,7 +31,7 @@
         <div class="right">
             <img src="../../../assets/img/close_small.png" alt="close-cross" (click)="closeOverlay()">
             <img class="preview" src="" alt="preview-img">
-            <div>
+            <div (click)="nextProject()">
                 <span>Next project</span>
                 <img src="../../../assets/img/arrow_forward.png" alt="arrow-next">
             </div>

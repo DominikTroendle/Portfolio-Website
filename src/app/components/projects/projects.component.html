@@ -1,7 +1,9 @@
 <app-overlay
     [overlayData]="selectedProject"
+    [projectNumber]="'0' + selectedIndex"
     [ngStyle]="{'display': isVisible ? 'block' : 'none'}"
     (close)="closeOverlay()"
+    (next)="updateOverlay(selectedIndex)"
 ></app-overlay>
 <section>
     <div class="container-content">
@@ -10,7 +12,7 @@
         <p>{{db.data.projectsData.introduction}}</p>
         <div class="container-projects">
             @for(project of db.data.projectsData.projects; track project; let i = $index){
-                <div class="row" (click)="handleOverlay(i)">
+                <div class="row" (click)="showOverlay(i)">
                     <div>
                         <h2>{{project.title}}</h2>
                         <img class="arrow" src="../../assets/img/arrow_outward.png" alt="arrow">
