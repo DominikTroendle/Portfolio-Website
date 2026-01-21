@@ -6,7 +6,7 @@
                 <h2>{{overlayData.title}}</h2>
             </div>
             <div class="content">
-                <h3>What is this project about?</h3>
+                <h3>{{db.data.projectsData.overlayAbout}}</h3>
                 <p>{{overlayData.text}}</p>
                 <div class="technologies">
                     @for(tech of overlayData.technologies; track tech){
@@ -18,21 +18,25 @@
                 </div>
             </div>
             <div class="buttons">
-                <button>
-                    <span>Github</span>
-                    <img src="../../../assets/img/arrow_outward_turquoise.png" alt="arrow-link">
-                </button>
-                <button>
-                    <span>Live Test</span>
-                    <img src="../../../assets/img/arrow_outward_turquoise.png" alt="arrow-link">
-                </button>
+                <a target="_blank" href="{{overlayData.github}}">
+                    <button>
+                        <span>Github</span>
+                        <img src="../../../assets/img/arrow_outward_turquoise.png" alt="arrow-link">
+                    </button>
+                </a>
+                <a target="_blank" href="{{overlayData.url}}">
+                    <button>
+                        <span>Live Test</span>
+                        <img src="../../../assets/img/arrow_outward_turquoise.png" alt="arrow-link">
+                    </button>
+                </a>
             </div>
         </div>
         <div class="right">
             <img src="../../../assets/img/close_small.png" alt="close-cross" (click)="closeOverlay()">
             <img class="preview" src="" alt="preview-img">
             <div (click)="nextProject()">
-                <span>Next project</span>
+                <span>{{db.data.projectsData.nextProject}}</span>
                 <img src="../../../assets/img/arrow_forward.png" alt="arrow-next">
             </div>
         </div>
