@@ -11,6 +11,7 @@ section{
 .container-left{
     @include dFlex(flex-start, space-between, 40px);
     flex-direction: column;
+    width: 880px;
     div{
         flex-direction: column;
     }

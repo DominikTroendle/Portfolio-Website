@@ -1,37 +1,35 @@
 <section>
     <div class="container-left">
         <div>
-            <h3>Contact me</h3>
-            <h1>Let's work<br>together</h1>
+            <h3>{{db.data.contactData.title}}</h3>
+            <h1>{{db.data.contactData.headline}}</h1>
         </div>
         <div>
-            <h2>Got a problem to solve?</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.</p>
-            <p>Need a Frontend developer? <span>Let's talk!</span></p>
+            <h2>{{db.data.contactData.subheadline}}</h2>
+            <p>{{db.data.contactData.introduction}}</p>
+            <p>{{db.data.contactData.paragraph1}}<span>{{db.data.contactData.paragraph2}}</span></p>
         </div>
     </div>
     <form action="#">
         <div class="form-top">
-            <div>
-                <label for="name">What's your name?</label>
-                <input id="name" type="text" placeholder="Your name goes here">
-            </div>
-            <div>
-                <label for="email">What's your email?</label>
-                <input id="email" type="email" placeholder="youremail@email.com">
-            </div>
-            <div>
-                <label for="msg">Ho can I help you?</label>
-                <input id="msg" type="text" placeholder="Hello Domink, i'm interested in ...">
-            </div>
+            @for(input of db.data.contactData.form; track input){
+                <div>
+                    <label for="{{input.id}}">{{input.text}}</label>
+                    <input 
+                    [attr.type]="input.id === 'email' ? 'email' : 'text'"
+                    id="{{input.id}}"
+                    placeholder="{{input.placeholder}}"
+                    autocomplete="on">
+                </div>
+            }
         </div>
         <div class="form-bottom">
             <div>
                 <img src="../../assets/img/checkbox.png" alt="checkbox">
-                <p>I've read the <span>privacy policy</span> and agree to the processing of my data as outlined.</p>
-                <p id="error">Error message goes here!</p>
+                <p>{{db.data.contactData.privacyPolicy1}}<span>{{db.data.contactData.privacyPolicy2}}</span>{{db.data.contactData.privacyPolicy3}}</p>
+                <p id="error">{{db.data.contactData.error}}</p>
             </div>
-            <button type="submit"><span>Say Hello &#58;&#41;</span></button>
+            <button type="submit"><span>{{db.data.contactData.button}}</span></button>
         </div>
     </form>
 </section>
