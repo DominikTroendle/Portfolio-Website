@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-references',
@@ -8,31 +9,17 @@ import { Component } from '@angular/core';
   styleUrl: './references.component.scss'
 })
 export class ReferencesComponent {
-  active:boolean = false;
-  direction:string = "";
-  currentIndex:number = 0;
-  carouselData = [
-    {
-      name: "Nico Reckert",
-      role: "Team Partner Project Join",
-      comment: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
-    },
-    {
-      name: "Kevin Breiter",
-      role: "Team Partner Project Join",
-      comment: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore."
-    },
-    {
-      name: "kjkjasdl ölowo-öäla",
-      role: "lkllakkddds",
-      comment: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr."
-    }
-  ]
+  active: boolean = false;
+  direction: string = "";
+  currentIndex: number = 0;
+  carouselLength: number = this.db.data.referencesData.carousel.length;
+
+  constructor(public db: DatabaseService){ }
 
   next(){
     this.direction = "left";
     setTimeout(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.carouselData.length;
+      this.currentIndex = (this.currentIndex + 1) % this.carouselLength;
       this.reset();
     }, 600);
   }
@@ -40,17 +27,17 @@ export class ReferencesComponent {
   previous(){
     this.direction = "right";
     setTimeout(() => {
-      this.currentIndex = (this.currentIndex - 1 + this.carouselData.length) % this.carouselData.length;
+      this.currentIndex = (this.currentIndex - 1 + this.carouselLength) % this.carouselLength;
       this.reset();
     }, 600);
   }
 
   getItemIndex(i:number){
-    return this.carouselData[(i + this.currentIndex) % this.carouselData.length];
+    return this.db.data.referencesData.carousel[(i + this.currentIndex) % this.carouselLength];
   }
 
   getItemRelativeToCurrent(off:number){
-    return this.carouselData[(this.currentIndex + off + this.carouselData.length) % this.carouselData.length];
+    return this.db.data.referencesData.carousel[(this.currentIndex + off + this.carouselLength) % this.carouselLength];
   }
 
   reset(){
