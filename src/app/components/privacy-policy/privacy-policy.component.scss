@@ -25,13 +25,23 @@ section {
     @include dFlex(flex-start, space-between, 24px);
     flex-direction: column;
     padding: 0 120px;
+    h2{
+        font-weight: 700;
+        font-size: 25px;
+        color: white;
+        margin-bottom: 10px;
+    }
     h3{
         font-weight: 700;
         font-size: 19px;
         color: white;
     }
+    h4:not(:first-of-type){
+        margin-top: 7px;
+    }
     ul{
         list-style-position: inside;
+        margin: 5px 0;
     }
     a{
         color: #3dcfb6;
@@ -39,17 +49,9 @@ section {
     span{
         color: white;
     }
-}
-
-.gap{
-    @include dFlex(flex-start, space-between, 16px);
-    flex-direction: column;
-}
-
-/* @media screen and (min-height: 1081px) {
-    :host{
-        display: block;
-        position: relative;
-    height: 100vh;
+    div:first-of-type{
+        p:first-of-type{
+            margin-bottom: 5px;
+        }
     }
-} */
+}
