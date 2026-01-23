@@ -50,6 +50,9 @@ section {
         color: white;
     }
     div:first-of-type{
+        ul{
+            list-style: none;
+        }
         p:first-of-type{
             margin-bottom: 5px;
         }
