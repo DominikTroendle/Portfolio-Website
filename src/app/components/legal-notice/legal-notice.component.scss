@@ -32,12 +32,19 @@ section {
     }
     ul{
         list-style-position: inside;
+        list-style-type: none;
     }
     a{
         color: #3dcfb6;
     }
     span{
         color: white;
+    }
+    div:last-of-type{
+        div{
+            @include dFlex(flex-start, space-between, 16px);
+            flex-direction: column;
+        }
     }
 }
 

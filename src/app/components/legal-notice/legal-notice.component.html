@@ -1,7 +1,42 @@
 <section>
-    <h1>Legal Notice</h1>
+    <h1>{{db.data.legalNoticeData.title}}</h1>
     <div class="container-content">
-        <div class="gap">
+        @for(section of db.data.legalNoticeData.sections; track section){
+            <div>
+                @for(block of section.content; track block){
+                    @switch(block.type){
+                        @case("headline"){
+                            <h3>{{block.text}}</h3>
+                        }
+                        @case("list"){
+                            <ul>
+                                @for(item of block.items; track item){
+                                    <li>{{item}}</li>
+                                }
+                            </ul>
+                        }
+                        @case("paragraph"){
+                            <p>
+                                @for(inline of block.inlines; track inline){
+                                    @switch(inline.type){
+                                        @case("text"){
+                                            {{inline.value}}
+                                        }
+                                        @case("span"){
+                                            <span>{{inline.value}}</span>
+                                        }
+                                        @case("link"){
+                                            <a href="{{inline.href}}">{{inline.value}}</a>
+                                        }
+                                    }
+                                }
+                            </p>
+                        }
+                    }
+                }
+            </div>
+        }
+        <!-- <div>
             <h3>Imprint</h3>
             <ul>
                 <li>Dominik Tröndle</li>
@@ -36,11 +71,11 @@
         </div>
         <div>
             <h3>Indemnity</h3>
-            <div class="gap">
+            <div>
                 <p>You agree to indemnify, defend and hold harmless us, the listed students, the <span>Developer Akademie</span>, and our affiliates, partners, officers, directors, agents, and employees, from and against any claim, demand, loss, damage, cost, or liability (including reasonable legal fees) arising out of or relating to your use of <span>Portfolio</span> and/or your breach of this Legal Notice.</p>
                 <p>For any questions or notices, please contact us at <a href="mailto:domi.troendle@gmail.com">domi.troendle&#64;gmail.com</a>.</p>
                 <p>Date: July 26, 2025</p>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
