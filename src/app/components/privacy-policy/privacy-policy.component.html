@@ -15,10 +15,14 @@
                             <h4>{{block.text}}</h4>
                         }
                         @case("paragraph"){
-                            <p>{{block.text}}</p>
-                        }
-                        @case("linkedParagraph"){
-                            <p>{{block.text}}<a href="{{block.link}}" target="_blank">{{block.link}}</a></p>
+                            <p>
+                                @for(inline of block.inlines; track inline){
+                                    @switch(inline.type){
+                                        @case("text"){{{inline.value}}}
+                                        @case("link"){<a href="{{inline.href}}" target="_blank">{{inline.value}}</a>}
+                                    }
+                                }
+                            </p>
                         }
                         @case("list"){
                             <ul>
