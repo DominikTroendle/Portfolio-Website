@@ -40,17 +40,9 @@ section {
     span{
         color: white;
     }
-    div:last-of-type{
-        div{
-            @include dFlex(flex-start, space-between, 16px);
-            flex-direction: column;
-        }
+    div:last-of-type p + p{
+        margin-top: 16px;
     }
-}
-
-.gap{
-    @include dFlex(flex-start, space-between, 16px);
-    flex-direction: column;
 }
 
 /* @media screen and (min-height: 1081px) {
