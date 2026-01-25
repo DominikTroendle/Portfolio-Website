@@ -19,15 +19,9 @@
                             <p>
                                 @for(inline of block.inlines; track inline){
                                     @switch(inline.type){
-                                        @case("text"){
-                                            {{inline.value}}
-                                        }
-                                        @case("span"){
-                                            <span>{{inline.value}}</span>
-                                        }
-                                        @case("link"){
-                                            <a href="{{inline.href}}">{{inline.value}}</a>
-                                        }
+                                        @case("text"){{{inline.value}}}
+                                        @case("span"){<span>{{inline.value}}</span>}
+                                        @case("link"){<a href="{{inline.href}}">{{inline.value}}</a>}
                                     }
                                 }
                             </p>
