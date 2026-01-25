@@ -7,7 +7,7 @@
         <div>
             <h2>{{db.data.contactData.subheadline}}</h2>
             <p>{{db.data.contactData.introduction}}</p>
-            <p>{{db.data.contactData.paragraph1}}<span>{{db.data.contactData.paragraph2}}</span></p>
+            <p>{{db.data.contactData.textBefore}}<span>{{db.data.contactData.textHighlighted}}</span></p>
         </div>
     </div>
     <form action="#">
@@ -26,7 +26,7 @@
         <div class="form-bottom">
             <div>
                 <img src="../../assets/img/checkbox.png" alt="checkbox">
-                <a href="privacy-policy"><p>{{db.data.contactData.privacyPolicy1}}<span>{{db.data.contactData.privacyPolicy2}}</span>{{db.data.contactData.privacyPolicy3}}</p></a>
+                <a href="privacy-policy"><p>{{db.data.contactData.policyBefore}}<span>{{db.data.contactData.policyHighlighted}}</span>{{db.data.contactData.policyAfter}}</p></a>
                 <p id="error">{{db.data.contactData.error}}</p>
             </div>
             <button type="submit"><span>{{db.data.contactData.button}}</span></button>
