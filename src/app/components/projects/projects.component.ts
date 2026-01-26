@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Renderer2 } from '@angular/core';
 import { OverlayComponent } from "../overlay/overlay.component";
-import { NgStyle } from '@angular/common';
+import { NgStyle, DOCUMENT } from '@angular/common';
 import { DatabaseService } from '../../services/database.service';
 
 @Component({
@@ -19,12 +19,17 @@ export class ProjectsComponent {
   selectedProject = {};
   selectedIndex = 0;
 
-  constructor(public db: DatabaseService) { }
+  constructor(
+    public db: DatabaseService,
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2
+  ) { }
 
   showOverlay(index: number){
     this.isVisible = true;
     this.selectedProject = this.db.data.projectsData.overlay[index];
     this.selectedIndex = index + 1;
+    this.renderer.addClass(this.document.body, 'no-scroll');
   }
 
   updateOverlay(displayIndex: number){
@@ -38,6 +43,7 @@ export class ProjectsComponent {
   closeOverlay(){
     this.isVisible = false;
     this.selectedIndex = 0;
+    this.renderer.removeClass(this.document.body, 'no-scroll');
   }
 
 }
