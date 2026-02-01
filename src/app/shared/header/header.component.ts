@@ -15,9 +15,13 @@ export class HeaderComponent {
 
   constructor(public db: DatabaseService) { }
 
-  changeLanguage(lang:string){
-    // this.db.currentLanguage = lang;
-    // this.currentLanguage = lang;
+  changeLanguage(){
+    this.db.currentLanguage = this.db.currentLanguage === "german" ? "english" : "german";
+    this.db.loadItems();
+  }
+
+  get isGerman(): boolean{
+    return this.db.currentLanguage === "german";
   }
 
 }
