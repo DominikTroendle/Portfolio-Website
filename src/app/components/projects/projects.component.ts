@@ -1,7 +1,7 @@
 import { Component, Inject, Renderer2 } from '@angular/core';
 import { OverlayComponent } from "../overlay/overlay.component";
 import { NgStyle, DOCUMENT } from '@angular/common';
-import { DatabaseService } from '../../services/database.service';
+import { DatabaseService } from '../../services/database/database.service';
 
 @Component({
   selector: 'app-projects',

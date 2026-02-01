@@ -15,7 +15,7 @@ export class LocalStorageService {
     return JSON.parse(item);
   }
 
-  set(key: string, value: string){
+  set(key: string, value: "english" | "german"){
     this.localStorage?.setItem(key, JSON.stringify(value));
   }
 }
