@@ -42,7 +42,7 @@ header{
         width: 132px;
         height: 48px;
         &:hover{
-            cursor: pointer;
+            content: url("../../../assets/img/logo_outline.png");
         }
     }
 }
@@ -54,6 +54,7 @@ header{
     height: 28px;
     border: 1px solid #3DCFB6;
     border-radius: 100px;
+    transition: 0.5s ease;
     &:hover{
         border: 1px solid white;
     }
@@ -88,8 +89,8 @@ header{
     background: unset;
     color: #3DCFB6;
     opacity: 0.5;
+    transition: opacity 0.5s ease;
     &:hover{
         opacity: 1;
-        transition: opacity 0.5s ease;
     }
 }
