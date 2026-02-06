@@ -88,6 +88,13 @@ form{
                     }
                 }
             }
+            &:focus-within{
+                input{
+                    &::placeholder{
+                        color: transparent;
+                    }
+                }
+            }
         }
         label{
             font-family: Fira Code;
@@ -98,13 +105,19 @@ form{
         input{
             width: 100%;
             height: 22px;
-            background: unset;
-            border: unset;
+            background: none;
+            border: none;
+            color: white;
+            font-family: Karla;
+            font-size: 18px;
             &::placeholder{
                 font-family: Karla;
                 font-size: 18px;
                 color: rgba($color: #ffffff, $alpha: 0.8);
                 line-height: 120%;
+            }
+            &:focus{
+                outline: none;
             }
         }
     }
