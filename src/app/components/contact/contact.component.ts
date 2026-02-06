@@ -9,5 +9,22 @@ import { DatabaseService } from '../../services/database/database.service';
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
+  isChecked = false;
+
+  imageChecked="../../../assets/img/checkbox_checked.png";
+  imageUnchecked="../../../assets/img/checkbox.png";
+
   constructor(public db: DatabaseService) { }
+
+  changeImg(){
+    this.isChecked = !this.isChecked;
+  }
+
+  get image(): string{
+    return this.isChecked ? this.imageChecked : this.imageUnchecked;
+  }
+
+  validateInputs(){
+    
+  }
 }

@@ -26,7 +26,11 @@
         <div class="form-bottom">
             <div class="privacy-policy">
                 <div>
-                    <img src="../../assets/img/checkbox.png" alt="checkbox">
+                    <img
+                    [src]="image"
+                    (click)="changeImg()"
+                    alt="checkbox"
+                    >
                     <p>{{db.data.contactData.policyBefore}}<a href="privacy-policy"><span>{{db.data.contactData.policyHighlighted}}</span></a>{{db.data.contactData.policyAfter}}</p>
                 </div>
                 <p id="error">{{db.data.contactData.error}}</p>
