@@ -28,6 +28,7 @@ section{
             font-weight: 700;
             font-size: 64px;
             color: #3dcfb6;
+            line-height: 85%;
         }
     }
     div:nth-child(2){
@@ -110,13 +111,17 @@ form{
     .form-bottom{
         @include dFlex(center, space-between, 16px);
         flex-direction: column;
-        div{
+        .privacy-policy{
             @include dFlex(center, flex-start);
-            column-gap: 8px;
-            flex-wrap: wrap;
+            flex-direction: column;
             font-family: Karla;
             font-size: 15px;
             color: white;
+            div{
+                @include dFlex(center, flex-start);
+                width: 100%;
+                column-gap: 8px;
+            }
             img{
                 width: 24px;
                 height: 24px;

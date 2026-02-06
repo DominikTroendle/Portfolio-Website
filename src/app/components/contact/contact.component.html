@@ -24,9 +24,11 @@
             }
         </div>
         <div class="form-bottom">
-            <div>
-                <img src="../../assets/img/checkbox.png" alt="checkbox">
-                <p>{{db.data.contactData.policyBefore}}<a href="privacy-policy"><span>{{db.data.contactData.policyHighlighted}}</span></a>{{db.data.contactData.policyAfter}}</p>
+            <div class="privacy-policy">
+                <div>
+                    <img src="../../assets/img/checkbox.png" alt="checkbox">
+                    <p>{{db.data.contactData.policyBefore}}<a href="privacy-policy"><span>{{db.data.contactData.policyHighlighted}}</span></a>{{db.data.contactData.policyAfter}}</p>
+                </div>
                 <p id="error">{{db.data.contactData.error}}</p>
             </div>
             <button type="submit"><span>{{db.data.contactData.button}}</span></button>
