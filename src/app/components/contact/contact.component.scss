@@ -59,7 +59,7 @@ form{
     width: 616px;
     .form-top{
         width: 100%;
-        div{
+        .row{
             @include dFlex(flex-start, space-between, 16px);
             width: 100%;
             flex-direction: column;
@@ -198,5 +198,13 @@ form{
     }
     100% {
         transform: translateX(0);
+    }
+}
+
+.error{
+    position: absolute;
+    bottom: 0;
+    div{
+        border: unset;
     }
 }

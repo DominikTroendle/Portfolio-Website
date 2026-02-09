@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })

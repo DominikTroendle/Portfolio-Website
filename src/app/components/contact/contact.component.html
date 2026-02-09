@@ -10,16 +10,33 @@
             <p>{{db.data.contactData.textBefore}}<a href="{{db.data.contactData.textHref}}"><span>{{db.data.contactData.textHighlighted}}</span></a></p>
         </div>
     </div>
-    <form action="#">
+    <form #contactForm="ngForm" novalidate>
         <div class="form-top">
             @for(input of db.data.contactData.form; track input){
-                <div>
+                <div class="row" style="position: relative;">
                     <label for="{{input.id}}">{{input.text}}</label>
                     <input 
-                    [attr.type]="input.id === 'email' ? 'email' : 'text'"
+                    [type]="input.id === 'email' ? 'email' : 'text'"
                     id="{{input.id}}"
                     placeholder="{{input.placeholder}}"
-                    autocomplete="on">
+                    autocomplete="on"
+                    name="{{input.id}}"
+                    ngModel
+                    required
+                    #validation="ngModel"
+                    (blur)="validation.control.markAsTouched()"
+                    (click)="validation.control.markAsUntouched()"
+                    >
+                    @if(validation.invalid && (validation.dirty || validation.touched)){
+                        <div class="error">
+                            @if(validation.hasError('required')){
+                                <p>{{db.data.contactData.requiredError}}</p>
+                            }
+                            @if(validation.hasError('email')){
+                                <p>{{db.data.contactData.emailError}}</p>
+                            }
+                        </div>
+                    }
                 </div>
             }
         </div>
@@ -33,7 +50,7 @@
                     >
                     <p>{{db.data.contactData.policyBefore}}<a href="privacy-policy"><span>{{db.data.contactData.policyHighlighted}}</span></a>{{db.data.contactData.policyAfter}}</p>
                 </div>
-                <p id="error">{{db.data.contactData.error}}</p>
+                <p id="error">{{db.data.contactData.policyError}}</p>
             </div>
             <button type="submit"><span>{{db.data.contactData.button}}</span></button>
         </div>
