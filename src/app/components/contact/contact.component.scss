@@ -57,128 +57,134 @@ form{
     @include dFlex(flex-start, space-between, 40px);
     flex-direction: column;
     width: 616px;
-    .form-top{
+}
+
+.form-top{
+    width: 100%;
+    .row{
+        @include dFlex(flex-start, space-between, 16px);
         width: 100%;
-        .row{
-            @include dFlex(flex-start, space-between, 16px);
-            width: 100%;
-            flex-direction: column;
-            padding: 32px;
-            border-top: 1px solid rgba($color: #3dcfb6, $alpha: 0.25);
-            border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 0.25);
-            &:first-of-type{
-                border-top: 1px solid rgba($color: #3dcfb6, $alpha: 0.5);
-            }
-            &:last-of-type{
-                border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 0.5);
-            }
-            &:not(:first-of-type){
-                margin-top: -1px;
-            }
-            &:hover{
-                border-top: 1px solid rgba($color: #3dcfb6, $alpha: 1);
-                border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 1);
+        flex-direction: column;
+        padding: 32px;
+        border-top: 1px solid rgba($color: #3dcfb6, $alpha: 0.25);
+        border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 0.25);
+        &:first-of-type{
+            border-top: 1px solid rgba($color: #3dcfb6, $alpha: 0.5);
+        }
+        &:last-of-type{
+            border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 0.5);
+        }
+        &:not(:first-of-type){
+            margin-top: -1px;
+        }
+        &:hover{
+            border-top: 1px solid rgba($color: #3dcfb6, $alpha: 1);
+            border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 1);
+            cursor: pointer;
+            *{
                 cursor: pointer;
-                *{
-                    cursor: pointer;
-                }
-                input{
-                    &::placeholder{
-                        color: rgba($color: #ffffff, $alpha: 1);
-                    }
-                }
             }
-            &:focus-within{
-                input{
-                    &::placeholder{
-                        color: transparent;
-                    }
+            input{
+                &::placeholder{
+                    color: rgba($color: #ffffff, $alpha: 1);
                 }
             }
         }
-        label{
-            font-family: Fira Code;
-            font-weight: 500;
-            font-size: 24px;
-            color: #3dcfb6;
-        }
-        input{
-            width: 100%;
-            height: 22px;
-            background: none;
-            border: none;
-            color: white;
-            font-family: Karla;
-            font-size: 18px;
-            &::placeholder{
-                font-family: Karla;
-                font-size: 18px;
-                color: rgba($color: #ffffff, $alpha: 0.8);
-                line-height: 120%;
-            }
-            &:focus{
-                outline: none;
+        &:focus-within{
+            input{
+                &::placeholder{
+                    color: transparent;
+                }
             }
         }
     }
-    .form-bottom{
-        @include dFlex(center, space-between, 16px);
-        flex-direction: column;
-        .privacy-policy{
-            @include dFlex(center, flex-start);
-            flex-direction: column;
-            font-family: Karla;
-            font-size: 15px;
-            color: white;
-            div{
-                @include dFlex(center, flex-start);
-                width: 100%;
-                column-gap: 8px;
-            }
-            img{
-                width: 24px;
-                height: 24px;
-                &:hover{
-                    cursor: pointer;
-                    filter: drop-shadow(0 0 6px #3DCFB6);
-                }
-            }
-            span{
-                font-family: Fira Code;
-                color: #3DCFB6;
-                &:hover{
-                    cursor: pointer;
-                    color: white;
-                    text-decoration: underline;
-                    text-underline-offset: 6px;
-                    text-decoration-color: #3DCFB6;
-                }
-            }
-            #error{
-                visibility: hidden;
-                color: red;
-                width: 100%;
-            }
-        }
-        button{
-            height: 48px;
-            padding: 0 24px;
-            border: 1px solid rgba($color: #ffffff, $alpha: 0.5);
-            border-radius: 100px;
-            background: unset;
+    label{
+        font-family: Fira Code;
+        font-weight: 500;
+        font-size: 24px;
+        color: #3dcfb6;
+    }
+    input{
+        width: 100%;
+        height: 22px;
+        background: none;
+        border: none;
+        color: white;
+        font-family: Karla;
+        font-size: 18px;
+        &::placeholder{
             font-family: Karla;
             font-size: 18px;
-            overflow: hidden;
-            span{
-                display: inline-block;
-                color: rgba($color: #ffffff, $alpha: 0.5);
-            }
-            &.active:hover{
+            color: rgba($color: #ffffff, $alpha: 0.8);
+            line-height: 120%;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+}
+
+.form-bottom{
+    @include dFlex(center, space-between, 16px);
+    flex-direction: column;
+    .privacy-policy{
+        @include dFlex(center, flex-start);
+        flex-direction: column;
+        font-family: Karla;
+        font-size: 15px;
+        color: white;
+        div{
+            @include dFlex(center, flex-start);
+            width: 100%;
+            column-gap: 8px;
+        }
+        img{
+            width: 24px;
+            height: 24px;
+            &:hover{
                 cursor: pointer;
-                border: 1px solid #3DCFB6;
+                filter: drop-shadow(0 0 6px #3DCFB6);
+            }
+        }
+        span{
+            font-family: Fira Code;
+            color: #3DCFB6;
+            &:hover{
+                cursor: pointer;
+                color: white;
+                text-decoration: underline;
+                text-underline-offset: 6px;
+                text-decoration-color: #3DCFB6;
+            }
+        }
+        #error{
+            visibility: hidden;
+            color: red;
+            width: 100%;
+        }
+    }
+    button{
+        height: 48px;
+        padding: 0 24px;
+        border: 1px solid rgba($color: #ffffff, $alpha: 0.5);
+        border-radius: 100px;
+        background: unset;
+        font-family: Karla;
+        font-size: 18px;
+        overflow: hidden;
+        span{
+            display: inline-block;
+            color: rgba($color: #ffffff, $alpha: 0.5);
+        }
+        &.active{
+            border: 1px solid #3DCFB6;
+            span{
+                color: #3DCFB6;
+            }
+            &:hover{
+                cursor: pointer;
                 span{
                     cursor: pointer;
-                    color: #3DCFB6;
                     animation: sliding_text 2s infinite linear;
                 }
             }
@@ -203,7 +209,8 @@ form{
 
 .error{
     position: absolute;
-    bottom: 0;
+    bottom: 32px;
+    color: red;
     div{
         border: unset;
     }

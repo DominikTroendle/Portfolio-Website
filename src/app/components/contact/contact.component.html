@@ -10,30 +10,29 @@
             <p>{{db.data.contactData.textBefore}}<a href="{{db.data.contactData.textHref}}"><span>{{db.data.contactData.textHighlighted}}</span></a></p>
         </div>
     </div>
-    <form #contactForm="ngForm" novalidate>
+    <form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()">
         <div class="form-top">
             @for(input of db.data.contactData.form; track input){
                 <div class="row" style="position: relative;">
-                    <label for="{{input.id}}">{{input.text}}</label>
+                    <label [for]="input.id">{{input.text}}</label>
                     <input 
-                    [type]="input.id === 'email' ? 'email' : 'text'"
-                    id="{{input.id}}"
-                    placeholder="{{input.placeholder}}"
+                    [type]="input.type"
+                    [id]="input.id"
+                    [placeholder]="input.placeholder"
+                    [formControlName]="input.id"
                     autocomplete="on"
-                    name="{{input.id}}"
-                    ngModel
-                    required
-                    #validation="ngModel"
-                    (blur)="validation.control.markAsTouched()"
-                    (click)="validation.control.markAsUntouched()"
+                    (blur)="contactForm.get(input.id)?.markAsTouched()"
                     >
-                    @if(validation.invalid && (validation.dirty || validation.touched)){
+                    @if(contactForm.get(input.id)?.invalid && contactForm.get(input.id)?.touched){
                         <div class="error">
-                            @if(validation.hasError('required')){
+                            @if(contactForm.get(input.id)?.hasError('required')){
                                 <p>{{db.data.contactData.requiredError}}</p>
                             }
-                            @if(validation.hasError('email')){
+                            @if(contactForm.get(input.id)?.hasError('pattern')){
                                 <p>{{db.data.contactData.emailError}}</p>
+                            }
+                            @if(contactForm.get(input.id)?.hasError('minlength')){
+                                <p>{{db.data.contactData.lengthError}}</p>
                             }
                         </div>
                     }
@@ -52,7 +51,7 @@
                 </div>
                 <p id="error">{{db.data.contactData.policyError}}</p>
             </div>
-            <button type="submit"><span>{{db.data.contactData.button}}</span></button>
+            <button type="submit" [class.active]="contactForm.valid"><span>{{db.data.contactData.button}}</span></button>
         </div>
     </form>
 </section>
