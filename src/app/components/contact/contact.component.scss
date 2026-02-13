@@ -88,6 +88,11 @@ form{
                 &::placeholder{
                     color: rgba($color: #ffffff, $alpha: 1);
                 }
+                &.error_placeholder{
+                    &::placeholder{
+                        color: rgba($color: #EC7B7BCC, $alpha: 0.8);
+                    }
+                }
             }
         }
         &:focus-within{
@@ -121,6 +126,11 @@ form{
         &:focus{
             outline: none;
         }
+        &.error_placeholder{
+            &::placeholder{
+                color: rgba($color: #EC7B7BCC, $alpha: 0.8);
+            }
+}
     }
 }
 
@@ -128,7 +138,7 @@ form{
     @include dFlex(center, space-between, 16px);
     flex-direction: column;
     .privacy-policy{
-        @include dFlex(center, flex-start);
+        @include dFlex(center, flex-start, 5px);
         flex-direction: column;
         font-family: Karla;
         font-size: 15px;
@@ -138,7 +148,22 @@ form{
             width: 100%;
             column-gap: 8px;
         }
-        img{
+        input[type=checkbox]{
+            display: none;
+        }
+        input[type=checkbox] + label {
+            display:inline-block;
+            background-image: url(../../../assets/img/checkbox.png);
+            width: 24px;
+            height: 24px;
+            &:hover{
+                cursor: pointer;
+                filter: drop-shadow(0 0 6px #3DCFB6);
+            }
+        }
+        input[type=checkbox]:checked + label{
+             display:inline-block;
+            background-image: url(../../../assets/img/checkbox_checked.png);
             width: 24px;
             height: 24px;
             &:hover{
@@ -159,8 +184,13 @@ form{
         }
         #error{
             visibility: hidden;
-            color: red;
+            color: rgba($color: #EC7B7BCC, $alpha: 0.8);
+            font-family: Karla;
+            font-size: 14px;
             width: 100%;
+            &.visible{
+                visibility: visible;
+            }
         }
     }
     button{
@@ -209,8 +239,10 @@ form{
 
 .error{
     position: absolute;
-    bottom: 32px;
-    color: red;
+    bottom: 6px;
+    color: rgba($color: #EC7B7BCC, $alpha: 0.8);
+    font-family: Karla;
+    font-size: 18px;
     div{
         border: unset;
     }

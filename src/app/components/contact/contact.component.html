@@ -18,16 +18,20 @@
                     <input 
                     [type]="input.type"
                     [id]="input.id"
-                    [placeholder]="input.placeholder"
                     [formControlName]="input.id"
                     autocomplete="on"
+                    [placeholder]="
+                        contactForm.get(input.id)?.hasError('required') &&
+                        contactForm.get(input.id)?.touched
+                        ? input.placeholderError
+                        : input.placeholder"
+                    [class.error_placeholder]="
+                        contactForm.get(input.id)?.hasError('required') &&
+                        contactForm.get(input.id)?.touched"
                     (blur)="contactForm.get(input.id)?.markAsTouched()"
                     >
                     @if(contactForm.get(input.id)?.invalid && contactForm.get(input.id)?.touched){
                         <div class="error">
-                            @if(contactForm.get(input.id)?.hasError('required')){
-                                <p>{{db.data.contactData.requiredError}}</p>
-                            }
                             @if(contactForm.get(input.id)?.hasError('pattern')){
                                 <p>{{db.data.contactData.emailError}}</p>
                             }
@@ -42,14 +46,14 @@
         <div class="form-bottom">
             <div class="privacy-policy">
                 <div>
-                    <img
-                    [src]="image"
-                    (click)="changeImg()"
-                    alt="checkbox"
-                    >
+                    <input
+                    type="checkbox"
+                    id="privacy-policy"
+                    formControlName="privacyPolicy">
+                    <label for="privacy-policy"></label>
                     <p>{{db.data.contactData.policyBefore}}<a href="privacy-policy"><span>{{db.data.contactData.policyHighlighted}}</span></a>{{db.data.contactData.policyAfter}}</p>
                 </div>
-                <p id="error">{{db.data.contactData.policyError}}</p>
+                <p id="error" [class.visible]="contactForm.get('privacyPolicy')?.invalid && formSubmitted">{{db.data.contactData.policyError}}</p>
             </div>
             <button type="submit" [class.active]="contactForm.valid"><span>{{db.data.contactData.button}}</span></button>
         </div>

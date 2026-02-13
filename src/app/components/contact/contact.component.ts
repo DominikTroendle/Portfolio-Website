@@ -13,11 +13,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class ContactComponent {
   contactForm!: FormGroup;
-  isChecked = false;
-
-  imageChecked="../../../assets/img/checkbox_checked.png";
-  imageUnchecked="../../../assets/img/checkbox.png";
-
+  formSubmitted = false;
+  
   constructor(
     private fb: FormBuilder,
     public db: DatabaseService
@@ -29,29 +26,25 @@ export class ContactComponent {
 
   buildForm(){
     const group: any = {};
-    for(const input of this.db.data.contactData.form){
-      const validators = [];
-      validators.push(Validators.required);
-      if(input.id === 'email'){
-        validators.push(Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/));
-      }else{
-        validators.push(Validators.minLength(2));
-      }
-      group[input.id] = ['', validators];
-    }
+    this.db.data.contactData.form.forEach((input: any) => {
+      group[input.id] = this.createFormControl(input.id);
+    });
+    group['privacyPolicy'] = [false, Validators.requiredTrue];
     this.contactForm = this.fb.group(group);
+  }
+  
+  createFormControl(id: string){
+    const validators = [Validators.required];
+    if(id === 'email'){
+        validators.push(Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/));
+    }else{
+      validators.push(Validators.minLength(2));
+    }
+    return this.fb.control('', {validators, updateOn: 'blur'});
   }
 
   onSubmit(){
     console.log(this.contactForm.valid);
-    
-  }
-
-  changeImg(){
-    this.isChecked = !this.isChecked;
-  }
-
-  get image(): string{
-    return this.isChecked ? this.imageChecked : this.imageUnchecked;
+    this.formSubmitted = true;
   }
 }
