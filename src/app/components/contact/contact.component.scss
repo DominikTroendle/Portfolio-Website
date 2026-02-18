@@ -154,8 +154,8 @@ form{
         input[type=checkbox] + label {
             display:inline-block;
             background-image: url(../../../assets/img/checkbox.png);
-            width: 24px;
-            height: 24px;
+            min-width: 24px;
+            min-height: 24px;
             &:hover{
                 cursor: pointer;
                 filter: drop-shadow(0 0 6px #3DCFB6);
