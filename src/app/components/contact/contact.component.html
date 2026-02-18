@@ -22,12 +22,12 @@
                     autocomplete="on"
                     [placeholder]="
                         contactForm.get(input.id)?.hasError('required') &&
-                        contactForm.get(input.id)?.touched
+                        (contactForm.get(input.id)?.touched || formSubmitted)
                         ? input.placeholderError
                         : input.placeholder"
                     [class.error_placeholder]="
                         contactForm.get(input.id)?.hasError('required') &&
-                        contactForm.get(input.id)?.touched"
+                        (contactForm.get(input.id)?.touched || formSubmitted)"
                     (blur)="contactForm.get(input.id)?.markAsTouched()"
                     >
                     @if(contactForm.get(input.id)?.invalid && contactForm.get(input.id)?.touched){
