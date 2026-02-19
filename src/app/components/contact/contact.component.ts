@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,  FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -12,9 +13,22 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  contactForm!: FormGroup;
+  contactForm!: FormGroup<Record<string, FormControl<unknown>>>;
   formSubmitted = false;
   
+  http: HttpClient = inject(HttpClient);
+  mailtest = true; //mailtest und in onSubmit im if-block !mailtest sowie das else-if raus, wenn test beendet
+  post = {
+    endPoint: 'https://dominik-troendle.de/sendMail.php',
+    body: (payload: any) => JSON.stringify(payload),
+    options: {
+      headers: {
+        'Content-Type': 'text/plain',
+        responseType: 'text'
+      }
+    }
+  };
+
   constructor(
     private fb: FormBuilder,
     public db: DatabaseService
@@ -29,7 +43,9 @@ export class ContactComponent {
     this.db.data.contactData.form.forEach((input: any) => {
       group[input.id] = this.createFormControl(input.id);
     });
-    group['privacyPolicy'] = [false, Validators.requiredTrue];
+    group['privacyPolicy'] = new FormControl(false, {
+      validators: [Validators.requiredTrue]
+    });
     this.contactForm = this.fb.group(group);
   }
   
@@ -44,7 +60,23 @@ export class ContactComponent {
   }
 
   onSubmit(){
-    console.log(this.contactForm.valid);
     this.formSubmitted = true;
+    if(this.contactForm.valid && !this.mailtest){
+      const { privacyPolicy, ...contactData } = this.contactForm.getRawValue();
+      this.http.post(this.post.endPoint, this.post.body(contactData))
+        .subscribe({
+          next: (response) => {
+            //reset form
+          },
+          error: (error) => {
+            console.error(error);
+          },
+          complete: () => {
+            //show user a "succesfully sent" message
+          }
+        })
+    } else if(this.contactForm.valid && this.mailtest){
+      //reset form
+    }
   }
 }
