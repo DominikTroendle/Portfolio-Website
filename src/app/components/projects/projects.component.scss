@@ -35,6 +35,13 @@ section{
     }
 }
 
+.overlay{
+    visibility: hidden;
+    &.show{
+        visibility: visible;
+    }
+}
+
 .row{
     @include dFlex(center, space-between);
     position: relative;

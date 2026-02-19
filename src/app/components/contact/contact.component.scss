@@ -56,7 +56,9 @@ section{
 form{
     @include dFlex(flex-start, space-between, 40px);
     flex-direction: column;
+    position: relative;
     width: 616px;
+    height: fit-content;
 }
 
 .form-top{
@@ -130,7 +132,37 @@ form{
             &::placeholder{
                 color: rgba($color: #EC7B7BCC, $alpha: 0.8);
             }
+        }
+    }
 }
+
+.overlay-success{
+    @include dFlex(center, center);
+    position: absolute;
+    top: -2%;
+    left: -2%;
+    width: 104%;
+    height: 104%;
+    border-radius: 30px;
+    background-color: rgba($color: #ffffff, $alpha: 0.12);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px 10px rgba($color: #000000, $alpha: 0.3);
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    color: white;
+    font-family: Karla;
+    font-size: 24px;
+    transition: opacity 0.3s ease-in-out,
+                visibility 0s linear 0.3s;
+    p{
+        text-shadow: 5px 5px 5px rgba($color: #000000, $alpha: 1);
+    }
+    &.show{
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out,
+                    visibility 0s;
     }
 }
 

@@ -11,6 +11,11 @@
         </div>
     </div>
     <form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()">
+        <div
+        class="overlay-success"
+        [class.show]="overlayVisible">
+            <p>{{db.data.contactData.messageSent}}</p>
+        </div>
         <div class="form-top">
             @for(input of db.data.contactData.form; track input){
                 <div class="row" style="position: relative;">

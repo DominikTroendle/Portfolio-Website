@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   standalone: true,
   imports: [
     ReactiveFormsModule
-  ],
+],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
@@ -16,8 +16,8 @@ export class ContactComponent {
   contactForm!: FormGroup<Record<string, FormControl<unknown>>>;
   formSubmitted = false;
   
+  mailtest = true;
   http: HttpClient = inject(HttpClient);
-  mailtest = true; //mailtest und in onSubmit im if-block !mailtest sowie das else-if raus, wenn test beendet
   post = {
     endPoint: 'https://dominik-troendle.de/sendMail.php',
     body: (payload: any) => JSON.stringify(payload),
@@ -28,6 +28,7 @@ export class ContactComponent {
       }
     }
   };
+  overlayVisible = false;
 
   constructor(
     private fb: FormBuilder,
@@ -66,17 +67,21 @@ export class ContactComponent {
       this.http.post(this.post.endPoint, this.post.body(contactData))
         .subscribe({
           next: (response) => {
-            //reset form
+            this.contactForm.reset();
+            this.formSubmitted = false;
+            console.log(response);
           },
           error: (error) => {
             console.error(error);
-          },
-          complete: () => {
-            //show user a "succesfully sent" message
           }
         })
     } else if(this.contactForm.valid && this.mailtest){
-      //reset form
+        this.contactForm.reset();
+        this.overlayVisible = true;
+        this.formSubmitted = false;
+        setTimeout(() => {
+          this.overlayVisible = false;
+        }, 4000);
     }
   }
 }

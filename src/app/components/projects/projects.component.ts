@@ -1,14 +1,13 @@
 import { Component, Inject, Renderer2 } from '@angular/core';
 import { OverlayComponent } from "../overlay/overlay.component";
-import { NgStyle, DOCUMENT } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import { DatabaseService } from '../../services/database/database.service';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
   imports: [
-    OverlayComponent,
-    NgStyle
+    OverlayComponent
 ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'

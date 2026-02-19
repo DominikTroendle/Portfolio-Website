@@ -1,7 +1,8 @@
 <app-overlay
+    class="overlay"
     [overlayData]="selectedProject"
     [projectNumber]="'0' + selectedIndex"
-    [ngStyle]="{'display': isVisible ? 'block' : 'none'}"
+    [class.show]="isVisible"
     (close)="closeOverlay()"
     (next)="updateOverlay(selectedIndex)"
 ></app-overlay>
