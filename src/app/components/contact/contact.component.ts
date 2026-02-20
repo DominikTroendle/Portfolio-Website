@@ -16,7 +16,6 @@ export class ContactComponent {
   contactForm!: FormGroup<Record<string, FormControl<unknown>>>;
   formSubmitted = false;
   
-  mailtest = true;
   http: HttpClient = inject(HttpClient);
   post = {
     endPoint: 'https://dominik-troendle.de/sendMail.php',
@@ -62,26 +61,18 @@ export class ContactComponent {
 
   onSubmit(){
     this.formSubmitted = true;
-    if(this.contactForm.valid && !this.mailtest){
+    if(this.contactForm.valid){
       const { privacyPolicy, ...contactData } = this.contactForm.getRawValue();
       this.http.post(this.post.endPoint, this.post.body(contactData))
         .subscribe({
-          next: (response) => {
+          next: () => {
             this.contactForm.reset();
+            this.overlayVisible = true;
             this.formSubmitted = false;
-            console.log(response);
+            setTimeout(() => {this.overlayVisible = false;}, 4000);
           },
-          error: (error) => {
-            console.error(error);
-          }
+          error: (error) => {console.error(error);}
         })
-    } else if(this.contactForm.valid && this.mailtest){
-        this.contactForm.reset();
-        this.overlayVisible = true;
-        this.formSubmitted = false;
-        setTimeout(() => {
-          this.overlayVisible = false;
-        }, 4000);
     }
   }
 }
