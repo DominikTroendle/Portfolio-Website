@@ -7,7 +7,6 @@ section{
     width: 100vw;
     padding: 100px 98px;
     background-color: #1c1c1c;
-    overflow: hidden;
     h1{
         font-family: Fira Code;
         font-weight: 700;
@@ -16,9 +15,25 @@ section{
     }
 }
 
+.carousel-mask{
+    @include dFlex(center, center);
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
+}
+
 .container-carousel{
     @include dFlex(center, space-between, 64px);
     position: relative;
+    width: max-content;
+    flex-shrink: 0;
     img{
         position: absolute;
         top: -3%;

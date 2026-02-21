@@ -1,44 +1,46 @@
 <section>
     <h1>{{db.data.referencesData.headline}}</h1>
-    <div class="container-carousel">
-        <img src="../../assets/img/quotes.png" alt="quotes">
-        <div class="card-wrapper">
-            <div class="card"
-            [class.slide-further-right]="direction === 'right'"
-            >
-                <p>{{getItemRelativeToCurrent(-1).text}}</p>
-                <div>
-                    <hr>
-                    <span>{{getItemRelativeToCurrent(-1).name}} &#45; {{getItemRelativeToCurrent(-1).role}}</span>
-                </div>
-            </div>
-        </div>
-        @for(item of db.data.referencesData.carousel; track item; let i = $index){
-            <div class="card-wrapper"
-            [class.slide-right]="direction === 'right'"
-            [class.slide-left]="direction === 'left'"
-            >
+    <div class="carousel-mask">
+        <div class="container-carousel">
+            <img src="../../assets/img/quotes.png" alt="quotes">
+            <div class="card-wrapper">
                 <div class="card"
-                [class.active]="i === 1"
-                [class.shrink]="i === 1 && (direction === 'left' || direction === 'right')"
-                [class.grow]="direction === 'left' && i === 2 || direction === 'right' && i === 0"
+                [class.slide-further-right]="direction === 'right'"
                 >
-                    <p>{{getItemIndex(i).text}}</p>
+                    <p>{{getItemRelativeToCurrent(-1).text}}</p>
                     <div>
                         <hr>
-                        <span>{{getItemIndex(i).name}} &#45; {{getItemIndex(i).role}}</span>
+                        <span>{{getItemRelativeToCurrent(-1).name}} &#45; {{getItemRelativeToCurrent(-1).role}}</span>
                     </div>
                 </div>
             </div>
-        }
-        <div class="card-wrapper">
-            <div class="card"
-            [class.slide-further-left]="direction === 'left'"
-            >
-                <p>{{getItemRelativeToCurrent(0).text}}</p>
-                <div>
-                    <hr>
-                    <span>{{getItemRelativeToCurrent(0).name}} &#45; {{getItemRelativeToCurrent(0).role}}</span>
+            @for(item of db.data.referencesData.carousel; track item; let i = $index){
+                <div class="card-wrapper"
+                [class.slide-right]="direction === 'right'"
+                [class.slide-left]="direction === 'left'"
+                >
+                    <div class="card"
+                    [class.active]="i === 1"
+                    [class.shrink]="i === 1 && (direction === 'left' || direction === 'right')"
+                    [class.grow]="direction === 'left' && i === 2 || direction === 'right' && i === 0"
+                    >
+                        <p>{{getItemIndex(i).text}}</p>
+                        <div>
+                            <hr>
+                            <span>{{getItemIndex(i).name}} &#45; {{getItemIndex(i).role}}</span>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="card-wrapper">
+                <div class="card"
+                [class.slide-further-left]="direction === 'left'"
+                >
+                    <p>{{getItemRelativeToCurrent(0).text}}</p>
+                    <div>
+                        <hr>
+                        <span>{{getItemRelativeToCurrent(0).name}} &#45; {{getItemRelativeToCurrent(0).role}}</span>
+                    </div>
                 </div>
             </div>
         </div>
