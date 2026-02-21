@@ -24,7 +24,7 @@
                     [type]="input.type"
                     [id]="input.id"
                     [formControlName]="input.id"
-                    autocomplete="on"
+                    autocomplete="off"
                     [placeholder]="
                         contactForm.get(input.id)?.hasError('required') &&
                         (contactForm.get(input.id)?.touched || formSubmitted)
