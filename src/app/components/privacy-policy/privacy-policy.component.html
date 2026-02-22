@@ -19,7 +19,7 @@
                                 @for(inline of block.inlines; track inline){
                                     @switch(inline.type){
                                         @case("text"){{{inline.value}}}
-                                        @case("link"){<a href="{{inline.href}}" target="_blank">{{inline.value}}</a>}
+                                        @case("link"){<a [href]="inline.href" target="_blank">{{inline.value}}</a>}
                                     }
                                 }
                             </p>

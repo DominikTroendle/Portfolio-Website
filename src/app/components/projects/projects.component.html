@@ -16,15 +16,15 @@
                 <div class="row" (click)="showOverlay(i)">
                     <div>
                         <h2>{{project.title}}</h2>
-                        <img class="arrow" src="../../assets/img/arrow_outward.png" alt="arrow">
+                        <img class="arrow" src="assets/img/arrow_outward.png" alt="arrow">
                     </div>
                     <ul>
                         @for(tech of db.data.projectsData.projects[i].technologies; track tech){
                             <li>{{tech}}</li>
                         }
                     </ul>
-                    <img class="img-preview" src="../../assets/img/{{project.src}}" alt="{{project.title}}-preview">
-                    <img class="img-preview-bg" src="../../assets/img/img-preview-bg.png" alt="preview-img-bg">
+                    <img class="img-preview" [src]="'assets/img/' + project.src" [alt]="project.title + '-preview'">
+                    <img class="img-preview-bg" src="assets/img/img-preview-bg.png" alt="preview-img-bg">
                 </div>
             }
         </div>

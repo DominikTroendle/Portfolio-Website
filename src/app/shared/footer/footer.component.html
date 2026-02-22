@@ -1,13 +1,13 @@
 <footer>
     <div class="container-left">
-        <a href="#atf"><img src="../../../assets/img/logo_text.png" alt="logo"></a>
+        <a href="#atf"><img src="assets/img/logo_text.png" alt="logo"></a>
         <span>{{db.data.footerData.function}}</span>
         <span>{{db.data.footerData.location}}</span>
     </div>
     <span class="copyright">{{db.data.footerData.copyright}}</span>
     <ul>
         @for(link of db.data.footerData.links; track link){
-            <li><a href="{{link.href}}">{{link.text}}</a></li>
+            <li><a [href]="link.href">{{link.text}}</a></li>
         }
     </ul>
 </footer>

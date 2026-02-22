@@ -12,7 +12,7 @@
                 <div class="container-details">
                     @for(item of db.data.aboutData.details; track item){
                         <div class="row">
-                            <img src="../../assets/img/{{item.src}}.png" alt="{{item.src}}">
+                            <img [src]="'assets/img/' + item.src + '.png'" [alt]="item.src">
                             <p>{{item.text}}</p>
                         </div>
                     }

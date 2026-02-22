@@ -1,6 +1,6 @@
 <section>
     <div class="side-content left">
-        <a href="#contact"><button><img src="../../../assets/img/arrow_down.png" alt="arrow-down"></button></a>
+        <a href="#contact"><button><img src="assets/img/arrow_down.png" alt="arrow-down"></button></a>
         <hr>
     </div>
     <div class="main-content">
@@ -8,7 +8,7 @@
         <h1>{{db.data.atfData.name}}</h1>
         <div>
             @for(btn of db.data.atfData.buttons; track btn.text){
-                <a class="btn-wrapper" href="{{btn.href}}">
+                <a class="btn-wrapper" [href]="btn.href">
                     <button class="btn">
                         <span>{{btn.text}}</span>
                     </button>
@@ -17,9 +17,9 @@
         </div>
     </div>
     <div class="side-content right">
-        <a href="mailto:{{db.data.atfData.email}}">{{db.data.atfData.email}}</a>
-        <a href="{{db.data.atfData.github}}" class="external-logo-sm" target="_blank"><img src="../../assets/img/github-logo.png" alt="github-logo"></a>
-        <a href="{{db.data.atfData.linkedin}}" class="external-logo-sm" target="_blank"><img src="../../assets/img/linkedin-logo.png" alt="linkedin-logo"></a>
+        <a [href]="'mailto:' + db.data.atfData.email">{{db.data.atfData.email}}</a>
+        <a [href]="db.data.atfData.github" class="external-logo-sm" target="_blank"><img src="assets/img/github-logo.png" alt="github-logo"></a>
+        <a [href]="db.data.atfData.linkedin" class="external-logo-sm" target="_blank"><img src="assets/img/linkedin-logo.png" alt="linkedin-logo"></a>
         <hr>
     </div>
     <div class="ribbon">

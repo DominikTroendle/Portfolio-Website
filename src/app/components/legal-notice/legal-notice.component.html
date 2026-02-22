@@ -21,7 +21,7 @@
                                     @switch(inline.type){
                                         @case("text"){{{inline.value}}}
                                         @case("span"){<span>{{inline.value}}</span>}
-                                        @case("link"){<a href="{{inline.href}}" target="_blank">{{inline.value}}</a>}
+                                        @case("link"){<a [href]="inline.href" target="_blank">{{inline.value}}</a>}
                                     }
                                 }
                             </p>

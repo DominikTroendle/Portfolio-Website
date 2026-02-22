@@ -7,7 +7,7 @@
         <div>
             <h2>{{db.data.contactData.subheadline}}</h2>
             <p>{{db.data.contactData.introduction}}</p>
-            <p>{{db.data.contactData.textBefore}}<a href="{{db.data.contactData.textHref}}"><span>{{db.data.contactData.textHighlighted}}</span></a></p>
+            <p>{{db.data.contactData.textBefore}}<a [href]="db.data.contactData.textHref"><span>{{db.data.contactData.textHighlighted}}</span></a></p>
         </div>
     </div>
     <form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()">

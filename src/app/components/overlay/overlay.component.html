@@ -11,33 +11,33 @@
                 <div class="technologies">
                     @for(tech of overlayData.technologies; track tech){
                         <div>
-                            <img src="../../../assets/img/{{tech.src}}-logo.png" alt="{{tech.src}}-logo">
+                            <img [src]="'assets/img/' + tech.src + '-logo.png'" [alt]="tech.src + '-logo'">
                             <span>{{tech.text}}</span>
                         </div>
                     }
                 </div>
             </div>
             <div class="buttons">
-                <a target="_blank" href="{{overlayData.github}}">
+                <a target="_blank" [href]="overlayData.github">
                     <button>
                         <span>Github</span>
-                        <img src="../../../assets/img/arrow_outward_turquoise.png" alt="arrow-link">
+                        <img src="assets/img/arrow_outward_turquoise.png" alt="arrow-link">
                     </button>
                 </a>
-                <a target="_blank" href="{{overlayData.url}}">
+                <a target="_blank" [href]="overlayData.url">
                     <button>
                         <span>Live Test</span>
-                        <img src="../../../assets/img/arrow_outward_turquoise.png" alt="arrow-link">
+                        <img src="assets/img/arrow_outward_turquoise.png" alt="arrow-link">
                     </button>
                 </a>
             </div>
         </div>
         <div class="right">
-            <img src="../../../assets/img/close_small.png" alt="close-cross" (click)="closeOverlay()">
-            <img class="preview" src="../../../assets/img/{{overlayData.previewSrc}}" alt="preview-img">
+            <img src="assets/img/close_small.png" alt="close-cross" (click)="closeOverlay()">
+            <img class="preview" [src]="'assets/img/' + overlayData.previewSrc" alt="preview-img">
             <div (click)="nextProject()">
                 <span>{{db.data.projectsData.nextProject}}</span>
-                <img src="../../../assets/img/arrow_forward.png" alt="arrow-next">
+                <img src="/assets/img/arrow_forward.png" alt="arrow-next">
             </div>
         </div>
     </div>
