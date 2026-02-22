@@ -33,11 +33,12 @@ section{
     @include dFlex(center, space-between, 64px);
     position: relative;
     width: max-content;
+    height: 300px;
     flex-shrink: 0;
     img{
         position: absolute;
-        top: -3%;
-        left: 39.5%;
+        top: 0;
+        left: 39.4%;
         width: 89px;
         height: 64px;
         z-index: 1;
