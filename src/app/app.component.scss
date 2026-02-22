@@ -1,0 +1,17 @@
+#cursor-effect {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    background: radial-gradient(
+        circle,
+        rgba(61,207,182,0.9) 0%,
+        rgba(61,207,182,0.5) 30%,
+        rgba(61,207,182,0.2) 60%,
+        rgba(61,207,182,0) 80%
+    );
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(10px);
+}
