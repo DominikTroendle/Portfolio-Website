@@ -7,7 +7,7 @@
     <span class="copyright">{{db.data.footerData.copyright}}</span>
     <ul>
         @for(link of db.data.footerData.links; track link){
-            <li><a [href]="link.href">{{link.text}}</a></li>
+            <li><a [href]="link.href" target="_blank">{{link.text}}</a></li>
         }
     </ul>
 </footer>
