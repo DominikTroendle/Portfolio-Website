@@ -1,5 +1,5 @@
-import { Component, ElementRef, ViewChild, HostListener, Renderer2 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Renderer2, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';

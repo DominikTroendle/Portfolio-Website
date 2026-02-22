@@ -5,6 +5,7 @@ import { SkillsComponent } from '../components/skills/skills.component';
 import { ProjectsComponent } from "../components/projects/projects.component";
 import { ReferencesComponent } from "../components/references/references.component";
 import { ContactComponent } from '../components/contact/contact.component';
+import { DatabaseService } from '../services/database/database.service';
 
 @Component({
   selector: 'app-main-content',
@@ -21,5 +22,5 @@ import { ContactComponent } from '../components/contact/contact.component';
   styleUrl: './main-content.component.scss'
 })
 export class MainContentComponent {
-
+  constructor(public db: DatabaseService){ }
 }

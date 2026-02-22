@@ -1,12 +1,14 @@
-<header>
-    <nav>
-        <div class="language-switch">
-            <button [ngClass]="isGerman ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage()">EN</button>
-            <button [ngClass]="!isGerman ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage()">DE</button>
-        </div>
-        @for(item of db.data.headerData.items; track item.text){
-            <a [href]="item.href">{{item.text}}</a>
-        }
-    </nav>
-    <img src="assets/img/logo_text.png" alt="logo">
-</header>
+@if(db.loaded){
+    <header>
+        <nav>
+            <div class="language-switch">
+                <button [ngClass]="isGerman ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage()">EN</button>
+                <button [ngClass]="!isGerman ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage()">DE</button>
+            </div>
+            @for(item of db.data.headerData.items; track item.text){
+                <a [href]="item.href">{{item.text}}</a>
+            }
+        </nav>
+        <img src="assets/img/logo_text.png" alt="logo">
+    </header>
+}
