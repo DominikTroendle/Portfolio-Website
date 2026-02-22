@@ -46,12 +46,12 @@
         </div>
     </div>
     <div class="navigation">
-        <img src="../../assets/img/arrow-left.png" alt="" (click)="previous()">
+        <button [disabled]="isAnimated" (click)="previous()"></button>
         <div>
             @for(item of db.data.referencesData.carousel; track item; let i = $index){
                 <span [class.active-dot]="i === currentIndex"></span>
             }
         </div>
-        <img src="../../assets/img/arrow-right.png" alt="" (click)="next()">
+        <button [disabled]="isAnimated" (click)="next()"></button>
     </div>
 </section>

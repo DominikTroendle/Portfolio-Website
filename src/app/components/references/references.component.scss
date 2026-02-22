@@ -161,6 +161,25 @@ section{
             filter: brightness(0) saturate(100%) invert(65%) sepia(84%) saturate(317%) hue-rotate(120deg) brightness(92%) contrast(91%);
         }
     }
+    button{
+        width: 18px;
+        height: 18px;
+        background: none;
+        border: none;
+        background-position: center;
+        background-size: cover;
+        &:first-of-type{
+            background-image: url(../../../assets/img/arrow-left.png);
+        }
+        &:last-of-type{
+            background-image: url(../../../assets/img/arrow-right.png);
+        }
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.1);
+            filter: brightness(0) saturate(100%) invert(65%) sepia(84%) saturate(317%) hue-rotate(120deg) brightness(92%) contrast(91%);
+        }
+    }
     div{
         @include dFlex(center, space-between, 20px);
         color: white;

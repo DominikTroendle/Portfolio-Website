@@ -13,11 +13,13 @@ export class ReferencesComponent {
   direction: string = "";
   currentIndex: number = 0;
   carouselLength: number = this.db.data.referencesData.carousel.length;
+  isAnimated: boolean = false;
 
   constructor(public db: DatabaseService){ }
 
   next(){
     this.direction = "left";
+    this.isAnimated = true;
     setTimeout(() => {
       this.currentIndex = (this.currentIndex + 1) % this.carouselLength;
       this.reset();
@@ -26,6 +28,7 @@ export class ReferencesComponent {
 
   previous(){
     this.direction = "right";
+    this.isAnimated = true;
     setTimeout(() => {
       this.currentIndex = (this.currentIndex - 1 + this.carouselLength) % this.carouselLength;
       this.reset();
@@ -42,5 +45,6 @@ export class ReferencesComponent {
 
   reset(){
     this.direction = "";
+    this.isAnimated = false;
   }
 }
