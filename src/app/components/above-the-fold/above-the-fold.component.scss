@@ -1,4 +1,5 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/breakpoints' as bp;
 
 section{
   @include dFlex(center, space-between);
@@ -14,13 +15,13 @@ section{
       margin-bottom: 28px;
       font-family: Karla;
       font-weight: 700;
-      font-size: 128px;
+      font-size: clamp(62px, calc(128 / 1440 * 100vw), 128px);
       letter-spacing: -2px;
   }
   h2{
       font-family: Fira Code;
       font-weight: 400;
-      font-size: 40px;
+      font-size: clamp(24px, calc(40 / 1440 * 100vw), 40px);
   }
 }
 
@@ -92,7 +93,7 @@ section{
 
 .left{
   @include dFlex(center, flex-end, 24px);
-  margin-left: 98px;
+  margin-left: 18px;
   hr{
     border-left: 1px solid #3DCFB6;
   }
@@ -130,7 +131,7 @@ section{
 
 .right{
   @include dFlex(center, flex-end, 24px);
-  margin-right: 98px;
+  margin-right: 18px;
   a:nth-child(1){
     writing-mode: sideways-lr;
     font-family: Karla;
@@ -166,6 +167,9 @@ section{
     &:hover::after{
       opacity: 1;
     }
+  }
+  .email-text{
+    display: none;
   }
 }
 
@@ -212,5 +216,46 @@ section{
   }
   100%{
     transform: translateX(-33.333%);
+  }
+}
+
+@media(min-width: bp.$bp-sm) {
+  .left{
+    margin-left: 28px;
+  }
+
+  .right{
+    margin-right: 28px;
+  }
+}
+
+@media (min-width: bp.$bp-md) {
+  .left{
+    margin-left: 60px;
+  }
+
+  .right{
+    margin-right: 60px;
+  }
+}
+
+@media (min-width: bp.$bp-lg) {
+  .left{
+    margin-left: 98px;
+  }
+
+  .right{
+    margin-right: 98px;
+  }
+}
+
+@media (min-width: bp.$bp-xl) {
+  .right{
+    .email-text{
+      display: block;
+    }
+    .email-logo{
+      display: none;
+    }
   }
 }

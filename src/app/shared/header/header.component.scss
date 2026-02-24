@@ -1,5 +1,6 @@
 @use '../../styles/fonts' as *;
 @use '../../styles/mixins' as *;
+@use '../../styles/breakpoints' as bp;
 
 :host{
     display: block;
@@ -14,7 +15,7 @@ header{
     @include dFlex();
     height: 100%;
     color: white;
-    padding: 0 98px;
+    padding: 0 60px;
     background: linear-gradient(180deg,rgba(28, 28, 28, 1) 0%, rgba(28, 28, 28, 0) 100%);
     nav{
         @include dFlex(center, space-between, 32px);
@@ -92,5 +93,11 @@ header{
     transition: opacity 0.5s ease;
     &:hover{
         opacity: 1;
+    }
+}
+
+@media(min-width: bp.$bp-lg) {
+    header{
+        padding: 0 98px;
     }
 }

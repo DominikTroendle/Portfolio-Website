@@ -1,5 +1,6 @@
 @use '../../styles/mixins' as *;
 @use '../../styles/fonts' as *;
+@use '../../styles/breakpoints' as bp;
 
 section{
     background-color: #1c1c1c;
@@ -112,11 +113,20 @@ section{
         opacity: 0;
     }
     .img-preview{
-        left: 120%;
+        left: 110%;
         z-index: 1;
     }
     .img-preview-bg{
-        left: 120%;
+        left: 110%;
         transform: translate(20px, 20px);
+    }
+}
+
+@media (min-width: bp.$bp-3xl) {
+    .row{
+        .img-preview,
+        .img-preview-bg{
+            left: 120%;
+        }
     }
 }
