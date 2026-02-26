@@ -17,6 +17,7 @@ section{
       font-weight: 700;
       font-size: clamp(62px, calc(128 / 1440 * 100vw), 128px);
       letter-spacing: -2px;
+      text-align: center;
   }
   h2{
       font-family: Fira Code;
@@ -29,8 +30,9 @@ section{
   @include dFlex(center, center, 12px);
   flex-direction: column;
   div{
-    @include dFlex(center, center, 48px);
-    height: 48px;
+    @include dFlex(center, center, 24px);
+    flex-direction: column;
+    height: 120px;
   }
 }
 
@@ -85,7 +87,6 @@ section{
   height: 100%;
   width: 32px;
   hr{
-    height: 186px;
     border: none;
     border-left: 1px solid white;
   }
@@ -95,6 +96,7 @@ section{
   @include dFlex(center, flex-end, 24px);
   margin-left: 18px;
   hr{
+    height: 240px;
     border-left: 1px solid #3DCFB6;
   }
   button{
@@ -132,6 +134,9 @@ section{
 .right{
   @include dFlex(center, flex-end, 24px);
   margin-right: 18px;
+  hr{
+    height: 150px;
+  }
   a:nth-child(1){
     writing-mode: sideways-lr;
     font-family: Karla;
@@ -220,12 +225,23 @@ section{
 }
 
 @media(min-width: bp.$bp-sm) {
+  .main-content{
+    div{
+      flex-direction: row;
+      gap: 48px;
+      height: 48px;
+    }
+  }
+
   .left{
     margin-left: 28px;
   }
 
   .right{
     margin-right: 28px;
+    hr{
+      height: 186px;
+    }
   }
 }
 

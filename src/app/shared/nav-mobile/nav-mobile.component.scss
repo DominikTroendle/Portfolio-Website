@@ -1,0 +1,75 @@
+@use '../../styles/fonts' as *;
+@use '../../styles/mixins' as *;
+
+.backdrop{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: 0.4);
+    backdrop-filter: blur(5px);
+}
+
+nav{
+    @include dFlex(flex-start, space-between, 24px);
+    flex-direction: column;
+    font-family: Fira Code;
+    font-size: 20px;
+    position: absolute;
+    top: 78px;
+    right: 60px;
+    padding: 40px 77px;
+    border: 1px solid #3DCFB6;
+    border-radius: 30px;
+    background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
+    a{
+        position: relative;
+    }
+}
+
+.language-switch{
+    @include dFlex(center, center);
+    position: relative;
+    width: 88px;
+    height: 28px;
+    border: 1px solid #3DCFB6;
+    border-radius: 100px;
+    transition: 0.5s ease;
+    &:hover{
+        border: 1px solid white;
+    }
+    button{
+        @include dFlex(center, center);
+        position: absolute;
+        border: unset;
+        border-radius: 100px;
+        height: 28px;
+        width: 44px;
+        font-size: 15px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    button:nth-child(1){
+        left: -1px;
+    }
+    button:nth-child(2){
+        right: -1px;
+    }
+}
+
+.btn-language-active{
+    border: 1px solid #3DCFB6;
+    background: #3DCFB6;
+    color: white;
+}
+
+.btn-language-passive{
+    border: none;
+    background: unset;
+    color: #3DCFB6;
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+    &:hover{
+        opacity: 1;
+    }
+}

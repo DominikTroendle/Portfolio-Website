@@ -1,6 +1,6 @@
 @if(db.loaded){
     <header>
-        <nav>
+        <nav class="nav">
             <div class="language-switch">
                 <button [ngClass]="isGerman ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage()">EN</button>
                 <button [ngClass]="!isGerman ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage()">DE</button>
@@ -9,6 +9,15 @@
                 <a [href]="item.href">{{item.text}}</a>
             }
         </nav>
-        <img src="assets/img/logo_text.png" alt="logo">
+        <img class="logo" src="assets/img/logo_text.png" alt="logo">
+        <img class="logo-mobile" src="assets/img/initials.png" alt="logo">
+        <button
+        class="nav-menu-mobile"
+        (click)="showMobileMenu()"></button>
+        <app-nav-mobile
+            class="nav-mobile"
+            [class.show]="isVisible"
+            (close)="hideMobileMenu()"
+        ></app-nav-mobile>
     </header>
 }

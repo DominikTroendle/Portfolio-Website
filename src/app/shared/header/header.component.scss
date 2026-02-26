@@ -39,11 +39,35 @@ header{
             }
         }
     }
-    img{
-        width: 132px;
-        height: 48px;
+    .logo{
+    display: none;
+    }
+    .logo-mobile{
         &:hover{
-            content: url("../../../assets/img/logo_outline.png");
+            content: url("../../../assets/img/initials_outline.png");
+        }
+    }
+    .nav-menu-mobile{
+        display: block;
+        background: unset;
+        border: unset;
+        background-image: url(../../../assets/img/menu.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 48px;
+        height: 48px;
+    }
+    .nav{
+        display: none;
+    }
+    .nav-mobile{
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        right: 0;
+        &.show{
+            visibility: visible;
         }
     }
 }
@@ -96,8 +120,33 @@ header{
     }
 }
 
+.nav-menu-mobile{
+    display: block;
+}
+
+@media(min-width: bp.$bp-md) {
+
+}
+
 @media(min-width: bp.$bp-lg) {
     header{
         padding: 0 98px;
+        .logo{
+            display: block;
+            width: 132px;
+            height: 48px;
+            &:hover{
+                content: url("../../../assets/img/logo_outline.png");
+            }
+        }
+        .logo-mobile{
+            display: none;
+        }
+        .nav-menu-mobile{
+            display: none;
+        }
+        .nav{
+            display: flex;
+        }
     }
 }
