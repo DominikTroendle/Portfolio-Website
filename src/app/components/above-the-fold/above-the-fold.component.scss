@@ -16,14 +16,14 @@ section{
       margin-bottom: 28px;
       font-family: Karla;
       font-weight: 700;
-      font-size: clamp(62px, calc(128 / 1440 * 100vw), 128px);
+      font-size: 58px;
       letter-spacing: -2px;
       text-align: center;
   }
   h2{
       font-family: Fira Code;
       font-weight: 400;
-      font-size: clamp(24px, calc(40 / 1440 * 100vw), 40px);
+      font-size: 20px;
   }
 }
 
@@ -95,7 +95,7 @@ section{
 
 .left{
   @include dFlex(center, flex-end, 24px);
-  margin-left: 18px;
+  margin-left: 12px;
   hr{
     height: 240px;
     border-left: 1px solid #3DCFB6;
@@ -134,7 +134,7 @@ section{
 
 .right{
   @include dFlex(center, flex-end, 12px);
-  margin-right: 18px;
+  margin-right: 12px;
   hr{
     height: 150px;
   }
@@ -222,6 +222,24 @@ section{
   }
   100%{
     transform: translateX(-33.333%);
+  }
+}
+
+@media(min-width: bp.$bp-xs) {
+  section{
+    h1{
+      font-size: clamp(62px, calc(128 / 1440 * 100vw), 128px);
+    }
+    h2{
+      font-size: clamp(24px, calc(40 / 1440 * 100vw), 40px);
+    }
+  }
+  .left{
+    margin-left: 18px;
+  }
+
+  .right{
+    margin-right: 18px;
   }
 }
 

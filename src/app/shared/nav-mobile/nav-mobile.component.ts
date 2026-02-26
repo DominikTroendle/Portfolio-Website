@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
-import { LocalStorageService } from '../../services/localStorage/local-storage.service';
 import { CommonModule } from '@angular/common';
 import { LanguageSwitchComponent } from "../language-switch/language-switch.component";
 
