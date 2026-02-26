@@ -1,10 +1,7 @@
 @if(db.loaded){
     <header>
         <nav class="nav">
-            <div class="language-switch">
-                <button [ngClass]="isGerman ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage()">EN</button>
-                <button [ngClass]="!isGerman ? 'btn-language-passive' : 'btn-language-active'" (click)="changeLanguage()">DE</button>
-            </div>
+            <app-language-switch></app-language-switch>
             @for(item of db.data.headerData.items; track item.text){
                 <a [href]="item.href">{{item.text}}</a>
             }

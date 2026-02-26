@@ -1,3 +1,4 @@
+@use '../../styles/fonts' as *;
 @use '../../styles/mixins' as *;
 @use '../../styles/breakpoints' as bp;
 
@@ -132,7 +133,7 @@ section{
 }
 
 .right{
-  @include dFlex(center, flex-end, 24px);
+  @include dFlex(center, flex-end, 12px);
   margin-right: 18px;
   hr{
     height: 150px;
@@ -262,6 +263,7 @@ section{
 
   .right{
     margin-right: 98px;
+    gap: 24px;
   }
 }
 

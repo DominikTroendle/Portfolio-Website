@@ -1,0 +1,50 @@
+@use '../../styles/fonts' as *;
+@use '../../styles/mixins' as *;
+
+.language-switch{
+    @include dFlex(center, center);
+    position: relative;
+    width: 88px;
+    height: 28px;
+    border: 1px solid #3DCFB6;
+    border-radius: 100px;
+    transition: border 0.5s ease;
+    &:hover{
+        border: 1px solid white;
+    }
+    button{
+        @include dFlex(center, center);
+        position: absolute;
+        border: unset;
+        border-radius: 100px;
+        height: 28px;
+        width: 44px;
+        font-size: 15px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    button:nth-child(1){
+        left: -1px;
+    }
+    button:nth-child(2){
+        right: -1px;
+    }
+}
+
+.btn-language-active{
+    border: 1px solid #3DCFB6;
+    background: #3DCFB6;
+    color: white;
+}
+
+.btn-language-passive{
+    border: none;
+    background: unset;
+    color: #3DCFB6;
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+    &:hover{
+        opacity: 1;
+    }
+}
