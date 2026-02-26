@@ -1,5 +1,6 @@
 @use '../../styles/mixins' as *;
 @use '../../styles/fonts' as *;
+@use '../../styles/breakpoints' as bp;
 
 section{
     @include dFlex(center, center);
@@ -10,9 +11,10 @@ section{
 }
 
 .container-skills{
-    @include dFlex(center, space-between);
+    @include dFlex(center, space-between, 40px);
+    flex-direction: column;
     width: 100%;
-    padding: 100px 98px;
+    padding: 0 12px;
     >img{
         width: 568px;
         height: 568px;
@@ -26,6 +28,7 @@ section{
     @include dFlex(flex-start, space-between, 20px);
     flex-direction: column;
     height: fit-content;
+    width: 296px;
     h3{
         font-family: Karla;
         font-weight: 500;
@@ -37,7 +40,7 @@ section{
 .container-content{
     @include dFlex(flex-start, space-between, 40px);
     flex-direction: column;
-    width: 568px;
+    width: 100%;
     border: 1px solid #3DCFB6;
     border-radius: 30px;
     background-color: rgba(61, 207, 182, 0.1);
@@ -119,7 +122,7 @@ section{
 .container-right{
     @include dFlex(center, flex-end, 72px);
     flex-wrap: wrap;
-    max-width: 700px;
+    max-width: 648px;
     margin-top: 48px;
     .item-skill{
         @include dFlex(center, flex-start, 8px);
@@ -203,5 +206,35 @@ section{
                 }
             }
         }
+    }
+}
+
+@media(min-width: bp.$bp-xs) {
+    .container-skills{
+        padding: 0 18px;
+    }
+}
+
+@media(min-width: bp.$bp-sm) {
+    .container-skills{
+        padding: 0 28px;
+    }
+}
+
+@media(min-width: bp.$bp-md) {
+    .container-skills{
+        padding: 0 68px;
+    }
+}
+
+@media(min-width: bp.$bp-lg) {
+    .container-skills{
+        flex-direction: row;
+    }
+}
+
+@media(min-width: bp.$bp-2xl) {
+    .container-skills{
+        padding: 100px 98px;
     }
 }
