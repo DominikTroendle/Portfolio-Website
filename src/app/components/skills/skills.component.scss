@@ -5,9 +5,10 @@
 section{
     @include dFlex(center, center);
     width: 100vw;
-    background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 30%), #1c1c1c;
+    background: radial-gradient(ellipse 25% 100% at center,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 50%), #1c1c1c;
     background-repeat: no-repeat, repeat;
-    background-position: left calc(-100dvw / 2) bottom;
+    background-size: cover;
+    background-position: left calc(-50dvw) bottom;
 }
 
 .container-skills{
@@ -15,20 +16,13 @@ section{
     flex-direction: column;
     width: 100%;
     padding: 0 12px;
-    >img{
-        width: 568px;
-        height: 568px;
-        background-color: white;
-        border-radius: 30px;
-        align-self: flex-start;
-    }
 }
 
 .container-left{
     @include dFlex(flex-start, space-between, 20px);
     flex-direction: column;
     height: fit-content;
-    width: 296px;
+    width: clamp(296px, calc(296 / 320 * 100vw), 568px);
     h3{
         font-family: Karla;
         font-weight: 500;
@@ -124,13 +118,12 @@ section{
     gap: clamp(23px, calc(72 / 1440 * 100vw), 72px);
     row-gap: clamp(32px, calc(40 / 1440 * 100vw), 40px);
     flex-wrap: wrap;
-    width: 296px;
-    margin-top: 48px;
+    width: clamp(296px, calc(296 / 320 * 100vw), 568px);
     .item-skill{
         @include dFlex(center, flex-start, 8px);
         position: relative;
         height: 116px;
-        width: 108px;
+        width: 104px;
         flex-direction: column;
         color: white;
         font-family: Fira Code;
@@ -157,9 +150,10 @@ section{
 
 
 .growth-overlay{
-    display: none;
+    // display: none;
+    display: block;
     position: absolute;
-    top: -160%;
+    top: -140%;
     left: 0;
     width: 100%;
     height: 100%;
@@ -172,6 +166,7 @@ section{
         transition: 0.1s ease-in-out;
         z-index: 1;
         filter: drop-shadow(0 6px 6px black);
+        left: 20px;
     }
     .pointer {
         height: 25px;
@@ -182,7 +177,6 @@ section{
         border-radius: 0 0 5px 0;
         margin-top: -12%;
         position: relative;
-        left: 0;
     }
     .container-overlay-content{
         @include dFlex(center, center, 16px);
@@ -216,7 +210,10 @@ section{
         padding: 0 18px;
     }
     .container-left{
-        width: clamp(296px, calc(568 / 1024 * 100vw), 568px);
+        width: clamp(324px, calc(324 / 360 * 100vw), 568px);
+    }
+    .container-right{
+        width: clamp(324px, calc(331 / 360 * 100vw), 568px);
     }
 }
 
@@ -228,12 +225,18 @@ section{
 
 @media(min-width: bp.$bp-md) {
     .container-skills{
-        padding: 0 68px;
+        padding: 0 60px;
     }
 }
 
 @media(min-width: bp.$bp-lg) {
+    section{
+        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 30%), #1c1c1c;
+        background-repeat: no-repeat, repeat;
+        background-position: left calc(-100dvw / 2) bottom;
+    }
     .container-skills{
+        padding: 100px 98px;
         flex-direction: row;
     }
     .container-left{
@@ -241,13 +244,8 @@ section{
     }
     .container-right{
         max-width: 648px;
-        width: clamp(358px, calc(568 / 1440 * 100vw), 648px);
+        width: clamp(358px, calc(648 / 1440 * 100vw), 648px);
         justify-content: flex-end;
-    }
-}
-
-@media(min-width: bp.$bp-2xl) {
-    .container-skills{
-        padding: 100px 98px;
+        margin-top: 48px;
     }
 }
