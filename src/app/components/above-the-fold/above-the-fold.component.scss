@@ -225,7 +225,7 @@ section{
   }
 }
 
-@media(min-width: bp.$bp-xs) {
+@media(min-width: bp.$bp-xxs) {
   section{
     h1{
       font-size: clamp(62px, calc(128 / 1440 * 100vw), 128px);

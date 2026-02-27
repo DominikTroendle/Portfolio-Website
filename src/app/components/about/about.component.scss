@@ -19,7 +19,7 @@ section{
 
 .container-left{
     position: relative;
-    width: 296px;
+    width: clamp(296px, calc(296 / 320 * 100vw), 568px);
     height: auto;
     aspect-ratio: 1/1;
     img{
@@ -47,18 +47,17 @@ section{
     @include dFlex(flex-start, space-between, 20px);
     flex-direction: column;
     height: fit-content;
-    width: 296px;
+    width: clamp(296px, calc(296 / 320 * 100vw), 568px);
     h2{
         font-family: Karla;
         font-weight: 500;
-        font-size: 24px;
-        font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
+        font-size: 18px;
         color: #3DCFB6;
     }
 }
 
 .container-text{
-    @include dFlex(flex-start, space-between, 20px);
+    @include dFlex(flex-start, space-between, 32px);
     flex-direction: column;
     border: 1px solid #3DCFB6;
     border-radius: 30px;
@@ -68,12 +67,13 @@ section{
     h1{
         font-family: Fira Code;
         font-weight: 700;
-        font-size: clamp(56px, calc(64 / 1440 * 100vw), 64px);
+        font-size: 56px;
         color: #3DCFB6;
+        line-height: 90%;
     }
     #introduction{
         font-family: Karla;
-        font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
+        font-size: 16px;
         color: white;
         text-align: justify;
     }
@@ -86,7 +86,7 @@ section{
         @include dFlex(flex-start, center, 24px);
         p{
             font-family: Karla;
-            font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
+            font-size: 16px;
             color: white;
             opacity: 0.8;
             transition: 0.2s ease-in-out;
@@ -101,15 +101,13 @@ section{
     }
 }
 
-@media(min-width: bp.$bp-xs) {
+@media(min-width: bp.$bp-xxs) {
     .container-about{
         padding: 100px 18px;
     }
-    .container-left{
-        width: clamp(296px, calc(568 / 1024 * 100vw), 568px);
-    }
+    .container-left,
     .container-right{
-        width: clamp(296px, calc(568 / 1024 * 100vw), 568px);
+        width: clamp(324px, calc(324 / 360 * 100vw), 568px);
     }
 }
 
@@ -121,7 +119,7 @@ section{
 
 @media(min-width: bp.$bp-md) {
     .container-about{
-        padding: 100px 68px;
+        padding: 100px 60px;
     }
 }
 
@@ -131,19 +129,38 @@ section{
     }
     .container-about{
         flex-direction: row;
+        padding: 100px 98px;
     }
     .container-left{
-        width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
         align-self: flex-start;
+        width: clamp(324px, calc(568 / 1440 * 100vw), 568px);
     }
     .container-right{
-        width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
         align-self: flex-end;
+        width: clamp(324px, calc(568 / 1440 * 100vw), 568px);
     }
 }
 
-@media(min-width: bp.$bp-2xl) {
-    .container-about{
-        padding: 100px 98px;
+@media(min-width: bp.$bp-xl) {
+    .container-right{
+        h2{
+            font-size: 24px;
+        }
+    }
+    .container-text{
+        h1{
+            font-size: 64px;
+            line-height: normal;
+        }
+        #introduction{
+            font-size: 18px;
+        }
+    }
+    .container-details{
+        .row{
+            p{
+                font-size: 18px;
+            }
+        }
     }
 }

@@ -32,13 +32,13 @@ section{
     h3{
         font-family: Karla;
         font-weight: 500;
-        font-size: 24px;
+        font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
         color: #3DCFB6;
     }
 }
 
 .container-content{
-    @include dFlex(flex-start, space-between, 40px);
+    @include dFlex(flex-start, space-between, 32px);
     flex-direction: column;
     width: 100%;
     border: 1px solid #3DCFB6;
@@ -49,7 +49,7 @@ section{
     h1{
         font-family: Fira Code;
         font-weight: 700;
-        font-size: 64px;
+        font-size: clamp(56px, calc(64 / 1440 * 100vw), 64px);
         color: #3DCFB6;
     }
     button{
@@ -100,14 +100,14 @@ section{
     flex-direction: column;
     .introduction{
         font-family: Karla;
-        font-size: 18px;
+        font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
         color: white;
         text-align: justify;
-        margin-bottom: 16px;
+        margin-bottom: clamp(12px, calc(16 / 1440 * 100vw), 16px);
     }
     h2{
         font-family: Fira Code;
-        font-size: 24px;
+        font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
         font-weight: 700;
     }
     span{
@@ -115,14 +115,16 @@ section{
     }
     p{
         font-family: Karla;
-        font-size: 16px;
+        font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
     }
 }
 
 .container-right{
-    @include dFlex(center, flex-end, 72px);
+    @include dFlex(center, center);
+    gap: clamp(23px, calc(72 / 1440 * 100vw), 72px);
+    row-gap: clamp(32px, calc(40 / 1440 * 100vw), 40px);
     flex-wrap: wrap;
-    max-width: 648px;
+    width: 296px;
     margin-top: 48px;
     .item-skill{
         @include dFlex(center, flex-start, 8px);
@@ -132,7 +134,7 @@ section{
         flex-direction: column;
         color: white;
         font-family: Fira Code;
-        font-size: 18px;
+        font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
         text-align: center;
         &:hover{
             > img{
@@ -209,9 +211,12 @@ section{
     }
 }
 
-@media(min-width: bp.$bp-xs) {
+@media(min-width: bp.$bp-xxs) {
     .container-skills{
         padding: 0 18px;
+    }
+    .container-left{
+        width: clamp(296px, calc(568 / 1024 * 100vw), 568px);
     }
 }
 
@@ -230,6 +235,14 @@ section{
 @media(min-width: bp.$bp-lg) {
     .container-skills{
         flex-direction: row;
+    }
+    .container-left{
+        width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
+    }
+    .container-right{
+        max-width: 648px;
+        width: clamp(358px, calc(568 / 1440 * 100vw), 648px);
+        justify-content: flex-end;
     }
 }
 
