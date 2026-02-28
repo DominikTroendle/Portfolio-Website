@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
 
 @Component({
@@ -10,4 +10,12 @@ import { DatabaseService } from '../../services/database/database.service';
 })
 export class SkillsComponent {
   constructor(public db: DatabaseService) { }
+
+  isMobile = window.innerWidth < 1024;
+  isVisible = false;
+
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerHeight < 1024;
+  }
 }

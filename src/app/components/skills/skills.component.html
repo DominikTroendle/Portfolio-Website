@@ -13,21 +13,29 @@
             </div>
         </div>
         <div class="container-right">
-            @for(skill of db.data.skillsData.skills; track skill){
+            @for(skill of db.data.skillsData.skills; track skill; let index = $index){
                 <div class="item-skill">
-                    <img [src]="'assets/img/' + skill.src + '-logo.png'" [alt]="skill.src + '-logo'">
+                    <img
+                    [src]="'assets/img/' + skill.src + '-logo.png'" [alt]="skill.src + '-logo'"
+                    [style.--i]="index">
                     <span>{{skill.text}}</span>
                 </div>
             }
-            <div class="item-skill">
-                <div class="growth-overlay">
+            <div
+            class="item-skill"
+            (click)="isMobile && (isVisible = !isVisible)">
+                <div
+                class="growth-overlay"
+                [class.show]="isMobile && isVisible">
                     <div class="bubble">
                         <div class="container-overlay-content">
                             <p>{{db.data.skillsData.growthMindset.introduction}}</p>
                             <div class="row">
                                 @for(item of db.data.skillsData.growthSkills; track item){
                                     <div>
-                                        <img [src]="'assets/img/' + item.src + '-logo-colored.png'" [alt]="item.src + '-logo-colored'">
+                                        <img
+                                        [src]="'assets/img/' + item.src + '-logo-colored.png'"
+                                        [alt]="item.src + '-logo-colored'">
                                         <span>{{item.text}}</span>
                                     </div>
                                 }
@@ -36,7 +44,9 @@
                     </div>
                     <div class="pointer"></div>
                 </div>
-                <img [src]="'assets/img/' + db.data.skillsData.growthMindset.src + '-mindset.png'" [alt]="db.data.skillsData.growthMindset.src + '-mindset'">
+                <img
+                [src]="'assets/img/' + db.data.skillsData.growthMindset.src + '-mindset.png'" [alt]="db.data.skillsData.growthMindset.src + '-mindset'"
+                [style.--i]="db.data.skillsData.skills.length">
                 <span class="growth-mindset">{{db.data.skillsData.growthMindset.firstLine}}<br>{{db.data.skillsData.growthMindset.secondLine}}</span>
             </div>
         </div>
