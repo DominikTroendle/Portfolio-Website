@@ -3,32 +3,34 @@
 @use '../../styles/breakpoints' as bp;
 
 section{
+    @include dFlex(center, center);
     background-color: #1c1c1c;
     color: white;
     width: 100vw;
-    padding: 100px 98px;
+    padding: 100px 12px;
     .container-content{
         @include dFlex(flex-start, flex-start, 20px);
         flex-direction: column;
-        width: 880px;
+        width: clamp(296px, calc(296 / 320 * 100vw), 568px);
         h1, h3{
             font-weight: 700;
         }
         h3{
             font-family: Fira Code;
-            font-size: 24px;
+            font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
             color: #3DCFB6;
         }
         h1{
             margin-bottom: 21px;
             color: #3DCFB6;
-            font-family: Karla;
-            font-size: 64px;
+            font-family: Fira Code;
+            font-size: clamp(56px, calc(64 / 1440 * 100vw), 64px);
+            line-height: 100%;
         }
         p{
             margin-bottom: 21px;
             font-family: Karla;
-            font-size: 18px;
+            font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
         }
         .container-projects{
             width: 100%;
@@ -44,11 +46,12 @@ section{
 }
 
 .row{
-    @include dFlex(center, space-between);
+    @include dFlex(flex-start, space-between, 12px);
+    flex-direction: column;
     position: relative;
     width: 100%;
     border-top: 1px solid #3DCFB6;
-    padding: 40px 32px;
+    padding: 32px 0;
     cursor: pointer;
     transition: 0.2s ease-in-out;
     *{
@@ -56,17 +59,6 @@ section{
     }
     &:last-child{
         border-bottom: 1px solid #3DCFB6;
-    }
-    &:hover{
-        background-color: rgba($color: #3DCFB6, $alpha: 0.3);
-        .arrow{
-            visibility: visible;
-            opacity: 1;
-        }
-        .img-preview, .img-preview-bg{
-            visibility: visible;
-            opacity: 1;
-        }
     }
     div{
         @include dFlex(center, flex-start, 6px);
@@ -107,18 +99,88 @@ section{
         visibility: hidden;
         position: absolute;
         width: 304px;
-        height: 171px;
+        height: auto;
+        aspect-ratio: 16/9;
         border-radius: 16px;
         transition: 0.2s ease-in-out;
         opacity: 0;
+        left: 110%;
+        top: 50%;
+        transform: translateY(-50%);
     }
     .img-preview{
-        left: 110%;
         z-index: 1;
     }
     .img-preview-bg{
-        left: 110%;
-        transform: translate(20px, 20px);
+        transform: translate(10px, calc(-50% + 10px));
+    }
+}
+
+@media(min-width: bp.$bp-xxs) {
+    section{
+        padding: 100px 18px;
+    }
+}
+
+@media(min-width: bp.$bp-sm) {
+    section{
+        padding: 100px 28px;
+    }
+    .row{
+        flex-direction: row;
+        gap: 0;
+    }
+}
+
+@media(min-width: bp.$bp-md) {
+    section{
+        padding: 100px 60px;
+    }
+}
+
+@media(min-width: bp.$bp-lg) {
+    section{
+        display: block;
+        padding: 100px 98px;
+        .container-content{
+            width: 828px;
+            h1{
+                line-height: normal;
+            }
+            .container-projects,
+            p{
+                width: clamp(580px, calc(580 / 1024 * 100vw), 828px);
+            }
+        }
+    }
+    .row{
+        padding: 40px 32px;
+        &:hover{
+            background-color: rgba($color: #3DCFB6, $alpha: 0.3);
+            .arrow{
+                visibility: visible;
+                opacity: 1;
+            }
+            .img-preview, .img-preview-bg{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+        .img-preview,
+        .img-preview-bg{
+            width: clamp(200px, calc(304 / 1440 * 100vw), 304px);
+        }
+    }
+}
+
+@media(min-width: bp.$bp-xl) {
+    .container-projects{
+        width: 100%;
+    }
+    .row{
+        .img-preview-bg{
+            transform: translate(15px, calc(-50% + 15px));
+        }
     }
 }
 
