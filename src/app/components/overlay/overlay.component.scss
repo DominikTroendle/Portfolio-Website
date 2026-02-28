@@ -1,4 +1,5 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/breakpoints' as bp;
 
 :host{
     display: block;
@@ -19,12 +20,17 @@
 }
 
 .card{
-    @include dFlex(stretch, space-between, 40px);
-    width: 1250px;
-    padding: 80px;
+    @include dFlex(stretch, space-between, 32px);
+    flex-direction: column;
+    width: clamp(296px, calc(296 / 320 * 100vw), 600px);
+    padding: 12px;
     border: 1px solid #3DCFB6;
     border-radius: 30px;
     background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);;
+}
+
+.overlay-mobile{
+    display: block;
 }
 
 .left,
@@ -35,7 +41,7 @@
 }
 
 .left{
-    gap: 40px;
+    gap: 32px;
 }
 
 .headline{
@@ -43,38 +49,40 @@
     h1{
         font-family: Karla;
         font-weight: 700;
-        font-size: 128px;
+        font-size: clamp(72px, calc(128 / 1280 * 100vw), 128px);
         color: #3DCFB6;
-        line-height: 100px;
+        line-height: 80%;
     }
     h2{
         font-family: Fira Code;
         font-weight: 600;
-        font-size: 64px;
+        font-size: clamp(56px, calc(64 / 1280 * 100vw), 64px);
         color: white;
         line-height: 90%;
     }
 }
 
 .content{
+    width: 100%;
     gap: 20px;
     h3{
         font-family: Fira Code;
         font-weight: 700;
-        font-size: 24px;
+        font-size: clamp(20px, calc(24 / 1280 * 100vw), 24px);
         color: #3DCFB6;
         line-height: 120%;
     }
     p{
         font-family: Karla;
-        font-size: 18px;
+        font-size: clamp(16px, calc(18 / 1280 * 100vw), 18px);
         color: white;
         margin-bottom: 12px;
     }
 }
 
 .technologies{
-    @include dFlex(center, space-between, 16px);
+    @include dFlex(center, flex-start, 16px);
+    flex-wrap: wrap;
     div{
         @include dFlex(center, space-between, 4px);
         color: white;
@@ -91,15 +99,16 @@
 
 .buttons{
     @include dFlex(flex-start, center, 32px);
+    align-self: center;
     button{
         @include dFlex(center, space-between, 10px);
         background: unset;
         border: 1px solid white;
         border-radius: 100px;
-        padding: 14px 24px;
+        padding: 14px 20px;
         span{
             font-family: Karla;
-            font-size: 18px;
+            font-size: clamp(16px, calc(18 / 1280 * 100vw), 18px);
             color: white;
         }
         img{
@@ -121,9 +130,10 @@
 
 .right{
     @include dFlex(flex-end, space-between);
+    display: none;
     flex-direction: column;
     align-self: stretch;
-    img:first-child{
+    /* img:first-child{
         width: 18px;
         height: 18px;
         &:hover{
@@ -131,13 +141,23 @@
             filter: brightness(0) saturate(100%) invert(68%) sepia(92%) saturate(320%) hue-rotate(114deg) brightness(89%) contrast(86%);
             transform: scale(1.3);
         }
-    }
-    .preview{
-        width: 528px;
-        height: 297px;
+    } */
+    /* .close{
+        width: 18px;
+        height: 18px;
+        &:hover{
+            cursor: pointer;
+            filter: brightness(0) saturate(100%) invert(68%) sepia(92%) saturate(320%) hue-rotate(114deg) brightness(89%) contrast(86%);
+            transform: scale(1.3);
+        }
+    } */
+    /* .preview{
+        width: clamp(419px, calc(419 / 1024 * 100vw), 528px);
+        height: auto;
+        aspect-ratio: 16/9;
         border-radius: 30px;
-    }
-    div{
+    } */
+    /* .next-project{
         @include dFlex();
         gap: 20px;
         font-family: Karla;
@@ -154,5 +174,107 @@
                 transform: scale(1.3);
             }
         }
+    } */
+}
+
+.preview{
+    width: clamp(272px, calc(272 / 320 * 100vw), 305px);
+    height: auto;
+    aspect-ratio: 16/9;
+    border-radius: 30px;
+}
+
+.close{
+    align-self: flex-end;
+    width: 18px;
+    height: 18px;
+    margin: 18px 18px 0 0;
+    &:hover{
+        cursor: pointer;
+        filter: brightness(0) saturate(100%) invert(68%) sepia(92%) saturate(320%) hue-rotate(114deg) brightness(89%) contrast(86%);
+        transform: scale(1.3);
+    }
+}
+
+.next-project{
+    @include dFlex(center, space-between, 20px);
+    align-self: flex-end;
+    font-family: Karla;
+    font-size: 18px;
+    color: #3DCFB6;
+    width: max-content;
+    margin: 0 18px 18px 0;
+    img{
+        width: 18px;
+        height: 18px;
+    }
+    &:hover{
+        cursor: pointer;
+        color: white;
+        img{
+            transform: scale(1.3);
+        }
+    }
+}
+
+@media(min-width: bp.$bp-xxs) {
+    .card{
+        padding: 18px;
+    }
+    .preview{
+        width: clamp(297px, calc(297 / 360 * 100vw), 419px);
+    }
+}
+
+@media(min-width: bp.$bp-xs) {
+    .buttons{
+        align-self: flex-start;
+        button{
+            padding: 14px 24px;
+        }
+    }
+}
+
+@media(min-width: bp.$bp-sm) {
+    .card{
+        padding: 28px;
+    }
+    .preview{
+        width: clamp(419px, calc(419 / 1024 * 100vw), 528px);
+    }
+    .close{
+        margin: 0;
+    }
+    .next-project{
+        margin: 0;
+    }
+}
+
+@media(min-width: bp.$bp-md) {
+    .card{
+        padding: 60px;
+    }
+}
+
+@media(min-width: bp.$bp-lg) {
+    .overlay-mobile{
+        display: none;
+    }
+    .card{
+        flex-direction: row;
+        width: clamp(950px, calc(950 / 1024 * 100vw), 1250px);
+        gap: 40px;
+    }
+    .left{
+        gap: 40px;
+    }
+    .right{
+        display: flex;
+    }
+}
+
+@media(min-width: bp.$bp-xl) {
+    .card{
+        padding: 80px;
     }
 }

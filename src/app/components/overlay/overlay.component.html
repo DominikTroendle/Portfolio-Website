@@ -1,5 +1,7 @@
 <div class="backdrop" (click)="closeOverlay()">
     <div class="card" (click)="$event.stopPropagation()">
+        <img class="close overlay-mobile" src="assets/img/close_small.png" alt="close-cross" (click)="closeOverlay()">
+        <img class="preview overlay-mobile" [src]="'assets/img/' + overlayData.previewSrc" alt="preview-img">
         <div class="left">
             <div class="headline">
                 <h1>{{projectNumber}}</h1>
@@ -33,12 +35,18 @@
             </div>
         </div>
         <div class="right">
-            <img src="assets/img/close_small.png" alt="close-cross" (click)="closeOverlay()">
+            <img class="close" src="assets/img/close_small.png" alt="close-cross" (click)="closeOverlay()">
             <img class="preview" [src]="'assets/img/' + overlayData.previewSrc" alt="preview-img">
-            <div (click)="nextProject()">
+            <div class="next-project" (click)="nextProject()">
                 <span>{{db.data.projectsData.nextProject}}</span>
                 <img src="/assets/img/arrow_forward.png" alt="arrow-next">
             </div>
+        </div>
+        <div
+        class="next-project overlay-mobile" 
+        (click)="nextProject()">
+            <span>{{db.data.projectsData.nextProject}}</span>
+            <img src="/assets/img/arrow_forward.png" alt="arrow-next">
         </div>
     </div>
 </div>
