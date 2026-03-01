@@ -1,39 +1,41 @@
-<section>
-    <h1>{{db.data.privacyPolicyData.title}}</h1>
-    <div class="container-content">
-        @for(section of db.data.privacyPolicyData.sections; track section){
-            <div>
-                @for(block of section.content; track block){
-                    @switch(block.type){
-                        @case("title"){
-                            <h2>{{block.text}}</h2>
-                        }
-                        @case("headline"){
-                            <h3>{{block.text}}</h3>
-                        }
-                        @case("subheadline"){
-                            <h4>{{block.text}}</h4>
-                        }
-                        @case("paragraph"){
-                            <p>
-                                @for(inline of block.inlines; track inline){
-                                    @switch(inline.type){
-                                        @case("text"){{{inline.value}}}
-                                        @case("link"){<a [href]="inline.href" target="_blank">{{inline.value}}</a>}
+@if(db.loaded){
+    <section>
+        <h1>{{db.data.privacyPolicyData.title}}</h1>
+        <div class="container-content">
+            @for(section of db.data.privacyPolicyData.sections; track section){
+                <div>
+                    @for(block of section.content; track block){
+                        @switch(block.type){
+                            @case("title"){
+                                <h2>{{block.text}}</h2>
+                            }
+                            @case("headline"){
+                                <h3>{{block.text}}</h3>
+                            }
+                            @case("subheadline"){
+                                <h4>{{block.text}}</h4>
+                            }
+                            @case("paragraph"){
+                                <p>
+                                    @for(inline of block.inlines; track inline){
+                                        @switch(inline.type){
+                                            @case("text"){{{inline.value}}}
+                                            @case("link"){<a [href]="inline.href" target="_blank">{{inline.value}}</a>}
+                                        }
                                     }
-                                }
-                            </p>
-                        }
-                        @case("list"){
-                            <ul>
-                                @for(item of block.items; track item){
-                                    <li>{{item}}</li>
-                                }
-                            </ul>
+                                </p>
+                            }
+                            @case("list"){
+                                <ul>
+                                    @for(item of block.items; track item){
+                                        <li>{{item}}</li>
+                                    }
+                                </ul>
+                            }
                         }
                     }
-                }
-            </div>
-        }
-    </div>
-</section>
+                </div>
+            }
+        </div>
+    </section>
+}
