@@ -3,16 +3,17 @@
 @use '../../styles/breakpoints' as bp;
 
 section{
-    @include dFlex(center, space-between);
+    @include dFlex(center, space-between, 64px);
+    flex-direction: column;
     width: 100vw;
-    padding: 100px 98px 260px 98px;
+    padding: 100px 12px 260px 12px;
     background-color: #1c1c1c;
 }
 
 .container-left{
     @include dFlex(flex-start, space-between, 40px);
     flex-direction: column;
-    width: 300px;
+    width: clamp(296px, calc(296 / 320 * 100vw), 568px);
     div{
         flex-direction: column;
     }
@@ -21,13 +22,13 @@ section{
         h3{
             font-family: Karla;
             font-weight: 500;
-            font-size: 24px;
+            font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
             color: #3dcfb6;
         }
         h1{
             font-family: Fira Code;
             font-weight: 700;
-            font-size: 64px;
+            font-size: clamp(56px, calc(64 / 1440 * 100vw), 64px);
             color: #3dcfb6;
             line-height: 85%;
         }
@@ -38,7 +39,7 @@ section{
         h2{
             font-family: Fira Code;
             font-weight: 700;
-            font-size: 24px;
+            font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
             color: #3dcfb6;
         }
         p{
@@ -58,7 +59,7 @@ form{
     @include dFlex(flex-start, space-between, 40px);
     flex-direction: column;
     position: relative;
-    width: 616px;
+    width: clamp(296px, calc(296 / 320 * 100vw), 568px);
     height: fit-content;
 }
 
@@ -109,7 +110,7 @@ form{
     label{
         font-family: Fira Code;
         font-weight: 500;
-        font-size: 24px;
+        font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
         color: #3dcfb6;
     }
     input{
@@ -119,11 +120,11 @@ form{
         border: none;
         color: white;
         font-family: Karla;
-        font-size: 18px;
+        font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
         caret-color: white;
         &::placeholder{
             font-family: Karla;
-            font-size: 18px;
+            font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
             color: rgba($color: #ffffff, $alpha: 0.8);
             line-height: 120%;
         }
@@ -276,26 +277,57 @@ form{
     bottom: 6px;
     color: rgba($color: #EC7B7BCC, $alpha: 0.8);
     font-family: Karla;
-    font-size: 18px;
+    font-size: clamp(14px, calc(18 / 1440 * 100vw), 18px);
+    line-height: 85%;
     div{
         border: unset;
     }
 }
 
+@media(min-width: bp.$bp-xxs) {
+    section{
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .container-left{
+        width: clamp(324px, calc(324 / 360 * 100vw), 568px);
+    }
+}
+
+@media(min-width: bp.$bp-sm) {
+    section{
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+}
+
+@media(min-width: bp.$bp-md) {
+    section{
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+}
+
 @media(min-width: bp.$bp-lg) {
     section{
+        flex-direction: row;
+        gap: 40px;
         padding: 50px 98px 260px 98px;
     }
-}
-
-@media (min-width: bp.$bp-2xl) {
-    .container-left{
-        width: 568px;
+    .container-left,
+    form{
+        width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
     }
 }
 
-@media (min-width: bp.$bp-3xl) {
-    .container-left{
-        width: 660px;
+@media(min-width: bp.$bp-xl) {
+    .error{
+        line-height: normal;
+    }
+}
+
+@media(min-width: bp.$bp-2xl) {
+    form{
+        width: 616px;
     }
 }
