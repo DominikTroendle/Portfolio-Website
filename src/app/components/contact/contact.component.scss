@@ -5,7 +5,7 @@
 section{
     @include dFlex(center, space-between);
     width: 100vw;
-    padding: 50px 98px 260px 98px;
+    padding: 100px 98px 260px 98px;
     background-color: #1c1c1c;
 }
 
@@ -279,6 +279,12 @@ form{
     font-size: 18px;
     div{
         border: unset;
+    }
+}
+
+@media(min-width: bp.$bp-lg) {
+    section{
+        padding: 50px 98px 260px 98px;
     }
 }
 

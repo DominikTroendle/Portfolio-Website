@@ -1,17 +1,19 @@
 @use '../../styles/fonts' as *;
 @use '../../styles/mixins' as *;
+@use '../../styles/breakpoints' as bp;
 
 section{
-    @include dFlex(center, center, 48px);
+    @include dFlex(center, center, 32px);
     flex-direction: column;
     width: 100vw;
-    padding: 100px 98px;
+    padding: 0 12px;
     background-color: #1c1c1c;
     h1{
         font-family: Fira Code;
         font-weight: 700;
         font-size: 32px;
         color: #3DCFB6;
+        text-align: center;
     }
 }
 
@@ -20,47 +22,25 @@ section{
     width: 100vw;
     overflow: hidden;
     position: relative;
-    mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 8%,
-        black 92%,
-        transparent 100%
-    );
+    mask-image: none;
 }
 
 .container-carousel{
-    @include dFlex(center, space-between, 64px);
+    @include dFlex(center, space-between);
+    --slide-distance: 100%;
+    --slide-distance-further: 111.2%;
     position: relative;
     width: max-content;
-    height: 300px;
+    height: 330px;
     flex-shrink: 0;
     img{
         position: absolute;
         top: 0;
-        left: 39.4%;
-        width: 89px;
-        height: 64px;
+        left: 40%;
+        width: 50px;
+        height: auto;
+        aspect-ratio: 67/48;
         z-index: 1;
-    }
-    .card{
-        @include dFlex(center, space-between);
-        flex-direction: column;
-        width: 632px;
-        height: 274px;
-        background-color: rgba($color: #3DCFB6, $alpha: 0.1);
-        border: 1px solid #3DCFB6;
-        border-radius: 32px;
-        padding: 48px 40px;
-        color: white;
-        font-family: Karla;
-        font-size: 20px;
-        scale: 0.9;
-        transition: animation 1s ease;
-    }
-    .active{
-        background-color: rgba($color: #3DCFB6, $alpha: 0.3);
-        scale: 1;
     }
     .slide-right{
         animation: slide-right 0.6s ease;
@@ -80,15 +60,38 @@ section{
     .grow{
         animation: grow 0.6s ease;
     }
+}
+
+.card{
+    @include dFlex(center, space-between);
+    flex-direction: column;
+    width: clamp(296px, calc(358 / 390 * 100vw), 358px);
+    height: 300px;
+    background-color: rgba($color: #3DCFB6, $alpha: 0.1);
+    border: 1px solid #3DCFB6;
+    border-radius: 32px;
+    padding: 30px;
+    color: white;
+    font-family: Karla;
+    font-size: 16px;
+    scale: 0.9;
+    transition: animation 1s ease;
+    span{
+        font-size: 14px;
+    }
+    &.active{
+        background-color: rgba($color: #3DCFB6, $alpha: 0.3);
+        scale: 1;
+    }
     div{
         @include dFlex(center, space-between, 16px);
+        flex-direction: column;
         width: 100%;
-        font-size: 18px;
         hr{
             border: none;
             border-bottom: 1px solid white;
             height: 1px;
-            flex-grow: 1;
+            width: 100%;
         }
     }
 }
@@ -98,7 +101,7 @@ section{
         transform: translateX(0)
     }
     to{
-        transform: translateX(110%)
+        transform: translateX(var(--slide-distance))
     }
 }
 
@@ -107,7 +110,7 @@ section{
         transform: translateX(0)
     }
     to{
-        transform: translateX(-110%)
+        transform: translateX(calc(-1 * var(--slide-distance)))
     }
 }
 
@@ -116,7 +119,7 @@ section{
         transform: translateX(0);
     }
     to{
-        transform: translateX(-122%);
+        transform: translateX(calc(-1 * var(--slide-distance-further)));
     }
 }
 
@@ -125,7 +128,7 @@ section{
         transform: translateX(0);
     }
     to{
-        transform: translateX(122%);
+        transform: translateX(var(--slide-distance-further));
     }
 }
 
@@ -192,6 +195,108 @@ section{
         }
         .active-dot{
             background-color: #3DCFB6;
+        }
+    }
+}
+
+@media(min-width: bp.$bp-xxs) {
+    section{
+        padding: 0 18px;
+    }
+}
+
+@media(min-width: bp.$bp-xs) {
+    .container-carousel{
+        height: 390px;
+        img{
+            left: 39.7%; 
+            width: clamp(67px, calc(67 / 390 * 100vw), 73px);
+            height: clamp(48px, calc(48 / 390 * 100vw), 52px);
+        }
+    }
+    .card{
+        width: clamp(358px, calc(358 / 390 * 100vw), 632px);
+        height: 360px;
+        padding: 48px 40px 40px 40px;
+        font-size: clamp(18px, calc(20 / 1024 * 100vw), 20px);
+        span{
+            font-size: clamp(16px, calc(18 / 1024 * 100vw), 18px);
+        }
+    }
+}
+
+@media(min-width: bp.$bp-sm) {
+    section{
+        padding: 0 28px;
+    }
+    .carousel-mask{
+        mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 4%,
+            black 96%,
+            transparent 100%
+        );
+    }
+    .container-carousel{
+        img{
+            width: 89px;
+            height: 64px;
+        }
+    }
+    .card{
+        padding: 68px 40px 40px 40px;
+        div{
+            flex-direction: row;
+            hr{
+                flex-grow: 1;
+                width: auto;
+            }
+        }
+    }
+}
+
+@media(min-width: bp.$bp-md) {
+    section{
+        padding: 0 60px;
+        gap: 48px;
+    }
+    .carousel-mask{
+        mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 8%,
+            black 92%,
+            transparent 100%
+        );
+    }
+    .container-carousel{
+        --slide-distance: 102%;
+        --slide-distance-further: 113.2%;
+        height: 300px;
+        gap: 15px;
+        img{
+            left: 38.8%;
+        }
+    }
+    .card{
+        width: 632px;
+        height: 274px;
+        padding: 48px 40px;
+        font-size: 20px;
+    }
+}
+
+@media(min-width: bp.$bp-lg) {
+    section{
+        padding: 100px 98px;
+    }
+    .container-carousel{
+        --slide-distance: 110%;
+        --slide-distance-further: 122%;
+        gap: 64px;
+        img{
+            left: 39.4%;
         }
     }
 }
