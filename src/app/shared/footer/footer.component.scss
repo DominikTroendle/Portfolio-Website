@@ -1,20 +1,28 @@
 @use '../../styles/mixins' as *;
 @use '../../styles/fonts' as *;
+@use '../../styles/breakpoints' as bp;
 
 :host{
     display: block;
     position: relative;
     z-index: 1;
-    margin-top: -214px;
+    margin-top: -232px;
     width: 100dvw;
 }
 
 footer{
-    @include dFlex(center, space-between);
-    padding: 50px 98px;
+    @include dFlex(center, space-between, 32px);
+    flex-direction: column;
+    padding: 50px 12px 12px 12px;
     font-family: Karla;
     font-size: 16px;
     color: white;
+    width: 100%;
+}
+
+.footer{
+    @include dFlex(center, space-between);
+    width: 100%;
 }
 
 .container-left{
@@ -37,9 +45,18 @@ footer{
     color: #3dcfb6;
 }
 
+.desktop{
+    display: none;
+}
+.mobile{
+    display: block;
+    justify-self: center;
+}
+
 ul{
     @include dFlex(flex-start, flex-end, 8px);
     flex-direction: column;
+    align-self: flex-end;
     list-style: none;
     li{
         position: relative;
@@ -64,5 +81,44 @@ ul{
             &:hover::before{
                 opacity: 1;
             }
+    }
+}
+
+@media(min-width: bp.$bp-xxs) {
+    :host{
+        margin-top: -238px;
+    }
+    footer{
+        padding: 50px 18px 18px 18px;
+    }
+}
+
+@media(min-width: bp.$bp-sm) {
+    :host{
+        margin-top: -248px;
+    }
+    footer{
+        padding: 50px 28px 28px 28px;
+    }
+}
+
+@media(min-width: bp.$bp-md) {
+    :host{
+        margin-top: -214px;
+    }
+    footer{
+        padding: 50px 60px;
+    }
+    .desktop{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+
+@media(min-width: bp.$bp-lg) {
+    footer{
+        padding: 50px 98px;
     }
 }

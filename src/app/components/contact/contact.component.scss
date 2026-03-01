@@ -6,7 +6,7 @@ section{
     @include dFlex(center, space-between, 64px);
     flex-direction: column;
     width: 100vw;
-    padding: 100px 12px 260px 12px;
+    padding: 100px 12px 278px 12px;
     background-color: #1c1c1c;
 }
 
@@ -286,8 +286,7 @@ form{
 
 @media(min-width: bp.$bp-xxs) {
     section{
-        padding-left: 18px;
-        padding-right: 18px;
+        padding: 100px 18px 284px 18px;
     }
     .container-left{
         width: clamp(324px, calc(324 / 360 * 100vw), 568px);
@@ -296,15 +295,13 @@ form{
 
 @media(min-width: bp.$bp-sm) {
     section{
-        padding-left: 28px;
-        padding-right: 28px;
+        padding: 100px 28px 294px 28px;
     }
 }
 
 @media(min-width: bp.$bp-md) {
     section{
-        padding-left: 60px;
-        padding-right: 60px;
+        padding: 100px 60px 260px 60px;
     }
 }
 
