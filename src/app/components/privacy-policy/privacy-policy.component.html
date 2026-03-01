@@ -1,5 +1,6 @@
 @if(db.loaded){
     <section>
+        <a class="arrow-back" href="#contact"></a>
         <h1>{{db.data.privacyPolicyData.title}}</h1>
         <div class="container-content">
             @for(section of db.data.privacyPolicyData.sections; track section){
