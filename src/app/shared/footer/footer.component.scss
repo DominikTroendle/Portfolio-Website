@@ -28,14 +28,28 @@ footer{
 .container-left{
     @include dFlex(flex-start, flex-end, 8px);
     flex-direction: column;
-    img{
-        width: 132px;
-        height: 48px;
-        margin-bottom: 8px;
-        &:hover{
-            cursor: pointer;
-            content: url("../../../assets/img/logo_outline.png");
-        }    
+}
+
+.logo{
+    display: none;
+    width: 162px;
+    height: 48px;
+    background-image: url(../../../assets/img/logo_text.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    &:hover{
+        cursor: pointer;
+        background-image: url(../../../assets/img/logo_outline.png);
+    }
+}
+.logo-mobile{
+    width: 24px;
+    height: 47px;
+    background-image: url(../../../assets/img/initials.png);
+    &:hover{
+        cursor: pointer;
+        background-image: url(../../../assets/img/initials_outline.png);
     }
 }
 
@@ -120,6 +134,12 @@ ul{
 @media(min-width: bp.$bp-lg) {
     footer{
         padding: 50px 98px;
+    }
+    .logo{
+        display: block;
+    }
+    .logo-mobile{
+        display: none;
     }
 }
 
