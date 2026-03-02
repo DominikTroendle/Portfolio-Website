@@ -96,6 +96,7 @@ section{
         }
     }
     .img-preview, .img-preview-bg{
+        display: none;
         visibility: hidden;
         position: absolute;
         width: 304px;
@@ -168,6 +169,7 @@ section{
         }
         .img-preview,
         .img-preview-bg{
+            display: block;
             width: clamp(200px, calc(304 / 1440 * 100vw), 304px);
         }
     }

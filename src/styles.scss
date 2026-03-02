@@ -4,15 +4,15 @@
     box-sizing: border-box;
 }
 
-html, body{
-    width: 100%;
-    margin: 0;
-}
-
 html{
+    width: 100vw;
     scrollbar-width: none;
     scroll-behavior: smooth;
     cursor: default;
+}
+
+body{
+    width: 100%;
 }
 
 a{
