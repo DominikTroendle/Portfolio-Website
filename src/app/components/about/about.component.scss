@@ -189,6 +189,7 @@ section{
 
 @media(min-width: bp.$bp-4xl) {
     section{
+        height: 1080px;
         padding-left: calc((100vw - bp.$bp-4xl) / 2);
         padding-right: calc((100vw - bp.$bp-4xl) / 2);
     }

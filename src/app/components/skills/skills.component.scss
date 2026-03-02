@@ -285,5 +285,35 @@ section{
     section{
         padding-left: calc((100vw - bp.$bp-4xl) / 2);
         padding-right: calc((100vw - bp.$bp-4xl) / 2);
+        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 26%), #1c1c1c;
+        background-position: left calc(-50dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
+    }
+}
+
+@media(min-width: 2600px) {
+    section{
+        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 22%), #1c1c1c;
+        background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
+    }
+}
+
+@media(min-width: 3200px) {
+    section{
+        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 18%), #1c1c1c;
+        background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
+    }
+}
+
+@media(min-width: 3900px) {
+    section{
+        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 16%), #1c1c1c;
+        background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
+    }
+}
+
+@media(min-width: 4500px) {
+    section{
+        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 14%), #1c1c1c;
+        background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
     }
 }
