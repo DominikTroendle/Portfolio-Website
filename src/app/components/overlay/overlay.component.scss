@@ -26,7 +26,14 @@
     padding: 12px;
     border: 1px solid #3DCFB6;
     border-radius: 30px;
-    background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);;
+    background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
+    max-height: 90dvh;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.card::-webkit-scrollbar{
+    display: none;
 }
 
 .overlay-mobile{
