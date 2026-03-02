@@ -155,7 +155,7 @@ form{
     visibility: hidden;
     color: white;
     font-family: Karla;
-    font-size: 24px;
+    font-size: clamp(16px, calc(24 / 620 * 100vw), 24px);
     transition: opacity 0.3s ease-in-out,
                 visibility 0s linear 0.3s;
     p{
