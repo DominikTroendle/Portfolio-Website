@@ -23,7 +23,22 @@
         <a [href]="db.data.atfData.linkedin" class="external-logo-sm" target="_blank"><img src="assets/img/linkedin-logo.png" alt="linkedin-logo"></a>
         <hr>
     </div>
-    <div class="ribbon">
+    <div class="ribbon-mask">
+        <div class="ribbon">
+            <div class="track-wrapper">
+                @for(_ of [1,2,3]; track $index){
+                    <div
+                    class="track"
+                    [attr.aria-hidden]="$index > 1 ? 'true' : null">
+                        @for(text of db.data.atfData.ribbonTracks; track text){
+                            <span>{{text}}</span>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- <div class="ribbon">
         <div class="track-wrapper">
             @for(_ of [1,2,3]; track $index){
                 <div
@@ -35,5 +50,5 @@
                 </div>
             }
         </div>
-    </div>
+    </div> -->
 </section>

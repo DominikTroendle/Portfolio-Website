@@ -179,17 +179,31 @@ section{
   }
 }
 
+.ribbon-mask{
+    width: 100vw;
+    height: 200px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 4%,
+            black 96%,
+            transparent 100%
+        );
+}
+
 .ribbon{
   @include dFlex(center, center);
   position: absolute;
-  bottom: 6%;
+  bottom: 30%;
   left: -1%;
   width: 102%;
   height: 62px;
   background-color: rgba($color: #ffffff, $alpha: 0.12);
   transform: rotate(-3deg);
   backdrop-filter: blur(3px);
-  overflow: hidden;
   .track-wrapper{
     @include dFlex(center, center);
     position: absolute;
@@ -272,6 +286,15 @@ section{
   .right{
     margin-right: 60px;
   }
+  .ribbon-mask{
+    mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 8%,
+            black 94%,
+            transparent 100%
+        );
+  }
 }
 
 @media (min-width: bp.$bp-lg) {
@@ -294,4 +317,14 @@ section{
       display: none;
     }
   }
+}
+
+@media(min-width: bp.$bp-4xl) {
+    section{
+        padding-left: calc((100vw - bp.$bp-4xl) / 2);
+        padding-right: calc((100vw - bp.$bp-4xl) / 2);
+    }
+    .ribbon-mask{
+      width: 1920px;
+    }
 }

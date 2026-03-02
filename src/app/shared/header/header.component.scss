@@ -21,7 +21,7 @@ header{
         @include dFlex(center, space-between, 32px);
         font-family: Fira Code;
         font-size: 20px;
-        a{
+        .nav-linked{
             position: relative;
             &::after{
                 content: "";
@@ -40,11 +40,25 @@ header{
         }
     }
     .logo{
-    display: none;
+        display: none;
+        width: 162px;
+        height: 48px;
+        background-image: url(../../../assets/img/logo_text.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        &:hover{
+            cursor: pointer;
+            background-image: url(../../../assets/img/logo_outline.png);
+        }
     }
     .logo-mobile{
+        width: 24px;
+        height: 47px;
+        background-image: url(../../../assets/img/initials.png);
         &:hover{
-            content: url("../../../assets/img/initials_outline.png");
+            cursor: pointer;
+            background-image: url(../../../assets/img/initials_outline.png);
         }
     }
     .nav-menu-mobile{
@@ -104,11 +118,6 @@ header{
         padding: 0 98px;
         .logo{
             display: block;
-            width: 132px;
-            height: 48px;
-            &:hover{
-                content: url("../../../assets/img/logo_outline.png");
-            }
         }
         .logo-mobile{
             display: none;
@@ -119,5 +128,12 @@ header{
         .nav{
             display: flex;
         }
+    }
+}
+
+@media(min-width: bp.$bp-4xl) {
+    header{
+        padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+        padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
     }
 }

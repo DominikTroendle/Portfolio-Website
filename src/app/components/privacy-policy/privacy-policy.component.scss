@@ -102,3 +102,10 @@ section {
         padding: 0 120px;
     }
 }
+
+@media(min-width: bp.$bp-4xl) {
+    section{
+        padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+        padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+    }
+}

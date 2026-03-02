@@ -122,3 +122,10 @@ ul{
         padding: 50px 98px;
     }
 }
+
+@media(min-width: bp.$bp-4xl) {
+    footer{
+        padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+        padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+    }
+}

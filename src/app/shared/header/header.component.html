@@ -3,11 +3,13 @@
         <nav class="nav">
             <app-language-switch></app-language-switch>
             @for(item of db.data.headerData.items; track item.text){
-                <a [href]="item.href">{{item.text}}</a>
+                <a
+                class="nav-linked"
+                [href]="item.href">{{item.text}}</a>
             }
         </nav>
-        <img class="logo" src="assets/img/logo_text.png" alt="logo">
-        <img class="logo-mobile" src="assets/img/initials.png" alt="logo">
+        <a class="logo" href="#"></a>
+        <a class="logo-mobile" href="#"></a>
         <button
         class="nav-menu-mobile"
         (click)="showMobileMenu()"></button>
