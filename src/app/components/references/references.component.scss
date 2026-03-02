@@ -73,7 +73,7 @@ section{
     padding: 30px;
     color: white;
     font-family: Karla;
-    font-size: 16px;
+    font-size: 14px;
     scale: 0.9;
     transition: animation 1s ease;
     span{
@@ -202,6 +202,9 @@ section{
 @media(min-width: bp.$bp-xxs) {
     section{
         padding: 0 18px;
+    }
+    .card{
+        font-size: 16px;
     }
 }
 
