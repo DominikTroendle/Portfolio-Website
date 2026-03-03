@@ -3,6 +3,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { DatabaseService } from '../../services/database/database.service';
 import { NavMobileComponent } from '../nav-mobile/nav-mobile.component';
 import { LanguageSwitchComponent } from "../language-switch/language-switch.component";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,8 @@ import { LanguageSwitchComponent } from "../language-switch/language-switch.comp
   imports: [
     CommonModule,
     NavMobileComponent,
-    LanguageSwitchComponent
+    LanguageSwitchComponent,
+    RouterLink
 ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
