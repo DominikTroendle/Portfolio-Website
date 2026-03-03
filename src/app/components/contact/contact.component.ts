@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
-import { FormBuilder, FormGroup,  FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,  FormControl, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -52,11 +52,21 @@ export class ContactComponent {
   createFormControl(id: string){
     const validators = [Validators.required];
     if(id === 'email'){
-        validators.push(Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/));
+      validators.push(Validators.pattern(/^(?!.*\.\.)[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$/),);
     }else{
-      validators.push(Validators.minLength(2));
+      validators.push(Validators.minLength(2), this.whitespaceValidator);
     }
     return this.fb.control('', {validators, updateOn: 'blur'});
+  }
+
+  whitespaceValidator(control: AbstractControl){
+    const value = control.value;
+    if(!value) return null;
+    if(value.trim().length === 0){
+      return { onlywhitespace: true };
+    } else{
+      return null;
+    }
   }
 
   onSubmit(){
