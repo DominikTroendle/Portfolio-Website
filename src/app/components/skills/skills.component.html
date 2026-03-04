@@ -1,6 +1,6 @@
 <section>
     <div class="container-skills">
-        <div class="container-left">
+        <div #left class="container-left">
             <h3>{{db.data.skillsData.title}}</h3>
             <div class="container-content">
                 <h1>{{db.data.skillsData.headline}}</h1>
@@ -12,7 +12,7 @@
                 <a href="#contact"><button><span>{{db.data.skillsData.contactButton}}</span></button></a>
             </div>
         </div>
-        <div class="container-right">
+        <div #right class="container-right">
             @for(skill of db.data.skillsData.skills; track skill; let index = $index){
                 <div class="item-skill">
                     <img

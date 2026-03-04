@@ -1,9 +1,9 @@
-<section>
-    <div class="side-content left">
+<section #hero>
+    <div #sideLeft class="side-content left">
         <a href="#contact"><button><img src="assets/img/arrow_down.png" alt="arrow-down"></button></a>
         <hr>
     </div>
-    <div class="main-content">
+    <div #main class="main-content">
         <h2>{{db.data.atfData.title}}</h2>
         <h1>{{db.data.atfData.name}}</h1>
         <div>
@@ -16,7 +16,7 @@
             }
         </div>
     </div>
-    <div class="side-content right">
+    <div #sideRight class="side-content right">
         <a class="email-text" [href]="'mailto:' + db.data.atfData.email">{{db.data.atfData.email}}</a>
         <a class="email-logo external-logo-sm" [href]="'mailto:' + db.data.atfData.email"><img src="assets/img/email-logo.png" alt="email-logo"></a>
         <a [href]="db.data.atfData.github" class="external-logo-sm" target="_blank"><img src="assets/img/github-logo.png" alt="github-logo"></a>
@@ -24,7 +24,7 @@
         <hr>
     </div>
     <div class="ribbon-mask">
-        <div class="ribbon">
+        <div #ribbon class="ribbon">
             <div class="track-wrapper">
                 @for(_ of [1,2,3]; track $index){
                     <div
@@ -38,17 +38,4 @@
             </div>
         </div>
     </div>
-    <!-- <div class="ribbon">
-        <div class="track-wrapper">
-            @for(_ of [1,2,3]; track $index){
-                <div
-                class="track"
-                [attr.aria-hidden]="$index > 1 ? 'true' : null">
-                    @for(text of db.data.atfData.ribbonTracks; track text){
-                        <span>{{text}}</span>
-                    }
-                </div>
-            }
-        </div>
-    </div> -->
 </section>
