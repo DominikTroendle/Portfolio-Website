@@ -139,8 +139,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
         trigger: this.h3.nativeElement,
         start: 'top 80%',
         end: 'top 50%',
-        scrub: 0.8,
-        markers: true
+        scrub: 0.8
       },
     });
     tl.fromTo(
