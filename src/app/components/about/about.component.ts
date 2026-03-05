@@ -35,7 +35,7 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
             trigger: this.left.nativeElement,
             start: "top 70%",
             end: "bottom 60%",
-            scrub: 0.5
+            scrub: 0.8
           }
         });
         gsap.fromTo(this.right.nativeElement,
@@ -47,7 +47,7 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
               trigger: this.right.nativeElement.parentElement,
               start: "top 90%",
               end: "top 0%",
-              scrub: 0.5
+              scrub: 0.8
             }
           });
     });

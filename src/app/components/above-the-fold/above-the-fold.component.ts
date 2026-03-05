@@ -37,7 +37,7 @@ export class AboveTheFoldComponent implements AfterViewInit, OnDestroy {
           trigger: this.hero.nativeElement,
           start: 'top top',
           end: '+=100%',
-          scrub: 0.5
+          scrub: 0.8
         }
       });
       gsap.to(this.sideLeft.nativeElement, {
@@ -47,7 +47,7 @@ export class AboveTheFoldComponent implements AfterViewInit, OnDestroy {
           trigger: this.hero.nativeElement,
           start: 'top top',
           end: '+=100%',
-          scrub: true
+          scrub: 0.8
         }
       });
       gsap.to(this.sideRight.nativeElement, {
@@ -57,7 +57,7 @@ export class AboveTheFoldComponent implements AfterViewInit, OnDestroy {
           trigger: this.hero.nativeElement,
           start: 'top top',
           end: '+=100%',
-          scrub: true
+          scrub: 0.8
         }
       });
       gsap.fromTo(
@@ -70,7 +70,7 @@ export class AboveTheFoldComponent implements AfterViewInit, OnDestroy {
             trigger: this.hero.nativeElement,
             start: 'top top',
             end: '+=100%',
-            scrub: true
+            scrub: 0.8
           }
         }
       );

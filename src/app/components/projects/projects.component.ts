@@ -1,13 +1,13 @@
-import { 
+import {
   AfterViewInit,
   Component,
   ElementRef,
   Inject,
   OnDestroy,
   Renderer2,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
-import { OverlayComponent } from "../overlay/overlay.component";
+import { OverlayComponent } from '../overlay/overlay.component';
 import { DOCUMENT } from '@angular/common';
 import { DatabaseService } from '../../services/database/database.service';
 import { gsap } from 'gsap';
@@ -16,14 +16,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [
-    OverlayComponent
-],
+  imports: [OverlayComponent],
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss'
+  styleUrl: './projects.component.scss',
 })
 export class ProjectsComponent implements AfterViewInit, OnDestroy {
-
   @ViewChild('headline') headline!: ElementRef;
   @ViewChild('subheadline') subheadline!: ElementRef;
   @ViewChild('introduction') introduction!: ElementRef;
@@ -39,25 +36,25 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   constructor(
     public db: DatabaseService,
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
-  ) { }
+    @Inject(DOCUMENT) private document: Document,
+  ) {}
 
-  showOverlay(index: number){
+  showOverlay(index: number) {
     this.isVisible = true;
     this.selectedProject = this.db.data.projectsData.overlay[index];
     this.selectedIndex = index + 1;
     this.renderer.addClass(this.document.body, 'no-scroll');
   }
 
-  updateOverlay(displayIndex: number){
+  updateOverlay(displayIndex: number) {
     const length = this.db.data.projectsData.overlay.length;
-    const currentIndex = displayIndex -1;
+    const currentIndex = displayIndex - 1;
     const nextIndex = (currentIndex + 1) % length;
     this.selectedProject = this.db.data.projectsData.overlay[nextIndex];
     this.selectedIndex = nextIndex + 1;
   }
 
-  closeOverlay(){
+  closeOverlay() {
     this.isVisible = false;
     this.selectedIndex = 0;
     this.renderer.removeClass(this.document.body, 'no-scroll');
@@ -66,82 +63,95 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     gsap.registerPlugin(ScrollTrigger);
     this.ctx = gsap.context(() => {
-
-      this.mm = gsap.matchMedia();
-      this.mm.add('(min-width: 1024px)', () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: this.headline.nativeElement.parentElement,
-            start: "top 80%",
-            end: "bottom 60%",
-            scrub: 1
-          }
-        });
-        tl.fromTo(
-          this.headline.nativeElement,
-          { clipPath: "inset(0 0 100% 0)" },
-          { clipPath: "inset(0 0 0% 0)" }
-        ).fromTo(
-          this.subheadline.nativeElement,
-          { clipPath: "inset(0 0 100% 0)" },
-          { clipPath: "inset(0 0 0% 0)" },
-          "<"
-        ).fromTo(
-          this.projects.nativeElement,
-          { xPercent: -50, opacity: 0 },
-          { xPercent: 0, opacity: 1 },
-          "+=0.2"
-        ).fromTo(
-          this.introduction.nativeElement,
-          { opacity: 0 },
-          { opacity: 1 }
-        );
-      });
-      this.mm.add('(max-width: 1023px)', () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: this.headline.nativeElement.parentElement,
-            start: "top 60%",
-            end: "bottom 60%",
-            scrub: 1
-          }
-        });
-        tl.fromTo(
-          this.headline.nativeElement,
-          { clipPath: "inset(0 0 100% 0)" },
-          { clipPath: "inset(0 0 0% 0)" }
-        ).fromTo(
-          this.subheadline.nativeElement,
-          { clipPath: "inset(0 0 100% 0)" },
-          { clipPath: "inset(0 0 0% 0)" },
-          "<"
-        ).fromTo(
-          this.introduction.nativeElement,
-          { opacity: 0 },
-          { opacity: 1 }
-        );
-        gsap.fromTo(
-          this.projects.nativeElement,
-          { xPercent: -50, opacity: 0 },
-          {
-            xPercent: 0,
-            opacity: 1,
-            scrollTrigger: {
-              trigger: this.headline.nativeElement.parentElement,
-              start: "top 60%",
-              end: "bottom 60%",
-              scrub: 1
-            }
-          }
-        )
-      });
+      this.initAnimations();
     });
     ScrollTrigger.refresh();
+  }
+
+  private initAnimations() {
+    this.mm = gsap.matchMedia();
+    this.mm.add('(min-width: 1024px)', () => this.desktopAnimation());
+    this.mm.add('(max-width: 1023px)', () => this.mobileAnimation());
+  }
+
+  private desktopAnimation() {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: this.subheadline.nativeElement,
+        start: 'top 80%',
+        end: 'bottom 60%',
+        scrub: 0.8
+      },
+    });
+    tl.fromTo(
+      this.headline.nativeElement,
+      { clipPath: 'inset(0 0 100% 0)' },
+      { clipPath: 'inset(0 0 0% 0)' },
+    )
+      .fromTo(
+        this.subheadline.nativeElement,
+        { clipPath: 'inset(0 0 100% 0)' },
+        { clipPath: 'inset(0 0 0% 0)' },
+        '<',
+      )
+      .fromTo(
+        this.introduction.nativeElement,
+        { opacity: 0 },
+        { opacity: 1 },
+        "<",
+      )
+      .fromTo(
+        this.projects.nativeElement,
+        { xPercent: -50, opacity: 0 },
+        { xPercent: 0, opacity: 1 },
+        '+=0.2',
+      );
+  }
+
+  private mobileAnimation() {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: this.subheadline.nativeElement,
+        start: 'top 80%',
+        end: 'bottom 60%',
+        scrub: 0.8
+      },
+    });
+    tl.fromTo(
+      this.headline.nativeElement,
+      { clipPath: 'inset(0 0 100% 0)' },
+      { clipPath: 'inset(0 0 0% 0)' },
+    )
+      .fromTo(
+        this.subheadline.nativeElement,
+        { clipPath: 'inset(0 0 100% 0)' },
+        { clipPath: 'inset(0 0 0% 0)' },
+        '<',
+      )
+      .fromTo(
+        this.introduction.nativeElement,
+        { opacity: 0 },
+        { opacity: 1 },
+        '<',
+      );
+    gsap.fromTo(
+      this.projects.nativeElement,
+      { xPercent: -50, opacity: 0 },
+      {
+        xPercent: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: this.headline.nativeElement,
+          start: 'top 80%',
+          end: 'bottom 60%',
+          scrub: 0.8,
+        },
+      },
+    );
   }
 
   ngOnDestroy(): void {
     this.ctx.revert();
     this.mm?.revert();
   }
-
 }
