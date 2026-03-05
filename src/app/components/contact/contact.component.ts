@@ -29,6 +29,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
   @ViewChild('upperIntroduction') upperIntroduction!: ElementRef;
   @ViewChild('lowerIntroduction') lowerIntroduction!: ElementRef;
   @ViewChild('contact') contact!: ElementRef;
+  @ViewChild('textblock') textblock!: ElementRef;
 
   private ctx!: gsap.Context;
   private mm!: gsap.MatchMedia;
@@ -136,7 +137,6 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
           this.upperIntroduction.nativeElement,
           { opacity: 0 },
           { opacity: 1 },
-          "+=0.2"
         ).fromTo(
           this.lowerIntroduction.nativeElement,
           { opacity: 0 },
@@ -148,25 +148,24 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: this.h1.nativeElement,
-            start: "top 80%",
-            end: "bottom 40%",
+            start: "top 50%",
+            end: "bottom 10%",
             scrub: 0.5
           }
         });
         tl.fromTo(
           this.h3.nativeElement,
           { clipPath: "inset(0 0 100% 0)" },
-          { clipPath: "inset(0 0 0% 0)" }
+          { clipPath: "inset(0 0 0% 0)", duration: 1 }
         ).fromTo(
           this.h1.nativeElement,
           { clipPath: "inset(0 0 100% 0)" },
-          { clipPath: "inset(0 0 0% 0)" },
+          { clipPath: "inset(0 0 0% 0)", duration: 1 },
           "<"
         ).fromTo(
           this.upperIntroduction.nativeElement,
           { opacity: 0 },
-          { opacity: 1 },
-          "+=0.2"
+          { opacity: 1 }
         ).fromTo(
           this.lowerIntroduction.nativeElement,
           { opacity: 0 },
@@ -182,14 +181,14 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
             scrollTrigger: {
               trigger: this.contact.nativeElement,
               start: "top 80%",
-              end: "bottom 60%",
-              scrub: 0.5,
-              markers: true
+              end: "bottom 80%",
+              scrub: 0.5
             }
           }
         );
       });
     });
+    ScrollTrigger.refresh();
   }
 
   ngOnDestroy(): void {

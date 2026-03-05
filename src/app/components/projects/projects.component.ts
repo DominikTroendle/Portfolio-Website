@@ -30,6 +30,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   @ViewChild('projects') projects!: ElementRef;
 
   private ctx!: gsap.Context;
+  private mm!: gsap.MatchMedia;
 
   isVisible = false;
   selectedProject = {};
@@ -65,38 +66,82 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     gsap.registerPlugin(ScrollTrigger);
     this.ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: this.headline.nativeElement.parentElement,
-          start: "top 80%",
-          end: "bottom 60%",
-          scrub: 1
-        }
+
+      this.mm = gsap.matchMedia();
+      this.mm.add('(min-width: 1024px)', () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: this.headline.nativeElement.parentElement,
+            start: "top 80%",
+            end: "bottom 60%",
+            scrub: 1
+          }
+        });
+        tl.fromTo(
+          this.headline.nativeElement,
+          { clipPath: "inset(0 0 100% 0)" },
+          { clipPath: "inset(0 0 0% 0)" }
+        ).fromTo(
+          this.subheadline.nativeElement,
+          { clipPath: "inset(0 0 100% 0)" },
+          { clipPath: "inset(0 0 0% 0)" },
+          "<"
+        ).fromTo(
+          this.projects.nativeElement,
+          { xPercent: -50, opacity: 0 },
+          { xPercent: 0, opacity: 1 },
+          "+=0.2"
+        ).fromTo(
+          this.introduction.nativeElement,
+          { opacity: 0 },
+          { opacity: 1 }
+        );
       });
-      tl.fromTo(
-        this.headline.nativeElement,
-        { clipPath: "inset(0 0 100% 0)" },
-        { clipPath: "inset(0 0 0% 0)" }
-      ).fromTo(
-        this.subheadline.nativeElement,
-        { clipPath: "inset(0 0 100% 0)" },
-        { clipPath: "inset(0 0 0% 0)" },
-        "<"
-      ).fromTo(
-        this.projects.nativeElement,
-        { xPercent: -50, opacity: 0 },
-        { xPercent: 0, opacity: 1 },
-        "+=0.2"
-      ).fromTo(
-        this.introduction.nativeElement,
-        { opacity: 0 },
-        { opacity: 1 }
-      );
+      this.mm.add('(max-width: 1023px)', () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: this.headline.nativeElement.parentElement,
+            start: "top 60%",
+            end: "bottom 60%",
+            scrub: 1
+          }
+        });
+        tl.fromTo(
+          this.headline.nativeElement,
+          { clipPath: "inset(0 0 100% 0)" },
+          { clipPath: "inset(0 0 0% 0)" }
+        ).fromTo(
+          this.subheadline.nativeElement,
+          { clipPath: "inset(0 0 100% 0)" },
+          { clipPath: "inset(0 0 0% 0)" },
+          "<"
+        ).fromTo(
+          this.introduction.nativeElement,
+          { opacity: 0 },
+          { opacity: 1 }
+        );
+        gsap.fromTo(
+          this.projects.nativeElement,
+          { xPercent: -50, opacity: 0 },
+          {
+            xPercent: 0,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: this.headline.nativeElement.parentElement,
+              start: "top 60%",
+              end: "bottom 60%",
+              scrub: 1
+            }
+          }
+        )
+      });
     });
+    ScrollTrigger.refresh();
   }
 
   ngOnDestroy(): void {
     this.ctx.revert();
+    this.mm?.revert();
   }
 
 }

@@ -51,6 +51,7 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
             }
           });
     });
+    ScrollTrigger.refresh();
   }
 
   ngOnDestroy(): void {

@@ -75,6 +75,7 @@ export class AboveTheFoldComponent implements AfterViewInit, OnDestroy {
         }
       );
     });
+    ScrollTrigger.refresh();
   }
 
   ngOnDestroy(): void {

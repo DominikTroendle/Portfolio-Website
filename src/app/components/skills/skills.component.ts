@@ -68,8 +68,8 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
             scrollTrigger: {
               trigger: this.left.nativeElement,
               start: 'top 85%',
-              end: 'bottom 50%',
-              scrub: 0.5           
+              end: 'bottom 70%',
+              scrub: 0.5     
             }
           }
         );
@@ -82,13 +82,14 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
             scrollTrigger: {
               trigger: this.right.nativeElement,
               start: 'top 85%',
-              end: 'bottom 50%',
+              end: 'bottom 70%',
               scrub: 0.5
             }
           }
         );
       });
     });
+    ScrollTrigger.refresh();
   }
 
   ngOnDestroy(): void {
