@@ -59,7 +59,8 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
         );
       });
       this.mm.add('(max-width: 1023px)', () => {
-        gsap.fromTo(this.left.nativeElement,
+        gsap.fromTo(
+          this.left.nativeElement,
           { x: -100, opacity: 0 },
           {
             x: 0,
@@ -67,12 +68,13 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
             scrollTrigger: {
               trigger: this.left.nativeElement,
               start: 'top 85%',
-              end: 'bottom 60%',
-              scrub: 0.5            
+              end: 'bottom 50%',
+              scrub: 0.5           
             }
           }
         );
-        gsap.fromTo(this.right.nativeElement,
+        gsap.fromTo(
+          this.right.nativeElement,
           { x: 100, opacity: 0 },
           {
             x: 0,
@@ -80,7 +82,7 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
             scrollTrigger: {
               trigger: this.right.nativeElement,
               start: 'top 85%',
-              end: 'bottom 60%',
+              end: 'bottom 50%',
               scrub: 0.5
             }
           }

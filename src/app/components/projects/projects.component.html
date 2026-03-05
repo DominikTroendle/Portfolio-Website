@@ -8,10 +8,10 @@
 ></app-overlay>
 <section>
     <div class="container-content">
-        <h3>{{db.data.projectsData.title}}</h3>
-        <h1>{{db.data.projectsData.headline}}</h1>
-        <p>{{db.data.projectsData.introduction}}</p>
-        <div class="container-projects">
+        <h3 #subheadline class="reveal">{{db.data.projectsData.title}}</h3>
+        <h1 #headline class="reveal">{{db.data.projectsData.headline}}</h1>
+        <p #introduction>{{db.data.projectsData.introduction}}</p>
+        <div #projects class="container-projects">
             @for(project of db.data.projectsData.projects; track project; let i = $index){
                 <div class="row" (click)="showOverlay(i)">
                     <div>

@@ -117,6 +117,10 @@ section{
     }
 }
 
+.reveal{
+    clip-path: inset(0 0 100% 0);
+}
+
 @media(min-width: bp.$bp-xxs) {
     section{
         padding: 100px 18px;

@@ -8,6 +8,7 @@ section{
     width: 100vw;
     padding: 100px 12px 278px 12px;
     background-color: #1c1c1c;
+    overflow: hidden;
 }
 
 .container-left{
@@ -255,6 +256,10 @@ form{
             }
         }
     }
+}
+
+.reveal{
+    clip-path: inset(0 0 100% 0);
 }
 
 @keyframes sliding_text {

@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,50 +14,42 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   standalone: true,
   imports: [],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+  styleUrl: './about.component.scss',
 })
-export class AboutComponent implements AfterViewInit, OnDestroy{
-  constructor(public db: DatabaseService) { }
+export class AboutComponent implements AfterViewInit, OnDestroy {
+  constructor(public db: DatabaseService) {}
 
   @ViewChild('left') left!: ElementRef;
   @ViewChild('right') right!: ElementRef;
 
   private ctx!: gsap.Context;
 
- ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     gsap.registerPlugin(ScrollTrigger);
     this.ctx = gsap.context(() => {
-
-      
-
-      /* gsap.fromTo(this.left.nativeElement,
-        { x: -200, opacity: 0 },
+      gsap.fromTo(this.left.nativeElement,
+        { opacity: 0 },
         {
-          x: 0,
           opacity: 1,
-          duration: 0.8,
           scrollTrigger: {
             trigger: this.left.nativeElement,
-            start: "top 90%",
-            end: "top 40%",
-            scrub: 0.5,
-            // markers: true
+            start: "top 70%",
+            end: "bottom 60%",
+            scrub: 0.5
           }
         });
         gsap.fromTo(this.right.nativeElement,
-          { x: 200, opacity: 0 },
+          { yPercent: 100 },
           {
-            x: 0,
-            opacity: 1,
+            yPercent: 0,
             duration: 0.8,
             scrollTrigger: {
-              trigger: this.right.nativeElement,
+              trigger: this.right.nativeElement.parentElement,
               start: "top 90%",
-              end: "top 40%",
-              scrub: 0.5,
-              markers: true
+              end: "top 0%",
+              scrub: 0.5
             }
-          }); */
+          });
     });
   }
 

@@ -1,16 +1,21 @@
 <section>
     <div class="container-left">
         <div>
-            <h3>{{db.data.contactData.title}}</h3>
-            <h1>{{db.data.contactData.headline}}</h1>
+            <h3 #h3 class="reveal">{{db.data.contactData.title}}</h3>
+            <h1 #h1 class="reveal">{{db.data.contactData.headline}}</h1>
         </div>
         <div>
-            <h2>{{db.data.contactData.subheadline}}</h2>
-            <p>{{db.data.contactData.introduction}}</p>
-            <p>{{db.data.contactData.textBefore}}<a [href]="db.data.contactData.textHref"><span>{{db.data.contactData.textHighlighted}}</span></a></p>
+            <h2 #h2 class="reveal">{{db.data.contactData.subheadline}}</h2>
+            <p #upperIntroduction>{{db.data.contactData.introduction}}</p>
+            <p #lowerIntroduction>{{db.data.contactData.textBefore}}<a [href]="db.data.contactData.textHref"><span>{{db.data.contactData.textHighlighted}}</span></a></p>
         </div>
     </div>
-    <form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()">
+    <form
+        #contact
+        [formGroup]="contactForm"
+        novalidate
+        (ngSubmit)="onSubmit()"
+    >
         <div
         class="overlay-success"
         [class.show]="overlayVisible">

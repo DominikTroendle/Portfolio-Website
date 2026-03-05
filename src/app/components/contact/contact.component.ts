@@ -1,7 +1,16 @@
-import { Component, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  ViewChild
+} from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
 import { FormBuilder, FormGroup,  FormControl, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +21,18 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
-export class ContactComponent {
+export class ContactComponent implements AfterViewInit, OnDestroy {
+
+  @ViewChild('h1') h1!: ElementRef;
+  @ViewChild('h2') h2!: ElementRef;
+  @ViewChild('h3') h3!: ElementRef;
+  @ViewChild('upperIntroduction') upperIntroduction!: ElementRef;
+  @ViewChild('lowerIntroduction') lowerIntroduction!: ElementRef;
+  @ViewChild('contact') contact!: ElementRef;
+
+  private ctx!: gsap.Context;
+  private mm!: gsap.MatchMedia;
+
   contactForm!: FormGroup<Record<string, FormControl<unknown>>>;
   formSubmitted = false;
   
@@ -84,5 +104,96 @@ export class ContactComponent {
           error: (error) => {console.error(error);}
         })
     }
+  }
+
+  ngAfterViewInit(): void {
+    gsap.registerPlugin(ScrollTrigger);
+    this.ctx = gsap.context(() => {
+      this.mm = gsap.matchMedia();
+      this.mm.add('(min-width: 1024px)', () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: this.h1.nativeElement,
+            start: "top 80%",
+            end: "bottom 40%",
+            scrub: 0.5
+          }
+        });
+        tl.fromTo(
+          this.contact.nativeElement,
+          { x: 100, opacity: 0 },
+          { x: 0, opacity: 1 }
+        ).fromTo(
+          this.h3.nativeElement,
+          { clipPath: "inset(0 0 100% 0)" },
+          { clipPath: "inset(0 0 0% 0)" }
+        ).fromTo(
+          this.h1.nativeElement,
+          { clipPath: "inset(0 0 100% 0)" },
+          { clipPath: "inset(0 0 0% 0)" },
+          "<"
+        ).fromTo(
+          this.upperIntroduction.nativeElement,
+          { opacity: 0 },
+          { opacity: 1 },
+          "+=0.2"
+        ).fromTo(
+          this.lowerIntroduction.nativeElement,
+          { opacity: 0 },
+          { opacity: 1 },
+          "<"
+        );
+      });
+      this.mm.add('(max-width: 1023px)', () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: this.h1.nativeElement,
+            start: "top 80%",
+            end: "bottom 40%",
+            scrub: 0.5
+          }
+        });
+        tl.fromTo(
+          this.h3.nativeElement,
+          { clipPath: "inset(0 0 100% 0)" },
+          { clipPath: "inset(0 0 0% 0)" }
+        ).fromTo(
+          this.h1.nativeElement,
+          { clipPath: "inset(0 0 100% 0)" },
+          { clipPath: "inset(0 0 0% 0)" },
+          "<"
+        ).fromTo(
+          this.upperIntroduction.nativeElement,
+          { opacity: 0 },
+          { opacity: 1 },
+          "+=0.2"
+        ).fromTo(
+          this.lowerIntroduction.nativeElement,
+          { opacity: 0 },
+          { opacity: 1 },
+          "<"
+        );
+        gsap.fromTo(
+          this.contact.nativeElement,
+          { x: 100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: this.contact.nativeElement,
+              start: "top 80%",
+              end: "bottom 60%",
+              scrub: 0.5,
+              markers: true
+            }
+          }
+        );
+      });
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.ctx.revert();
+    this.mm?.revert();
   }
 }
