@@ -138,8 +138,9 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
       scrollTrigger: {
         trigger: this.h3.nativeElement,
         start: 'top 80%',
-        end: 'top 50%',
-        scrub: 0.8
+        end: 'top 70%',
+        scrub: 0.8,
+        markers: true
       },
     });
     tl.fromTo(
