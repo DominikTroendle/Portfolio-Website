@@ -13,11 +13,12 @@ import {
   FormControl,
   ReactiveFormsModule,
   Validators,
-  AbstractControl,
+  AbstractControl
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ButtonComponent } from "../button/button.component";
 
 @Component({
   selector: 'app-contact',
@@ -139,8 +140,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
         trigger: this.h3.nativeElement,
         start: 'top 80%',
         end: 'top 70%',
-        scrub: 0.8,
-        markers: true
+        scrub: 0.8
       },
     });
     tl.fromTo(

@@ -1,0 +1,69 @@
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+button {
+  position: relative;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 100px;
+  border: 1px solid white;
+  background: unset;
+  color: white;
+  font-family: Karla;
+  font-size: 18px;
+  cursor: pointer;
+  span {
+    display: inline-block;
+  }
+  &:hover {
+    overflow: hidden;
+    border-color: #3dcfb6;
+    color: #3dcfb6;
+    span {
+      animation: sliding_text 2s linear infinite;
+    }
+  }
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: inherit;
+  padding: 5px;
+  background: conic-gradient(from var(--angle), transparent 75%, #3dcfb6);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: spin 4s linear infinite;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes sliding_text {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-130%);
+  }
+  50.0001% {
+    transform: translateX(130%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

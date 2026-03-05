@@ -9,9 +9,7 @@
         <div>
             @for(btn of db.data.atfData.buttons; track btn.text){
                 <a class="btn-wrapper" [href]="btn.href">
-                    <button class="btn">
-                        <span>{{btn.text}}</span>
-                    </button>
+                    <app-button [text]="btn.text"></app-button>
                 </a> 
             }
         </div>
