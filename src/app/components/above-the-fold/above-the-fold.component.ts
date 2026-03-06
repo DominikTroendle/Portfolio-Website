@@ -9,11 +9,15 @@ import { DatabaseService } from '../../services/database/database.service';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ButtonComponent } from "../button/button.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-above-the-fold',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [
+    ButtonComponent,
+    RouterLink
+  ],
   templateUrl: './above-the-fold.component.html',
   styleUrl: './above-the-fold.component.scss'
 })

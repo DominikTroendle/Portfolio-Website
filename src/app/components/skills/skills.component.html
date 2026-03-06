@@ -9,7 +9,7 @@
                     <h2>{{db.data.skillsData.subheadlineBefore}}<span>{{db.data.skillsData.subheadlineHighlighted}}</span></h2>
                     <p>{{db.data.skillsData.contact}}</p>
                 </div>
-                <a href="#contact">
+                <a [routerLink]="'/contact'">
                     <app-button [text]="db.data.skillsData.contactButton"></app-button>
                 </a>
             </div>
