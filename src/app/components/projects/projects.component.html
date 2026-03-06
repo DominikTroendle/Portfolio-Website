@@ -1,20 +1,12 @@
-<!-- <app-overlay
-    class="overlay"
-    [overlayData]="selectedProject"
-    [projectNumber]="'0' + selectedIndex"
-    [class.show]="isVisible"
-    (close)="closeOverlay()"
-    (next)="updateOverlay(selectedIndex)"
-></app-overlay> -->
 <section>
-    <!-- <app-overlay
+    <app-overlay
         class="overlay"
         [overlayData]="selectedProject"
         [projectNumber]="'0' + selectedIndex"
         [class.show]="isVisible"
         (close)="closeOverlay()"
         (next)="updateOverlay(selectedIndex)"
-    ></app-overlay> -->
+    ></app-overlay>
     <div class="container-content">
         <h3 #subheadline class="reveal">{{db.data.projectsData.title}}</h3>
         <h1 #headline class="reveal">{{db.data.projectsData.headline}}</h1>
