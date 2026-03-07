@@ -1,7 +1,7 @@
 <div class="backdrop" (click)="closeOverlay()">
     <nav>
         @for(item of db.data.headerData.items; track item.text){
-            <a [href]="item.href">{{item.text}}</a>
+            <a [routerLink]="[item.href]">{{item.text}}</a>
         }
         <app-language-switch></app-language-switch>
     </nav>
