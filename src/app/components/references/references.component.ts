@@ -9,11 +9,11 @@ import { DatabaseService } from '../../services/database/database.service';
   styleUrl: './references.component.scss'
 })
 export class ReferencesComponent {
-  active: boolean = false;
-  direction: string = "";
-  currentIndex: number = 0;
-  carouselLength: number = this.db.data.referencesData.carousel.length;
-  isAnimated: boolean = false;
+  active = false;
+  direction = "";
+  currentIndex = 0;
+  carouselLength = this.db.data.referencesData.carousel.length;
+  isAnimated = false;
 
   constructor(public db: DatabaseService){ }
 

@@ -19,7 +19,7 @@ import { RouterLink } from "@angular/router";
 })
 export class HeaderComponent {
 
-  isVisible:boolean = false;
+  isVisible = false;
 
   constructor(
     public db: DatabaseService,
