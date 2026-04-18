@@ -11,6 +11,7 @@
     <a class="header__logo" [routerLink]="['/']"></a>
     <a class="header__logo--mobile" [routerLink]="['/']"></a>
     <button class="header__menu" (click)="showMobileMenu()"></button>
-    <app-nav-mobile class="header__mobile-nav" [class.header__mobile-nav--visible]="isVisible" (close)="hideMobileMenu()"></app-nav-mobile>
+    <app-nav-mobile class="header__mobile-nav" [class.header__mobile-nav--visible]="isVisible"
+        (close)="hideMobileMenu()"></app-nav-mobile>
 </header>
 }
