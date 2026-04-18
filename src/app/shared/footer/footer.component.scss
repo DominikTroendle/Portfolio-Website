@@ -6,7 +6,7 @@
   display: block;
   position: relative;
   z-index: 1;
-  margin-top: -232px;
+  margin-top: -219px;
   width: 100dvw;
 }
 
@@ -102,7 +102,7 @@ ul {
 
 @media (min-width: bp.$bp-xxs) {
   :host {
-    margin-top: -238px;
+    margin-top: -225px;
   }
   footer {
     padding: 50px 18px 18px 18px;
@@ -111,7 +111,7 @@ ul {
 
 @media (min-width: bp.$bp-sm) {
   :host {
-    margin-top: -248px;
+    margin-top: -235px;
   }
   footer {
     padding: 50px 28px 28px 28px;
@@ -120,7 +120,7 @@ ul {
 
 @media (min-width: bp.$bp-md) {
   :host {
-    margin-top: -214px;
+    margin-top: -201px;
   }
   footer {
     padding: 50px 60px;
@@ -134,6 +134,9 @@ ul {
 }
 
 @media (min-width: bp.$bp-lg) {
+  :host {
+    margin-top: -202px;
+  }
   footer {
     padding: 50px 98px;
   }

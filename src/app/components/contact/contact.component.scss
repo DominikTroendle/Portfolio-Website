@@ -6,7 +6,7 @@ section{
     @include dFlex(center, space-between, 64px);
     flex-direction: column;
     width: 100vw;
-    padding: 100px 12px 278px 12px;
+    padding: 100px 12px 269px 12px;
     background-color: #1c1c1c;
     overflow: hidden;
 }
@@ -291,7 +291,7 @@ form{
 
 @media(min-width: bp.$bp-xxs) {
     section{
-        padding: 100px 18px 284px 18px;
+        padding: 100px 18px 275px 18px;
     }
     .container-left{
         width: clamp(324px, calc(324 / 360 * 100vw), 568px);
@@ -300,13 +300,13 @@ form{
 
 @media(min-width: bp.$bp-sm) {
     section{
-        padding: 100px 28px 294px 28px;
+        padding: 100px 28px 285px 28px;
     }
 }
 
 @media(min-width: bp.$bp-md) {
     section{
-        padding: 100px 60px 260px 60px;
+        padding: 100px 60px 251px 60px;
     }
 }
 
@@ -314,7 +314,7 @@ form{
     section{
         flex-direction: row;
         gap: 40px;
-        padding: 50px 98px 260px 98px;
+        padding: 50px 98px 252px 98px;
     }
     .container-left,
     form{
