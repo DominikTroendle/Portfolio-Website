@@ -2,8 +2,8 @@ import { Component, Inject, Renderer2 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { DatabaseService } from '../../services/database/database.service';
 import { NavMobileComponent } from '../nav-mobile/nav-mobile.component';
-import { LanguageSwitchComponent } from "../language-switch/language-switch.component";
-import { RouterLink } from "@angular/router";
+import { LanguageSwitchComponent } from '../language-switch/language-switch.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,29 +12,27 @@ import { RouterLink } from "@angular/router";
     CommonModule,
     NavMobileComponent,
     LanguageSwitchComponent,
-    RouterLink
-],
+    RouterLink,
+  ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-
   isVisible = false;
 
   constructor(
     public db: DatabaseService,
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
-  ) { }
+    @Inject(DOCUMENT) private document: Document,
+  ) {}
 
-  showMobileMenu(){
+  showMobileMenu() {
     this.isVisible = true;
     this.renderer.addClass(this.document.body, 'no-scroll');
   }
 
-  hideMobileMenu(){
+  hideMobileMenu() {
     this.isVisible = false;
     this.renderer.removeClass(this.document.body, 'no-scroll');
   }
-
 }
