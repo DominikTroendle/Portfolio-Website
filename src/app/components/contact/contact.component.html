@@ -63,7 +63,7 @@
                     id="privacy-policy"
                     formControlName="privacyPolicy">
                     <label for="privacy-policy"></label>
-                    <p>{{db.data.contactData.policyBefore}}<a href="privacy-policy"><span>{{db.data.contactData.policyHighlighted}}</span></a>{{db.data.contactData.policyAfter}}</p>
+                    <p>{{db.data.contactData.policyBefore}}<a routerLink="/privacy-policy"><span>{{db.data.contactData.policyHighlighted}}</span></a>{{db.data.contactData.policyAfter}}</p>
                 </div>
                 <p id="error" [class.visible]="contactForm.get('privacyPolicy')?.invalid && formSubmitted">{{db.data.contactData.policyError}}</p>
             </div>

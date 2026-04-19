@@ -6,7 +6,6 @@ import { ProjectsComponent } from '../components/projects/projects.component';
 import { ReferencesComponent } from '../components/references/references.component';
 import { ContactComponent } from '../components/contact/contact.component';
 import { DatabaseService } from '../services/database/database.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main-content',
@@ -17,25 +16,13 @@ import { ActivatedRoute } from '@angular/router';
     SkillsComponent,
     ProjectsComponent,
     ReferencesComponent,
-    ContactComponent,
+    ContactComponent
   ],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.scss',
 })
 export class MainContentComponent {
   constructor(
-    public db: DatabaseService,
-    private route: ActivatedRoute,
+    public db: DatabaseService
   ) {}
-
-  ngAfterViewInit(): void {
-    this.route.data.subscribe((data) => {
-      if (data['scrollTo']) {
-        const el = document.getElementById(data['scrollTo']);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    });
-  }
 }

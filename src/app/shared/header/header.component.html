@@ -3,13 +3,13 @@
     <nav class="header__nav">
         <app-language-switch></app-language-switch>
         @for(item of db.data.headerData.items; track item.text){
-        <a class="header__nav-link" [routerLink]="[item.href]">
+        <a class="header__nav-link" routerLink="/" [fragment]="item.href">
             {{item.text}}
         </a>
         }
     </nav>
-    <a class="header__logo" [routerLink]="['/']"></a>
-    <a class="header__logo--mobile" [routerLink]="['/']"></a>
+    <a class="header__logo" routerLink="/"></a>
+    <a class="header__logo--mobile" routerLink="/"></a>
     <button class="header__menu" (click)="showMobileMenu()"></button>
     <app-nav-mobile class="header__mobile-nav" [class.header__mobile-nav--visible]="isVisible"
         (close)="hideMobileMenu()"></app-nav-mobile>

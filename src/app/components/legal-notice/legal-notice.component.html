@@ -1,6 +1,6 @@
 @if(db.loaded){
     <section>
-        <a class="arrow-back" href="#"></a>
+        <a class="arrow-back" routerLink="/" fragment="contact"></a>
         <h1>{{db.data.legalNoticeData.title}}</h1>
         <div class="container-content">
             @for(section of db.data.legalNoticeData.sections; track section){

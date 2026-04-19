@@ -19,11 +19,12 @@ import { HttpClient } from '@angular/common/http';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ButtonComponent } from "../button/button.component";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
@@ -231,8 +232,8 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
         opacity: 1,
         scrollTrigger: {
           trigger: this.contact.nativeElement,
-          start: 'top 80%',
-          end: 'bottom 90%',
+          start: 'top 95%',
+          end: 'bottom 95%',
           scrub: 0.8
         },
       },
