@@ -1,25 +1,23 @@
 <section #hero>
     <div #sideLeft class="side-content left">
-        <a routerLink="/" fragment="contact"><button><img src="assets/img/arrow_down.png" alt="arrow-down"></button></a>
-        <hr>
+        <a routerLink="/" fragment="contact"><img src="assets/img/arrow_down.png" alt="arrow-down"></a>
+        <div class="atf__line atf__line--left"></div>
     </div>
     <div #main class="main-content">
-        <h2>{{db.data.atfData.title}}</h2>
+        <p>{{db.data.atfData.title}}</p>
         <h1>{{db.data.atfData.name}}</h1>
-        <div>
+        <nav>
             @for(btn of db.data.atfData.buttons; track btn.text){
-                <a class="btn-wrapper" routerLink="/" [fragment]="btn.href">
-                    <app-button [text]="btn.text"></app-button>
-                </a> 
+                <app-button [text]="btn.text" [fragment]="btn.href" route="/"></app-button>
             }
-        </div>
+        </nav>
     </div>
     <div #sideRight class="side-content right">
         <a class="email-text" [href]="'mailto:' + db.data.atfData.email">{{db.data.atfData.email}}</a>
         <a class="email-logo external-logo-sm" [href]="'mailto:' + db.data.atfData.email"><img src="assets/img/email-logo.png" alt="email-logo"></a>
         <a [href]="db.data.atfData.github" class="external-logo-sm" target="_blank" rel="noopener noreferrer"><img src="assets/img/github-logo.png" alt="github-logo"></a>
         <a [href]="db.data.atfData.linkedin" class="external-logo-sm" target="_blank" rel="noopener noreferrer"><img src="assets/img/linkedin-logo.png" alt="linkedin-logo"></a>
-        <hr>
+        <div class="atf__line atf__line--right"></div>
     </div>
     <div class="ribbon-mask">
         <div #ribbon class="ribbon">

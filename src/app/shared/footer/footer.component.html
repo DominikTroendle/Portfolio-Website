@@ -1,14 +1,14 @@
 @if(db.loaded){
 <footer class="footer">
     <section class="footer__content">
-        <section class="footer__left">
+        <div class="footer__left">
             <a class="footer__logo" routerLink="/"></a>
             <a class="footer__logo-mobile" routerLink="/"></a>
             <ul class="footer__list">
                 <li>{{db.data.footerData.function}}</li>
                 <li>{{db.data.footerData.location}}</li>
             </ul>
-        </section>
+        </div>
         <span class="footer__copyright footer__copyright--desktop">{{db.data.footerData.copyright}}</span>
         <ul class="footer__list">
             @for(link of db.data.footerData.links; track link){

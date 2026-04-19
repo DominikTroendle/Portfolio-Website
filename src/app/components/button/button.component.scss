@@ -1,10 +1,13 @@
+@use "../../styles/mixins" as *;
+
 @property --angle {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
 
-button {
+.button {
+  @include dFlex(center, center);
   position: relative;
   height: 48px;
   padding: 0 24px;
@@ -28,7 +31,7 @@ button {
   }
 }
 
-button::after {
+.button::after {
   content: "";
   position: absolute;
   inset: -5px;
