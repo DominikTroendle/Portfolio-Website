@@ -1,35 +1,41 @@
-<section #hero>
-    <div #sideLeft class="side-content left">
-        <a routerLink="/" fragment="contact"><img src="assets/img/arrow_down.png" alt="arrow-down"></a>
+<section #atf class="atf">
+    <div #left class="atf__content-side atf__content-left">
+        <a class="atf__scroll-button" routerLink="/" fragment="contact">
+            <img class="atf__scroll-button--image" src="assets/img/arrow_down.png" alt="arrow-down">
+        </a>
         <div class="atf__line atf__line--left"></div>
     </div>
-    <div #main class="main-content">
-        <p>{{db.data.atfData.title}}</p>
-        <h1>{{db.data.atfData.name}}</h1>
-        <nav>
+    <div #main class="atf__content-main">
+        <p class="atf__subheadline">{{db.data.atfData.title}}</p>
+        <h1 class="atf__headline">{{db.data.atfData.name}}</h1>
+        <nav class="atf__nav">
             @for(btn of db.data.atfData.buttons; track btn.text){
-                <app-button [text]="btn.text" [fragment]="btn.href" route="/"></app-button>
+            <app-button [text]="btn.text" [fragment]="btn.href" route="/"></app-button>
             }
         </nav>
     </div>
-    <div #sideRight class="side-content right">
-        <a class="email-text" [href]="'mailto:' + db.data.atfData.email">{{db.data.atfData.email}}</a>
-        <a class="email-logo external-logo-sm" [href]="'mailto:' + db.data.atfData.email"><img src="assets/img/email-logo.png" alt="email-logo"></a>
-        <a [href]="db.data.atfData.github" class="external-logo-sm" target="_blank" rel="noopener noreferrer"><img src="assets/img/github-logo.png" alt="github-logo"></a>
-        <a [href]="db.data.atfData.linkedin" class="external-logo-sm" target="_blank" rel="noopener noreferrer"><img src="assets/img/linkedin-logo.png" alt="linkedin-logo"></a>
+    <div #right class="atf__content-side atf__content-right">
+        <a class="atf__link atf__link--text" [href]="'mailto:' + db.data.atfData.email">{{db.data.atfData.email}}</a>
+        <a class="atf__link atf__link--mobile-logo" [href]="'mailto:' + db.data.atfData.email">
+            <img class="atf__link--image" src="assets/img/email-logo.png" alt="email-logo">
+        </a>
+        <a class="atf__link" [href]="db.data.atfData.github" target="_blank" rel="noopener noreferrer">
+            <img class="atf__link--image" src="assets/img/github-logo.png" alt="github-logo">
+        </a>
+        <a class="atf__link" [href]="db.data.atfData.linkedin" target="_blank" rel="noopener noreferrer">
+            <img class="atf__link--image" src="assets/img/linkedin-logo.png" alt="linkedin-logo">
+        </a>
         <div class="atf__line atf__line--right"></div>
     </div>
-    <div class="ribbon-mask">
+    <div class="ribbon__mask">
         <div #ribbon class="ribbon">
-            <div class="track-wrapper">
+            <div class="ribbon__track-wrapper">
                 @for(_ of [1,2,3]; track $index){
-                    <div
-                    class="track"
-                    [attr.aria-hidden]="$index > 1 ? 'true' : null">
-                        @for(text of db.data.atfData.ribbonTracks; track text){
-                            <span>{{text}}</span>
-                        }
-                    </div>
+                <div class="ribbon__track" [attr.aria-hidden]="$index > 1 ? 'true' : null">
+                    @for(text of db.data.atfData.ribbonTracks; track text){
+                    <span class="ribbon__track--after">{{text}}</span>
+                    }
+                </div>
                 }
             </div>
         </div>
