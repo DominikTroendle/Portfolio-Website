@@ -1,22 +1,22 @@
-<section>
-    <div #left class="container-about">
-        <div class="container-left">
-            <img class="hero" src="../../../assets/img/hero.png" alt="hero-img">
-            <img class="bg" src="../../../assets/img/hero-img-bg.png" alt="hero-img-bg">
+<section class="about">
+    <div #left class="about__container">
+        <div class="about__media">
+            <img class="about__image about__image--hero" src="../../../assets/img/hero.png" alt="hero-image">
+            <img class="about__image about__image--bg" src="../../../assets/img/hero-img-bg.png" alt="">
         </div>
-        <div #right class="container-right">
-            <h2>{{db.data.aboutData.title}}</h2>
-            <div class="container-text">
-                <h1>{{db.data.aboutData.headline}}</h1>
-                <p id="introduction">{{db.data.aboutData.introduction}}</p>
-                <div class="container-details">
+        <div #right class="about__details">
+            <p class="about__eyebrow">{{db.data.aboutData.title}}</p>
+            <div class="about__content">
+                <h2 class="about__title">{{db.data.aboutData.headline}}</h2>
+                <p class="about__intro" id="introduction">{{db.data.aboutData.introduction}}</p>
+                <ul class="about__text">
                     @for(item of db.data.aboutData.details; track item){
-                        <div class="row">
-                            <img [src]="'assets/img/' + item.src + '.png'" [alt]="item.src">
-                            <p>{{item.text}}</p>
-                        </div>
+                    <li class="about__detail">
+                        <img class="about__detail--icon" [src]="'assets/img/' + item.src + '.png'" [alt]="item.src">
+                        <p class="about__detail--text">{{item.text}}</p>
+                    </li>
                     }
-                </div>
+                </ul>
             </div>
         </div>
     </div>
