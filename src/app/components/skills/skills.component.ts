@@ -10,12 +10,11 @@ import { DatabaseService } from '../../services/database/database.service';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ButtonComponent } from '../button/button.component';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [ButtonComponent, RouterLink],
+  imports: [ButtonComponent],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss',
 })
