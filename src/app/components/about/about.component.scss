@@ -54,13 +54,12 @@
   @include dFlex(flex-start, space-between, 20px);
   flex-direction: column;
   height: fit-content;
-  width: clamp(296px, calc(296 / 320 * 100vw), 568px);
 }
 
 .about__eyebrow {
   font-family: Karla;
   font-weight: 500;
-  font-size: 18px;
+  font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
   color: #3dcfb6;
 }
 
@@ -122,7 +121,7 @@
   }
 
   .about__media,
-  .about__content {
+  .about__details {
     width: clamp(324px, calc(324 / 360 * 100vw), 568px);
   }
 
@@ -166,7 +165,7 @@
     width: clamp(324px, calc(568 / 1440 * 100vw), 568px);
   }
 
-  .about__content {
+  .about__details {
     align-self: flex-end;
     width: clamp(324px, calc(568 / 1440 * 100vw), 568px);
   }
@@ -175,10 +174,6 @@
 @media (min-width: bp.$bp-xl) {
   .about__image--bg {
     transform: translate(30px, 30px);
-  }
-
-  .about__eyebrow {
-    font-size: 24px;
   }
 
   .about__title {
