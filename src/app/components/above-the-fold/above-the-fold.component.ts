@@ -50,7 +50,7 @@ export class AboveTheFoldComponent implements AfterViewInit, OnDestroy {
           trigger: this.atf.nativeElement,
           start: 'top top',
           end: '+=100%',
-          scrub: 0.8,
+          scrub: 0.8
         },
       });
       gsap.to(this.right.nativeElement, {
@@ -60,7 +60,7 @@ export class AboveTheFoldComponent implements AfterViewInit, OnDestroy {
           trigger: this.atf.nativeElement,
           start: 'top top',
           end: '+=100%',
-          scrub: 0.8,
+          scrub: 0.8
         },
       });
       gsap.fromTo(
@@ -73,7 +73,7 @@ export class AboveTheFoldComponent implements AfterViewInit, OnDestroy {
             trigger: this.atf.nativeElement,
             start: 'top top',
             end: '+=100%',
-            scrub: 0.8,
+            scrub: 0.8
           },
         },
       );

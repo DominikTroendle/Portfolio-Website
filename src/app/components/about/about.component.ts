@@ -16,6 +16,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
+
 export class AboutComponent implements AfterViewInit, OnDestroy {
   constructor(public db: DatabaseService) {}
 

@@ -1,320 +1,297 @@
-@use '../../styles/mixins' as *;
-@use '../../styles/fonts' as *;
-@use '../../styles/breakpoints' as bp;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/breakpoints" as bp;
 
-section{
-    @include dFlex(center, center);
-    width: 100vw;
-    background: radial-gradient(ellipse 25% 100% at center,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 50%), #1c1c1c;
-    background-repeat: no-repeat, repeat;
-    background-size: cover;
-    background-position: left calc(-50dvw) bottom;
-    overflow: hidden;
+.skills {
+  @include dFlex(center, center);
+  width: 100vw;
+  background:
+    radial-gradient(
+      ellipse 25% 100% at center,
+      rgba(8, 70, 59, 1) 0%,
+      rgba(28, 28, 28, 1) 50%
+    ),
+    #1c1c1c;
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  background-position: left calc(-50dvw) bottom;
+  overflow: hidden;
 }
 
-.container-skills{
-    @include dFlex(center, space-between, 40px);
-    flex-direction: column;
-    width: 100%;
-    padding: 0 12px;
+.skills__container {
+  @include dFlex(center, space-between, 40px);
+  flex-direction: column;
+  width: 100%;
+  padding: 0 12px;
 }
 
-.container-left{
-    @include dFlex(flex-start, space-between, 20px);
-    flex-direction: column;
-    height: fit-content;
-    width: clamp(296px, calc(296 / 320 * 100vw), 568px);
-    h3{
-        font-family: Karla;
-        font-weight: 500;
-        font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
-        color: #3DCFB6;
-    }
+.skills__details {
+  @include dFlex(flex-start, space-between, 20px);
+  flex-direction: column;
+  height: fit-content;
+  width: clamp(296px, calc(296 / 320 * 100vw), 568px);
 }
 
-.container-content{
-    @include dFlex(flex-start, space-between, 32px);
-    flex-direction: column;
-    width: 100%;
-    border: 1px solid #3DCFB6;
-    border-radius: 30px;
-    background-color: rgba(61, 207, 182, 0.1);
-    padding: 32px;
+.skills__eyebrow {
+  font-family: Karla;
+  font-weight: 500;
+  font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
+  color: #3dcfb6;
+}
+
+.container-content {
+  @include dFlex(flex-start, space-between, 32px);
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid #3dcfb6;
+  border-radius: 30px;
+  background-color: rgba(61, 207, 182, 0.1);
+  padding: 32px;
+  color: white;
+  h1 {
+    font-family: Fira Code;
+    font-weight: 700;
+    font-size: clamp(56px, calc(64 / 1440 * 100vw), 64px);
+    color: #3dcfb6;
+  }
+}
+
+.container-text {
+  @include dFlex(flex-start, center, 16px);
+  flex-direction: column;
+  .introduction {
+    font-family: Karla;
+    font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
     color: white;
-    h1{
-        font-family: Fira Code;
-        font-weight: 700;
-        font-size: clamp(56px, calc(64 / 1440 * 100vw), 64px);
-        color: #3DCFB6;
-    }
-    button{
-        @include dFlex(center, center);
-        background: none;
-        border: 1px solid white;
-        border-radius: 100px;
-        padding: 10px 24px;
-        font-family: Karla;
-        font-size: 16px;
-        color: white;
-        overflow: hidden;
-        span{
-            display: inline-block;
-            color: white;
-            &:hover{
-              cursor: pointer;
-            }
-        }
-        &:hover{
-            cursor: pointer;
-            border: 1px solid #3DCFB6;
-            span{
-                color: #3DCFB6;
-                animation: sliding_text 2s infinite linear;
-            }
-        }
-    }
-}
-
-@keyframes sliding_text {
-  0% {
-    transform: translateX(0);
+    text-align: justify;
+    margin-bottom: clamp(12px, calc(16 / 1440 * 100vw), 16px);
   }
-  50% {
-    transform: translateX(-140%);
+  h2 {
+    font-family: Fira Code;
+    font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
+    font-weight: 700;
   }
-  50.0001% {
-    transform: translateX(140%);
+  span {
+    color: #3dcfb6;
   }
-  100% {
-    transform: translateX(0);
+  p {
+    font-family: Karla;
+    font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
   }
 }
 
-.container-text{
-    @include dFlex(flex-start, center, 16px);
+.container-right {
+  @include dFlex(center, center);
+  gap: clamp(23px, calc(50 / 1024 * 100vw), 50px);
+  row-gap: clamp(32px, calc(40 / 1440 * 100vw), 40px);
+  flex-wrap: wrap;
+  width: clamp(296px, calc(296 / 320 * 100vw), 568px);
+  .item-skill {
+    @include dFlex(center, flex-start, 8px);
+    position: relative;
+    height: 116px;
+    width: 104px;
     flex-direction: column;
-    .introduction{
-        font-family: Karla;
-        font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
-        color: white;
-        text-align: justify;
-        margin-bottom: clamp(12px, calc(16 / 1440 * 100vw), 16px);
+    color: white;
+    font-family: Fira Code;
+    font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
+    text-align: center;
+    img {
+      width: 60px;
+      height: 60px;
     }
-    h2{
-        font-family: Fira Code;
-        font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
-        font-weight: 700;
+    img {
+      animation: pulse 2.5s linear infinite;
+      animation-delay: calc(var(--i) * 0.1s);
     }
-    span{
-        color: #3DCFB6;
-    }
-    p{
-        font-family: Karla;
-        font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
-    }
-}
-
-.container-right{
-    @include dFlex(center, center);
-    gap: clamp(23px, calc(50 / 1024 * 100vw), 50px);
-    row-gap: clamp(32px, calc(40 / 1440 * 100vw), 40px);
-    flex-wrap: wrap;
-    width: clamp(296px, calc(296 / 320 * 100vw), 568px);
-    .item-skill{
-        @include dFlex(center, flex-start, 8px);
-        position: relative;
-        height: 116px;
-        width: 104px;
-        flex-direction: column;
-        color: white;
-        font-family: Fira Code;
-        font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
-        text-align: center;
-        img{
-            width: 60px;
-            height: 60px;
-        }
-        img{
-            animation: pulse 2.5s linear infinite;
-            animation-delay: calc(var(--i) * 0.1s);
-        }
-    }
+  }
 }
 
 @keyframes pulse {
-    0% {
-        scale: 1;
-    }
-    20% {
-        scale: 1.1;
-    }
-    70% {
-        scale: 1.1;
-    }
-    90% {
-        scale: 1;
-    }
-    100% {
-        scale: 1;
-    }
+  0% {
+    scale: 1;
+  }
+  20% {
+    scale: 1.1;
+  }
+  70% {
+    scale: 1.1;
+  }
+  90% {
+    scale: 1;
+  }
+  100% {
+    scale: 1;
+  }
 }
 
-
-.growth-overlay{
-    display: none;
-    position: absolute;
-    top: -129%;
-    right: 0;
-    width: max-content;
-    height: fit-content;
+.growth-overlay {
+  display: none;
+  position: absolute;
+  top: -129%;
+  right: 0;
+  width: max-content;
+  height: fit-content;
+  z-index: 1;
+  &.show {
+    display: block;
+  }
+  .bubble {
+    width: 200px;
+    height: max-content;
+    background-color: white;
+    border-radius: 30px;
+    transition: 0.1s ease-in-out;
     z-index: 1;
-    &.show{
-        display: block;
+    filter: drop-shadow(0 6px 6px black);
+    left: 20px;
+  }
+  .pointer {
+    height: 25px;
+    width: 25px;
+    background: white;
+    margin: 0 auto;
+    transform: rotate(45deg);
+    border-radius: 0 0 5px 0;
+    margin-top: -6%;
+    margin-left: 68%;
+    position: relative;
+  }
+  .container-overlay-content {
+    @include dFlex(center, center, 16px);
+    flex-direction: column;
+    padding: 16px;
+    p {
+      font-family: Karla;
+      font-size: 16px;
+      color: #3dcfb6;
     }
-    .bubble{   
-        width: 200px;
-        height: max-content;
-        background-color: white;
-        border-radius: 30px;
-        transition: 0.1s ease-in-out;
-        z-index: 1;
-        filter: drop-shadow(0 6px 6px black);
-        left: 20px;
-    }
-    .pointer {
-        height: 25px;
-        width: 25px;
-        background: white;
-        margin: 0 auto;
-        transform: rotate(45deg);
-        border-radius: 0 0 5px 0;
-        margin-top: -6%;
-        margin-left: 68%;
-        position: relative;
-    }
-    .container-overlay-content{
-        @include dFlex(center, center, 16px);
+    .row {
+      @include dFlex(center, space-between, 16px);
+      font-family: Karla;
+      font-size: 12px;
+      font-weight: 700;
+      color: #3dcfb6;
+      div {
+        @include dFlex(center, space-between, 8px);
         flex-direction: column;
-        padding: 16px;
-        p{
-            font-family: Karla;
-            font-size: 16px;
-            color: #3DCFB6;
+        img {
+          width: 32px;
+          height: 32px;
         }
-        .row{
-            @include dFlex(center, space-between, 16px);
-            font-family: Karla;
-            font-size: 12px;
-            font-weight: 700;
-            color: #3DCFB6;
-            div{
-                @include dFlex(center, space-between, 8px);
-                flex-direction: column;
-                img{
-                    width: 32px;
-                    height: 32px;
-                }
-            }
+      }
+    }
+  }
+}
+
+@media (min-width: bp.$bp-xxs) {
+  .skills__container {
+    padding: 0 18px;
+  }
+  .skills__details {
+    width: clamp(324px, calc(324 / 360 * 100vw), 568px);
+  }
+  .container-right {
+    width: clamp(324px, calc(331 / 360 * 100vw), 568px);
+  }
+}
+
+@media (min-width: bp.$bp-sm) {
+  .skills__container {
+    padding: 0 28px;
+  }
+}
+
+@media (min-width: bp.$bp-md) {
+  .skills__container {
+    padding: 0 60px;
+  }
+}
+
+@media (min-width: bp.$bp-lg) {
+  .skills {
+    background:
+      radial-gradient(circle, rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 30%),
+      #1c1c1c;
+    background-repeat: no-repeat, repeat;
+    background-position: left calc(-100dvw / 2) bottom;
+  }
+  .skills__container {
+    padding: 100px 98px;
+    flex-direction: row;
+  }
+  .skills__details {
+    width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
+  }
+  .container-right {
+    max-width: 648px;
+    width: clamp(358px, calc(648 / 1440 * 100vw), 648px);
+    justify-content: flex-end;
+    margin-top: 48px;
+  }
+  .container-right {
+    .item-skill {
+      img {
+        animation: none;
+      }
+      &:hover {
+        > img {
+          transform: scale(1.1);
         }
-    }
-}
-
-@media(min-width: bp.$bp-xxs) {
-    .container-skills{
-        padding: 0 18px;
-    }
-    .container-left{
-        width: clamp(324px, calc(324 / 360 * 100vw), 568px);
-    }
-    .container-right{
-        width: clamp(324px, calc(331 / 360 * 100vw), 568px);
-    }
-}
-
-@media(min-width: bp.$bp-sm) {
-    .container-skills{
-        padding: 0 28px;
-    }
-}
-
-@media(min-width: bp.$bp-md) {
-    .container-skills{
-        padding: 0 60px;
-    }
-}
-
-@media(min-width: bp.$bp-lg) {
-    section{
-        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 30%), #1c1c1c;
-        background-repeat: no-repeat, repeat;
-        background-position: left calc(-100dvw / 2) bottom;
-    }
-    .container-skills{
-        padding: 100px 98px;
-        flex-direction: row;
-    }
-    .container-left{
-        width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
-    }
-    .container-right{
-        max-width: 648px;
-        width: clamp(358px, calc(648 / 1440 * 100vw), 648px);
-        justify-content: flex-end;
-        margin-top: 48px;
-    }
-    .container-right{
-        .item-skill{
-            img{
-                animation: none;
-            }
-            &:hover{
-                > img{
-                    transform: scale(1.1);
-                }
-                .growth-mindset{
-                    color: #3DCFB6;
-                }
-                .growth-overlay{
-                    display: block;
-                }
-            }
+        .growth-mindset {
+          color: #3dcfb6;
         }
+        .growth-overlay {
+          display: block;
+        }
+      }
     }
+  }
 }
 
-@media(min-width: bp.$bp-4xl) {
-    section{
-        padding-left: calc((100vw - bp.$bp-4xl) / 2);
-        padding-right: calc((100vw - bp.$bp-4xl) / 2);
-        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 26%), #1c1c1c;
-        background-position: left calc(-50dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
-    }
+@media (min-width: bp.$bp-4xl) {
+  .skills {
+    padding-left: calc((100vw - bp.$bp-4xl) / 2);
+    padding-right: calc((100vw - bp.$bp-4xl) / 2);
+    background:
+      radial-gradient(circle, rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 26%),
+      #1c1c1c;
+    background-position: left calc(-50dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
+  }
 }
 
-@media(min-width: 2600px) {
-    section{
-        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 22%), #1c1c1c;
-        background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
-    }
+@media (min-width: 2600px) {
+  .skills {
+    background:
+      radial-gradient(circle, rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 22%),
+      #1c1c1c;
+    background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
+  }
 }
 
-@media(min-width: 3200px) {
-    section{
-        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 18%), #1c1c1c;
-        background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
-    }
+@media (min-width: 3200px) {
+  .skills {
+    background:
+      radial-gradient(circle, rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 18%),
+      #1c1c1c;
+    background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
+  }
 }
 
-@media(min-width: 3900px) {
-    section{
-        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 16%), #1c1c1c;
-        background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
-    }
+@media (min-width: 3900px) {
+  .skills {
+    background:
+      radial-gradient(circle, rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 16%),
+      #1c1c1c;
+    background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
+  }
 }
 
-@media(min-width: 4500px) {
-    section{
-        background: radial-gradient(circle,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 14%), #1c1c1c;
-        background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
-    }
+@media (min-width: 4500px) {
+  .skills {
+    background:
+      radial-gradient(circle, rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 14%),
+      #1c1c1c;
+    background-position: left calc(-55dvw + ((100vw - bp.$bp-4xl) / 2)) bottom;
+  }
 }
