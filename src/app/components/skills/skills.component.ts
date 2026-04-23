@@ -96,7 +96,7 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
         scrollTrigger: {
           trigger: this.right.nativeElement,
           start: 'top 85%',
-          end: 'bottom 70%',
+          end: 'bottom 90%',
           scrub: 0.8
         },
       },

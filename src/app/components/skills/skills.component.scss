@@ -39,7 +39,7 @@
   color: #3dcfb6;
 }
 
-.container-content {
+.skills__content {
   @include dFlex(flex-start, space-between, 32px);
   flex-direction: column;
   width: 100%;
@@ -48,63 +48,68 @@
   background-color: rgba(61, 207, 182, 0.1);
   padding: 32px;
   color: white;
-  h1 {
-    font-family: Fira Code;
-    font-weight: 700;
-    font-size: clamp(56px, calc(64 / 1440 * 100vw), 64px);
-    color: #3dcfb6;
-  }
 }
 
-.container-text {
+.skills__title {
+  font-family: Fira Code;
+  font-weight: 700;
+  font-size: clamp(56px, calc(64 / 1440 * 100vw), 64px);
+  color: #3dcfb6;
+}
+
+.skills__text {
   @include dFlex(flex-start, center, 16px);
   flex-direction: column;
-  .introduction {
-    font-family: Karla;
-    font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
-    color: white;
-    text-align: justify;
-    margin-bottom: clamp(12px, calc(16 / 1440 * 100vw), 16px);
-  }
-  h2 {
-    font-family: Fira Code;
-    font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
-    font-weight: 700;
-  }
-  span {
+}
+
+.skills__intro {
+  font-family: Karla;
+  font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
+  color: white;
+  text-align: justify;
+  margin-bottom: clamp(12px, calc(16 / 1440 * 100vw), 16px);
+}
+
+.skills__subheadline {
+  font-family: Fira Code;
+  font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
+  font-weight: 700;
+
+  &--highlight {
     color: #3dcfb6;
-  }
-  p {
-    font-family: Karla;
-    font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
   }
 }
 
-.container-right {
+.skills__contact {
+  font-family: Karla;
+  font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
+}
+
+.skills__grid {
   @include dFlex(center, center);
   gap: clamp(23px, calc(50 / 1024 * 100vw), 50px);
   row-gap: clamp(32px, calc(40 / 1440 * 100vw), 40px);
   flex-wrap: wrap;
   width: clamp(296px, calc(296 / 320 * 100vw), 568px);
-  .item-skill {
-    @include dFlex(center, flex-start, 8px);
-    position: relative;
-    height: 116px;
-    width: 104px;
-    flex-direction: column;
-    color: white;
-    font-family: Fira Code;
-    font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
-    text-align: center;
-    img {
-      width: 60px;
-      height: 60px;
-    }
-    img {
-      animation: pulse 2.5s linear infinite;
-      animation-delay: calc(var(--i) * 0.1s);
-    }
-  }
+}
+
+.skills__item {
+  @include dFlex(center, flex-start, 8px);
+  position: relative;
+  height: 116px;
+  width: 104px;
+  flex-direction: column;
+  color: white;
+  font-family: Fira Code;
+  font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
+  text-align: center;
+}
+
+.skills__icon {
+  width: 60px;
+  height: 60px;
+  animation: pulse 2.5s linear infinite;
+  animation-delay: calc(var(--i) * 0.2s);
 }
 
 @keyframes pulse {
@@ -191,7 +196,7 @@
   .skills__details {
     width: clamp(324px, calc(324 / 360 * 100vw), 568px);
   }
-  .container-right {
+  .skills__grid {
     width: clamp(324px, calc(331 / 360 * 100vw), 568px);
   }
 }
@@ -223,29 +228,28 @@
   .skills__details {
     width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
   }
-  .container-right {
+  .skills__grid {
     max-width: 648px;
     width: clamp(358px, calc(648 / 1440 * 100vw), 648px);
     justify-content: flex-end;
     margin-top: 48px;
   }
-  .container-right {
-    .item-skill {
-      img {
-        animation: none;
+
+  .skills__item {
+    &:hover {
+      transform: scale(1.1);
+
+      .growth-mindset {
+        color: #3dcfb6;
       }
-      &:hover {
-        > img {
-          transform: scale(1.1);
-        }
-        .growth-mindset {
-          color: #3dcfb6;
-        }
-        .growth-overlay {
-          display: block;
-        }
+      .growth-overlay {
+        display: block;
       }
     }
+  }
+
+  .skills__icon {
+    animation: none;
   }
 }
 
