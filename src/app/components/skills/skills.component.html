@@ -16,36 +16,31 @@
         </div>
         <div #right class="skills__grid">
             @for(skill of db.data.skillsData.skills; track skill; let index = $index){
-            <div class="item-skill skills__item">
+            <div class="skills__item">
                 <img class="skills__icon" [src]="'assets/img/' + skill.src + '-logo.png'"
                     [alt]="skill.src + '-logo'" [style.--i]="index">
                 <span class="skills__label">{{skill.text}}</span>
             </div>
             }
-            <div class="item-skill skills__item" (click)="isMobile && (isVisible = !isVisible)">
-                <div class="growth-overlay skills__overlay" [class.show]="isMobile && isVisible">
-                    <!-- <div class="bubble">
-                        <div class="container-overlay-content">
-                            <p>{{db.data.skillsData.growthMindset.introduction}}</p>
-                            <div class="row">
-                                @for(item of db.data.skillsData.growthSkills; track item){
-                                <div>
-                                    <img [src]="'assets/img/' + item.src + '-logo-colored.png'"
-                                        [alt]="item.src + '-logo-colored'">
-                                    <span>{{item.text}}</span>
-                                </div>
-                                }
-                            </div>
+            <div class="skills__item" (click)="isMobile && (isVisible = !isVisible)">
+                <div class="skills__overlay" [class.skills__overlay--show]="isMobile && isVisible">
+                    <p class="skills__interest">{{db.data.skillsData.growthMindset.introduction}}</p>
+                    <div class="skills__growth-tech">
+                        @for(item of db.data.skillsData.growthSkills; track item){
+                        <div class="skills__growth-item">
+                            <img class="skills__growth-icon" [src]="'assets/img/' + item.src + '-logo-colored.png'"
+                                [alt]="item.src + '-logo-colored'">
+                            <span>{{item.text}}</span>
                         </div>
+                        }
                     </div>
-                    <div class="pointer"></div> -->
                 </div>
                 <img class="skills__icon"
                     [src]="'assets/img/' + db.data.skillsData.growthMindset.src + '-mindset.png'"
                     [alt]="db.data.skillsData.growthMindset.src + '-mindset'"
                     [style.--i]="db.data.skillsData.skills.length">
                 <span
-                    class="growth-mindset skills__label">{{db.data.skillsData.growthMindset.firstLine}}<br>{{db.data.skillsData.growthMindset.secondLine}}</span>
+                    class="skills__label skills__label--growth">{{db.data.skillsData.growthMindset.firstLine}}<br>{{db.data.skillsData.growthMindset.secondLine}}</span>
             </div>
         </div>
     </div>
