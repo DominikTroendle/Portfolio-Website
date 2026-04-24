@@ -1,73 +1,65 @@
-<section>
-    <div class="container-left">
-        <div>
-            <h3 #h3 class="reveal">{{db.data.contactData.title}}</h3>
-            <h1 #h1 class="reveal">{{db.data.contactData.headline}}</h1>
+<section class="contact">
+    <div class="contact__content">
+        <div class="contact__header">
+            <p #h3 class="contact__eyebrow">{{db.data.contactData.title}}</p>
+            <h2 #h1 class="contact__title">{{db.data.contactData.headline}}</h2>
         </div>
-        <div>
-            <h2 #h2 class="reveal">{{db.data.contactData.subheadline}}</h2>
-            <p #upperIntroduction>{{db.data.contactData.introduction}}</p>
-            <p #lowerIntroduction>{{db.data.contactData.textBefore}}<a [href]="db.data.contactData.textHref"><span>{{db.data.contactData.textHighlighted}}</span></a></p>
+        <div class="contact__details">
+            <h3 #h2 class="contact__subheadline">{{db.data.contactData.subheadline}}</h3>
+            <p #upperIntroduction class="contact__intro">{{db.data.contactData.introduction}}</p>
+            <p #lowerIntroduction class="contact__prompt">{{db.data.contactData.textBefore}}<a
+                    [href]="db.data.contactData.textHref"><span
+                        class="contact__prompt--highlight">{{db.data.contactData.textHighlighted}}</span></a></p>
         </div>
     </div>
-    <form
-        #contact
-        [formGroup]="contactForm"
-        novalidate
-        (ngSubmit)="onSubmit()"
-    >
-        <div
-        class="overlay-success"
-        [class.show]="overlayVisible">
-            <p>{{db.data.contactData.messageSent}}</p>
+    <form #contact class="contact__form" [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="contact__overlay" [class.contact__overlay--visible]="overlayVisible">
+            <p class="contact__message">{{db.data.contactData.messageSent}}</p>
         </div>
-        <div class="form-top">
+        <div class="contact__fields">
             @for(input of db.data.contactData.form; track input){
-                <div class="row" style="position: relative;">
-                    <label [for]="input.id">{{input.text}}</label>
-                    @if(contactForm.get(input.id); as control){
-                        <input 
-                        [type]="input.type"
-                        [id]="input.id"
-                        [formControlName]="input.id"
-                        autocomplete="off"
-                        [placeholder]="
+            <div class="contact__item" style="position: relative;">
+                <label class="contact__label" [for]="input.id">{{input.text}}</label>
+                @if(contactForm.get(input.id); as control){
+                <input class="contact__input" [type]="input.type" [id]="input.id" [formControlName]="input.id"
+                    autocomplete="off" [placeholder]="
                             control.hasError('required') &&
                             (control.touched || formSubmitted)
                             ? input.placeholderError
-                            : input.placeholder"
-                        [class.error_placeholder]="
+                            : input.placeholder" [class.contact__error-input]="
                             control.hasError('required') &&
-                            (control.touched || formSubmitted)"
-                        (blur)="control.markAsTouched()"
-                        >
-                        @if(control.invalid && control.touched){
-                            <div class="error">
-                                @if(control.hasError('pattern')){
-                                    <p>{{db.data.contactData.emailError}}</p>
-                                }
-                                @if(control.hasError('minlength') || control.hasError('onlywhitespace')){
-                                    <p>{{db.data.contactData.lengthError}}</p>
-                                }
-                            </div>
-                        }
+                            (control.touched || formSubmitted)" (blur)="control.markAsTouched()">
+                @if(control.invalid && control.touched){
+                <div class="contact__error">
+                    @if(control.hasError('pattern')){
+                    <p>{{db.data.contactData.emailError}}</p>
+                    }
+                    @if(control.hasError('minlength') || control.hasError('onlywhitespace')){
+                    <p>{{db.data.contactData.lengthError}}</p>
                     }
                 </div>
+                }
+                }
+            </div>
             }
         </div>
-        <div class="form-bottom">
-            <div class="privacy-policy">
-                <div>
-                    <input
-                    type="checkbox"
-                    id="privacy-policy"
-                    formControlName="privacyPolicy">
-                    <label for="privacy-policy"></label>
-                    <p>{{db.data.contactData.policyBefore}}<a routerLink="/privacy-policy"><span>{{db.data.contactData.policyHighlighted}}</span></a>{{db.data.contactData.policyAfter}}</p>
+        <div class="contact__footer">
+            <div class="contact__privacy">
+                <div class="contact__privacy-content">
+                    <input class="contact__checkbox" type="checkbox" id="privacy-policy"
+                        formControlName="privacyPolicy">
+                    <label class="contact__checkbox-label" for="privacy-policy"></label>
+                    <p>{{db.data.contactData.policyBefore}}<a class="contact__privacy--highlight"
+                            routerLink="/privacy-policy">{{db.data.contactData.policyHighlighted}}</a>{{db.data.contactData.policyAfter}}
+                    </p>
                 </div>
-                <p id="error" [class.visible]="contactForm.get('privacyPolicy')?.invalid && formSubmitted">{{db.data.contactData.policyError}}</p>
+                <p class="contact__privacy-error" id="error"
+                    [class.contact__privacy-error--visible]="contactForm.get('privacyPolicy')?.invalid && formSubmitted">
+                    {{db.data.contactData.policyError}}</p>
             </div>
-            <button type="submit" [class.active]="contactForm.valid"><span>{{db.data.contactData.button}}</span></button>
+            <button class="contact__submit" type="submit" [class.contact__submit--active]="contactForm.valid"><span
+                    class="contact__submit-text"
+                    [class.contact__submit-text--active]="contactForm.valid">{{db.data.contactData.button}}</span></button>
         </div>
     </form>
 </section>

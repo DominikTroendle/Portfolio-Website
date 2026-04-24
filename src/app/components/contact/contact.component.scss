@@ -1,342 +1,359 @@
-@use '../../styles/fonts' as *;
-@use '../../styles/mixins' as *;
-@use '../../styles/breakpoints' as bp;
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/breakpoints" as bp;
 
-section{
-    @include dFlex(center, space-between, 64px);
-    flex-direction: column;
-    width: 100vw;
-    padding: 100px 12px 269px 12px;
-    background-color: #1c1c1c;
-    overflow: hidden;
+.contact {
+  @include dFlex(center, space-between, 64px);
+  flex-direction: column;
+  width: 100vw;
+  padding: 100px 12px 269px 12px;
+  background-color: #1c1c1c;
+  overflow: hidden;
 }
 
-.container-left{
-    @include dFlex(flex-start, space-between, 40px);
-    flex-direction: column;
-    width: clamp(296px, calc(296 / 320 * 100vw), 568px);
-    div{
-        flex-direction: column;
-    }
-    div:nth-child(1){
-        @include dFlex(flex-start, space-between, 20px);
-        h3{
-            font-family: Karla;
-            font-weight: 500;
-            font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
-            color: #3dcfb6;
-        }
-        h1{
-            font-family: Fira Code;
-            font-weight: 700;
-            font-size: clamp(56px, calc(64 / 1440 * 100vw), 64px);
-            color: #3dcfb6;
-            line-height:110%;
-        }
-    }
-    div:nth-child(2){
-        @include dFlex(flex-start, space-between, 16px);
-        color: white;
-        h2{
-            font-family: Fira Code;
-            font-weight: 700;
-            font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
-            color: #3dcfb6;
-        }
-        p{
-           font-family: Karla;
-           font-size: 16px; 
-        }
-        span{
-            color: #3dcfb6;
-            &:hover{
-                cursor: pointer;
-            }
-        }
-    }
+.contact__content {
+  @include dFlex(flex-start, space-between, 40px);
+  flex-direction: column;
+  width: clamp(296px, calc(296 / 320 * 100vw), 568px);
 }
 
-form{
-    @include dFlex(flex-start, space-between, 40px);
-    flex-direction: column;
-    position: relative;
-    width: clamp(296px, calc(296 / 320 * 100vw), 568px);
-    height: fit-content;
+.contact__header {
+  flex-direction: column;
+  @include dFlex(flex-start, space-between, 20px);
 }
 
-.form-top{
-    width: 100%;
-    .row{
-        @include dFlex(flex-start, space-between, 16px);
-        width: 100%;
-        flex-direction: column;
-        padding: 32px;
-        border-top: 1px solid rgba($color: #3dcfb6, $alpha: 0.25);
-        border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 0.25);
-        &:first-of-type{
-            border-top: 1px solid rgba($color: #3dcfb6, $alpha: 0.5);
-        }
-        &:last-of-type{
-            border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 0.5);
-        }
-        &:not(:first-of-type){
-            margin-top: -1px;
-        }
-        &:hover{
-            border-top: 1px solid rgba($color: #3dcfb6, $alpha: 1);
-            border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 1);
-            cursor: pointer;
-            *{
-                cursor: pointer;
-            }
-            input{
-                &::placeholder{
-                    color: rgba($color: #ffffff, $alpha: 1);
-                }
-                &.error_placeholder{
-                    &::placeholder{
-                        color: rgba($color: #EC7B7BCC, $alpha: 0.8);
-                    }
-                }
-            }
-        }
-        &:focus-within{
-            input{
-                &::placeholder{
-                    color: transparent;
-                }
-            }
-        }
-    }
-    label{
-        font-family: Fira Code;
-        font-weight: 500;
-        font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
-        color: #3dcfb6;
-    }
-    input{
-        width: 100%;
-        height: 22px;
-        background: none;
-        border: none;
-        color: white;
-        font-family: Karla;
-        font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
-        caret-color: white;
-        &::placeholder{
-            font-family: Karla;
-            font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
-            color: rgba($color: #ffffff, $alpha: 0.8);
-            line-height: 120%;
-        }
-        &:focus{
-            outline: none;
-        }
-        &.error_placeholder{
-            &::placeholder{
-                color: rgba($color: #EC7B7BCC, $alpha: 0.8);
-            }
-        }
-    }
+.contact__eyebrow {
+  font-family: Karla;
+  font-weight: 500;
+  font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
+  color: #3dcfb6;
 }
 
-.overlay-success{
-    @include dFlex(center, center);
-    position: absolute;
-    top: -2%;
-    left: -2%;
-    width: 104%;
-    height: 104%;
-    border-radius: 30px;
-    background-color: rgba($color: #ffffff, $alpha: 0.12);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 15px 10px rgba($color: #000000, $alpha: 0.3);
-    z-index: 1;
-    opacity: 0;
-    visibility: hidden;
-    color: white;
+.contact__title {
+  font-family: Fira Code;
+  font-weight: 700;
+  font-size: clamp(56px, calc(64 / 1440 * 100vw), 64px);
+  color: #3dcfb6;
+  line-height: 110%;
+}
+
+.contact__details {
+  flex-direction: column;
+  @include dFlex(flex-start, space-between, 16px);
+  color: white;
+}
+
+.contact__subheadline {
+  font-family: Fira Code;
+  font-weight: 700;
+  font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
+  color: #3dcfb6;
+}
+
+.contact__intro,
+.contact__prompt {
+  font-family: Karla;
+  font-size: 16px;
+
+  &--highlight {
+    color: #3dcfb6;
+    cursor: pointer;
+  }
+}
+
+.contact__form {
+  @include dFlex(flex-start, space-between, 40px);
+  flex-direction: column;
+  position: relative;
+  width: clamp(296px, calc(296 / 320 * 100vw), 568px);
+  height: fit-content;
+}
+
+.contact__overlay {
+  @include dFlex(center, center);
+  position: absolute;
+  top: -2%;
+  left: -2%;
+  width: 104%;
+  height: 104%;
+  border-radius: 30px;
+  background-color: rgba($color: #ffffff, $alpha: 0.12);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 15px 10px rgba($color: #000000, $alpha: 0.3);
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  color: white;
+  font-family: Karla;
+  font-size: clamp(16px, calc(24 / 620 * 100vw), 24px);
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0s linear 0.3s;
+
+  &--visible {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      opacity 0.3s ease-in-out,
+      visibility 0s;
+  }
+}
+
+.contact__message {
+  text-shadow: 5px 5px 5px rgba($color: #000000, $alpha: 1);
+}
+
+.contact__fields {
+  width: 100%;
+}
+
+.contact__item {
+  @include dFlex(flex-start, space-between, 16px);
+  width: 100%;
+  flex-direction: column;
+  padding: 32px;
+  border-top: 1px solid rgba($color: #3dcfb6, $alpha: 0.25);
+  border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 0.25);
+
+  &:first-of-type {
+    border-top: 1px solid rgba($color: #3dcfb6, $alpha: 0.5);
+  }
+
+  &:last-of-type {
+    border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 0.5);
+  }
+
+  &:not(:first-of-type) {
+    margin-top: -1px;
+  }
+}
+
+.contact__item:hover {
+  border-top: 1px solid rgba($color: #3dcfb6, $alpha: 1);
+  border-bottom: 1px solid rgba($color: #3dcfb6, $alpha: 1);
+  cursor: pointer;
+
+  * {
+    cursor: pointer;
+  }
+
+  .contact__input::placeholder {
+    color: rgba($color: #ffffff, $alpha: 1);
+  }
+
+  .contact__error-input::placeholder {
+    color: rgba($color: #ec7b7bcc, $alpha: 0.8);
+  }
+}
+
+.contact__item:focus-within {
+  .contact__input::placeholder {
+    color: transparent;
+  }
+}
+
+.contact__label {
+  font-family: Fira Code;
+  font-weight: 500;
+  font-size: clamp(20px, calc(24 / 1440 * 100vw), 24px);
+  color: #3dcfb6;
+}
+
+.contact__input {
+  width: 100%;
+  height: 22px;
+  background: none;
+  border: none;
+  color: white;
+  font-family: Karla;
+  font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
+  caret-color: white;
+
+  &::placeholder {
     font-family: Karla;
-    font-size: clamp(16px, calc(24 / 620 * 100vw), 24px);
-    transition: opacity 0.3s ease-in-out,
-                visibility 0s linear 0.3s;
-    p{
-        text-shadow: 5px 5px 5px rgba($color: #000000, $alpha: 1);
-    }
-    &.show{
-        visibility: visible;
-        opacity: 1;
-        transition: opacity 0.3s ease-in-out,
-                    visibility 0s;
-    }
+    font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
+    color: rgba($color: #ffffff, $alpha: 0.8);
+    line-height: 120%;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
-.form-bottom{
-    @include dFlex(center, space-between, 16px);
-    flex-direction: column;
-    .privacy-policy{
-        @include dFlex(center, flex-start, 5px);
-        flex-direction: column;
-        font-family: Karla;
-        font-size: 15px;
-        color: white;
-        div{
-            @include dFlex(center, flex-start);
-            width: 100%;
-            column-gap: 8px;
-        }
-        input[type=checkbox]{
-            display: none;
-        }
-        input[type=checkbox] + label {
-            display:inline-block;
-            background-image: url(../../../assets/img/checkbox.png);
-            min-width: 24px;
-            min-height: 24px;
-            &:hover{
-                cursor: pointer;
-                filter: drop-shadow(0 0 6px #3DCFB6);
-            }
-        }
-        input[type=checkbox]:checked + label{
-             display:inline-block;
-            background-image: url(../../../assets/img/checkbox_checked.png);
-            width: 24px;
-            height: 24px;
-            &:hover{
-                cursor: pointer;
-                filter: drop-shadow(0 0 6px #3DCFB6);
-            }
-        }
-        span{
-            font-family: Fira Code;
-            color: #3DCFB6;
-            &:hover{
-                cursor: pointer;
-                color: white;
-                text-decoration: underline;
-                text-underline-offset: 6px;
-                text-decoration-color: #3DCFB6;
-            }
-        }
-        #error{
-            visibility: hidden;
-            color: rgba($color: #EC7B7BCC, $alpha: 0.8);
-            font-family: Karla;
-            font-size: 14px;
-            width: 100%;
-            &.visible{
-                visibility: visible;
-            }
-        }
-    }
-    button{
-        height: 48px;
-        padding: 0 24px;
-        border: 1px solid rgba($color: #ffffff, $alpha: 0.5);
-        border-radius: 100px;
-        background: unset;
-        font-family: Karla;
-        font-size: 18px;
-        overflow: hidden;
-        span{
-            display: inline-block;
-            color: rgba($color: #ffffff, $alpha: 0.5);
-        }
-        &.active{
-            border: 1px solid #3DCFB6;
-            span{
-                color: #3DCFB6;
-            }
-            &:hover{
-                cursor: pointer;
-                span{
-                    cursor: pointer;
-                    animation: sliding_text 2s infinite linear;
-                }
-            }
-        }
-    }
+.contact__error-input::placeholder {
+  color: rgba($color: #ec7b7bcc, $alpha: 0.8);
 }
 
-.reveal{
-    clip-path: inset(0 0 100% 0);
+.contact__footer {
+  @include dFlex(center, space-between, 16px);
+  flex-direction: column;
+}
+
+.contact__privacy {
+  @include dFlex(center, flex-start, 5px);
+  flex-direction: column;
+  font-family: Karla;
+  font-size: 15px;
+  color: white;
+
+  &--highlight {
+    font-family: Fira Code;
+    color: #3dcfb6;
+
+    &:hover {
+      cursor: pointer;
+      color: white;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-color: #3dcfb6;
+    }
+  }
+}
+
+.contact__privacy-content {
+  @include dFlex(center, flex-start);
+  width: 100%;
+  column-gap: 8px;
+}
+
+.contact__checkbox {
+  display: none;
+}
+
+.contact__checkbox-label {
+  display: inline-block;
+  background-image: url(../../../assets/img/checkbox.png);
+  min-width: 24px;
+  min-height: 24px;
+
+  &:hover {
+    cursor: pointer;
+    filter: drop-shadow(0 0 6px #3dcfb6);
+  }
+}
+
+.contact__checkbox:checked + .contact__checkbox-label {
+  background-image: url(../../../assets/img/checkbox_checked.png);
+}
+
+.contact__privacy-error {
+  visibility: hidden;
+  color: rgba($color: #ec7b7bcc, $alpha: 0.8);
+  font-family: Karla;
+  font-size: 14px;
+  width: 100%;
+
+  &--visible {
+    visibility: visible;
+  }
+}
+
+.contact__submit {
+  height: 48px;
+  padding: 0 24px;
+  border: 1px solid rgba($color: #ffffff, $alpha: 0.5);
+  border-radius: 100px;
+  background: unset;
+  font-family: Karla;
+  font-size: 18px;
+  overflow: hidden;
+
+  &--active {
+    border: 1px solid #3dcfb6;
+  }
+}
+
+.contact__submit--active:hover {
+  cursor: pointer;
+
+  .contact__submit-text {
+    cursor: pointer;
+    animation: sliding_text 2s infinite linear;
+  }
+}
+
+.contact__submit-text {
+  display: inline-block;
+  color: rgba($color: #ffffff, $alpha: 0.5);
+
+  &--active {
+    color: #3dcfb6;
+  }
 }
 
 @keyframes sliding_text {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(-130%);
-    }
-    50.0001% {
-        transform: translateX(130%);
-    }
-    100% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-130%);
+  }
+  50.0001% {
+    transform: translateX(130%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
-.error{
-    position: absolute;
-    bottom: 6px;
-    color: rgba($color: #EC7B7BCC, $alpha: 0.8);
-    font-family: Karla;
-    font-size: clamp(14px, calc(18 / 1440 * 100vw), 18px);
-    line-height: 85%;
-    div{
-        border: unset;
-    }
+.contact__error {
+  position: absolute;
+  bottom: 6px;
+  color: rgba($color: #ec7b7bcc, $alpha: 0.8);
+  font-family: Karla;
+  font-size: clamp(14px, calc(18 / 1440 * 100vw), 18px);
+  line-height: 85%;
 }
 
-@media(min-width: bp.$bp-xxs) {
-    section{
-        padding: 100px 18px 275px 18px;
-    }
-    .container-left{
-        width: clamp(324px, calc(324 / 360 * 100vw), 568px);
-    }
+@media (min-width: bp.$bp-xxs) {
+  .contact {
+    padding: 100px 18px 275px 18px;
+  }
+  .contact__content {
+    width: clamp(324px, calc(324 / 360 * 100vw), 568px);
+  }
 }
 
-@media(min-width: bp.$bp-sm) {
-    section{
-        padding: 100px 28px 285px 28px;
-    }
+@media (min-width: bp.$bp-sm) {
+  .contact {
+    padding: 100px 28px 285px 28px;
+  }
 }
 
-@media(min-width: bp.$bp-md) {
-    section{
-        padding: 100px 60px 251px 60px;
-    }
+@media (min-width: bp.$bp-md) {
+  .contact {
+    padding: 100px 60px 251px 60px;
+  }
 }
 
-@media(min-width: bp.$bp-lg) {
-    section{
-        flex-direction: row;
-        gap: 40px;
-        padding: 50px 98px 252px 98px;
-    }
-    .container-left,
-    form{
-        width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
-    }
+@media (min-width: bp.$bp-lg) {
+  .contact {
+    flex-direction: row;
+    gap: 40px;
+    padding: 50px 98px 252px 98px;
+  }
+  .contact__content,
+  .contact__form {
+    width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
+  }
 }
 
-@media(min-width: bp.$bp-xl) {
-    .error{
-        line-height: normal;
-    }
+@media (min-width: bp.$bp-xl) {
+  .contact__error {
+    line-height: normal;
+  }
 }
 
-@media(min-width: bp.$bp-2xl) {
-    form{
-        width: 616px;
-    }
+@media (min-width: bp.$bp-2xl) {
+  .contact__form {
+    width: 616px;
+  }
 }
 
-@media(min-width: bp.$bp-4xl) {
-    section{
-        padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-        padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-    }
+@media (min-width: bp.$bp-4xl) {
+  .contact {
+    padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+    padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+  }
 }

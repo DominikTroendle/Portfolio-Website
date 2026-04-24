@@ -4,7 +4,7 @@ import {
   ElementRef,
   inject,
   OnDestroy,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
 import {
@@ -18,8 +18,8 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ButtonComponent } from "../button/button.component";
-import { RouterLink } from "@angular/router";
+import { ButtonComponent } from '../button/button.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -28,6 +28,7 @@ import { RouterLink } from "@angular/router";
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
+
 export class ContactComponent implements AfterViewInit, OnDestroy {
   @ViewChild('h1') h1!: ElementRef;
   @ViewChild('h2') h2!: ElementRef;
@@ -141,7 +142,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
         trigger: this.h3.nativeElement,
         start: 'top 80%',
         end: 'top 70%',
-        scrub: 0.8
+        scrub: 0.8,
       },
     });
     tl.fromTo(
@@ -185,24 +186,24 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
         start: 'top 80%',
         end: 'bottom 10%',
         scrub: 0.8
-      },
+      }
     });
     tl.fromTo(
       this.h3.nativeElement,
       { clipPath: 'inset(0 0 100% 0)' },
-      { clipPath: 'inset(0 0 0% 0)', duration: 1 },
+      { clipPath: 'inset(0 0 0% 0)', duration: 1 }
     )
       .fromTo(
         this.h1.nativeElement,
         { clipPath: 'inset(0 0 100% 0)' },
         { clipPath: 'inset(0 0 0% 0)', duration: 1 },
-        '<',
+        '<'
       )
       .fromTo(
         this.h2.nativeElement,
         { clipPath: 'inset(0 0 100% 0)' },
         { clipPath: 'inset(0 0 0% 0)', duration: 1 },
-        '<',
+        '<'
       );
     const tl2 = gsap.timeline({
       scrollTrigger: {
@@ -222,7 +223,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
         this.lowerIntroduction.nativeElement,
         { opacity: 0 },
         { opacity: 1 },
-        '<',
+        '<'
       );
     gsap.fromTo(
       this.contact.nativeElement,
@@ -235,8 +236,8 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
           start: 'top 95%',
           end: 'bottom 95%',
           scrub: 0.8
-        },
-      },
+        }
+      }
     );
   }
 
