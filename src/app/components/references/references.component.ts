@@ -8,6 +8,7 @@ import { DatabaseService } from '../../services/database/database.service';
   templateUrl: './references.component.html',
   styleUrl: './references.component.scss'
 })
+
 export class ReferencesComponent {
   active = false;
   direction = "";
@@ -17,7 +18,7 @@ export class ReferencesComponent {
 
   constructor(public db: DatabaseService){ }
 
-  next(){
+  nextCard(){
     this.direction = "left";
     this.isAnimated = true;
     setTimeout(() => {
@@ -26,7 +27,7 @@ export class ReferencesComponent {
     }, 600);
   }
 
-  previous(){
+  previousCard(){
     this.direction = "right";
     this.isAnimated = true;
     setTimeout(() => {

@@ -1,57 +1,54 @@
-<section>
-    <h1>{{db.data.referencesData.headline}}</h1>
-    <div class="carousel-mask">
-        <div class="container-carousel">
-            <img src="assets/img/quotes.png" alt="quotes">
-            <div class="card-wrapper">
-                <div class="card"
-                [class.slide-further-right]="direction === 'right'"
-                >
-                    <p>{{getItemRelativeToCurrent(-1).text}}</p>
-                    <div>
-                        <hr>
-                        <span>{{getItemRelativeToCurrent(-1).name}} &#45; {{getItemRelativeToCurrent(-1).role}}</span>
-                    </div>
+<section class="references">
+    <h2 class="references__title">{{db.data.referencesData.headline}}</h2>
+    <div class="carousel-mask references__viewport">
+        <div class="container-carousel references__track">
+            <img class="references__quote-icon" src="assets/img/quotes.png" alt="quotes">
+            <div class="card references__card" [class.references__card--slide-further-right]="direction === 'right'">
+                <p class="references__text">{{getItemRelativeToCurrent(-1).text}}</p>
+                <div class="references__meta">
+                    <hr class="references__line">
+                    <span class="references__author">{{getItemRelativeToCurrent(-1).name}} &#45;
+                        {{getItemRelativeToCurrent(-1).role}}</span>
                 </div>
             </div>
             @for(item of db.data.referencesData.carousel; track item; let i = $index){
-                <div class="card-wrapper"
-                [class.slide-right]="direction === 'right'"
-                [class.slide-left]="direction === 'left'"
-                >
-                    <div class="card"
-                    [class.active]="i === 1"
-                    [class.shrink]="i === 1 && (direction === 'left' || direction === 'right')"
-                    [class.grow]="direction === 'left' && i === 2 || direction === 'right' && i === 0"
-                    >
-                        <p>{{getItemIndex(i).text}}</p>
-                        <div>
-                            <hr>
-                            <span>{{getItemIndex(i).name}} &#45; {{getItemIndex(i).role}}</span>
-                        </div>
+            <div [class.references__card--slide-right]="direction === 'right'"
+                [class.references__card--slide-left]="direction === 'left'">
+                <div class="card references__card"
+                    [class.references__card--active]="i === 1"
+                    [class.references__card--shrink]="i === 1 && (direction === 'left' || direction === 'right')"
+                    [class.references__card--grow]="direction === 'left' && i === 2 || direction === 'right' && i === 0">
+                    <p class="references__text">{{getItemIndex(i).text}}</p>
+                    <div class="references__meta">
+                        <hr class="references__line">
+                        <span class="references__author">
+                            {{getItemIndex(i).name}} &#45;
+                            {{getItemIndex(i).role}}</span>
                     </div>
                 </div>
+            </div>
             }
-            <div class="card-wrapper">
-                <div class="card"
-                [class.slide-further-left]="direction === 'left'"
-                >
-                    <p>{{getItemRelativeToCurrent(0).text}}</p>
-                    <div>
-                        <hr>
-                        <span>{{getItemRelativeToCurrent(0).name}} &#45; {{getItemRelativeToCurrent(0).role}}</span>
-                    </div>
+            <div class="card references__card" [class.references__card--slide-further-left]="direction === 'left'">
+                <p class="references__text">{{getItemRelativeToCurrent(0).text}}</p>
+                <div class="references__meta">
+                    <hr class="references__line">
+                    <span class="references__author">
+                        {{getItemRelativeToCurrent(0).name}} &#45;
+                        {{getItemRelativeToCurrent(0).role}}
+                    </span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="navigation">
-        <button [disabled]="isAnimated" (click)="previous()"></button>
-        <div>
+    <div class="navigation references__nav">
+        <button class="references__nav-button references__nav-button--left" [disabled]="isAnimated"
+            (click)="previousCard()"></button>
+        <div class="references__dots">
             @for(item of db.data.referencesData.carousel; track item; let i = $index){
-                <span [class.active-dot]="i === currentIndex"></span>
+            <span class="references__dot" [class.references__dot--active]="i === currentIndex"></span>
             }
         </div>
-        <button [disabled]="isAnimated" (click)="next()"></button>
+        <button class="references__nav-button references__nav-button--right" [disabled]="isAnimated"
+            (click)="nextCard()"></button>
     </div>
 </section>
