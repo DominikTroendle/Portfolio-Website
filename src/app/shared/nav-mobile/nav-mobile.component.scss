@@ -1,46 +1,51 @@
-@use '../../styles/fonts' as *;
-@use '../../styles/mixins' as *;
-@use '../../styles/breakpoints' as bp;
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/breakpoints" as bp;
 
-.backdrop{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background: rgba($color: #000000, $alpha: 0.4);
-    backdrop-filter: blur(5px);
+.nav__backdrop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: rgba($color: #000000, $alpha: 0.4);
+  backdrop-filter: blur(5px);
 }
 
-nav{
-    @include dFlex(flex-start, space-between, 24px);
-    flex-direction: column;
-    font-family: Fira Code;
-    font-size: 20px;
-    position: absolute;
-    top: 78px;
-    right: 12px;
-    padding: 40px 77px;
-    border: 1px solid #3DCFB6;
-    border-radius: 30px;
-    background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
-    a{
-        position: relative;
-    }
+.nav {
+  @include dFlex(flex-start, space-between, 24px);
+  flex-direction: column;
+  font-family: Fira Code;
+  font-size: 20px;
+  position: absolute;
+  top: 78px;
+  right: 12px;
+  padding: 40px 77px;
+  border: 1px solid #3dcfb6;
+  border-radius: 30px;
+  background: linear-gradient(
+    225deg,
+    rgba(8, 70, 59, 1) 0%,
+    rgba(28, 28, 28, 1) 70%
+  );
 }
 
-@media(min-width: bp.$bp-xxs) {
-    nav{
-        right: 18px;
-    }
+.nav__link {
+  position: relative;
 }
 
-@media(min-width: bp.$bp-sm) {
-    nav{
-        right: 28px;
-    }
+@media (min-width: bp.$bp-xxs) {
+  .nav {
+    right: 18px;
+  }
 }
 
-@media(min-width: bp.$bp-md) {
-    nav{
-        right: 60px;
-    }
+@media (min-width: bp.$bp-sm) {
+  .nav {
+    right: 28px;
+  }
+}
+
+@media (min-width: bp.$bp-md) {
+  .nav {
+    right: 60px;
+  }
 }

@@ -1,7 +1,7 @@
-<div class="backdrop" (click)="closeOverlay()">
-    <nav>
+<div class="nav__backdrop" (click)="closeOverlay()">
+    <nav class="nav">
         @for(item of db.data.headerData.items; track item.text){
-            <a routerLink="/" [fragment]="item.href">{{item.text}}</a>
+        <a class="nav__link" routerLink="/" [fragment]="item.href">{{item.text}}</a>
         }
         <app-language-switch></app-language-switch>
     </nav>
