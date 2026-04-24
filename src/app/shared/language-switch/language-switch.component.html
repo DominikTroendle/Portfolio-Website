@@ -1,12 +1,6 @@
-<div class="language-switch">
-    <button
-        [ngClass]="isGerman ? 'btn-language-passive' : 'btn-language-active'"
-        (click)="changeLanguage()"
-        (click)="$event.stopPropagation()"
-        >EN</button>
-    <button
-        [ngClass]="!isGerman ? 'btn-language-passive' : 'btn-language-active'"
-        (click)="changeLanguage()"
-        (click)="$event.stopPropagation()"
-        >DE</button>
+<div class="switch">
+    <button class="switch__button switch__button--left" [ngClass]="isGerman ? 'switch__button-passive' : 'switch__button-active'" (click)="changeLanguage()"
+        (click)="$event.stopPropagation()">EN</button>
+    <button  class="switch__button switch__button--right" [ngClass]="!isGerman ? 'switch__button-passive' : 'switch__button-active'" (click)="changeLanguage()"
+        (click)="$event.stopPropagation()">DE</button>
 </div>
