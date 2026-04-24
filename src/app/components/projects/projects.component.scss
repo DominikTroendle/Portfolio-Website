@@ -1,207 +1,221 @@
-@use '../../styles/mixins' as *;
-@use '../../styles/fonts' as *;
-@use '../../styles/breakpoints' as bp;
+@use "../../styles/mixins" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/breakpoints" as bp;
 
-section{
-    @include dFlex(center, center);
-    background-color: #1c1c1c;
-    color: white;
-    width: 100vw;
-    padding: 100px 12px;
-    .container-content{
-        @include dFlex(flex-start, flex-start, 20px);
-        flex-direction: column;
-        width: clamp(296px, calc(296 / 320 * 100vw), 568px);
-        h1, h3{
-            font-weight: 700;
-        }
-        h3{
-            font-family: Fira Code;
-            font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
-            color: #3DCFB6;
-        }
-        h1{
-            margin-bottom: 21px;
-            color: #3DCFB6;
-            font-family: Fira Code;
-            font-size: clamp(48px, calc(64 / 1440 * 100vw), 64px);
-            line-height: 115%;
-        }
-        p{
-            margin-bottom: 21px;
-            font-family: Karla;
-            font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
-        }
-        .container-projects{
-            width: 100%;
-        }
-    }
+.projects__overlay {
+  visibility: hidden;
+
+  &--show {
+    visibility: visible;
+  }
 }
 
-.overlay{
-    visibility: hidden;
-    &.show{
-        visibility: visible;
-    }
+.projects {
+  @include dFlex(center, center);
+  background-color: #1c1c1c;
+  color: white;
+  width: 100vw;
+  padding: 100px 12px;
 }
 
-.row{
-    @include dFlex(flex-start, space-between, 12px);
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-    border-top: 1px solid #3DCFB6;
-    padding: 32px 0;
+.projects__container {
+  @include dFlex(flex-start, flex-start, 20px);
+  flex-direction: column;
+  width: clamp(296px, calc(296 / 320 * 100vw), 568px);
+}
+
+.projects__eyebrow {
+  font-family: Fira Code;
+  font-size: clamp(18px, calc(24 / 1440 * 100vw), 24px);
+  font-weight: 700;
+  color: #3dcfb6;
+}
+
+.projects__title {
+  margin-bottom: 21px;
+  color: #3dcfb6;
+  font-family: Fira Code;
+  font-size: clamp(48px, calc(64 / 1440 * 100vw), 64px);
+  line-height: 115%;
+  font-weight: 700;
+}
+
+.projects__intro {
+  margin-bottom: 21px;
+  font-family: Karla;
+  font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
+}
+
+.projects__content {
+  width: 100%;
+}
+
+.projects__item {
+  @include dFlex(flex-start, space-between, 12px);
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  border-top: 1px solid #3dcfb6;
+  padding: 32px 0;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  * {
     cursor: pointer;
-    transition: 0.2s ease-in-out;
-    *{
-        cursor: pointer;
-    }
-    &:last-child{
-        border-bottom: 1px solid #3DCFB6;
-    }
-    div{
-        @include dFlex(center, flex-start, 6px);
-        width: max-content;
-        h2{
-            font-family: Fira Code;
-            font-size: 24px;
-            font-weight: 700;
-        }
-        img{
-            visibility: hidden;
-            width: 25px;
-            height: 25px;
-            opacity: 0;
-            transition: 0.2s ease-in-out;
-        }
-    }
-    ul{
-        @include dFlex(center, flex-end, 12px);
-        list-style: none;
-        font-family: Karla;
-        font-size: 18px;
-        li{
-            position: relative;
-            &:not(:last-of-type){
-                &::after{
-                    content: "";
-                    position: absolute;
-                    border: 1px solid #3DCFB6;
-                    height: 80%;
-                    top: 50%;
-                    transform: translate(5px, -50%);
-                }
-            }
-        }
-    }
-    .img-preview, .img-preview-bg{
-        display: none;
-        visibility: hidden;
-        position: absolute;
-        width: 304px;
-        height: auto;
-        aspect-ratio: 16/9;
-        border-radius: 16px;
-        transition: 0.2s ease-in-out;
-        opacity: 0;
-        left: 110%;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    .img-preview{
-        z-index: 1;
-    }
-    .img-preview-bg{
-        transform: translate(10px, calc(-50% + 10px));
-    }
+  }
+
+  &:last-child {
+    border-bottom: 1px solid #3dcfb6;
+  }
 }
 
-.reveal{
-    clip-path: inset(0 0 100% 0);
+.projects__item-header {
+  @include dFlex(center, flex-start, 6px);
+  width: max-content;
 }
 
-@media(min-width: bp.$bp-xxs) {
-    section{
-        padding: 100px 18px;
-    }
+.projects__item-title {
+  font-family: Fira Code;
+  font-size: 24px;
+  font-weight: 700;
 }
 
-@media(min-width: bp.$bp-sm) {
-    section{
-        padding: 100px 28px;
-    }
-    .row{
-        flex-direction: row;
-        gap: 0;
-    }
+.projects__item-arrow {
+  visibility: hidden;
+  width: 25px;
+  height: 25px;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
 }
 
-@media(min-width: bp.$bp-md) {
-    section{
-        padding: 100px 60px;
-    }
+.projects__tech-list {
+  @include dFlex(center, flex-end, 12px);
+  list-style: none;
+  font-family: Karla;
+  font-size: 18px;
 }
 
-@media(min-width: bp.$bp-lg) {
-    section{
-        display: block;
-        padding: 100px 98px;
-        .container-content{
-            width: 828px;
-            h1{
-                line-height: normal;
-            }
-            .container-projects,
-            p{
-                width: clamp(580px, calc(580 / 1024 * 100vw), 828px);
-            }
-        }
+.projects__tech {
+  position: relative;
+  &:not(:last-of-type) {
+    &::after {
+      content: "";
+      position: absolute;
+      border: 1px solid #3dcfb6;
+      height: 80%;
+      top: 50%;
+      transform: translate(5px, -50%);
     }
-    .row{
-        padding: 40px 32px;
-        &:hover{
-            background-color: rgba($color: #3DCFB6, $alpha: 0.3);
-            .arrow{
-                visibility: visible;
-                opacity: 1;
-            }
-            .img-preview, .img-preview-bg{
-                visibility: visible;
-                opacity: 1;
-            }
-        }
-        .img-preview,
-        .img-preview-bg{
-            display: block;
-            width: clamp(200px, calc(304 / 1440 * 100vw), 304px);
-        }
-    }
+  }
 }
 
-@media(min-width: bp.$bp-xl) {
-    .container-projects{
-        width: 100%;
+.projects__preview {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  width: 304px;
+  height: auto;
+  aspect-ratio: 16/9;
+  border-radius: 16px;
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &--main {
+    z-index: 1;
+  }
+
+  &--bg {
+    transform: translate(10px, calc(-50% + 10px));
+  }
+}
+
+@media (min-width: bp.$bp-xxs) {
+  .projects {
+    padding: 100px 18px;
+  }
+}
+
+@media (min-width: bp.$bp-sm) {
+  .projects {
+    padding: 100px 28px;
+  }
+  .projects__item {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+@media (min-width: bp.$bp-md) {
+  .projects {
+    padding: 100px 60px;
+  }
+}
+
+@media (min-width: bp.$bp-lg) {
+  .projects {
+    display: block;
+    padding: 100px 98px;
+  }
+
+  .projects__container {
+    width: 828px;
+  }
+
+  .projects__title {
+    line-height: normal;
+  }
+
+  .projects__content,
+  .projects__intro {
+    width: clamp(580px, calc(580 / 1024 * 100vw), 828px);
+  }
+
+  .projects__item {
+    padding: 40px 32px;
+  }
+
+  .projects__item:hover {
+    background-color: rgba($color: #3dcfb6, $alpha: 0.3);
+
+    .projects__item-arrow {
+      visibility: visible;
+      opacity: 1;
     }
-    .row{
-        .img-preview-bg{
-            transform: translate(15px, calc(-50% + 15px));
-        }
+
+    .projects__preview {
+      visibility: visible;
+      opacity: 1;
     }
+  }
+
+  .projects__preview {
+    display: block;
+    width: clamp(200px, calc(304 / 1440 * 100vw), 304px);
+  }
+}
+
+@media (min-width: bp.$bp-xl) {
+  .projects__content {
+    width: 100%;
+  }
+
+  .projects__preview--bg {
+    transform: translate(15px, calc(-50% + 15px));
+  }
 }
 
 @media (min-width: bp.$bp-3xl) {
-    .row{
-        .img-preview,
-        .img-preview-bg{
-            left: 120%;
-        }
-    }
+  .projects__preview {
+    left: 120%;
+  }
 }
 
-@media(min-width: bp.$bp-4xl) {
-    section{
-        padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-        padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-    }
+@media (min-width: bp.$bp-4xl) {
+  .projects {
+    padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+    padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+  }
 }

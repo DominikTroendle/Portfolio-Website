@@ -1,31 +1,25 @@
-<section>
-    <app-overlay
-        class="overlay"
-        [overlayData]="selectedProject"
-        [projectNumber]="'0' + selectedIndex"
-        [class.show]="isVisible"
-        (close)="closeOverlay()"
-        (next)="updateOverlay(selectedIndex)"
-    ></app-overlay>
-    <div class="container-content">
-        <h3 #subheadline class="reveal">{{db.data.projectsData.title}}</h3>
-        <h1 #headline class="reveal">{{db.data.projectsData.headline}}</h1>
-        <p #introduction>{{db.data.projectsData.introduction}}</p>
-        <div #projects class="container-projects">
+<section class="projects">
+    <app-overlay class="projects__overlay" [overlayData]="selectedProject" [projectNumber]="'0' + selectedIndex"
+        [class.projects__overlay--show]="isVisible" (close)="closeOverlay()" (next)="updateOverlay(selectedIndex)"></app-overlay>
+    <div class="projects__container">
+        <p #subheadline class="projects__eyebrow">{{db.data.projectsData.title}}</p>
+        <h2 #headline class="projects__title">{{db.data.projectsData.headline}}</h2>
+        <p #introduction class="projects__intro">{{db.data.projectsData.introduction}}</p>
+        <div #projects class="projects__content">
             @for(project of db.data.projectsData.projects; track project; let i = $index){
-                <div class="row" (click)="showOverlay(i)">
-                    <div>
-                        <h2>{{project.title}}</h2>
-                        <img class="arrow" src="assets/img/arrow_outward.png" alt="arrow">
-                    </div>
-                    <ul>
-                        @for(tech of db.data.projectsData.projects[i].technologies; track tech){
-                            <li>{{tech}}</li>
-                        }
-                    </ul>
-                    <img class="img-preview" [src]="'assets/img/' + project.src" [alt]="project.title + '-preview'">
-                    <img class="img-preview-bg" src="assets/img/img-preview-bg.png" alt="preview-img-bg">
+            <div class="projects__item" (click)="showOverlay(i)">
+                <div class="projects__item-header">
+                    <h3 class="projects__item-title">{{project.title}}</h3>
+                    <img class="projects__item-arrow" src="assets/img/arrow_outward.png" alt="arrow">
                 </div>
+                <ul class="projects__tech-list">
+                    @for(tech of db.data.projectsData.projects[i].technologies; track tech){
+                    <li class="projects__tech">{{tech}}</li>
+                    }
+                </ul>
+                <img class="projects__preview projects__preview--main" [src]="'assets/img/' + project.src" [alt]="project.title + '-preview'">
+                <img class="projects__preview projects__preview--bg" src="assets/img/img-preview-bg.png" alt="preview-img-bg">
+            </div>
             }
         </div>
     </div>
