@@ -1,52 +1,48 @@
 <div class="backdrop" (click)="closeOverlay()">
-    <div class="card" (click)="$event.stopPropagation()">
+    <section class="card" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
         <img class="close overlay-mobile" src="assets/img/close_small.png" alt="close-cross" (click)="closeOverlay()">
         <img class="preview overlay-mobile" [src]="'assets/img/' + overlayData.previewSrc" alt="preview-img">
         <div class="left">
             <div class="headline">
-                <h1>{{projectNumber}}</h1>
+                <p>{{projectNumber}}</p>
                 <h2>{{overlayData.title}}</h2>
             </div>
             <div class="content">
                 <h3>{{db.data.projectsData.overlayAbout}}</h3>
                 <p>{{overlayData.text}}</p>
-                <div class="technologies">
+                <ul class="technologies">
                     @for(tech of overlayData.technologies; track tech){
-                        <div>
-                            <img [src]="'assets/img/' + tech.src + '-logo.png'" [alt]="tech.src + '-logo'">
-                            <span>{{tech.text}}</span>
-                        </div>
+                    <li>
+                        <img [src]="'assets/img/' + tech.src + '-logo.png'" [alt]="tech.src + '-logo'">
+                        {{tech.text}}
+                    </li>
                     }
-                </div>
+                </ul>
             </div>
             <div class="buttons">
                 <a target="_blank" [href]="overlayData.github">
-                    <button>
-                        <span>Github</span>
-                        <img src="assets/img/arrow_outward_turquoise.png" alt="arrow-link">
-                    </button>
+                    <span>Github</span>
+                    <img src="assets/img/arrow_outward_turquoise.png" alt="arrow-link">
                 </a>
                 <a target="_blank" [href]="overlayData.url">
-                    <button>
-                        <span>Live Test</span>
-                        <img src="assets/img/arrow_outward_turquoise.png" alt="arrow-link">
-                    </button>
+                    <span>Live Test</span>
+                    <img src="assets/img/arrow_outward_turquoise.png" alt="arrow-link">
                 </a>
             </div>
         </div>
         <div class="right">
-            <img class="close" src="assets/img/close_small.png" alt="close-cross" (click)="closeOverlay()">
+            <button class="close" (click)="closeOverlay()">
+                <img class="close-image" src="assets/img/close_small.png" alt="close-cross">
+            </button>
             <img class="preview" [src]="'assets/img/' + overlayData.previewSrc" alt="preview-img">
-            <div class="next-project" (click)="nextProject()">
-                <span>{{db.data.projectsData.nextProject}}</span>
+            <button class="next-project" (click)="nextProject()">
+                {{db.data.projectsData.nextProject}}
                 <img src="/assets/img/arrow_forward.png" alt="arrow-next">
-            </div>
+            </button>
         </div>
-        <div
-        class="next-project overlay-mobile" 
-        (click)="nextProject()">
-            <span>{{db.data.projectsData.nextProject}}</span>
+        <button class="next-project overlay-mobile" (click)="nextProject()">
+            {{db.data.projectsData.nextProject}}
             <img src="/assets/img/arrow_forward.png" alt="arrow-next">
-        </div>
-    </div>
+        </button>
+    </section>
 </div>

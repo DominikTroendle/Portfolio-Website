@@ -8,6 +8,7 @@ import { DatabaseService } from '../../services/database/database.service';
   templateUrl: './overlay.component.html',
   styleUrl: './overlay.component.scss',
 })
+
 export class OverlayComponent {
 
   @Input()overlayData: any;
