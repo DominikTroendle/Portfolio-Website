@@ -9,12 +9,38 @@
   padding: 100px 12px 269px 12px;
   background-color: #1c1c1c;
   overflow: hidden;
+
+  @include respond(2xs) {
+    padding: 100px 18px 275px 18px;
+  }
+  @include respond(sm) {
+    padding: 100px 28px 285px 28px;
+  }
+  @include respond(md) {
+    padding: 100px 60px 251px 60px;
+  }
+  @include respond(lg) {
+    flex-direction: row;
+    gap: 40px;
+    padding: 50px 98px 252px 98px;
+  }
+  @include respond(4xl) {
+    padding-left: calc(((100vw - 1921px) / 2) + 98px);
+    padding-right: calc(((100vw - 1921px) / 2) + 98px);
+  }
 }
 
 .contact__content {
   @include dFlex(flex-start, space-between, 40px);
   flex-direction: column;
   width: clamp(296px, calc(296 / 320 * 100vw), 568px);
+
+  @include respond(2xs) {
+    width: clamp(324px, calc(324 / 360 * 100vw), 568px);
+  }
+  @include respond(lg) {
+    width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
+  }
 }
 
 .contact__header {
@@ -67,6 +93,13 @@
   position: relative;
   width: clamp(296px, calc(296 / 320 * 100vw), 568px);
   height: fit-content;
+
+  @include respond(lg) {
+    width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
+  }
+  @include respond(2xl) {
+    width: 616px;
+  }
 }
 
 .contact__overlay {
@@ -304,56 +337,8 @@
   font-family: Karla;
   font-size: clamp(14px, calc(18 / 1440 * 100vw), 18px);
   line-height: 85%;
-}
 
-@media (min-width: bp.$bp-xxs) {
-  .contact {
-    padding: 100px 18px 275px 18px;
-  }
-  .contact__content {
-    width: clamp(324px, calc(324 / 360 * 100vw), 568px);
-  }
-}
-
-@media (min-width: bp.$bp-sm) {
-  .contact {
-    padding: 100px 28px 285px 28px;
-  }
-}
-
-@media (min-width: bp.$bp-md) {
-  .contact {
-    padding: 100px 60px 251px 60px;
-  }
-}
-
-@media (min-width: bp.$bp-lg) {
-  .contact {
-    flex-direction: row;
-    gap: 40px;
-    padding: 50px 98px 252px 98px;
-  }
-  .contact__content,
-  .contact__form {
-    width: clamp(358px, calc(568 / 1440 * 100vw), 568px);
-  }
-}
-
-@media (min-width: bp.$bp-xl) {
-  .contact__error {
+  @include respond(xl) {
     line-height: normal;
-  }
-}
-
-@media (min-width: bp.$bp-2xl) {
-  .contact__form {
-    width: 616px;
-  }
-}
-
-@media (min-width: bp.$bp-4xl) {
-  .contact {
-    padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-    padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
   }
 }
