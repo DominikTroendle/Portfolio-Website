@@ -1,14 +1,14 @@
 @if(db.loaded){
 <article class="legal">
-    <a class="arrow-back legal__arrow" routerLink="/" fragment="contact"></a>
-    <h2 class="legal__title">{{db.data.legalNoticeData.title}}</h2>
-    <div class="container-content legal__content">
+    <a class="legal__arrow" routerLink="/" fragment="contact" aria-label="Back to contact"></a>
+    <h1 class="legal__title">{{db.data.legalNoticeData.title}}</h1>
+    <div class="legal__content">
         @for(section of db.data.legalNoticeData.sections; track section){
         <section class="legal__section">
             @for(block of section.content; track block){
             @switch(block.type){
             @case("headline"){
-            <h3 class="legal__headline">{{block.text}}</h3>
+            <h2 class="legal__headline">{{block.text}}</h2>
             }
             @case("list"){
             <ul class="legal__list">

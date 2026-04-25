@@ -35,7 +35,7 @@
 .legal__content {
   @include dFlex(flex-start, space-between, 24px);
   flex-direction: column;
-  
+
   section:last-of-type p + p {
     margin-top: 16px;
   }

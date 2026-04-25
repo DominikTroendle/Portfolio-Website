@@ -1,42 +1,42 @@
 @if(db.loaded){
-    <section>
-        <a class="arrow-back" routerLink="/" fragment="contact"></a>
-        <h1>{{db.data.privacyPolicyData.title}}</h1>
-        <div class="container-content">
-            @for(section of db.data.privacyPolicyData.sections; track section){
-                <div>
-                    @for(block of section.content; track block){
-                        @switch(block.type){
-                            @case("title"){
-                                <h2>{{block.text}}</h2>
-                            }
-                            @case("headline"){
-                                <h3>{{block.text}}</h3>
-                            }
-                            @case("subheadline"){
-                                <h4>{{block.text}}</h4>
-                            }
-                            @case("paragraph"){
-                                <p>
-                                    @for(inline of block.inlines; track inline){
-                                        @switch(inline.type){
-                                            @case("text"){{{inline.value}}}
-                                            @case("link"){<a [href]="inline.href" target="_blank">{{inline.value}}</a>}
-                                        }
-                                    }
-                                </p>
-                            }
-                            @case("list"){
-                                <ul>
-                                    @for(item of block.items; track item){
-                                        <li>{{item}}</li>
-                                    }
-                                </ul>
-                            }
-                        }
-                    }
-                </div>
+<article class="privacy">
+    <a class="privacy__arrow" routerLink="/" fragment="contact" aria-label="Back to contact"></a>
+    <h1 class="privacy__title">{{db.data.privacyPolicyData.title}}</h1>
+    <div class="privacy__content">
+        @for(section of db.data.privacyPolicyData.sections; track section){
+        <section class="privacy__section">
+            @for(block of section.content; track block){
+            @switch(block.type){
+            @case("title"){
+            <h2 class="privacy__section-title">{{block.text}}</h2>
             }
-        </div>
-    </section>
+            @case("headline"){
+            <h3 class="privacy__headline">{{block.text}}</h3>
+            }
+            @case("subheadline"){
+            <h4 class="privacy__subheadline">{{block.text}}</h4>
+            }
+            @case("paragraph"){
+            <p class="privacy__paragraph">
+                @for(inline of block.inlines; track inline){
+                @switch(inline.type){
+                @case("text"){{{inline.value}}}
+                @case("link"){<a class="privacy__link" [href]="inline.href" target="_blank">{{inline.value}}</a>}
+                }
+                }
+            </p>
+            }
+            @case("list"){
+            <ul class="privacy__list">
+                @for(item of block.items; track item){
+                <li>{{item}}</li>
+                }
+            </ul>
+            }
+            }
+            }
+        </section>
+        }
+    </div>
+</article>
 }

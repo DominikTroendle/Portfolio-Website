@@ -1,119 +1,127 @@
-@use '../../styles/fonts' as *;
-@use '../../styles/mixins' as *;
-@use '../../styles/breakpoints' as bp;
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/breakpoints" as bp;
 
-section {
-    @include dFlex(flex-start, flex-start, 32px);
-    height: 100%;
-    background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
-    flex-direction: column;
-    padding: 120px 12px 278px 12px;
-    font-family: Karla;
-    font-size: 16px;
-    color: #3dcfb6;
-    h1{
-        font-family: Fira Code;
-        font-weight: 700;
-        font-size: clamp(32px, calc(64 / 1440 * 100vw), 64px);
-    }
-    .arrow-back{
-        width: 20px;
-        height: 20px;
-        background-image: url(../../../assets/img/arrow-left.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
+.privacy {
+  @include dFlex(flex-start, flex-start, 32px);
+  height: 100%;
+  background: linear-gradient(
+    225deg,
+    rgba(8, 70, 59, 1) 0%,
+    rgba(28, 28, 28, 1) 70%
+  );
+  flex-direction: column;
+  padding: 120px 12px 278px 12px;
+  font-family: Karla;
+  font-size: 16px;
+  color: #3dcfb6;
 }
 
-.container-content{
-    @include dFlex(flex-start, space-between, 24px);
-    flex-direction: column;
-    h2{
-        font-weight: 700;
-        font-size: 25px;
-        color: white;
-        margin-bottom: 10px;
-    }
-    h3{
-        font-weight: 700;
-        font-size: 19px;
-        color: white;
-    }
-    h4:not(:first-of-type){
-        margin-top: 7px;
-    }
-    ul{
-        list-style-position: inside;
-        margin: 5px 0;
-    }
-    a{
-        color: #3dcfb6;
-        word-break: break-word;
-    }
-    span{
-        color: white;
-    }
-    div:first-of-type{
-        ul{
-            list-style: none;
-        }
-        p:first-of-type{
-            margin-bottom: 5px;
-        }
-    }
+.privacy__title {
+  font-family: Fira Code;
+  font-weight: 700;
+  font-size: clamp(32px, calc(64 / 1440 * 100vw), 64px);
 }
 
-@media(min-width: bp.$bp-xxs) {
-    section{
-        padding: 120px 18px 284px 18px;
-    }
+.privacy__arrow {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../../assets/img/arrow-left.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
-@media(min-width: bp.$bp-sm) {
-    section{
-        padding: 120px 28px 294px 28px;
-    }
+.privacy__content {
+  @include dFlex(flex-start, space-between, 24px);
+  flex-direction: column;
 }
 
-@media(min-width: bp.$bp-md) {
-    section{
-        padding: 120px 60px 260px 60px;
-    }
+.privacy__section:first-of-type {
+  .privacy__list {
+    list-style: none;
+  }
+
+  .privacy__paragraph:first-of-type {
+    margin-bottom: 5px;
+  }
 }
 
-@media(min-width: bp.$bp-lg) {
-    section{
-        gap: 64px;
-        padding: 150px 98px 260px 98px;
-    }
-    .arrow-back{
-        display: none;
-    }
+.privacy__section-title {
+  font-weight: 700;
+  font-size: 25px;
+  color: white;
+  margin-bottom: 10px;
 }
 
-@media(min-width: bp.$bp-xl) {
-    section{
-        h1{
-            align-self: center;
-        }
-    }
-    .container-content{
-        padding: 0 120px;
-    }
+.privacy__headline {
+  font-weight: 700;
+  font-size: 19px;
+  color: white;
+}
+
+.privacy__subheadline:not(:first-of-type) {
+  margin-top: 7px;
+}
+
+.privacy__list {
+  list-style-position: inside;
+  margin: 5px 0;
+}
+
+.privacy__link {
+  color: #3dcfb6;
+  word-break: break-word;
+}
+
+@media (min-width: bp.$bp-xxs) {
+  .privacy {
+    padding: 120px 18px 284px 18px;
+  }
+}
+
+@media (min-width: bp.$bp-sm) {
+  .privacy {
+    padding: 120px 28px 294px 28px;
+  }
+}
+
+@media (min-width: bp.$bp-md) {
+  .privacy {
+    padding: 120px 60px 260px 60px;
+  }
+}
+
+@media (min-width: bp.$bp-lg) {
+  .privacy {
+    gap: 64px;
+    padding: 150px 98px 260px 98px;
+  }
+  .privacy__arrow {
+    display: none;
+  }
+}
+
+@media (min-width: bp.$bp-xl) {
+  .privacy__title {
+    align-self: center;
+  }
+  .privacy__content {
+    padding: 0 120px;
+  }
 }
 
 @media screen and (min-height: 2504px) {
-    :host{
-        display: block;
-        position: relative;
-        height: 100vh;
-    }
+  :host {
+    display: block;
+    position: relative;
+    height: 100vh;
+  }
 }
 
-@media(min-width: bp.$bp-4xl) {
-    section{
-        padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-        padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-    }
+@media (min-width: bp.$bp-4xl) {
+  .privacy {
+    padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+    padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+  }
 }
