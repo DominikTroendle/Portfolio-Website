@@ -1,6 +1,5 @@
 @use "../../styles/fonts" as *;
 @use "../../styles/mixins" as *;
-@use "../../styles/breakpoints" as bp;
 
 .contact {
   @include dFlex(center, space-between, 64px);
