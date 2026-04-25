@@ -1,6 +1,5 @@
 @use "../../styles/fonts" as *;
 @use "../../styles/mixins" as *;
-@use "../../styles/breakpoints" as bp;
 
 .privacy {
   @include dFlex(flex-start, flex-start, 32px);
@@ -15,12 +14,34 @@
   font-family: Karla;
   font-size: 16px;
   color: #3dcfb6;
+
+  @include respond(2xs) {
+    padding: 120px 18px 284px 18px;
+  }
+  @include respond(sm) {
+    padding: 120px 28px 294px 28px;
+  }
+  @include respond(md) {
+    padding: 120px 60px 260px 60px;
+  }
+  @include respond(lg) {
+    gap: 64px;
+    padding: 150px 98px 260px 98px;
+  }
+  @include respond(4xl) {
+    padding-left: calc(((100vw - 1921px) / 2) + 98px);
+    padding-right: calc(((100vw - 1921px) / 2) + 98px);
+  }
 }
 
 .privacy__title {
   font-family: Fira Code;
   font-weight: 700;
   font-size: clamp(32px, calc(64 / 1440 * 100vw), 64px);
+
+  @include respond(xl) {
+    align-self: center;
+  }
 }
 
 .privacy__arrow {
@@ -30,11 +51,19 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+
+  @include respond(lg) {
+    display: none;
+  }
 }
 
 .privacy__content {
   @include dFlex(flex-start, space-between, 24px);
   flex-direction: column;
+
+  @include respond(xl) {
+    padding: 0 120px;
+  }
 }
 
 .privacy__section:first-of-type {
@@ -74,54 +103,10 @@
   word-break: break-word;
 }
 
-@media (min-width: bp.$bp-xxs) {
-  .privacy {
-    padding: 120px 18px 284px 18px;
-  }
-}
-
-@media (min-width: bp.$bp-sm) {
-  .privacy {
-    padding: 120px 28px 294px 28px;
-  }
-}
-
-@media (min-width: bp.$bp-md) {
-  .privacy {
-    padding: 120px 60px 260px 60px;
-  }
-}
-
-@media (min-width: bp.$bp-lg) {
-  .privacy {
-    gap: 64px;
-    padding: 150px 98px 260px 98px;
-  }
-  .privacy__arrow {
-    display: none;
-  }
-}
-
-@media (min-width: bp.$bp-xl) {
-  .privacy__title {
-    align-self: center;
-  }
-  .privacy__content {
-    padding: 0 120px;
-  }
-}
-
 @media screen and (min-height: 2504px) {
   :host {
     display: block;
     position: relative;
     height: 100vh;
-  }
-}
-
-@media (min-width: bp.$bp-4xl) {
-  .privacy {
-    padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-    padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
   }
 }
