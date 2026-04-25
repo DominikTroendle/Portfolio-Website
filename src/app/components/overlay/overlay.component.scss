@@ -1,5 +1,5 @@
+@use "../../styles/fonts" as *;
 @use "../../styles/mixins" as *;
-@use "../../styles/breakpoints" as bp;
 
 :host {
   display: block;
@@ -42,12 +42,34 @@
   &__mobile-only {
     display: block;
   }
+
+  @include respond(2xs) {
+    padding: 18px;
+  }
+  @include respond(sm) {
+    padding: 28px;
+  }
+  @include respond(md) {
+    padding: 60px;
+  }
+  @include respond(lg) {
+    flex-direction: row;
+    width: clamp(950px, calc(950 / 1024 * 100vw), 1250px);
+    gap: 40px;
+  }
+  @include respond(xl) {
+    padding: 80px;
+  }
 }
 
 .overlay__content {
   @include dFlex(flex-start, space-between);
   flex-direction: column;
   gap: 32px;
+
+  @include respond(lg) {
+    gap: 40px;
+  }
 }
 
 .overlay__header {
@@ -118,6 +140,10 @@
 .overlay__links {
   @include dFlex(flex-start, center, 32px);
   align-self: center;
+
+  @include respond(xs) {
+    align-self: flex-start;
+  }
 }
 
 .overlay__link {
@@ -126,6 +152,10 @@
   border: 1px solid white;
   border-radius: 100px;
   padding: 14px 20px;
+
+  @include respond(xs) {
+    padding: 14px 24px;
+  }
 }
 
 .overlay__link:hover {
@@ -157,6 +187,10 @@
   display: none;
   flex-direction: column;
   align-self: stretch;
+
+  @include respond(lg) {
+    display: flex;
+  }
 }
 
 .overlay__preview {
@@ -164,6 +198,13 @@
   height: auto;
   aspect-ratio: 16/9;
   border-radius: 30px;
+
+  @include respond(2xs) {
+    width: clamp(297px, calc(297 / 360 * 100vw), 419px);
+  }
+  @include respond(sm) {
+    width: clamp(419px, calc(419 / 1024 * 100vw), 528px);
+  }
 }
 
 .overlay__close {
@@ -177,6 +218,10 @@
     filter: brightness(0) saturate(100%) invert(68%) sepia(92%) saturate(320%)
       hue-rotate(114deg) brightness(89%) contrast(86%);
     transform: scale(1.3);
+  }
+
+  @include respond(sm) {
+    margin: 0;
   }
 }
 
@@ -195,6 +240,10 @@
   margin: 0 18px 18px 0;
   background: unset;
   border: unset;
+
+  @include respond(sm) {
+    margin: 0;
+  }
 }
 
 .overlay__next:hover {
@@ -211,65 +260,8 @@
   height: 18px;
 }
 
-@media (min-width: bp.$bp-xxs) {
-  .overlay {
-    padding: 18px;
-  }
-  .overlay__preview {
-    width: clamp(297px, calc(297 / 360 * 100vw), 419px);
-  }
-}
-
-@media (min-width: bp.$bp-xs) {
-  .overlay__links {
-    align-self: flex-start;
-  }
-
-  .overlay__link {
-    padding: 14px 24px;
-  }
-}
-
-@media (min-width: bp.$bp-sm) {
-  .overlay {
-    padding: 28px;
-  }
-  .overlay__preview {
-    width: clamp(419px, calc(419 / 1024 * 100vw), 528px);
-  }
-  .overlay__close {
-    margin: 0;
-  }
-  .overlay__next {
-    margin: 0;
-  }
-}
-
-@media (min-width: bp.$bp-md) {
-  .overlay {
-    padding: 60px;
-  }
-}
-
-@media (min-width: bp.$bp-lg) {
-  .overlay__mobile-only {
+.overlay__mobile-only {
+  @include respond(lg) {
     display: none;
-  }
-  .overlay {
-    flex-direction: row;
-    width: clamp(950px, calc(950 / 1024 * 100vw), 1250px);
-    gap: 40px;
-  }
-  .overlay__content {
-    gap: 40px;
-  }
-  .overlay__actions {
-    display: flex;
-  }
-}
-
-@media (min-width: bp.$bp-xl) {
-  .overlay {
-    padding: 80px;
   }
 }
