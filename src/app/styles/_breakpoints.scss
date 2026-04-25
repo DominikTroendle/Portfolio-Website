@@ -7,3 +7,15 @@ $bp-xl: 1280px;     // standard laptops
 $bp-2xl: 1440px;    // design breakpoint
 $bp-3xl: 1600px;    // big screens
 $bp-4xl: 1921px;    // fhd+
+
+$breakpoints: (
+    2xs: 360px,         // very small phones
+    xs: 390px,          // mobile design breakpoint
+    sm: 576px,          // small phones
+    md: 768px,          // tablets
+    lg: 1024px,         // landscape tablets/small laptops
+    xl: 1280px,         // standard laptops
+    2xl: 1440px,        // design breakpoint
+    3xl: 1600px,        // big screens
+    4xl: 1921px         // fhd+
+);

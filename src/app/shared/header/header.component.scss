@@ -1,6 +1,5 @@
 @use "../../styles/fonts" as *;
 @use "../../styles/mixins" as *;
-@use "../../styles/breakpoints" as bp;
 
 :host {
   display: block;
@@ -21,6 +20,23 @@
     rgba(28, 28, 28, 1) 0%,
     rgba(28, 28, 28, 0) 100%
   );
+
+  @include respond(2xs) {
+    padding: 0 18px;
+  }
+  @include respond(sm) {
+    padding: 0 28px;
+  }
+  @include respond(md) {
+    padding: 0 60px;
+  }
+  @include respond(lg) {
+    padding: 0 98px;
+  }
+  @include respond(4xl) {
+    padding-left: calc(((100vw - 1921px) / 2) + 98px);
+    padding-right: calc(((100vw - 1921px) / 2) + 98px);
+  }
 }
 
 .header__nav {
@@ -28,6 +44,10 @@
   display: none;
   font-family: Fira Code;
   font-size: 20px;
+
+  @include respond(lg) {
+    display: flex;
+  }
 }
 
 .header__nav-link {
@@ -78,6 +98,10 @@
     transform: scale(1.1);
     cursor: pointer;
   }
+
+  @include respond(lg) {
+    display: none;
+  }
 }
 
 .header__logo {
@@ -93,6 +117,10 @@
     cursor: pointer;
     background-image: url(../../../assets/img/logo_outline.png);
   }
+
+  @include respond(lg) {
+    display: block;
+  }
 }
 
 .header__logo--mobile {
@@ -104,51 +132,8 @@
     cursor: pointer;
     background-image: url(../../../assets/img/initials_outline.png);
   }
-}
 
-@media (min-width: bp.$bp-xxs) {
-  .header {
-    padding: 0 18px;
-  }
-}
-
-@media (min-width: bp.$bp-sm) {
-  .header {
-    padding: 0 28px;
-  }
-}
-
-@media (min-width: bp.$bp-md) {
-  .header {
-    padding: 0 60px;
-  }
-}
-
-@media (min-width: bp.$bp-lg) {
-  .header {
-    padding: 0 98px;
-
-    &__logo {
-      display: block;
-    }
-
-    &__logo--mobile {
-      display: none;
-    }
-
-    &__menu {
-      display: none;
-    }
-
-    &__nav {
-      display: flex;
-    }
-  }
-}
-
-@media (min-width: bp.$bp-4xl) {
-  .header {
-    padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-    padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+  @include respond(lg) {
+    display: none;
   }
 }
