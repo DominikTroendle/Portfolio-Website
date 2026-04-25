@@ -21,9 +21,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   styleUrl: './projects.component.scss',
 })
 export class ProjectsComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('headline') headline!: ElementRef;
-  @ViewChild('subheadline') subheadline!: ElementRef;
-  @ViewChild('introduction') introduction!: ElementRef;
+  @ViewChild('title') title!: ElementRef;
+  @ViewChild('eyebrow') eyebrow!: ElementRef;
+  @ViewChild('intro') intro!: ElementRef;
   @ViewChild('projects') projects!: ElementRef;
 
   private ctx!: gsap.Context;
@@ -77,25 +77,25 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   private desktopAnimation() {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: this.subheadline.nativeElement,
+        trigger: this.eyebrow.nativeElement,
         start: 'top 80%',
         end: 'bottom 60%',
         scrub: 0.8
       },
     });
     tl.fromTo(
-      this.headline.nativeElement,
+      this.title.nativeElement,
       { clipPath: 'inset(0 0 100% 0)' },
       { clipPath: 'inset(0 0 0% 0)' },
     )
       .fromTo(
-        this.subheadline.nativeElement,
+        this.eyebrow.nativeElement,
         { clipPath: 'inset(0 0 100% 0)' },
         { clipPath: 'inset(0 0 0% 0)' },
         '<',
       )
       .fromTo(
-        this.introduction.nativeElement,
+        this.intro.nativeElement,
         { opacity: 0 },
         { opacity: 1 },
         "<",
@@ -111,25 +111,25 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   private mobileAnimation() {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: this.subheadline.nativeElement,
+        trigger: this.eyebrow.nativeElement,
         start: 'top 80%',
         end: 'bottom 60%',
         scrub: 0.8
       },
     });
     tl.fromTo(
-      this.headline.nativeElement,
+      this.title.nativeElement,
       { clipPath: 'inset(0 0 100% 0)' },
       { clipPath: 'inset(0 0 0% 0)' },
     )
       .fromTo(
-        this.subheadline.nativeElement,
+        this.eyebrow.nativeElement,
         { clipPath: 'inset(0 0 100% 0)' },
         { clipPath: 'inset(0 0 0% 0)' },
         '<',
       )
       .fromTo(
-        this.introduction.nativeElement,
+        this.intro.nativeElement,
         { opacity: 0 },
         { opacity: 1 },
         '<',
@@ -141,7 +141,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
         xPercent: 0,
         opacity: 1,
         scrollTrigger: {
-          trigger: this.headline.nativeElement,
+          trigger: this.title.nativeElement,
           start: 'top 80%',
           end: 'bottom 60%',
           scrub: 0.8,

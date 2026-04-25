@@ -18,7 +18,6 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ButtonComponent } from '../button/button.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -30,12 +29,12 @@ import { RouterLink } from '@angular/router';
 })
 
 export class ContactComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('h1') h1!: ElementRef;
-  @ViewChild('h2') h2!: ElementRef;
-  @ViewChild('h3') h3!: ElementRef;
-  @ViewChild('upperIntroduction') upperIntroduction!: ElementRef;
-  @ViewChild('lowerIntroduction') lowerIntroduction!: ElementRef;
-  @ViewChild('contact') contact!: ElementRef;
+  @ViewChild('title') title!: ElementRef;
+  @ViewChild('subheadline') subheadline!: ElementRef;
+  @ViewChild('eyebrow') eyebrow!: ElementRef;
+  @ViewChild('intro') intro!: ElementRef;
+  @ViewChild('prompt') prompt!: ElementRef;
+  @ViewChild('form') form!: ElementRef;
 
   private ctx!: gsap.Context;
   private mm!: gsap.MatchMedia;
@@ -139,40 +138,40 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
   private desktopAnimation() {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: this.h3.nativeElement,
+        trigger: this.eyebrow.nativeElement,
         start: 'top 80%',
         end: 'top 70%',
         scrub: 0.8,
       },
     });
     tl.fromTo(
-      this.contact.nativeElement,
+      this.form.nativeElement,
       { x: 100, opacity: 0 },
       { x: 0, opacity: 1 },
     )
       .fromTo(
-        this.h3.nativeElement,
+        this.eyebrow.nativeElement,
         { clipPath: 'inset(0 0 100% 0)' },
         { clipPath: 'inset(0 0 0% 0)', duration: 1 },
       )
       .fromTo(
-        this.h2.nativeElement,
+        this.subheadline.nativeElement,
         { clipPath: 'inset(0 0 100% 0)' },
         { clipPath: 'inset(0 0 0% 0)', duration: 1 },
       )
       .fromTo(
-        this.h1.nativeElement,
+        this.title.nativeElement,
         { clipPath: 'inset(0 0 100% 0)' },
         { clipPath: 'inset(0 0 0% 0)', duration: 1 },
         '<',
       )
       .fromTo(
-        this.upperIntroduction.nativeElement,
+        this.intro.nativeElement,
         { opacity: 0 },
         { opacity: 1 },
       )
       .fromTo(
-        this.lowerIntroduction.nativeElement,
+        this.prompt.nativeElement,
         { opacity: 0 },
         { opacity: 1 },
         '<',
@@ -182,32 +181,32 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
   private mobileAnimation() {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: this.h3.nativeElement,
+        trigger: this.eyebrow.nativeElement,
         start: 'top 80%',
         end: 'bottom 10%',
         scrub: 0.8
       }
     });
     tl.fromTo(
-      this.h3.nativeElement,
+      this.eyebrow.nativeElement,
       { clipPath: 'inset(0 0 100% 0)' },
       { clipPath: 'inset(0 0 0% 0)', duration: 1 }
     )
       .fromTo(
-        this.h1.nativeElement,
+        this.title.nativeElement,
         { clipPath: 'inset(0 0 100% 0)' },
         { clipPath: 'inset(0 0 0% 0)', duration: 1 },
         '<'
       )
       .fromTo(
-        this.h2.nativeElement,
+        this.subheadline.nativeElement,
         { clipPath: 'inset(0 0 100% 0)' },
         { clipPath: 'inset(0 0 0% 0)', duration: 1 },
         '<'
       );
     const tl2 = gsap.timeline({
       scrollTrigger: {
-        trigger: this.h3.nativeElement,
+        trigger: this.eyebrow.nativeElement,
         start: 'top 80%',
         end: 'bottom 10%',
         scrub: 0.8
@@ -215,24 +214,24 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
     });
     tl2
       .fromTo(
-        this.upperIntroduction.nativeElement,
+        this.intro.nativeElement,
         { opacity: 0 },
         { opacity: 1 },
       )
       .fromTo(
-        this.lowerIntroduction.nativeElement,
+        this.prompt.nativeElement,
         { opacity: 0 },
         { opacity: 1 },
         '<'
       );
     gsap.fromTo(
-      this.contact.nativeElement,
+      this.form.nativeElement,
       { x: 100, opacity: 0 },
       {
         x: 0,
         opacity: 1,
         scrollTrigger: {
-          trigger: this.contact.nativeElement,
+          trigger: this.form.nativeElement,
           start: 'top 95%',
           end: 'bottom 95%',
           scrub: 0.8

@@ -2,9 +2,9 @@
     <app-overlay class="projects__overlay" [overlayData]="selectedProject" [projectNumber]="'0' + selectedIndex"
         [class.projects__overlay--show]="isVisible" (close)="closeOverlay()" (next)="updateOverlay(selectedIndex)"></app-overlay>
     <div class="projects__container">
-        <p #subheadline class="projects__eyebrow">{{db.data.projectsData.title}}</p>
-        <h2 #headline class="projects__title">{{db.data.projectsData.headline}}</h2>
-        <p #introduction class="projects__intro">{{db.data.projectsData.introduction}}</p>
+        <p #eyebrow class="projects__eyebrow">{{db.data.projectsData.title}}</p>
+        <h2 #title class="projects__title">{{db.data.projectsData.headline}}</h2>
+        <p #intro class="projects__intro">{{db.data.projectsData.introduction}}</p>
         <div #projects class="projects__content">
             @for(project of db.data.projectsData.projects; track project; let i = $index){
             <div class="projects__item" (click)="showOverlay(i)">
