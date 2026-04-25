@@ -1,37 +1,37 @@
 @if(db.loaded){
-    <section>
-        <a class="arrow-back" routerLink="/" fragment="contact"></a>
-        <h1>{{db.data.legalNoticeData.title}}</h1>
-        <div class="container-content">
-            @for(section of db.data.legalNoticeData.sections; track section){
-                <div>
-                    @for(block of section.content; track block){
-                        @switch(block.type){
-                            @case("headline"){
-                                <h3>{{block.text}}</h3>
-                            }
-                            @case("list"){
-                                <ul>
-                                    @for(item of block.items; track item){
-                                        <li>{{item}}</li>
-                                    }
-                                </ul>
-                            }
-                            @case("paragraph"){
-                                <p>
-                                    @for(inline of block.inlines; track inline){
-                                        @switch(inline.type){
-                                            @case("text"){{{inline.value}}}
-                                            @case("span"){<span>{{inline.value}}</span>}
-                                            @case("link"){<a [href]="inline.href" target="_blank">{{inline.value}}</a>}
-                                        }
-                                    }
-                                </p>
-                            }
-                        }
-                    }
-                </div>
+<article class="legal">
+    <a class="arrow-back legal__arrow" routerLink="/" fragment="contact"></a>
+    <h2 class="legal__title">{{db.data.legalNoticeData.title}}</h2>
+    <div class="container-content legal__content">
+        @for(section of db.data.legalNoticeData.sections; track section){
+        <section class="legal__section">
+            @for(block of section.content; track block){
+            @switch(block.type){
+            @case("headline"){
+            <h3 class="legal__headline">{{block.text}}</h3>
             }
-        </div>
-    </section>
+            @case("list"){
+            <ul class="legal__list">
+                @for(item of block.items; track item){
+                <li>{{item}}</li>
+                }
+            </ul>
+            }
+            @case("paragraph"){
+            <p>
+                @for(inline of block.inlines; track inline){
+                @switch(inline.type){
+                @case("text"){{{inline.value}}}
+                @case("span"){<span class="legal__highlight">{{inline.value}}</span>}
+                @case("link"){<a class="legal__link" [href]="inline.href" target="_blank">{{inline.value}}</a>}
+                }
+                }
+            </p>
+            }
+            }
+            }
+        </section>
+        }
+    </div>
+</article>
 }

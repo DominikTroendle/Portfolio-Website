@@ -1,104 +1,114 @@
-@use '../../styles/fonts' as *;
-@use '../../styles/mixins' as *;
-@use '../../styles/breakpoints' as bp;
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/breakpoints" as bp;
 
-section {
-    @include dFlex(flex-start, flex-start, 32px);
-    height: 100%;
-    background: linear-gradient(225deg,rgba(8, 70, 59, 1) 0%, rgba(28, 28, 28, 1) 70%);
-    flex-direction: column;
-    padding: 120px 12px 278px 12px;
-    font-family: Karla;
-    font-size: 16px;
-    color: #3dcfb6;
-    h1{
-        font-family: Fira Code;
-        font-weight: 700;
-        font-size: clamp(32px, calc(64 / 1440 * 100vw), 64px);
-    }
-    .arrow-back{
-        width: 20px;
-        height: 20px;
-        background-image: url(../../../assets/img/arrow-left.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
+.legal {
+  @include dFlex(flex-start, flex-start, 32px);
+  height: 100%;
+  background: linear-gradient(
+    225deg,
+    rgba(8, 70, 59, 1) 0%,
+    rgba(28, 28, 28, 1) 70%
+  );
+  flex-direction: column;
+  padding: 120px 12px 278px 12px;
+  font-family: Karla;
+  font-size: 16px;
+  color: #3dcfb6;
 }
 
-.container-content{
-    @include dFlex(flex-start, space-between, 24px);
-    flex-direction: column;
-    h3{
-        font-weight: 700;
-        font-size: 19px;
-        color: white;
-    }
-    ul{
-        list-style-position: inside;
-        list-style-type: none;
-    }
-    a{
-        color: #3dcfb6;
-    }
-    span{
-        color: white;
-    }
-    div:last-of-type p + p{
-        margin-top: 16px;
-    }
+.legal__arrow {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../../assets/img/arrow-left.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
-@media(min-width: bp.$bp-xxs) {
-    section{
-        padding: 120px 18px 284px 18px;
-    }
+.legal__title {
+  font-family: Fira Code;
+  font-weight: 700;
+  font-size: clamp(32px, calc(64 / 1440 * 100vw), 64px);
 }
 
-@media(min-width: bp.$bp-sm) {
-    section{
-        padding: 120px 28px 294px 28px;
-    }
+.legal__content {
+  @include dFlex(flex-start, space-between, 24px);
+  flex-direction: column;
+  
+  section:last-of-type p + p {
+    margin-top: 16px;
+  }
 }
 
-@media(min-width: bp.$bp-md) {
-    section{
-        padding: 120px 60px 260px 60px;
-    }
+.legal__headline {
+  font-weight: 700;
+  font-size: 19px;
+  color: white;
 }
 
-@media(min-width: bp.$bp-lg) {
-    section{
-        gap: 64px;
-        padding: 150px 98px 260px 98px;
-    }
-    .arrow-back{
-        display: none;
-    }
+.legal__list {
+  list-style-position: inside;
+  list-style-type: none;
 }
 
-@media(min-width: bp.$bp-xl) {
-    section{
-        h1{
-            align-self: center;
-        }
-    }
-    .container-content{
-        padding: 0 120px;
-    }
+.legal__link {
+  color: #3dcfb6;
+}
+
+.legal__highlight {
+  color: white;
+}
+
+@media (min-width: bp.$bp-xxs) {
+  .legal {
+    padding: 120px 18px 284px 18px;
+  }
+}
+
+@media (min-width: bp.$bp-sm) {
+  .legal {
+    padding: 120px 28px 294px 28px;
+  }
+}
+
+@media (min-width: bp.$bp-md) {
+  .legal {
+    padding: 120px 60px 260px 60px;
+  }
+}
+
+@media (min-width: bp.$bp-lg) {
+  .legal {
+    gap: 64px;
+    padding: 150px 98px 260px 98px;
+  }
+  .legal__arrow {
+    display: none;
+  }
+}
+
+@media (min-width: bp.$bp-xl) {
+  .legal__title {
+    align-self: center;
+  }
+
+  .legal__content {
+    padding: 0 120px;
+  }
 }
 
 @media screen and (min-height: 1313px) {
-    :host{
-        display: block;
-        position: relative;
-        height: 100vh;
-    }
+  :host {
+    display: block;
+    position: relative;
+    height: 100vh;
+  }
 }
 
-@media(min-width: bp.$bp-4xl) {
-    section{
-        padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-        padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-    }
+@media (min-width: bp.$bp-4xl) {
+  .legal {
+    padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+    padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
+  }
 }
