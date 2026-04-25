@@ -11,7 +11,7 @@
   z-index: 2;
 }
 
-.backdrop {
+.overlay__backdrop {
   @include dFlex(center, center);
   height: 100%;
   width: 100%;
@@ -19,7 +19,7 @@
   backdrop-filter: blur(5px);
 }
 
-.card {
+.overlay {
   @include dFlex(stretch, space-between, 32px);
   flex-direction: column;
   width: clamp(296px, calc(296 / 320 * 100vw), 600px);
@@ -34,128 +34,139 @@
   max-height: 90dvh;
   overflow-x: auto;
   scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__mobile-only {
+    display: block;
+  }
 }
 
-.card::-webkit-scrollbar {
-  display: none;
-}
-
-.overlay-mobile {
-  display: block;
-}
-
-.left,
-.headline,
-.content {
+.overlay__content {
   @include dFlex(flex-start, space-between);
   flex-direction: column;
-}
-
-.left {
   gap: 32px;
 }
 
-.headline {
+.overlay__header {
+  @include dFlex(flex-start, space-between);
+  flex-direction: column;
   gap: 24px;
-  p {
-    font-family: Karla;
-    font-weight: 700;
-    font-size: clamp(72px, calc(128 / 1280 * 100vw), 128px);
-    color: #3dcfb6;
-    line-height: 80%;
-  }
-  h2 {
-    font-family: Fira Code;
-    font-weight: 600;
-    font-size: clamp(56px, calc(64 / 1280 * 100vw), 64px);
-    color: white;
-    line-height: 90%;
-  }
 }
 
-.content {
+.overlay__number {
+  font-family: Karla;
+  font-weight: 700;
+  font-size: clamp(72px, calc(128 / 1280 * 100vw), 128px);
+  color: #3dcfb6;
+  line-height: 80%;
+}
+
+.overlay__title {
+  font-family: Fira Code;
+  font-weight: 600;
+  font-size: clamp(56px, calc(64 / 1280 * 100vw), 64px);
+  color: white;
+  line-height: 90%;
+}
+
+.overlay__body {
+  @include dFlex(flex-start, space-between);
+  flex-direction: column;
   width: 100%;
   gap: 20px;
-  h3 {
-    font-family: Fira Code;
-    font-weight: 700;
-    font-size: clamp(20px, calc(24 / 1280 * 100vw), 24px);
-    color: #3dcfb6;
-    line-height: 120%;
-  }
-  p {
-    font-family: Karla;
-    font-size: clamp(16px, calc(18 / 1280 * 100vw), 18px);
-    color: white;
-    margin-bottom: 12px;
-  }
 }
 
-.technologies {
+.overlay__subtitle {
+  font-family: Fira Code;
+  font-weight: 700;
+  font-size: clamp(20px, calc(24 / 1280 * 100vw), 24px);
+  color: #3dcfb6;
+  line-height: 120%;
+}
+
+.overlay__text {
+  font-family: Karla;
+  font-size: clamp(16px, calc(18 / 1280 * 100vw), 18px);
+  color: white;
+  margin-bottom: 12px;
+}
+
+.overlay__tech-list {
   @include dFlex(center, flex-start, 16px);
   flex-wrap: wrap;
   list-style: none;
-  li {
-    @include dFlex(center, space-between, 4px);
-    color: white;
-    font-family: Karla;
-    font-size: 16px;
-    line-height: 120%;
-  }
-  img {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) saturate(100%) invert(78%) sepia(9%) saturate(2587%)
-      hue-rotate(117deg) brightness(88%) contrast(93%);
-  }
 }
 
-.buttons {
+.overlay__tech {
+  @include dFlex(center, space-between, 4px);
+  color: white;
+  font-family: Karla;
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.overlay__tech-icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(78%) sepia(9%) saturate(2587%)
+    hue-rotate(117deg) brightness(88%) contrast(93%);
+}
+
+.overlay__links {
   @include dFlex(flex-start, center, 32px);
   align-self: center;
-  a {
-    @include dFlex(center, space-between, 10px);
-    background: unset;
-    border: 1px solid white;
-    border-radius: 100px;
-    padding: 14px 20px;
-    span {
-      font-family: Karla;
-      font-size: clamp(16px, calc(18 / 1280 * 100vw), 18px);
-      color: white;
-    }
-    img {
-      width: 10px;
-      height: 10px;
-    }
-    &:hover {
-      cursor: pointer;
-      border: 1px solid #3dcfb6;
-      span {
-        color: #3dcfb6;
-      }
-      img {
-        transform: scale(1.3);
-      }
-    }
+}
+
+.overlay__link {
+  @include dFlex(center, space-between, 10px);
+  background: unset;
+  border: 1px solid white;
+  border-radius: 100px;
+  padding: 14px 20px;
+}
+
+.overlay__link:hover {
+  cursor: pointer;
+  border: 1px solid #3dcfb6;
+
+  .overlay__link-text {
+    color: #3dcfb6;
+  }
+
+  .overlay__link-icon {
+    transform: scale(1.3);
   }
 }
 
-.right {
+.overlay__link-text {
+  font-family: Karla;
+  font-size: clamp(16px, calc(18 / 1280 * 100vw), 18px);
+  color: white;
+}
+
+.overlay__link-icon {
+  width: 10px;
+  height: 10px;
+}
+
+.overlay__actions {
   @include dFlex(flex-end, space-between);
   display: none;
   flex-direction: column;
   align-self: stretch;
 }
 
-.preview {
+.overlay__preview {
   width: clamp(272px, calc(272 / 320 * 100vw), 305px);
   height: auto;
   aspect-ratio: 16/9;
   border-radius: 30px;
 }
 
-.close {
+.overlay__close {
   align-self: flex-end;
   margin: 18px 18px 0 0;
   border: unset;
@@ -169,12 +180,12 @@
   }
 }
 
-.close-image {
+.overlay__close-image {
   width: 18px;
   height: 18px;
 }
 
-.next-project {
+.overlay__next {
   @include dFlex(center, space-between, 20px);
   align-self: flex-end;
   font-family: Karla;
@@ -184,77 +195,81 @@
   margin: 0 18px 18px 0;
   background: unset;
   border: unset;
-  img {
-    width: 18px;
-    height: 18px;
-  }
-  &:hover {
-    cursor: pointer;
-    color: white;
-    img {
-      transform: scale(1.3);
-    }
+}
+
+.overlay__next:hover {
+  cursor: pointer;
+  color: white;
+
+  .overlay__next-icon {
+    transform: scale(1.3);
   }
 }
 
+.overlay__next-icon {
+  width: 18px;
+  height: 18px;
+}
+
 @media (min-width: bp.$bp-xxs) {
-  .card {
+  .overlay {
     padding: 18px;
   }
-  .preview {
+  .overlay__preview {
     width: clamp(297px, calc(297 / 360 * 100vw), 419px);
   }
 }
 
 @media (min-width: bp.$bp-xs) {
-  .buttons {
+  .overlay__links {
     align-self: flex-start;
-    button {
-      padding: 14px 24px;
-    }
+  }
+
+  .overlay__link {
+    padding: 14px 24px;
   }
 }
 
 @media (min-width: bp.$bp-sm) {
-  .card {
+  .overlay {
     padding: 28px;
   }
-  .preview {
+  .overlay__preview {
     width: clamp(419px, calc(419 / 1024 * 100vw), 528px);
   }
-  .close {
+  .overlay__close {
     margin: 0;
   }
-  .next-project {
+  .overlay__next {
     margin: 0;
   }
 }
 
 @media (min-width: bp.$bp-md) {
-  .card {
+  .overlay {
     padding: 60px;
   }
 }
 
 @media (min-width: bp.$bp-lg) {
-  .overlay-mobile {
+  .overlay__mobile-only {
     display: none;
   }
-  .card {
+  .overlay {
     flex-direction: row;
     width: clamp(950px, calc(950 / 1024 * 100vw), 1250px);
     gap: 40px;
   }
-  .left {
+  .overlay__content {
     gap: 40px;
   }
-  .right {
+  .overlay__actions {
     display: flex;
   }
 }
 
 @media (min-width: bp.$bp-xl) {
-  .card {
+  .overlay {
     padding: 80px;
   }
 }

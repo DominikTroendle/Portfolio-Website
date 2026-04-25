@@ -1,48 +1,50 @@
-<div class="backdrop" (click)="closeOverlay()">
-    <section class="card" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
-        <img class="close overlay-mobile" src="assets/img/close_small.png" alt="close-cross" (click)="closeOverlay()">
-        <img class="preview overlay-mobile" [src]="'assets/img/' + overlayData.previewSrc" alt="preview-img">
-        <div class="left">
-            <div class="headline">
-                <p>{{projectNumber}}</p>
-                <h2>{{overlayData.title}}</h2>
+<div class="overlay__backdrop" (click)="closeOverlay()">
+    <section class="overlay" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
+        <button class="overlay__close overlay__mobile-only" (click)="closeOverlay()">
+            <img class="overlay__close-image" src="assets/img/close_small.png" alt="close-cross">
+        </button>
+        <img class="overlay__preview overlay__mobile-only" [src]="'assets/img/' + overlayData.previewSrc" alt="preview-img">
+        <div class="overlay__content">
+            <div class="overlay__header">
+                <p class="overlay__number">{{projectNumber}}</p>
+                <h2 class="overlay__title">{{overlayData.title}}</h2>
             </div>
-            <div class="content">
-                <h3>{{db.data.projectsData.overlayAbout}}</h3>
-                <p>{{overlayData.text}}</p>
-                <ul class="technologies">
+            <div class="overlay__body">
+                <h3 class="overlay__subtitle">{{db.data.projectsData.overlayAbout}}</h3>
+                <p class="overlay__text">{{overlayData.text}}</p>
+                <ul class="overlay__tech-list">
                     @for(tech of overlayData.technologies; track tech){
-                    <li>
-                        <img [src]="'assets/img/' + tech.src + '-logo.png'" [alt]="tech.src + '-logo'">
+                    <li class="overlay__tech">
+                        <img class="overlay__tech-icon" [src]="'assets/img/' + tech.src + '-logo.png'" [alt]="tech.src + '-logo'">
                         {{tech.text}}
                     </li>
                     }
                 </ul>
             </div>
-            <div class="buttons">
-                <a target="_blank" [href]="overlayData.github">
-                    <span>Github</span>
-                    <img src="assets/img/arrow_outward_turquoise.png" alt="arrow-link">
+            <div class="overlay__links">
+                <a class="overlay__link" target="_blank" [href]="overlayData.github">
+                    <span class="overlay__link-text">Github</span>
+                    <img class="overlay__link-icon" src="assets/img/arrow_outward_turquoise.png" alt="arrow-link">
                 </a>
-                <a target="_blank" [href]="overlayData.url">
-                    <span>Live Test</span>
-                    <img src="assets/img/arrow_outward_turquoise.png" alt="arrow-link">
+                <a class="overlay__link" target="_blank" [href]="overlayData.url">
+                    <span class="overlay__link-text">Live Test</span>
+                    <img class="overlay__link-icon" src="assets/img/arrow_outward_turquoise.png" alt="arrow-link">
                 </a>
             </div>
         </div>
-        <div class="right">
-            <button class="close" (click)="closeOverlay()">
-                <img class="close-image" src="assets/img/close_small.png" alt="close-cross">
+        <div class="overlay__actions">
+            <button class="overlay__close" (click)="closeOverlay()">
+                <img class="overlay__close-image" src="assets/img/close_small.png" alt="close-cross">
             </button>
-            <img class="preview" [src]="'assets/img/' + overlayData.previewSrc" alt="preview-img">
-            <button class="next-project" (click)="nextProject()">
+            <img class="overlay__preview" [src]="'assets/img/' + overlayData.previewSrc" alt="preview-img">
+            <button class="overlay__next" (click)="nextProject()">
                 {{db.data.projectsData.nextProject}}
-                <img src="/assets/img/arrow_forward.png" alt="arrow-next">
+                <img class="overlay__next-icon" src="/assets/img/arrow_forward.png" alt="arrow-next">
             </button>
         </div>
-        <button class="next-project overlay-mobile" (click)="nextProject()">
+        <button class="overlay__next overlay__mobile-only" (click)="nextProject()">
             {{db.data.projectsData.nextProject}}
-            <img src="/assets/img/arrow_forward.png" alt="arrow-next">
+            <img class="overlay__next-icon" src="/assets/img/arrow_forward.png" alt="arrow-next">
         </button>
     </section>
 </div>
