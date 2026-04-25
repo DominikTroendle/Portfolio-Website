@@ -1,9 +1,9 @@
 <section #atf class="atf">
-    <div #left class="atf__content-side atf__content-left">
-        <a class="atf__scroll-button" routerLink="/" fragment="contact">
-            <img class="atf__scroll-button--image" src="assets/img/arrow_down.png" alt="arrow-down">
+    <div #left class="atf__content-left">
+        <a class="atf__scroll" routerLink="/" fragment="contact">
+            <img class="atf__scroll-icon" src="assets/img/arrow_down.png" alt="arrow-down">
         </a>
-        <div class="atf__line atf__line--left"></div>
+        <div class="atf__line-left"></div>
     </div>
     <div #main class="atf__content-main">
         <p class="atf__subheadline">{{db.data.atfData.title}}</p>
@@ -14,26 +14,26 @@
             }
         </nav>
     </div>
-    <div #right class="atf__content-side atf__content-right">
-        <a class="atf__link atf__link--text" [href]="'mailto:' + db.data.atfData.email">{{db.data.atfData.email}}</a>
-        <a class="atf__link atf__link--mobile-logo" [href]="'mailto:' + db.data.atfData.email">
-            <img class="atf__link--image" src="assets/img/email-logo.png" alt="email-logo">
+    <div #right class="atf__content-right">
+        <a class="atf__link atf__link-text" [href]="'mailto:' + db.data.atfData.email">{{db.data.atfData.email}}</a>
+        <a class="atf__link atf__mobile-only" [href]="'mailto:' + db.data.atfData.email">
+            <img class="atf__link-icon" src="assets/img/email-logo.png" alt="email-logo">
         </a>
         <a class="atf__link" [href]="db.data.atfData.github" target="_blank" rel="noopener noreferrer">
-            <img class="atf__link--image" src="assets/img/github-logo.png" alt="github-logo">
+            <img class="atf__link-icon" src="assets/img/github-logo.png" alt="github-logo">
         </a>
         <a class="atf__link" [href]="db.data.atfData.linkedin" target="_blank" rel="noopener noreferrer">
-            <img class="atf__link--image" src="assets/img/linkedin-logo.png" alt="linkedin-logo">
+            <img class="atf__link-icon" src="assets/img/linkedin-logo.png" alt="linkedin-logo">
         </a>
-        <div class="atf__line atf__line--right"></div>
+        <div class="atf__line-right"></div>
     </div>
     <div class="ribbon__mask">
         <div #ribbon class="ribbon">
-            <div class="ribbon__track-wrapper">
+            <div class="ribbon__wrapper">
                 @for(_ of [1,2,3]; track $index){
                 <div class="ribbon__track" [attr.aria-hidden]="$index > 1 ? 'true' : null">
                     @for(text of db.data.atfData.ribbonTracks; track text){
-                    <span class="ribbon__track--after">{{text}}</span>
+                    <span class="ribbon__text">{{text}}</span>
                     }
                 </div>
                 }
