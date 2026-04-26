@@ -1,6 +1,5 @@
 @use "../../styles/fonts" as *;
 @use "../../styles/mixins" as *;
-@use "../../styles/breakpoints" as bp;
 
 .references {
   @include dFlex(center, center, 32px);
@@ -8,6 +7,24 @@
   width: 100vw;
   padding: 0 12px;
   background-color: #1c1c1c;
+
+  @include respond(2xs) {
+    padding: 0 18px;
+  }
+  @include respond(sm) {
+    padding: 0 28px;
+  }
+  @include respond(md) {
+    padding: 0 60px;
+    gap: 48px;
+  }
+  @include respond(lg) {
+    padding: 100px 98px;
+  }
+  @include respond(4xl) {
+    padding-left: calc((100vw - 1921px) / 2);
+    padding-right: calc((100vw - 1921px) / 2);
+  }
 }
 
 .references__title {
@@ -24,6 +41,28 @@
   overflow: hidden;
   position: relative;
   mask-image: none;
+
+  @include respond(sm) {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 4%,
+      black 96%,
+      transparent 100%
+    );
+  }
+  @include respond(md) {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+  }
+  @include respond(4xl) {
+    width: 1724px;
+  }
 }
 
 .references__track {
@@ -34,6 +73,21 @@
   width: max-content;
   height: 330px;
   flex-shrink: 0;
+
+  @include respond(xs) {
+    height: 390px;
+  }
+  @include respond(md) {
+    --slide-distance: 102%;
+    --slide-distance-further: 113.2%;
+    height: 300px;
+    gap: 15px;
+  }
+  @include respond(lg) {
+    --slide-distance: 110%;
+    --slide-distance-further: 122%;
+    gap: 64px;
+  }
 }
 
 .references__quote-icon {
@@ -44,6 +98,22 @@
   height: auto;
   aspect-ratio: 67/48;
   z-index: 1;
+
+  @include respond(xs) {
+    left: 39.7%;
+    width: clamp(67px, calc(67 / 390 * 100vw), 73px);
+    height: clamp(48px, calc(48 / 390 * 100vw), 52px);
+  }
+  @include respond(sm) {
+    width: 89px;
+    height: 64px;
+  }
+  @include respond(md) {
+    left: 38.8%;
+  }
+  @include respond(lg) {
+    left: 39.4%;
+  }
 }
 
 .references__card {
@@ -60,6 +130,22 @@
   font-size: 16px;
   scale: 0.9;
   transition: animation 1s ease;
+
+  @include respond(xs) {
+    width: clamp(358px, calc(358 / 390 * 100vw), 632px);
+    height: 360px;
+    padding: 48px 40px 40px 40px;
+    font-size: clamp(18px, calc(20 / 1024 * 100vw), 20px);
+  }
+  @include respond(sm) {
+    padding: 68px 40px 40px 40px;
+  }
+  @include respond(md) {
+    width: 632px;
+    height: 274px;
+    padding: 48px 40px;
+    font-size: 20px;
+  }
 
   &--active {
     background-color: rgba($color: #3dcfb6, $alpha: 0.3);
@@ -95,6 +181,10 @@
   @include dFlex(center, space-between, 16px);
   flex-direction: column;
   width: 100%;
+
+  @include respond(sm) {
+    flex-direction: row;
+  }
 }
 
 .references__line {
@@ -102,10 +192,19 @@
   border-bottom: 1px solid white;
   height: 1px;
   width: 100%;
+
+  @include respond(sm) {
+    flex-grow: 1;
+    width: auto;
+  }
 }
 
 .references__author {
   font-size: 16px;
+
+  @include respond(xs) {
+    font-size: clamp(16px, calc(18 / 1024 * 100vw), 18px);
+  }
 }
 
 @keyframes slide-right {
@@ -207,126 +306,5 @@
 
   &--active {
     background-color: #3dcfb6;
-  }
-}
-
-@media (min-width: bp.$bp-xxs) {
-  .references {
-    padding: 0 18px;
-  }
-}
-
-@media (min-width: bp.$bp-xs) {
-  .references__track {
-    height: 390px;
-  }
-
-  .references__quote-icon {
-    left: 39.7%;
-    width: clamp(67px, calc(67 / 390 * 100vw), 73px);
-    height: clamp(48px, calc(48 / 390 * 100vw), 52px);
-  }
-
-  .references__card {
-    width: clamp(358px, calc(358 / 390 * 100vw), 632px);
-    height: 360px;
-    padding: 48px 40px 40px 40px;
-    font-size: clamp(18px, calc(20 / 1024 * 100vw), 20px);
-  }
-
-  .references__author {
-    font-size: clamp(16px, calc(18 / 1024 * 100vw), 18px);
-  }
-}
-
-@media (min-width: bp.$bp-sm) {
-  .references {
-    padding: 0 28px;
-  }
-  .references__viewport {
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 4%,
-      black 96%,
-      transparent 100%
-    );
-  }
-
-  .references__quote-icon {
-    width: 89px;
-    height: 64px;
-  }
-
-  .references__card {
-    padding: 68px 40px 40px 40px;
-  }
-
-  .references__meta {
-    flex-direction: row;
-  }
-
-  .references__line {
-    flex-grow: 1;
-    width: auto;
-  }
-}
-
-@media (min-width: bp.$bp-md) {
-  .references {
-    padding: 0 60px;
-    gap: 48px;
-  }
-  .references__viewport {
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 8%,
-      black 92%,
-      transparent 100%
-    );
-  }
-  .references__track {
-    --slide-distance: 102%;
-    --slide-distance-further: 113.2%;
-    height: 300px;
-    gap: 15px;
-  }
-
-  .references__quote-icon {
-    left: 38.8%;
-  }
-  .references__card {
-    width: 632px;
-    height: 274px;
-    padding: 48px 40px;
-    font-size: 20px;
-  }
-}
-
-@media (min-width: bp.$bp-lg) {
-  .references {
-    padding: 100px 98px;
-  }
-
-  .references__track {
-    --slide-distance: 110%;
-    --slide-distance-further: 122%;
-    gap: 64px;
-  }
-
-  .references__quote-icon {
-    left: 39.4%;
-  }
-}
-
-@media (min-width: bp.$bp-4xl) {
-  .references {
-    padding-left: calc((100vw - bp.$bp-4xl) / 2);
-    padding-right: calc((100vw - bp.$bp-4xl) / 2);
-  }
-
-  .references__viewport {
-    width: 1724px;
   }
 }
