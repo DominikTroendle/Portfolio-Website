@@ -8,8 +8,9 @@
     gap: $g;
 }
 
-@mixin respond($size) {
-    @media screen and (min-width: map.get($breakpoints, $size)) {
+ @mixin respond($size) {
+    $value: if(map.has-key($breakpoints, $size), map.get($breakpoints, $size), $size);
+    @media screen and (min-width: $value) {
         @content;
     }
 }
