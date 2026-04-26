@@ -3,7 +3,7 @@ import {
   Component,
   ElementRef,
   ViewChild,
-  OnDestroy,
+  OnDestroy
 } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
 import { gsap } from 'gsap';
@@ -22,59 +22,52 @@ import { RouterLink } from '@angular/router';
 export class AboveTheFoldComponent implements AfterViewInit, OnDestroy {
   constructor(public db: DatabaseService) {}
 
-  @ViewChild('atf') atf!: ElementRef;
-  @ViewChild('main') main!: ElementRef;
-  @ViewChild('left') left!: ElementRef;
-  @ViewChild('right') right!: ElementRef;
-  @ViewChild('ribbon') ribbon!: ElementRef;
+  @ViewChild('atf') atf!: ElementRef<HTMLElement>;
+  @ViewChild('main') main!: ElementRef<HTMLDivElement>;
+  @ViewChild('left') left!: ElementRef<HTMLDivElement>;
+  @ViewChild('right') right!: ElementRef<HTMLDivElement>;
+  @ViewChild('ribbon') ribbon!: ElementRef<HTMLDivElement>;
 
-  private ctx!: gsap.Context;
+  private ctx?: gsap.Context;
 
   ngAfterViewInit(): void {
     gsap.registerPlugin(ScrollTrigger);
+
+    const atfEl = this.atf.nativeElement;
+    const mainEl = this.main.nativeElement;
+    const leftEl = this.left.nativeElement;
+    const rightEl = this.right.nativeElement;
+    const ribbonEl = this.ribbon.nativeElement;
+    const scrollConfig = {
+      trigger: atfEl,
+      start: 'top top',
+      end: '+=100%',
+      scrub: 0.8
+    };
+
     this.ctx = gsap.context(() => {
-      gsap.to(this.main.nativeElement, {
+      gsap.to(mainEl, {
         yPercent: -100,
         ease: 'none',
-        scrollTrigger: {
-          trigger: this.atf.nativeElement,
-          start: 'top top',
-          end: '+=100%',
-          scrub: 0.8,
-        },
+        scrollTrigger: scrollConfig
       });
-      gsap.to(this.left.nativeElement, {
+      gsap.to(leftEl, {
         yPercent: -100,
         ease: 'none',
-        scrollTrigger: {
-          trigger: this.atf.nativeElement,
-          start: 'top top',
-          end: '+=100%',
-          scrub: 0.8
-        },
+        scrollTrigger: scrollConfig
       });
-      gsap.to(this.right.nativeElement, {
+      gsap.to(rightEl, {
         yPercent: -100,
         ease: 'none',
-        scrollTrigger: {
-          trigger: this.atf.nativeElement,
-          start: 'top top',
-          end: '+=100%',
-          scrub: 0.8
-        },
+        scrollTrigger: scrollConfig
       });
       gsap.fromTo(
-        this.ribbon.nativeElement,
+        ribbonEl,
         { y: 0, opacity: 1 },
         {
           y: 150,
           opacity: 0,
-          scrollTrigger: {
-            trigger: this.atf.nativeElement,
-            start: 'top top',
-            end: '+=100%',
-            scrub: 0.8
-          },
+          scrollTrigger: scrollConfig
         },
       );
     });
@@ -82,6 +75,6 @@ export class AboveTheFoldComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.ctx.revert();
+    this.ctx?.revert();
   }
 }
