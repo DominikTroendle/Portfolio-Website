@@ -21,11 +21,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { RouterLink } from '@angular/router';
 
 type ContactFormField = {
-  id: string,
-  text: string,
-  placeholder: string,
-  placeholderError: string,
-  type: 'text' | 'email'
+  id: string;
+  text: string;
+  placeholder: string;
+  placeholderError: string;
+  type: 'text' | 'email';
 }
 
 @Component({

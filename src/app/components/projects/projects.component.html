@@ -1,6 +1,9 @@
 <section class="projects">
+    @if(selectedProject) {
     <app-overlay class="projects__overlay" [overlayData]="selectedProject" [projectNumber]="'0' + selectedIndex"
-        [class.projects__overlay--show]="isVisible" (close)="closeOverlay()" (next)="updateOverlay(selectedIndex)"></app-overlay>
+        [class.projects__overlay--show]="isVisible" (close)="closeOverlay()"
+        (next)="updateOverlay(selectedIndex)"></app-overlay>
+    }
     <div class="projects__container">
         <p #eyebrow class="projects__eyebrow">{{db.data.projectsData.title}}</p>
         <h2 #title class="projects__title">{{db.data.projectsData.headline}}</h2>
@@ -17,8 +20,10 @@
                     <li class="projects__tech">{{tech}}</li>
                     }
                 </ul>
-                <img class="projects__preview projects__preview--main" [src]="'assets/img/' + project.src" [alt]="project.title + '-preview'">
-                <img class="projects__preview projects__preview--bg" src="assets/img/img-preview-bg.png" alt="preview-img-bg">
+                <img class="projects__preview projects__preview--main" [src]="'assets/img/' + project.src"
+                    [alt]="project.title + '-preview'">
+                <img class="projects__preview projects__preview--bg" src="assets/img/img-preview-bg.png"
+                    alt="preview-img-bg">
             </div>
             }
         </div>

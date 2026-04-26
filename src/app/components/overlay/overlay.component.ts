@@ -1,28 +1,29 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
+import { OverlayProject } from './overlay.types';
 
 @Component({
   selector: 'app-overlay',
   standalone: true,
   imports: [],
   templateUrl: './overlay.component.html',
-  styleUrl: './overlay.component.scss',
+  styleUrl: './overlay.component.scss'
 })
 
 export class OverlayComponent {
 
-  @Input()overlayData: any;
-  @Input()projectNumber: any;
-  @Output()close = new EventEmitter<Event>();
-  @Output()next = new EventEmitter<Event>();
+  @Input() overlayData!: OverlayProject;
+  @Input() projectNumber: string = '';
+  @Output() close = new EventEmitter<Event>();
+  @Output() next = new EventEmitter<Event>();
 
   constructor(public db: DatabaseService) { }
 
-  closeOverlay(){
+  closeOverlay():void {
     this.close.emit();
   }
 
-  nextProject(){
+  nextProject(): void {
     this.next.emit();
   }
 }

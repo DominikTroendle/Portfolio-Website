@@ -12,6 +12,7 @@ import { DOCUMENT } from '@angular/common';
 import { DatabaseService } from '../../services/database/database.service';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { OverlayProject } from '../overlay/overlay.types';
 
 @Component({
   selector: 'app-projects',
@@ -30,7 +31,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   private mm!: gsap.MatchMedia;
 
   isVisible = false;
-  selectedProject = {};
+  selectedProject: OverlayProject | null = null;
   selectedIndex = 0;
 
   constructor(
