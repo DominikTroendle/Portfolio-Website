@@ -26,26 +26,18 @@
     rgba(8, 70, 59, 1) 0%,
     rgba(28, 28, 28, 1) 70%
   );
+
+  @include respond(2xs) {
+    right: 18px;
+  }
+  @include respond(sm) {
+    right: 28px;
+  }
+  @include respond(md) {
+    right: 60px;
+  }
 }
 
 .nav__link {
   position: relative;
-}
-
-@media (min-width: bp.$bp-xxs) {
-  .nav {
-    right: 18px;
-  }
-}
-
-@media (min-width: bp.$bp-sm) {
-  .nav {
-    right: 28px;
-  }
-}
-
-@media (min-width: bp.$bp-md) {
-  .nav {
-    right: 60px;
-  }
 }
