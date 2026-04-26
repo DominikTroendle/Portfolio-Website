@@ -20,24 +20,32 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { RouterLink } from '@angular/router';
 
+type ContactFormField = {
+  id: string,
+  text: string,
+  placeholder: string,
+  placeholderError: string,
+  type: 'text' | 'email'
+}
+
 @Component({
   selector: 'app-contact',
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss',
+  styleUrl: './contact.component.scss'
 })
 
 export class ContactComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('title') title!: ElementRef;
-  @ViewChild('subheadline') subheadline!: ElementRef;
-  @ViewChild('eyebrow') eyebrow!: ElementRef;
-  @ViewChild('intro') intro!: ElementRef;
-  @ViewChild('prompt') prompt!: ElementRef;
-  @ViewChild('form') form!: ElementRef;
+  @ViewChild('title') title!: ElementRef<HTMLHeadingElement>;
+  @ViewChild('subheadline') subheadline!: ElementRef<HTMLHeadingElement>;
+  @ViewChild('eyebrow') eyebrow!: ElementRef<HTMLParagraphElement>;
+  @ViewChild('intro') intro!: ElementRef<HTMLParagraphElement>;
+  @ViewChild('prompt') prompt!: ElementRef<HTMLParagraphElement>;
+  @ViewChild('form') form!: ElementRef<HTMLFormElement>;
 
-  private ctx!: gsap.Context;
-  private mm!: gsap.MatchMedia;
+  private ctx?: gsap.Context;
+  private mm?: gsap.MatchMedia;
 
   contactForm!: FormGroup<Record<string, FormControl<unknown>>>;
   formSubmitted = false;
@@ -60,13 +68,14 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
     public db: DatabaseService,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.buildForm();
   }
 
-  buildForm() {
-    const group: any = {};
-    this.db.data.contactData.form.forEach((input: any) => {
+  buildForm(): void {
+    const group: Record<string, FormControl> = {};
+    const formFields = this.db.data.contactData.form as ContactFormField[];
+    formFields.forEach((input) => {
       group[input.id] = this.createFormControl(input.id);
     });
     group['privacyPolicy'] = new FormControl(false, {
@@ -75,7 +84,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
     this.contactForm = this.fb.group(group);
   }
 
-  createFormControl(id: string) {
+  createFormControl(id: string): FormControl {
     const validators = [Validators.required];
     if (id === 'email') {
       validators.push(
@@ -89,7 +98,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
     return this.fb.control('', { validators, updateOn: 'blur' });
   }
 
-  whitespaceValidator(control: AbstractControl) {
+  whitespaceValidator(control: AbstractControl): { onlywhitespace: true } | null {
     const value = control.value;
     if (!value) return null;
     if (value.trim().length === 0) {
@@ -99,7 +108,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.formSubmitted = true;
     if (this.contactForm.valid) {
       const { privacyPolicy, ...contactData } = this.contactForm.getRawValue();
@@ -129,13 +138,13 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
     ScrollTrigger.refresh();
   }
 
-  private initAnimations() {
+  private initAnimations(): void {
     this.mm = gsap.matchMedia();
     this.mm.add('(min-width: 1024px)', () => this.desktopAnimation());
     this.mm.add('(max-width: 1023px)', () => this.mobileAnimation());
   }
 
-  private desktopAnimation() {
+  private desktopAnimation(): void {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: this.eyebrow.nativeElement,
@@ -178,7 +187,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
       );
   }
 
-  private mobileAnimation() {
+  private mobileAnimation(): void {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: this.eyebrow.nativeElement,
@@ -241,7 +250,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.ctx.revert();
+    this.ctx?.revert();
     this.mm?.revert();
   }
 }
