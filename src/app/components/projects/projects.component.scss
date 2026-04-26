@@ -1,6 +1,5 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/fonts" as *;
-@use "../../styles/breakpoints" as bp;
 
 .projects__overlay {
   visibility: hidden;
@@ -16,12 +15,34 @@
   color: white;
   width: 100vw;
   padding: 100px 12px;
+
+  @include respond(2xs) {
+    padding: 100px 18px;
+  }
+  @include respond(sm) {
+    padding: 100px 28px;
+  }
+  @include respond(md) {
+    padding: 100px 60px;
+  }
+  @include respond(lg) {
+    display: block;
+    padding: 100px 98px;
+  }
+  @include respond(4xl) {
+    padding-left: calc(((100vw - 1921px) / 2) + 98px);
+    padding-right: calc(((100vw - 1921px) / 2) + 98px);
+  }
 }
 
 .projects__container {
   @include dFlex(flex-start, flex-start, 20px);
   flex-direction: column;
   width: clamp(296px, calc(296 / 320 * 100vw), 568px);
+
+  @include respond(lg) {
+    width: 828px;
+  }
 }
 
 .projects__eyebrow {
@@ -38,16 +59,28 @@
   font-size: clamp(48px, calc(64 / 1440 * 100vw), 64px);
   line-height: 115%;
   font-weight: 700;
+
+  @include respond(lg) {
+    line-height: normal;
+  }
 }
 
 .projects__intro {
   margin-bottom: 21px;
   font-family: Karla;
   font-size: clamp(16px, calc(18 / 1440 * 100vw), 18px);
+
+  @include respond(ld) {
+    width: clamp(580px, calc(580 / 1024 * 100vw), 828px);
+  }
 }
 
 .projects__content {
   width: 100%;
+
+  @include respond(ld) {
+    width: clamp(580px, calc(580 / 1024 * 100vw), 828px);
+  }
 }
 
 .projects__item {
@@ -60,12 +93,34 @@
   cursor: pointer;
   transition: 0.2s ease-in-out;
 
+  @include respond(sm) {
+    flex-direction: row;
+    gap: 0;
+  }
+  @include respond(lg) {
+    padding: 40px 32px;
+  }
+
   * {
     cursor: pointer;
   }
 
   &:last-child {
     border-bottom: 1px solid #3dcfb6;
+  }
+}
+
+.projects__item:hover {
+  @include respond(lg) {
+    background-color: rgba($color: #3dcfb6, $alpha: 0.3);
+  }
+
+  .projects__item-arrow,
+  .projects__preview  {
+    @include respond(lg) {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 }
 
@@ -97,7 +152,7 @@
 
 .projects__tech {
   position: relative;
-  
+
   &:not(:last-of-type)::after {
     content: "";
     position: absolute;
@@ -122,95 +177,23 @@
   top: 50%;
   transform: translateY(-50%);
 
+  @include respond(lg) {
+    display: block;
+    width: clamp(200px, calc(304 / 1440 * 100vw), 304px);
+  }
+  @include respond(3xl) {
+    left: 120%;
+  }
+
   &--main {
     z-index: 1;
   }
 
   &--bg {
     transform: translate(10px, calc(-50% + 10px));
-  }
-}
 
-@media (min-width: bp.$bp-xxs) {
-  .projects {
-    padding: 100px 18px;
-  }
-}
-
-@media (min-width: bp.$bp-sm) {
-  .projects {
-    padding: 100px 28px;
-  }
-  .projects__item {
-    flex-direction: row;
-    gap: 0;
-  }
-}
-
-@media (min-width: bp.$bp-md) {
-  .projects {
-    padding: 100px 60px;
-  }
-}
-
-@media (min-width: bp.$bp-lg) {
-  .projects {
-    display: block;
-    padding: 100px 98px;
-  }
-
-  .projects__container {
-    width: 828px;
-  }
-
-  .projects__title {
-    line-height: normal;
-  }
-
-  .projects__content,
-  .projects__intro {
-    width: clamp(580px, calc(580 / 1024 * 100vw), 828px);
-  }
-
-  .projects__item {
-    padding: 40px 32px;
-  }
-
-  .projects__item:hover {
-    background-color: rgba($color: #3dcfb6, $alpha: 0.3);
-
-    .projects__item-arrow {
-      visibility: visible;
-      opacity: 1;
+    @include respond(xl) {
+      transform: translate(15px, calc(-50% + 15px));
     }
-
-    .projects__preview {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-
-  .projects__preview {
-    display: block;
-    width: clamp(200px, calc(304 / 1440 * 100vw), 304px);
-  }
-}
-
-@media (min-width: bp.$bp-xl) {
-  .projects__preview--bg {
-    transform: translate(15px, calc(-50% + 15px));
-  }
-}
-
-@media (min-width: bp.$bp-3xl) {
-  .projects__preview {
-    left: 120%;
-  }
-}
-
-@media (min-width: bp.$bp-4xl) {
-  .projects {
-    padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-    padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
   }
 }
