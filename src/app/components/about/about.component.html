@@ -12,8 +12,8 @@
                 <ul class="about__text">
                     @for(item of db.data.aboutData.details; track item){
                     <li class="about__detail">
-                        <img class="about__detail--icon" [src]="'assets/img/' + item.src + '.png'" [alt]="item.src">
-                        <p class="about__detail--text">{{item.text}}</p>
+                        <img class="about__detail-icon" [src]="'assets/img/' + item.src + '.png'" [alt]="item.src">
+                        <p class="about__detail-text">{{item.text}}</p>
                     </li>
                     }
                 </ul>

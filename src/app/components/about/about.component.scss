@@ -156,25 +156,25 @@
 
 .about__detail {
   @include dFlex(flex-start, center, 24px);
+}
 
-  &--icon {
-    width: 32px;
-    height: 32px;
+.about__detail-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.about__detail-text {
+  font-family: Karla;
+  font-size: 16px;
+  color: white;
+  opacity: 0.8;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 1;
   }
 
-  &--text {
-    font-family: Karla;
-    font-size: 16px;
-    color: white;
-    opacity: 0.8;
-    transition: 0.2s ease-in-out;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    @include respond(xl) {
-      font-size: 18px;
-    }
+  @include respond(xl) {
+    font-size: 18px;
   }
 }

@@ -20,32 +20,38 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export class AboutComponent implements AfterViewInit, OnDestroy {
   constructor(public db: DatabaseService) {}
 
-  @ViewChild('left') left!: ElementRef;
-  @ViewChild('right') right!: ElementRef;
+  @ViewChild('left') left!: ElementRef<HTMLDivElement>;
+  @ViewChild('right') right!: ElementRef<HTMLDivElement>;
 
-  private ctx!: gsap.Context;
+  private ctx?: gsap.Context;
 
   ngAfterViewInit(): void {
     gsap.registerPlugin(ScrollTrigger);
+
+    const leftElement = this.left.nativeElement;
+    const rightElement = this.right.nativeElement;
+    const rightParent = rightElement.parentElement;
+    if (!rightParent) return;
+
     this.ctx = gsap.context(() => {
-      gsap.fromTo(this.left.nativeElement,
+      gsap.fromTo(leftElement,
         { opacity: 0 },
         {
           opacity: 1,
           scrollTrigger: {
-            trigger: this.left.nativeElement,
+            trigger: leftElement,
             start: "top 70%",
             end: "bottom 60%",
             scrub: 0.8
           }
         });
-        gsap.fromTo(this.right.nativeElement,
+        gsap.fromTo(rightElement,
           { yPercent: 100 },
           {
             yPercent: 0,
             duration: 0.8,
             scrollTrigger: {
-              trigger: this.right.nativeElement.parentElement,
+              trigger: rightParent,
               start: "top 90%",
               end: "top 0%",
               scrub: 0.8
@@ -56,6 +62,6 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.ctx.revert();
+    this.ctx?.revert();
   }
 }
