@@ -1,6 +1,5 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/fonts" as *;
-@use "../../styles/breakpoints" as bp;
 
 :host {
   display: block;
@@ -8,6 +7,19 @@
   z-index: 1;
   margin-top: -219px;
   width: 100dvw;
+
+  @include respond(2xs) {
+    margin-top: -225px;
+  }
+  @include respond(sm) {
+    margin-top: -235px;
+  }
+  @include respond(md) {
+    margin-top: -201px;
+  }
+  @include respond(lg) {
+    margin-top: -202px;
+  }
 }
 
 .footer {
@@ -18,6 +30,23 @@
   font-size: 16px;
   color: white;
   width: 100%;
+
+  @include respond(2xs) {
+    padding: 50px 18px 18px 18px;
+  }
+  @include respond(sm) {
+    padding: 50px 28px 28px 28px;
+  }
+  @include respond(md) {
+    padding: 50px 60px;
+  }
+  @include respond(lg) {
+    padding: 50px 98px;
+  }
+  @include respond(4xl) {
+    padding-left: calc(((100vw - 1921px) / 2) + 98px);
+    padding-right: calc(((100vw - 1921px) / 2) + 98px);
+  }
 }
 
 .footer__content {
@@ -40,6 +69,10 @@
   background-repeat: no-repeat;
   background-position: center;
 
+  @include respond(lg) {
+    display: block;
+  }
+
   &:hover {
     cursor: pointer;
     background-image: url(../../../assets/img/logo_outline.png);
@@ -50,6 +83,10 @@
   width: 24px;
   height: 47px;
   background-image: url(../../../assets/img/initials.png);
+
+  @include respond(lg) {
+    display: none;
+  }
 
   &:hover {
     cursor: pointer;
@@ -64,11 +101,19 @@
 
   &--desktop {
     display: none;
+
+    @include respond(md) {
+      display: block;
+    }
   }
 
   &--mobile {
     display: block;
     justify-self: center;
+
+    @include respond(md) {
+      display: none;
+    }
   }
 }
 
@@ -99,63 +144,8 @@
     opacity: 0;
     transition: opacity 0.125s ease;
   }
-  
+
   &:hover::before {
     opacity: 1;
-  }
-}
-
-@media (min-width: bp.$bp-xxs) {
-  :host {
-    margin-top: -225px;
-  }
-  .footer {
-    padding: 50px 18px 18px 18px;
-  }
-}
-
-@media (min-width: bp.$bp-sm) {
-  :host {
-    margin-top: -235px;
-  }
-  .footer {
-    padding: 50px 28px 28px 28px;
-  }
-}
-
-@media (min-width: bp.$bp-md) {
-  :host {
-    margin-top: -201px;
-  }
-  .footer {
-    padding: 50px 60px;
-  }
-  .footer__copyright--desktop {
-    display: block;
-  }
-  .footer__copyright--mobile {
-    display: none;
-  }
-}
-
-@media (min-width: bp.$bp-lg) {
-  :host {
-    margin-top: -202px;
-  }
-  .footer {
-    padding: 50px 98px;
-  }
-  .footer__logo {
-    display: block;
-  }
-  .footer__logo-mobile {
-    display: none;
-  }
-}
-
-@media (min-width: bp.$bp-4xl) {
-  .footer {
-    padding-left: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
-    padding-right: calc(((100vw - bp.$bp-4xl) / 2) + 98px);
   }
 }
