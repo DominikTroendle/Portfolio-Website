@@ -5,9 +5,9 @@
             <img class="about__image about__image--bg" src="../../../assets/img/hero-img-bg.png" alt="">
         </div>
         <div #right class="about__details">
-            <p class="about__eyebrow">{{db.data.aboutData.title}}</p>
+            <p class="about__eyebrow">{{db.data.aboutData.eyebrow}}</p>
             <div class="about__content">
-                <h2 class="about__title">{{db.data.aboutData.headline}}</h2>
+                <h2 class="about__title">{{db.data.aboutData.title}}</h2>
                 <p class="about__intro" id="introduction">{{db.data.aboutData.introduction}}</p>
                 <ul class="about__text">
                     @for(item of db.data.aboutData.details; track item){
