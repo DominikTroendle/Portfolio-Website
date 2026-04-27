@@ -10,7 +10,7 @@
                 <h2 class="overlay__title">{{overlayData.title}}</h2>
             </div>
             <div class="overlay__body">
-                <h3 class="overlay__subtitle">{{db.data.projectsData.overlayAbout}}</h3>
+                <h3 class="overlay__subtitle">{{db.data.projectsData.subtitle}}</h3>
                 <p class="overlay__text">{{overlayData.text}}</p>
                 <ul class="overlay__tech-list">
                     @for(tech of overlayData.technologies; track tech){
@@ -38,12 +38,12 @@
             </button>
             <img class="overlay__preview" [src]="'assets/img/' + overlayData.previewSrc" alt="preview-img">
             <button class="overlay__next" (click)="nextProject()">
-                {{db.data.projectsData.nextProject}}
+                {{db.data.projectsData.next}}
                 <img class="overlay__next-icon" src="/assets/img/arrow_forward.png" alt="arrow-next">
             </button>
         </div>
         <button class="overlay__next overlay__mobile-only" (click)="nextProject()">
-            {{db.data.projectsData.nextProject}}
+            {{db.data.projectsData.next}}
             <img class="overlay__next-icon" src="/assets/img/arrow_forward.png" alt="arrow-next">
         </button>
     </section>
