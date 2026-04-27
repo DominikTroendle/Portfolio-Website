@@ -1,20 +1,20 @@
 <section class="contact">
     <div class="contact__content">
         <div class="contact__header">
-            <p #eyebrow class="contact__eyebrow">{{db.data.contactData.title}}</p>
-            <h2 #title class="contact__title">{{db.data.contactData.headline}}</h2>
+            <p #eyebrow class="contact__eyebrow">{{db.data.contactData.eyebrow}}</p>
+            <h2 #title class="contact__title">{{db.data.contactData.title}}</h2>
         </div>
         <div class="contact__details">
             <h3 #subheadline class="contact__subheadline">{{db.data.contactData.subheadline}}</h3>
             <p #intro class="contact__intro">{{db.data.contactData.introduction}}</p>
-            <p #prompt class="contact__prompt">{{db.data.contactData.textBefore}}<a
-                    [href]="db.data.contactData.textHref"><span
-                        class="contact__prompt--highlight">{{db.data.contactData.textHighlighted}}</span></a></p>
+            <p #prompt class="contact__prompt">{{db.data.contactData.prompt}}<a
+                    [href]="db.data.contactData.email"><span
+                        class="contact__prompt--highlight">{{db.data.contactData.promptHighlighted}}</span></a></p>
         </div>
     </div>
     <form #form class="contact__form" [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()">
         <div class="contact__overlay" [class.contact__overlay--visible]="overlayVisible">
-            <p class="contact__message">{{db.data.contactData.messageSent}}</p>
+            <p class="contact__message">{{db.data.contactData.message}}</p>
         </div>
         <div class="contact__fields">
             @for(input of db.data.contactData.form; track input){
@@ -49,17 +49,17 @@
                     <input class="contact__checkbox" type="checkbox" id="privacy-policy"
                         formControlName="privacyPolicy">
                     <label class="contact__checkbox-label" for="privacy-policy"></label>
-                    <p>{{db.data.contactData.policyBefore}}<a class="contact__privacy--highlight"
-                            routerLink="/privacy-policy">{{db.data.contactData.policyHighlighted}}</a>{{db.data.contactData.policyAfter}}
+                    <p>{{db.data.contactData.privacyBefore}}<a class="contact__privacy--highlight"
+                            routerLink="/privacy-policy">{{db.data.contactData.privacyHighlighted}}</a>{{db.data.contactData.privacyAfter}}
                     </p>
                 </div>
                 <p class="contact__privacy-error" id="error"
                     [class.contact__privacy-error--visible]="contactForm.get('privacyPolicy')?.invalid && formSubmitted">
-                    {{db.data.contactData.policyError}}</p>
+                    {{db.data.contactData.privacyError}}</p>
             </div>
             <button class="contact__submit" type="submit" [class.contact__submit--active]="contactForm.valid"><span
                     class="contact__submit-text"
-                    [class.contact__submit-text--active]="contactForm.valid">{{db.data.contactData.button}}</span></button>
+                    [class.contact__submit-text--active]="contactForm.valid">{{db.data.contactData.submit}}</span></button>
         </div>
     </form>
 </section>
