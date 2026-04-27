@@ -5,8 +5,8 @@
         (next)="updateOverlay(selectedIndex)"></app-overlay>
     }
     <div class="projects__container">
-        <p #eyebrow class="projects__eyebrow">{{db.data.projectsData.title}}</p>
-        <h2 #title class="projects__title">{{db.data.projectsData.headline}}</h2>
+        <p #eyebrow class="projects__eyebrow">{{db.data.projectsData.eyebrow}}</p>
+        <h2 #title class="projects__title">{{db.data.projectsData.title}}</h2>
         <p #intro class="projects__intro">{{db.data.projectsData.introduction}}</p>
         <div #projects class="projects__content">
             @for(project of db.data.projectsData.projects; track project; let i = $index){
