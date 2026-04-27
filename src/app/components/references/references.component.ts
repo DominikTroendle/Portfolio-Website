@@ -3,7 +3,7 @@ import { DatabaseService } from '../../services/database/database.service';
 
 type ReferenceItem = {
   text: string;
-  name: string;
+  author: string;
   role: string;
 }
 

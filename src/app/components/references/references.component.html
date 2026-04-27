@@ -1,5 +1,5 @@
 <section class="references">
-    <h2 class="references__title">{{db.data.referencesData.headline}}</h2>
+    <h2 class="references__title">{{db.data.referencesData.title}}</h2>
     <div class="carousel-mask references__viewport">
         <div class="container-carousel references__track">
             <img class="references__quote-icon" src="assets/img/quotes.png" alt="quotes">
@@ -7,7 +7,7 @@
                 <p class="references__text">{{getItemRelativeToCurrent(-1).text}}</p>
                 <div class="references__meta">
                     <hr class="references__line">
-                    <span class="references__author">{{getItemRelativeToCurrent(-1).name}} &#45;
+                    <span class="references__author">{{getItemRelativeToCurrent(-1).author}} &#45;
                         {{getItemRelativeToCurrent(-1).role}}</span>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <div class="references__meta">
                         <hr class="references__line">
                         <span class="references__author">
-                            {{getItemIndex(i).name}} &#45;
+                            {{getItemIndex(i).author}} &#45;
                             {{getItemIndex(i).role}}</span>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                 <div class="references__meta">
                     <hr class="references__line">
                     <span class="references__author">
-                        {{getItemRelativeToCurrent(0).name}} &#45;
+                        {{getItemRelativeToCurrent(0).author}} &#45;
                         {{getItemRelativeToCurrent(0).role}}
                     </span>
                 </div>
