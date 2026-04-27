@@ -2,13 +2,26 @@ import { inject, Injectable } from '@angular/core';
 import { collection, Firestore, getDocs } from '@angular/fire/firestore';
 import { LocalStorageService } from '../localStorage/local-storage.service';
 
+type AppData = {
+  aboutData?: any;
+  atfData?: any;
+  contactData?: any;
+  footerData?: any;
+  headerData?: any;
+  legalNoticeData?: any;
+  privacyPolicyData?: any;
+  projectsData?: any;
+  referencesData?: any;
+  skillsData?: any;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class DatabaseService {
   currentLanguage: "english" | "german" = "english";
-
-  data: any = {};
+  data: AppData = {};
   firestore: Firestore = inject(Firestore);
   loaded = false;
   
@@ -19,7 +32,8 @@ export class DatabaseService {
     if(storedLanguage) this.currentLanguage = storedLanguage;
     const dataRef = await getDocs(collection(this.firestore, this.currentLanguage));
     dataRef.forEach(doc => {
-      this.data[doc.id] = doc.data();
+      const key = doc.id as keyof AppData;
+      this.data[key] = doc.data();
     });
     this.loaded = true;
   }
