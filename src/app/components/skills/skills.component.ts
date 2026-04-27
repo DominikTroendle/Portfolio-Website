@@ -22,18 +22,18 @@ import { ButtonComponent } from '../button/button.component';
 export class SkillsComponent implements AfterViewInit, OnDestroy {
   constructor(public db: DatabaseService) {}
 
-  @ViewChild('left') left!: ElementRef;
-  @ViewChild('right') right!: ElementRef;
+  @ViewChild('left') left!: ElementRef<HTMLDivElement>;
+  @ViewChild('right') right!: ElementRef<HTMLDivElement>;
 
-  private ctx!: gsap.Context;
-  private mm!: gsap.MatchMedia;
+  private ctx?: gsap.Context;
+  private mm?: gsap.MatchMedia;
 
   isMobile = window.innerWidth < 1024;
   isVisible = false;
 
   @HostListener('window:resize')
-  onResize() {
-    this.isMobile = window.innerHeight < 1024;
+  onResize(): void {
+    this.isMobile = window.innerWidth < 1024;
   }
 
   ngAfterViewInit(): void {
@@ -44,42 +44,48 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
     ScrollTrigger.refresh();
   }
 
-  private initAnimations() {
+  private initAnimations(): void {
     this.mm = gsap.matchMedia();
     this.mm.add('(min-width: 1024px)', () => this.desktopAnimation());
     this.mm.add('(max-width: 1023px)', () => this.mobileAnimation());
   }
 
-  private desktopAnimation() {
+  private desktopAnimation(): void {
+    const leftEl = this.left.nativeElement;
+    const rightEl = this.right.nativeElement;
+    const containerEl = leftEl.parentElement;
+    if (!containerEl) return;
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: this.left.nativeElement.parentElement,
+        trigger: containerEl,
         start: 'top 90%',
         end: 'top 40%',
         scrub: 0.8
       },
     });
     tl.fromTo(
-      this.left.nativeElement,
+      leftEl,
       { x: -200, opacity: 0 },
       { x: 0, opacity: 1 },
     ).fromTo(
-      this.right.nativeElement,
+      rightEl,
       { x: 200, opacity: 0 },
       { x: 0, opacity: 1 },
       '<',
     );
   }
 
-  private mobileAnimation() {
+  private mobileAnimation():void {
+    const leftEl = this.left.nativeElement;
+    const rightEl = this.right.nativeElement;
     gsap.fromTo(
-      this.left.nativeElement,
+      leftEl,
       { x: -100, opacity: 0 },
       {
         x: 0,
         opacity: 1,
         scrollTrigger: {
-          trigger: this.left.nativeElement,
+          trigger: leftEl,
           start: 'top 85%',
           end: 'bottom 70%',
           scrub: 0.8
@@ -87,13 +93,13 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
       },
     );
     gsap.fromTo(
-      this.right.nativeElement,
+      rightEl,
       { x: 100, opacity: 0 },
       {
         x: 0,
         opacity: 1,
         scrollTrigger: {
-          trigger: this.right.nativeElement,
+          trigger: rightEl,
           start: 'top 85%',
           end: 'bottom 90%',
           scrub: 0.8
@@ -103,7 +109,7 @@ export class SkillsComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.ctx.revert();
+    this.ctx?.revert();
     this.mm?.revert();
   }
 }
