@@ -6,11 +6,11 @@
         <div class="atf__line-left"></div>
     </div>
     <div #main class="atf__content-main">
-        <p class="atf__subheadline">{{db.data.atfData.title}}</p>
-        <h1 class="atf__headline">{{db.data.atfData.name}}</h1>
+        <p class="atf__subheadline">{{db.data.atfData.subheadline}}</p>
+        <h1 class="atf__headline">{{db.data.atfData.headline}}</h1>
         <nav class="atf__nav">
             @for(btn of db.data.atfData.buttons; track btn.text){
-            <app-button [text]="btn.text" [fragment]="btn.href" route="/"></app-button>
+            <app-button [text]="btn.text" [fragment]="btn.fragment" route="/"></app-button>
             }
         </nav>
     </div>
