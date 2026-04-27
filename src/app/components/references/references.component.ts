@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
 
+type ReferenceItem = {
+  text: string;
+  name: string;
+  role: string;
+}
+
 @Component({
   selector: 'app-references',
   standalone: true,
@@ -11,15 +17,22 @@ import { DatabaseService } from '../../services/database/database.service';
 
 export class ReferencesComponent {
   active = false;
-  direction = "";
+  direction: '' | 'left' | 'right' = '';
   currentIndex = 0;
-  carouselLength = this.db.data.referencesData.carousel.length;
   isAnimated = false;
+
+  private get carousel(): ReferenceItem[] {
+    return this.db.data.referencesData.carousel as ReferenceItem[];
+  }
+
+  private get carouselLength(): number {
+    return this.carousel.length;
+  }
 
   constructor(public db: DatabaseService){ }
 
-  nextCard(){
-    this.direction = "left";
+  nextCard(): void {
+    this.direction = 'left';
     this.isAnimated = true;
     setTimeout(() => {
       this.currentIndex = (this.currentIndex + 1) % this.carouselLength;
@@ -27,8 +40,8 @@ export class ReferencesComponent {
     }, 600);
   }
 
-  previousCard(){
-    this.direction = "right";
+  previousCard(): void {
+    this.direction = 'right';
     this.isAnimated = true;
     setTimeout(() => {
       this.currentIndex = (this.currentIndex - 1 + this.carouselLength) % this.carouselLength;
@@ -36,16 +49,16 @@ export class ReferencesComponent {
     }, 600);
   }
 
-  getItemIndex(i:number){
-    return this.db.data.referencesData.carousel[(i + this.currentIndex) % this.carouselLength];
+  getItemIndex(i:number): ReferenceItem {
+    return this.carousel[(i + this.currentIndex) % this.carouselLength];
   }
 
-  getItemRelativeToCurrent(off:number){
-    return this.db.data.referencesData.carousel[(this.currentIndex + off + this.carouselLength) % this.carouselLength];
+  getItemRelativeToCurrent(off:number): ReferenceItem {
+    return this.carousel[(this.currentIndex + off + this.carouselLength) % this.carouselLength];
   }
 
-  reset(){
-    this.direction = "";
+  private reset(): void {
+    this.direction = '';
     this.isAnimated = false;
   }
 }
