@@ -55,7 +55,7 @@
                 </div>
                 <p class="contact__privacy-error" id="error"
                     [class.contact__privacy-error--visible]="contactForm.get('privacyPolicy')?.invalid && formSubmitted">
-                    {{db.data.contactData.privacyError}}</p>
+                    {{contactData.privacyError}}</p>
             </div>
             <button class="contact__submit" type="submit" [class.contact__submit--active]="contactForm.valid"><span
                     class="contact__submit-text"
