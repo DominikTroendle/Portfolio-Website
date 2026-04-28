@@ -79,6 +79,34 @@ export type Skill = {
   src: string;
 };
 
+export type ContactData = {
+  email: string;
+  emailError: string;
+  eyebrow: string;
+  introduction: string;
+  lengthError: string;
+  message: string;
+  privacyAfter: string;
+  privacyBefore: string;
+  privacyError: string;
+  privacyHighlighted: string;
+  prompt: string;
+  promptHighlighted: string;
+  requiredError: string;
+  subheadline: string;
+  submit: string;
+  title: string;
+  form: ContactFormField[];
+}
+
+export type ContactFormField = {
+  id: string;
+  placeholder: string;
+  placeholderError: string;
+  text: string;
+  type: 'text' | 'email';
+}
+
 // Legal / Privacy
 export type LegalData = {
   title: string;

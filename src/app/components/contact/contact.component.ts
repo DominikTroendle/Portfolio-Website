@@ -19,14 +19,7 @@ import { HttpClient } from '@angular/common/http';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { RouterLink } from '@angular/router';
-
-type ContactFormField = {
-  id: string;
-  text: string;
-  placeholder: string;
-  placeholderError: string;
-  type: 'text' | 'email';
-}
+import { ContactFormField } from '../../services/database/database.types';
 
 @Component({
   selector: 'app-contact',
@@ -63,6 +56,10 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
   };
   overlayVisible = false;
 
+  get contactFields(): ContactFormField[] {
+    return this.db.data.contactData?.form ?? [];
+  }
+
   constructor(
     private fb: FormBuilder,
     public db: DatabaseService,
@@ -74,8 +71,7 @@ export class ContactComponent implements AfterViewInit, OnDestroy {
 
   buildForm(): void {
     const group: Record<string, FormControl> = {};
-    const formFields = this.db.data.contactData.form as ContactFormField[];
-    formFields.forEach((input) => {
+    this.contactFields.forEach((input) => {
       group[input.id] = this.createFormControl(input.id);
     });
     group['privacyPolicy'] = new FormControl(false, {
