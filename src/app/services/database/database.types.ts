@@ -79,6 +79,25 @@ export type Skill = {
   src: string;
 };
 
+export type ProjectData = {
+
+}
+
+export type OverlayData = {
+
+}
+
+export type ReferencesData = {
+  title: string;
+  carousel: ReferenceItem[];
+}
+
+export type ReferenceItem = {
+  author: string;
+  role: string;
+  text: string;
+}
+
 export type ContactData = {
   email: string;
   emailError: string;

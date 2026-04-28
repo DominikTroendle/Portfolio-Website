@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
-
-type ReferenceItem = {
-  text: string;
-  author: string;
-  role: string;
-}
+import { ReferenceItem } from '../../services/database/database.types';
 
 @Component({
   selector: 'app-references',
@@ -22,7 +17,7 @@ export class ReferencesComponent {
   isAnimated = false;
 
   private get carousel(): ReferenceItem[] {
-    return this.db.data.referencesData.carousel as ReferenceItem[];
+    return this.db.data.referencesData?.carousel ?? [];
   }
 
   private get carouselLength(): number {

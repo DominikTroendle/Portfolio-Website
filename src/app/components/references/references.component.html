@@ -1,5 +1,6 @@
+@if(db.data.referencesData; as referencesData) {
 <section class="references">
-    <h2 class="references__title">{{db.data.referencesData.title}}</h2>
+    <h2 class="references__title">{{referencesData.title}}</h2>
     <div class="carousel-mask references__viewport">
         <div class="container-carousel references__track">
             <img class="references__quote-icon" src="assets/img/quotes.png" alt="quotes">
@@ -11,7 +12,7 @@
                         {{getItemRelativeToCurrent(-1).role}}</span>
                 </div>
             </div>
-            @for(item of db.data.referencesData.carousel; track item; let i = $index){
+            @for(item of referencesData.carousel; track item; let i = $index){
             <div [class.references__card--slide-right]="direction === 'right'"
                 [class.references__card--slide-left]="direction === 'left'">
                 <div class="card references__card"
@@ -44,7 +45,7 @@
         <button class="references__nav-button references__nav-button--left" [disabled]="isAnimated"
             (click)="previousCard()"></button>
         <div class="references__dots">
-            @for(item of db.data.referencesData.carousel; track item; let i = $index){
+            @for(item of referencesData.carousel; track item; let i = $index){
             <span class="references__dot" [class.references__dot--active]="i === currentIndex"></span>
             }
         </div>
@@ -52,3 +53,4 @@
             (click)="nextCard()"></button>
     </div>
 </section>
+}
