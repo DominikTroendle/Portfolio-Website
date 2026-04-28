@@ -1,21 +1,21 @@
-@if(db.loaded){
+@if(db.data.footerData; as footerData){
 <footer class="footer">
     <section class="footer__content">
         <div class="footer__left">
             <a class="footer__logo" routerLink="/"></a>
             <a class="footer__logo-mobile" routerLink="/"></a>
             <ul class="footer__list">
-                <li>{{db.data.footerData.function}}</li>
-                <li>{{db.data.footerData.location}}</li>
+                <li>{{footerData.role}}</li>
+                <li>{{footerData.location}}</li>
             </ul>
         </div>
-        <span class="footer__copyright footer__copyright--desktop">{{db.data.footerData.copyright}}</span>
+        <span class="footer__copyright footer__copyright--desktop">{{footerData.copyright}}</span>
         <ul class="footer__list">
-            @for(link of db.data.footerData.links; track link){
+            @for(link of footerData.links; track link){
             <li><a [href]="link.href" [target]="link.target">{{link.text}}</a></li>
             }
         </ul>
     </section>
-    <span class="footer__copyright footer__copyright--mobile">{{db.data.footerData.copyright}}</span>
+    <span class="footer__copyright footer__copyright--mobile">{{footerData.copyright}}</span>
 </footer>
 }
