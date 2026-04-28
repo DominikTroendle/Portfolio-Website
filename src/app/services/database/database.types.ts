@@ -79,12 +79,34 @@ export type Skill = {
   src: string;
 };
 
-export type ProjectData = {
-
+export type ProjectsData = {
+  eyebrow: string;
+  introduction: string;
+  next: string;
+  subtitle: string;
+  title: string;
+  overlay: OverlayProject[];
+  projects: Project[];
 }
 
-export type OverlayData = {
+export type OverlayProject = {
+  github: string;
+  previewSrc: string;
+  text: string;
+  title: string;
+  url: string;
+  technologies: Technology[];
+}
 
+export type Technology = {
+  src: string;
+  text: string;
+}
+
+export type Project = {
+  src: string;
+  title: string;
+  technologies: string[];
 }
 
 export type ReferencesData = {
