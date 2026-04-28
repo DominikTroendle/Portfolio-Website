@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DatabaseService } from '../../services/database/database.service';
-import { OverlayProject } from './overlay.types';
+import { OverlayProject } from '../../services/database/database.types';
 
 @Component({
   selector: 'app-overlay',
@@ -11,15 +11,22 @@ import { OverlayProject } from './overlay.types';
 })
 
 export class OverlayComponent {
-
   @Input() overlayData!: OverlayProject;
   @Input() projectNumber: string = '';
   @Output() close = new EventEmitter<Event>();
   @Output() next = new EventEmitter<Event>();
 
-  constructor(public db: DatabaseService) { }
+  get overlaySubtitle(): string {
+    return this.db.data.projectsData?.subtitle ?? '';
+  }
 
-  closeOverlay():void {
+  get nextLabel(): string {
+    return this.db.data.projectsData?.next ?? '';
+  }
+
+  constructor(public db: DatabaseService) {}
+
+  closeOverlay(): void {
     this.close.emit();
   }
 
