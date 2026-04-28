@@ -37,7 +37,7 @@ export type AtfData = {
     github: string;
     headline: string;
     linkedin: string;
-    ribbonTracks: string;
+    ribbonTracks: string[];
     subheadline: string;
     buttons: AtfButtons[];
 }
@@ -45,4 +45,34 @@ export type AtfData = {
 export type AtfButtons = {
     fragment: string;
     text: string;
+}
+
+export type SkillsData = {
+    contact: string;
+    contactButton: string;
+    eyebrow: string;
+    introduction: string;
+    subheadlineBefore: string;
+    subheadlineHighlighted: string;
+    title: string;
+    growthMindset: Mindset;
+    growthSkills: GrowthSkill[];
+    skills: Skill[];
+}
+
+export type Mindset = {
+    firstLine: string;
+    introduction: string;
+    secondLine: string;
+    src: string;
+}
+
+export type GrowthSkill = {
+    src: string;
+    text: string;
+}
+
+export type Skill = {
+    label: string;
+    src: string;
 }

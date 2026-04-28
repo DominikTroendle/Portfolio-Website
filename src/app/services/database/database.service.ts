@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { collection, Firestore, getDocs } from '@angular/fire/firestore';
 import { LocalStorageService } from '../localStorage/local-storage.service';
-import { HeaderData, FooterData, AboutData, AtfData } from './database.types';
+import { HeaderData, FooterData, AboutData, AtfData, SkillsData } from './database.types';
 
 type AppData = {
   aboutData?: AboutData;
@@ -13,7 +13,7 @@ type AppData = {
   privacyPolicyData?: any;
   projectsData?: any;
   referencesData?: any;
-  skillsData?: any;
+  skillsData?: SkillsData;
 }
 
 @Injectable({
