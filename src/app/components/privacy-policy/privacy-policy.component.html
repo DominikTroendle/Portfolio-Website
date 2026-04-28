@@ -1,9 +1,9 @@
-@if(db.loaded){
+@if(db.data.privacyPolicyData; as privacyData){
 <article class="privacy">
     <a class="privacy__arrow" routerLink="/" fragment="contact" aria-label="Back to contact"></a>
-    <h1 class="privacy__title">{{db.data.privacyPolicyData.title}}</h1>
+    <h1 class="privacy__title">{{privacyData.title}}</h1>
     <div class="privacy__content">
-        @for(section of db.data.privacyPolicyData.sections; track section){
+        @for(section of privacyData.sections; track section){
         <section class="privacy__section">
             @for(block of section.content; track block){
             @switch(block.type){

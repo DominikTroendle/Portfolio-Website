@@ -109,7 +109,10 @@ export type LegalParagraphBlock = {
   inlines: LegalInline[];
 };
 
-export type LegalInline = LegalInlineText | LegalInlineLink | LegalInlineSpan;
+export type LegalInline =
+  | LegalInlineText
+  | LegalInlineLink
+  | LegalInlineSpan;
 
 export type LegalInlineText = {
   type: 'text';
@@ -126,3 +129,65 @@ export type LegalInlineSpan = {
   type: 'span';
   value: string;
 };
+
+export type PrivacyData = {
+    title: string;
+    sections: PrivacySection[];
+}
+
+export type PrivacySection = {
+    content: PrivacyBlock[];
+}
+
+export type PrivacyBlock = 
+  | PrivacyHeadlineBlock
+  | PrivacySubheadlineBlock
+  | PrivacyTitleBlock
+  | PrivacyListBlock
+  | PrivacyParagraphBlock;
+
+export type PrivacyHeadlineBlock = {
+    type: 'headline';
+    text: string;
+}
+
+export type PrivacySubheadlineBlock = {
+    type: 'subheadline';
+    text: string;
+}
+
+export type PrivacyTitleBlock = {
+    type: 'title';
+    text: string;
+}
+
+export type PrivacyListBlock = {
+    type: 'list';
+    items: string[];
+}
+
+export type PrivacyParagraphBlock = {
+    type: 'paragraph';
+    inlines: PrivacyInline[];
+}
+
+export type PrivacyInline =
+  | PrivacyInlineText
+  | PrivacyInlineLink
+  | PrivacyInlineSpan;
+
+  export type PrivacyInlineText = {
+    type: 'text';
+    value: string;
+  }
+
+  export type PrivacyInlineLink = {
+    type: 'link';
+    value: string;
+    href: string;
+  }
+
+  export type PrivacyInlineSpan = {
+    type: 'span';
+    value: string;
+  }
