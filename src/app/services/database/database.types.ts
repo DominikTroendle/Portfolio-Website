@@ -31,3 +31,18 @@ export type AboutDetails = {
     src: string;
     text: string;
 }
+
+export type AtfData = {
+    email: string;
+    github: string;
+    headline: string;
+    linkedin: string;
+    ribbonTracks: string;
+    subheadline: string;
+    buttons: AtfButtons[];
+}
+
+export type AtfButtons = {
+    fragment: string;
+    text: string;
+}

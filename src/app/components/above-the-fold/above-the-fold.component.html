@@ -1,3 +1,4 @@
+@if(db.data.atfData; as atfData){
 <section #atf class="atf">
     <div #left class="atf__content-left">
         <a class="atf__scroll" routerLink="/" fragment="contact">
@@ -6,23 +7,23 @@
         <div class="atf__line-left"></div>
     </div>
     <div #main class="atf__content-main">
-        <p class="atf__subheadline">{{db.data.atfData.subheadline}}</p>
-        <h1 class="atf__headline">{{db.data.atfData.headline}}</h1>
+        <p class="atf__subheadline">{{atfData.subheadline}}</p>
+        <h1 class="atf__headline">{{atfData.headline}}</h1>
         <nav class="atf__nav">
-            @for(btn of db.data.atfData.buttons; track btn.text){
+            @for(btn of atfData.buttons; track btn.text){
             <app-button [text]="btn.text" [fragment]="btn.fragment" route="/"></app-button>
             }
         </nav>
     </div>
     <div #right class="atf__content-right">
-        <a class="atf__link atf__link-text" [href]="'mailto:' + db.data.atfData.email">{{db.data.atfData.email}}</a>
-        <a class="atf__link atf__mobile-only" [href]="'mailto:' + db.data.atfData.email">
+        <a class="atf__link atf__link-text" [href]="'mailto:' + atfData.email">{{atfData.email}}</a>
+        <a class="atf__link atf__mobile-only" [href]="'mailto:' + atfData.email">
             <img class="atf__link-icon" src="assets/img/email-logo.png" alt="email-logo">
         </a>
-        <a class="atf__link" [href]="db.data.atfData.github" target="_blank" rel="noopener noreferrer">
+        <a class="atf__link" [href]="atfData.github" target="_blank" rel="noopener noreferrer">
             <img class="atf__link-icon" src="assets/img/github-logo.png" alt="github-logo">
         </a>
-        <a class="atf__link" [href]="db.data.atfData.linkedin" target="_blank" rel="noopener noreferrer">
+        <a class="atf__link" [href]="atfData.linkedin" target="_blank" rel="noopener noreferrer">
             <img class="atf__link-icon" src="assets/img/linkedin-logo.png" alt="linkedin-logo">
         </a>
         <div class="atf__line-right"></div>
@@ -32,7 +33,7 @@
             <div class="ribbon__wrapper">
                 @for(_ of [1,2,3]; track $index){
                 <div class="ribbon__track" [attr.aria-hidden]="$index > 1 ? 'true' : null">
-                    @for(text of db.data.atfData.ribbonTracks; track text){
+                    @for(text of atfData.ribbonTracks; track text){
                     <span class="ribbon__text">{{text}}</span>
                     }
                 </div>
@@ -41,3 +42,4 @@
         </div>
     </div>
 </section>
+}
