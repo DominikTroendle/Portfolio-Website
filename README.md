@@ -1,27 +1,95 @@
-# Portfolio
+# Portfolio Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
+A personal portfolio website built with **Angular** and **TypeScript**, focused on clean UI architecture, reusable components, and a structured frontend workflow.
 
-## Development server
+The project showcases selected work, technical skills, and development approach, with an emphasis on maintainable code and user-centered design.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## Live Demo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[View Portfolio](https://dominik-troendle.de)
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## About the Project
 
-## Running unit tests
+This portfolio was developed to present my work as a frontend developer in a clear and structured way.
+It combines a modern UI with a modular codebase and dynamic content handling.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The application follows a component-based architecture and integrates external data sources to keep content maintainable and scalable.
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Features
 
-## Further help
+* Component-based architecture using Angular
+* Dynamic content rendering via structured data (Firestore)
+* Multi-language support (German / English)
+* Smooth scrolling and section-based navigation
+* Interactive UI with animations (GSAP)
+* Responsive design across devices
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+## Tech Stack
+
+* **Angular 17**
+* **TypeScript**
+* **SCSS**
+* **Firebase / Firestore**
+* **GSAP (ScrollTrigger)**
+
+---
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Run development server
+
+```bash
+ng serve
+```
+
+---
+
+## Project Structure
+
+```text
+src/
+├── app/
+│   ├── components/      # Reusable layout components
+│   ├── main-content/    # Wrapper component for main content
+│   ├── services/        # Shared services for data and storage handling
+│   ├── shared/          # Shared layout components
+│   └── styles/          # SCSS utilities
+├── assets/              # Static assets
+```
+
+---
+
+## Key Concepts
+
+* **Modular component design** for scalability and reuse
+* **Separation of concerns** (UI, logic, data)
+* **Dynamic data-driven rendering** via Firestore
+* **Routing-based navigation with deep linking**
+* **Animation-driven UX enhancements**
+
+---
+
+## Author
+
+Dominik Tröndle
+Frontend Developer based in Munich
+
+---
+
+## Preview
+
+![Portfolio Preview](src/assets/img/preview-github.png)
