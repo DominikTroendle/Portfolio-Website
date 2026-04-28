@@ -4,6 +4,7 @@ import { DatabaseService } from '../../services/database/database.service';
 import { NavMobileComponent } from '../nav-mobile/nav-mobile.component';
 import { LanguageSwitchComponent } from '../language-switch/language-switch.component';
 import { RouterLink } from '@angular/router';
+import { HeaderItems } from '../../services/database/database.types';
 
 @Component({
   selector: 'app-header',
@@ -17,8 +18,13 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
+
 export class HeaderComponent {
   isVisible = false;
+
+  get headerItems(): HeaderItems[] {
+    return this.db.data.headerData?.items ?? [];
+  }
 
   constructor(
     public db: DatabaseService,

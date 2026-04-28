@@ -1,8 +1,7 @@
-@if(db.loaded){
 <header class="header">
     <nav class="header__nav">
         <app-language-switch></app-language-switch>
-        @for(item of db.data.headerData.items; track item.text){
+        @for(item of headerItems; track item.text){
         <a class="header__nav-link" routerLink="/" [fragment]="item.fragment">
             {{item.text}}
         </a>
@@ -14,4 +13,3 @@
     <app-nav-mobile class="header__mobile-nav" [class.header__mobile-nav--visible]="isVisible"
         (close)="hideMobileMenu()"></app-nav-mobile>
 </header>
-}
