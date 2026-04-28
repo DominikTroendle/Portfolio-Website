@@ -3,7 +3,7 @@ import { DatabaseService } from '../../services/database/database.service';
 import { CommonModule } from '@angular/common';
 import { LanguageSwitchComponent } from '../language-switch/language-switch.component';
 import { RouterLink } from '@angular/router';
-import { HeaderItems } from '../../services/database/database.types';
+import { HeaderItem } from '../../services/database/database.types';
 
 @Component({
   selector: 'app-nav-mobile',
@@ -16,7 +16,7 @@ import { HeaderItems } from '../../services/database/database.types';
 export class NavMobileComponent {
   @Output() close = new EventEmitter<Event>();
 
-  get headerItems(): HeaderItems[] {
+  get headerItems(): HeaderItem[] {
     return this.db.data.headerData?.items ?? [];
   }
 

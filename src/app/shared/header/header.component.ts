@@ -4,7 +4,7 @@ import { DatabaseService } from '../../services/database/database.service';
 import { NavMobileComponent } from '../nav-mobile/nav-mobile.component';
 import { LanguageSwitchComponent } from '../language-switch/language-switch.component';
 import { RouterLink } from '@angular/router';
-import { HeaderItems } from '../../services/database/database.types';
+import { HeaderItem } from '../../services/database/database.types';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +22,7 @@ import { HeaderItems } from '../../services/database/database.types';
 export class HeaderComponent {
   isVisible = false;
 
-  get headerItems(): HeaderItems[] {
+  get headerItems(): HeaderItem[] {
     return this.db.data.headerData?.items ?? [];
   }
 

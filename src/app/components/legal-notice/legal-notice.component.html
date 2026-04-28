@@ -1,9 +1,9 @@
-@if(db.loaded){
+@if(db.data.legalNoticeData; as legalData){
 <article class="legal">
     <a class="legal__arrow" routerLink="/" fragment="contact" aria-label="Back to contact"></a>
-    <h1 class="legal__title">{{db.data.legalNoticeData.title}}</h1>
+    <h1 class="legal__title">{{legalData.title}}</h1>
     <div class="legal__content">
-        @for(section of db.data.legalNoticeData.sections; track section){
+        @for(section of legalData.sections; track section){
         <section class="legal__section">
             @for(block of section.content; track block){
             @switch(block.type){
