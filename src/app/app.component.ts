@@ -27,12 +27,12 @@ export class AppComponent {
     private renderer: Renderer2
   ) { }
 
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     await this.db.loadItems();
   }
 
   @HostListener('document:mousemove', ['$event'])
-  onMouseMove(event: MouseEvent) {
+  onMouseMove(event: MouseEvent): void {
     this.renderer.setStyle(this.cursor.nativeElement, 'left', `${event.clientX}px`);
     this.renderer.setStyle(this.cursor.nativeElement, 'top', `${event.clientY}px`);
   }

@@ -22,7 +22,7 @@ export class NavMobileComponent {
 
   constructor(public db: DatabaseService) {}
 
-  closeOverlay() {
+  closeOverlay(): void {
     this.close.emit();
   }
 }

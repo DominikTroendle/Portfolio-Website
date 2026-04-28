@@ -32,12 +32,12 @@ export class HeaderComponent {
     @Inject(DOCUMENT) private document: Document,
   ) {}
 
-  showMobileMenu() {
+  showMobileMenu(): void {
     this.isVisible = true;
     this.renderer.addClass(this.document.body, 'no-scroll');
   }
 
-  hideMobileMenu() {
+  hideMobileMenu(): void {
     this.isVisible = false;
     this.renderer.removeClass(this.document.body, 'no-scroll');
   }
