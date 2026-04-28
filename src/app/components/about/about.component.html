@@ -1,3 +1,4 @@
+@if(db.data.aboutData; as aboutData){
 <section class="about">
     <div #left class="about__container">
         <div class="about__media">
@@ -5,12 +6,12 @@
             <img class="about__image about__image--bg" src="../../../assets/img/hero-img-bg.png" alt="">
         </div>
         <div #right class="about__details">
-            <p class="about__eyebrow">{{db.data.aboutData.eyebrow}}</p>
+            <p class="about__eyebrow">{{aboutData.eyebrow}}</p>
             <div class="about__content">
-                <h2 class="about__title">{{db.data.aboutData.title}}</h2>
-                <p class="about__intro" id="introduction">{{db.data.aboutData.introduction}}</p>
+                <h2 class="about__title">{{aboutData.title}}</h2>
+                <p class="about__intro" id="introduction">{{aboutData.introduction}}</p>
                 <ul class="about__text">
-                    @for(item of db.data.aboutData.details; track item){
+                    @for(item of aboutData.details; track item){
                     <li class="about__detail">
                         <img class="about__detail-icon" [src]="'assets/img/' + item.src + '.png'" [alt]="item.src">
                         <p class="about__detail-text">{{item.text}}</p>
@@ -21,3 +22,4 @@
         </div>
     </div>
 </section>
+}

@@ -19,3 +19,15 @@ export type FooterLinks = {
     target: string;
     text: string;
 }
+
+export type AboutData = {
+    eyebrow: string;
+    introduction: string;
+    title: string;
+    details: AboutDetails[];
+}
+
+export type AboutDetails = {
+    src: string;
+    text: string;
+}
