@@ -5,34 +5,39 @@ import {
   Inject,
   OnDestroy,
   Renderer2,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { OverlayComponent } from '../overlay/overlay.component';
 import { DOCUMENT } from '@angular/common';
 import { DatabaseService } from '../../services/database/database.service';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { OverlayProject } from '../overlay/overlay.types';
+import { OverlayProject } from '../../services/database/database.types';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
   imports: [OverlayComponent],
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss',
+  styleUrl: './projects.component.scss'
 })
-export class ProjectsComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('title') title!: ElementRef;
-  @ViewChild('eyebrow') eyebrow!: ElementRef;
-  @ViewChild('intro') intro!: ElementRef;
-  @ViewChild('projects') projects!: ElementRef;
 
-  private ctx!: gsap.Context;
-  private mm!: gsap.MatchMedia;
+export class ProjectsComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('title') title!: ElementRef<HTMLHeadingElement>;
+  @ViewChild('eyebrow') eyebrow!: ElementRef<HTMLParagraphElement>;
+  @ViewChild('intro') intro!: ElementRef<HTMLParagraphElement>;
+  @ViewChild('projects') projects!: ElementRef<HTMLDivElement>;
+
+  private ctx?: gsap.Context;
+  private mm?: gsap.MatchMedia;
 
   isVisible = false;
   selectedProject: OverlayProject | null = null;
   selectedIndex = 0;
+
+  private get overlayProjects(): OverlayProject[] {
+    return this.db.data.projectsData?.overlay ?? [];
+  }
 
   constructor(
     public db: DatabaseService,
@@ -40,22 +45,22 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     @Inject(DOCUMENT) private document: Document,
   ) {}
 
-  showOverlay(index: number) {
+  showOverlay(index: number): void {
     this.isVisible = true;
-    this.selectedProject = this.db.data.projectsData.overlay[index];
+    this.selectedProject = this.overlayProjects[index];
     this.selectedIndex = index + 1;
     this.renderer.addClass(this.document.body, 'no-scroll');
   }
 
-  updateOverlay(displayIndex: number) {
-    const length = this.db.data.projectsData.overlay.length;
+  updateOverlay(displayIndex: number): void {
+    const length = this.overlayProjects.length;
     const currentIndex = displayIndex - 1;
     const nextIndex = (currentIndex + 1) % length;
-    this.selectedProject = this.db.data.projectsData.overlay[nextIndex];
+    this.selectedProject = this.overlayProjects[nextIndex];
     this.selectedIndex = nextIndex + 1;
   }
 
-  closeOverlay() {
+  closeOverlay(): void {
     this.isVisible = false;
     this.selectedIndex = 0;
     this.renderer.removeClass(this.document.body, 'no-scroll');
@@ -69,13 +74,13 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
     ScrollTrigger.refresh();
   }
 
-  private initAnimations() {
+  private initAnimations(): void {
     this.mm = gsap.matchMedia();
     this.mm.add('(min-width: 1024px)', () => this.desktopAnimation());
     this.mm.add('(max-width: 1023px)', () => this.mobileAnimation());
   }
 
-  private desktopAnimation() {
+  private desktopAnimation(): void {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: this.eyebrow.nativeElement,
@@ -109,7 +114,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
       );
   }
 
-  private mobileAnimation() {
+  private mobileAnimation(): void {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: this.eyebrow.nativeElement,
@@ -152,7 +157,7 @@ export class ProjectsComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.ctx.revert();
+    this.ctx?.revert();
     this.mm?.revert();
   }
 }
