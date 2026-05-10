@@ -78,7 +78,7 @@
 .projects__content {
   width: 100%;
 
-  @include respond(ld) {
+  @include respond(lg) {
     width: clamp(580px, calc(580 / 1024 * 100vw), 828px);
   }
 }
